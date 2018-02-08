@@ -1,6 +1,8 @@
 language: php
 
-dist: trusty
+env:
+  global:
+    - CC_TEST_REPORTER_ID=787a2f89b15c637323c7340d65ec17e898ac44480706b4b4122ea040c2a88f1d
 
 php:
   - 5.6
@@ -12,9 +14,13 @@ php:
 install:
   - composer install
 
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
 script:
   - vendor/bin/phpunit --coverage-clover=coverage.clover
 
 after_script:
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
