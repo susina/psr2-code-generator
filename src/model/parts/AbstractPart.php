@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\model\parts;
+namespace cristianoc72\codegen\model\parts;
 
 /**
  * Abstract Part
@@ -8,29 +8,32 @@ namespace gossi\codegen\model\parts;
  *
  * @author Thomas Gossmann
  */
-trait AbstractPart {
+trait AbstractPart
+{
 
-	/** @var bool */
-	private $abstract = false;
+    /** @var bool */
+    private $abstract = false;
 
-	/**
-	 * Returns whether this is abstract
-	 *
-	 * @return bool `true` for abstract and `false` if not
-	 */
-	public function isAbstract() {
-		return $this->abstract;
-	}
+    /**
+     * Returns whether this is abstract
+     *
+     * @return bool `true` for abstract and `false` if not
+     */
+    public function isAbstract()
+    {
+        return $this->abstract;
+    }
 
-	/**
-	 * Sets this to abstract
-	 *
-	 * @param bool $bool `true` for abstract and `false` if not
-	 * @return $this
-	 */
-	public function setAbstract($bool) {
-		$this->abstract = (boolean) $bool;
+    /**
+     * Sets this to abstract
+     *
+     * @param bool $bool `true` for abstract and `false` if not
+     * @return $this
+     */
+    public function setAbstract($bool)
+    {
+        $this->abstract = (boolean) $bool;
 
-		return $this;
-	}
+        return $this;
+    }
 }

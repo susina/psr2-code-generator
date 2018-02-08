@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\model\parts;
+namespace cristianoc72\codegen\model\parts;
 
 /**
  * Abstract Part
@@ -8,29 +8,32 @@ namespace gossi\codegen\model\parts;
  *
  * @author Thomas Gossmann
  */
-trait FinalPart {
+trait FinalPart
+{
 
-	/** @var bool */
-	private $final = false;
+    /** @var bool */
+    private $final = false;
 
-	/**
-	 * Returns whether this is final
-	 *
-	 * @return bool `true` for final and `false` if not
-	 */
-	public function isFinal() {
-		return $this->final;
-	}
+    /**
+     * Returns whether this is final
+     *
+     * @return bool `true` for final and `false` if not
+     */
+    public function isFinal()
+    {
+        return $this->final;
+    }
 
-	/**
-	 * Sets this final
-	 *
-	 * @param bool $bool `true` for final and `false` if not
-	 * @return $this
-	 */
-	public function setFinal($bool) {
-		$this->final = (boolean) $bool;
+    /**
+     * Sets this final
+     *
+     * @param bool $bool `true` for final and `false` if not
+     * @return $this
+     */
+    public function setFinal($bool)
+    {
+        $this->final = (boolean) $bool;
 
-		return $this;
-	}
+        return $this;
+    }
 }

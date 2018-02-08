@@ -15,16 +15,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace gossi\codegen\model;
+namespace cristianoc72\codegen\model;
 
-use gossi\codegen\model\parts\BodyPart;
-use gossi\codegen\model\parts\DocblockPart;
-use gossi\codegen\model\parts\LongDescriptionPart;
-use gossi\codegen\model\parts\ParametersPart;
-use gossi\codegen\model\parts\QualifiedNamePart;
-use gossi\codegen\model\parts\ReferenceReturnPart;
-use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
-use gossi\codegen\model\parts\TypePart;
+use cristianoc72\codegen\model\parts\BodyPart;
+use cristianoc72\codegen\model\parts\DocblockPart;
+use cristianoc72\codegen\model\parts\LongDescriptionPart;
+use cristianoc72\codegen\model\parts\ParametersPart;
+use cristianoc72\codegen\model\parts\QualifiedNamePart;
+use cristianoc72\codegen\model\parts\ReferenceReturnPart;
+use cristianoc72\codegen\model\parts\TypeDocblockGeneratorPart;
+use cristianoc72\codegen\model\parts\TypePart;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\ReturnTag;
 
@@ -34,77 +34,80 @@ use gossi\docblock\tags\ReturnTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
  */
-class PhpFunction extends AbstractModel implements GenerateableInterface, NamespaceInterface, DocblockInterface, RoutineInterface {
+class PhpFunction extends AbstractModel implements GenerateableInterface, NamespaceInterface, DocblockInterface, RoutineInterface
+{
+    use BodyPart;
+    use DocblockPart;
+    use LongDescriptionPart;
+    use ParametersPart;
+    use QualifiedNamePart;
+    use ReferenceReturnPart;
+    use TypeDocblockGeneratorPart;
+    use TypePart;
 
-	use BodyPart;
-	use DocblockPart;
-	use LongDescriptionPart;
-	use ParametersPart;
-	use QualifiedNamePart;
-	use ReferenceReturnPart;
-	use TypeDocblockGeneratorPart;
-	use TypePart;
+    // 	/**
+    // 	 * Creates a PHP function from reflection
+    // 	 *
+    // 	 * @deprecated will be removed in version 0.5
+    // 	 * @param \ReflectionFunction $ref
+    // 	 * @return PhpFunction
+    // 	 */
+    // 	public static function fromReflection(\ReflectionFunction $ref) {
+    // 		$function = self::create($ref->name)
+    // 			->setReferenceReturned($ref->returnsReference())
+    // 			->setBody(ReflectionUtils::getFunctionBody($ref));
 
-// 	/**
-// 	 * Creates a PHP function from reflection
-// 	 *
-// 	 * @deprecated will be removed in version 0.5
-// 	 * @param \ReflectionFunction $ref
-// 	 * @return PhpFunction
-// 	 */
-// 	public static function fromReflection(\ReflectionFunction $ref) {
-// 		$function = self::create($ref->name)
-// 			->setReferenceReturned($ref->returnsReference())
-// 			->setBody(ReflectionUtils::getFunctionBody($ref));
+    // 		$docblock = new Docblock($ref);
+    // 		$function->setDocblock($docblock);
+    // 		$function->setDescription($docblock->getShortDescription());
+    // 		$function->setLongDescription($docblock->getLongDescription());
 
-// 		$docblock = new Docblock($ref);
-// 		$function->setDocblock($docblock);
-// 		$function->setDescription($docblock->getShortDescription());
-// 		$function->setLongDescription($docblock->getLongDescription());
+    // 		foreach ($ref->getParameters() as $refParam) {
+    // 			assert($refParam instanceof \ReflectionParameter); // hmm - assert here?
 
-// 		foreach ($ref->getParameters() as $refParam) {
-// 			assert($refParam instanceof \ReflectionParameter); // hmm - assert here?
+    // 			$param = PhpParameter::fromReflection($refParam);
+    // 			$function->addParameter($param);
+    // 		}
 
-// 			$param = PhpParameter::fromReflection($refParam);
-// 			$function->addParameter($param);
-// 		}
+    // 		return $function;
+    // 	}
 
-// 		return $function;
-// 	}
+    /**
+     * Creates a new PHP function
+     *
+     * @param string $name qualified name
+     * @return static
+     */
+    public static function create($name = null)
+    {
+        return new static($name);
+    }
 
-	/**
-	 * Creates a new PHP function
-	 *
-	 * @param string $name qualified name
-	 * @return static
-	 */
-	public static function create($name = null) {
-		return new static($name);
-	}
+    /**
+     * Creates a new PHP function
+     *
+     * @param string $name qualified name
+     */
+    public function __construct($name = null)
+    {
+        $this->setQualifiedName($name);
+        $this->docblock = new Docblock();
+        $this->initParameters();
+    }
 
-	/**
-	 * Creates a new PHP function
-	 *
-	 * @param string $name qualified name
-	 */
-	public function __construct($name = null) {
-		$this->setQualifiedName($name);
-		$this->docblock = new Docblock();
-		$this->initParameters();
-	}
+    /**
+     * @inheritDoc
+     */
+    public function generateDocblock()
+    {
+        $docblock = $this->getDocblock();
+        $docblock->setShortDescription($this->getDescription());
+        $docblock->setLongDescription($this->getLongDescription());
 
-	/**
-	 * @inheritDoc
-	 */
-	public function generateDocblock() {
-		$docblock = $this->getDocblock();
-		$docblock->setShortDescription($this->getDescription());
-		$docblock->setLongDescription($this->getLongDescription());
+        // return tag
+        $this->generateTypeTag(new ReturnTag());
 
-		// return tag
-		$this->generateTypeTag(new ReturnTag());
-
-		// param tags
-		$this->generateParamDocblock();
-	}
+        // param tags
+        $this->generateParamDocblock();
+    }
 }

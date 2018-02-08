@@ -14,10 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace gossi\codegen\model;
+namespace cristianoc72\codegen\model;
 
-use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
-use gossi\codegen\model\parts\ValuePart;
+use cristianoc72\codegen\model\parts\TypeDocblockGeneratorPart;
+use cristianoc72\codegen\model\parts\ValuePart;
 use gossi\docblock\tags\VarTag;
 
 /**
@@ -26,30 +26,32 @@ use gossi\docblock\tags\VarTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
  */
-class PhpProperty extends AbstractPhpMember implements ValueInterface {
+class PhpProperty extends AbstractPhpMember implements ValueInterface
+{
+    use TypeDocblockGeneratorPart;
+    use ValuePart;
 
-	use TypeDocblockGeneratorPart;
-	use ValuePart;
+    /**
+     * Creates a new PHP property
+     *
+     * @param string $name the properties name
+     * @return static
+     */
+    public static function create($name)
+    {
+        return new static($name);
+    }
 
-	/**
-	 * Creates a new PHP property
-	 *
-	 * @param string $name the properties name
-	 * @return static
-	 */
-	public static function create($name) {
-		return new static($name);
-	}
+    /**
+     * Generates docblock based on provided information
+     */
+    public function generateDocblock()
+    {
+        $docblock = $this->getDocblock();
+        $docblock->setShortDescription($this->getDescription());
+        $docblock->setLongDescription($this->getLongDescription());
 
-	/**
-	 * Generates docblock based on provided information
-	 */
-	public function generateDocblock() {
-		$docblock = $this->getDocblock();
-		$docblock->setShortDescription($this->getDescription());
-		$docblock->setLongDescription($this->getLongDescription());
-
-		// var tag
-		$this->generateTypeTag(new VarTag());
-	}
+        // var tag
+        $this->generateTypeTag(new VarTag());
+    }
 }

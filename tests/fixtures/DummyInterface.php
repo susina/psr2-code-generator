@@ -1,13 +1,13 @@
 <?php
-namespace gossi\codegen\tests\fixtures;
+namespace cristianoc72\codegen\tests\fixtures;
 
 /**
  * Dummy docblock
  */
-interface DummyInterface {
-	
-	/**
-	 */
-	public function foo();
-	
+interface DummyInterface
+{
+    
+    /**
+     */
+    public function foo();
 }

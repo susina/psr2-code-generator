@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\model\parts;
+namespace cristianoc72\codegen\model\parts;
 
 /**
  * Type part
@@ -8,56 +8,61 @@ namespace gossi\codegen\model\parts;
  *
  * @author Thomas Gossmmann
  */
-trait TypePart {
+trait TypePart
+{
 
-	/** @var string */
-	private $type;
+    /** @var string */
+    private $type;
 
-	/** @var string */
-	private $typeDescription;
+    /** @var string */
+    private $typeDescription;
 
-	/**
-	 * Sets the type
-	 *
-	 * @param string $type
-	 * @param string $description
-	 * @return $this
-	 */
-	public function setType($type, $description = null) {
-		$this->type = $type;
-		if (null !== $description) {
-			$this->setTypeDescription($description);
-		}
+    /**
+     * Sets the type
+     *
+     * @param string $type
+     * @param string $description
+     * @return $this
+     */
+    public function setType($type, $description = null)
+    {
+        $this->type = $type;
+        if (null !== $description) {
+            $this->setTypeDescription($description);
+        }
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Sets the description for the type
-	 *
-	 * @param string $description
-	 * @return $this
-	 */
-	public function setTypeDescription($description) {
-		$this->typeDescription = $description;
-		return $this;
-	}
+    /**
+     * Sets the description for the type
+     *
+     * @param string $description
+     * @return $this
+     */
+    public function setTypeDescription($description)
+    {
+        $this->typeDescription = $description;
+        return $this;
+    }
 
-	/**
-	 * Returns the type
-	 *
-	 * @return string
-	 */
-	public function getType() {
-		return $this->type;
-	}
+    /**
+     * Returns the type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 
-	/**
-	 * Returns the type description
-	 *
-	 * @return string
-	 */
-	public function getTypeDescription() {
-		return $this->typeDescription;
-	}
+    /**
+     * Returns the type description
+     *
+     * @return string
+     */
+    public function getTypeDescription()
+    {
+        return $this->typeDescription;
+    }
 }

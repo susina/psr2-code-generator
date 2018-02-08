@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\model\parts;
+namespace cristianoc72\codegen\model\parts;
 
 /**
  * Body Part
@@ -8,29 +8,32 @@ namespace gossi\codegen\model\parts;
  *
  * @author Thomas Gossmann
  */
-trait BodyPart {
+trait BodyPart
+{
 
-	/** @var string */
-	private $body = '';
+    /** @var string */
+    private $body = '';
 
-	/**
-	 * Sets the body for this
-	 *
-	 * @param string $body
-	 * @return $this
-	 */
-	public function setBody($body) {
-		$this->body = $body;
+    /**
+     * Sets the body for this
+     *
+     * @param string $body
+     * @return $this
+     */
+    public function setBody($body)
+    {
+        $this->body = $body;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Returns the body
-	 *
-	 * @return string
-	 */
-	public function getBody() {
-		return $this->body;
-	}
+    /**
+     * Returns the body
+     *
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
 }

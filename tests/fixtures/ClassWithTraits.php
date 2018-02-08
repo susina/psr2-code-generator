@@ -1,10 +1,9 @@
 <?php
-namespace gossi\codegen\tests\fixtures;
+namespace cristianoc72\codegen\tests\fixtures;
 
-use gossi\codegen\tests\fixtures\DummyTrait as DT;
+use cristianoc72\codegen\tests\fixtures\DummyTrait as DT;
 
-class ClassWithTraits {
-
-	use DT;
-
+class ClassWithTraits
+{
+    use DT;
 }

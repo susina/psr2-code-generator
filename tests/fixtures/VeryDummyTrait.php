@@ -1,5 +1,6 @@
 <?php
-namespace gossi\codegen\tests\fixtures;
+namespace cristianoc72\codegen\tests\fixtures;
 
-trait VeryDummyTrait {
+trait VeryDummyTrait
+{
 }

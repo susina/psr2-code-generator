@@ -1,12 +1,11 @@
 <?php
-namespace gossi\codegen\tests\fixtures;
+namespace cristianoc72\codegen\tests\fixtures;
 
-class ClassWithConstants {
+class ClassWithConstants
+{
+    const BAR = self::FOO;
+    
+    const FOO = 'bar';
 
-	const BAR = self::FOO;
-	
-	const FOO = 'bar';
-
-	const NMBR = 300;
-	
+    const NMBR = 300;
 }

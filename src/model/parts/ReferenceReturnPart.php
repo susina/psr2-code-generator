@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\model\parts;
+namespace cristianoc72\codegen\model\parts;
 
 /**
  * Reference return part
@@ -8,29 +8,32 @@ namespace gossi\codegen\model\parts;
  *
  * @author Thomas Gossmann
  */
-trait ReferenceReturnPart {
+trait ReferenceReturnPart
+{
 
-	/** @var bool */
-	private $referenceReturned = false;
+    /** @var bool */
+    private $referenceReturned = false;
 
-	/**
-	 * Set true if a reference is returned of false if not
-	 *
-	 * @param bool $bool
-	 * @return $this
-	 */
-	public function setReferenceReturned($bool) {
-		$this->referenceReturned = (boolean) $bool;
+    /**
+     * Set true if a reference is returned of false if not
+     *
+     * @param bool $bool
+     * @return $this
+     */
+    public function setReferenceReturned($bool)
+    {
+        $this->referenceReturned = (boolean) $bool;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Returns whether a reference is returned
-	 *
-	 * @return bool
-	 */
-	public function isReferenceReturned() {
-		return $this->referenceReturned;
-	}
+    /**
+     * Returns whether a reference is returned
+     *
+     * @return bool
+     */
+    public function isReferenceReturned()
+    {
+        return $this->referenceReturned;
+    }
 }

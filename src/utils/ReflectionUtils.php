@@ -14,60 +14,63 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace gossi\codegen\utils;
+namespace cristianoc72\codegen\utils;
 
-class ReflectionUtils {
+class ReflectionUtils
+{
 
-	/**
-	 *
-	 * @param bool $publicOnly        	
-	 */
-	public static function getOverrideableMethods(\ReflectionClass $class, $publicOnly = false) {
-		$filter = \ReflectionMethod::IS_PUBLIC;
+    /**
+     *
+     * @param bool $publicOnly
+     */
+    public static function getOverrideableMethods(\ReflectionClass $class, $publicOnly = false)
+    {
+        $filter = \ReflectionMethod::IS_PUBLIC;
 
-		if (!$publicOnly) {
-			$filter |= \ReflectionMethod::IS_PROTECTED;
-		}
+        if (!$publicOnly) {
+            $filter |= \ReflectionMethod::IS_PROTECTED;
+        }
 
-		return array_filter($class->getMethods($filter), function ($method) {
-			return !$method->isFinal() && !$method->isStatic();
-		});
-	}
+        return array_filter($class->getMethods($filter), function ($method) {
+            return !$method->isFinal() && !$method->isStatic();
+        });
+    }
 
-	/**
-	 *
-	 * @param string $docComment        	
-	 */
-	public static function getUnindentedDocComment($docComment) {
-		$lines = explode("\n", $docComment);
-		for ($i = 0, $c = count($lines); $i < $c; $i++) {
-			if (0 === $i) {
-				$docBlock = $lines[0] . "\n";
-				continue;
-			}
+    /**
+     *
+     * @param string $docComment
+     */
+    public static function getUnindentedDocComment($docComment)
+    {
+        $lines = explode("\n", $docComment);
+        for ($i = 0, $c = count($lines); $i < $c; $i++) {
+            if (0 === $i) {
+                $docBlock = $lines[0] . "\n";
+                continue;
+            }
 
-			$docBlock .= ' ' . ltrim($lines[$i]);
+            $docBlock .= ' ' . ltrim($lines[$i]);
 
-			if ($i + 1 < $c) {
-				$docBlock .= "\n";
-			}
-		}
+            if ($i + 1 < $c) {
+                $docBlock .= "\n";
+            }
+        }
 
-		return $docBlock;
-	}
+        return $docBlock;
+    }
 
-	/**
-	 *
-	 * @param \ReflectionFunctionAbstract $function        	
-	 */
-	public static function getFunctionBody(\ReflectionFunctionAbstract $function) {
-		$source = file($function->getFileName());
-		$start = $function->getStartLine() - 1;
-		$end = $function->getEndLine();
-		$body = implode('', array_slice($source, $start, $end - $start));
-		$open = strpos($body, '{');
-		$close = strrpos($body, '}');
-		return trim(substr($body, $open + 1, (strlen($body) - $close) * -1));
-	}
-
+    /**
+     *
+     * @param \ReflectionFunctionAbstract $function
+     */
+    public static function getFunctionBody(\ReflectionFunctionAbstract $function)
+    {
+        $source = file($function->getFileName());
+        $start = $function->getStartLine() - 1;
+        $end = $function->getEndLine();
+        $body = implode('', array_slice($source, $start, $end - $start));
+        $open = strpos($body, '{');
+        $close = strrpos($body, '}');
+        return trim(substr($body, $open + 1, (strlen($body) - $close) * -1));
+    }
 }

@@ -1,16 +1,17 @@
 <?php
-namespace gossi\codegen\parser\visitor;
+namespace cristianoc72\codegen\parser\visitor;
 
-use gossi\codegen\parser\visitor\parts\StructParserPart;
+use cristianoc72\codegen\parser\visitor\parts\StructParserPart;
 use PhpParser\Node\Stmt\Interface_;
 
-class InterfaceParserVisitor extends StructParserVisitor {
+class InterfaceParserVisitor extends StructParserVisitor
+{
+    use StructParserPart;
 
-	use StructParserPart;
-
-	public function visitInterface(Interface_ $node) {
-		foreach ($node->extends as $name) {
-			$this->struct->addInterface(implode('\\', $name->parts));
-		}
-	}
+    public function visitInterface(Interface_ $node)
+    {
+        foreach ($node->extends as $name) {
+            $this->struct->addInterface(implode('\\', $name->parts));
+        }
+    }
 }

@@ -1,9 +1,10 @@
 <?php
-namespace gossi\codegen\tests\fixtures;
+namespace cristianoc72\codegen\tests\fixtures;
 
-class HelloWorld {
-	
-	public function sayHello() {
-		return 'Hello World!';
-	}
+class HelloWorld
+{
+    public function sayHello()
+    {
+        return 'Hello World!';
+    }
 }

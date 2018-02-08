@@ -1,16 +1,16 @@
 <?php
-namespace gossi\codegen\tests\fixtures;
+namespace cristianoc72\codegen\tests\fixtures;
 
 /**
  * Dummy docblock
  */
-trait DummyTrait {
-	
-	use VeryDummyTrait;
-	
-	private $iAmHidden;
-	
-	public function foo() {
-		
-	}
+trait DummyTrait
+{
+    use VeryDummyTrait;
+    
+    private $iAmHidden;
+    
+    public function foo()
+    {
+    }
 }

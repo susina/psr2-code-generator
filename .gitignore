@@ -1,9 +1,2 @@
-.buildpath
-phpunit.xml
 composer.lock
 vendor/
-api/
-cache/
-coverage/
-docs/_build
-_site/

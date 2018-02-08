@@ -1,16 +1,18 @@
-class ABClass {
+class ABClass
+{
+    const a = 'foo';
 
-	const a = 'foo';
+    const b = 'bar';
 
-	const b = 'bar';
+    public $a;
 
-	public $a;
+    public $b;
 
-	public $b;
+    public function a()
+    {
+    }
 
-	public function a() {
-	}
-
-	public function b() {
-	}
+    public function b()
+    {
+    }
 }

@@ -1,7 +1,7 @@
 <?php
-namespace gossi\codegen\model\parts;
+namespace cristianoc72\codegen\model\parts;
 
-use gossi\codegen\model\PhpConstant;
+use cristianoc72\codegen\model\PhpConstant;
 use phootwork\collection\Map;
 use phootwork\collection\Set;
 
@@ -12,141 +12,151 @@ use phootwork\collection\Set;
  *
  * @author Thomas Gossmann
  */
-trait ConstantsPart {
+trait ConstantsPart
+{
 
-	/** @var Map */
-	private $constants;
-	
-	private function initConstants() {
-		$this->constants = new Map();
-	}
+    /** @var Map */
+    private $constants;
+    
+    private function initConstants()
+    {
+        $this->constants = new Map();
+    }
 
-	/**
-	 * Sets a collection of constants
-	 *
-	 * @param array|PhpConstant[] $constants
-	 * @return $this
-	 */
-	public function setConstants(array $constants) {
-		$normalizedConstants = [];
-		foreach ($constants as $name => $value) {
-			if ($value instanceof PhpConstant) {
-				$name = $value->getName();
-			} else {
-				$constValue = $value;
-				$value = new PhpConstant($name);
-				$value->setValue($constValue);
-			}
+    /**
+     * Sets a collection of constants
+     *
+     * @param array|PhpConstant[] $constants
+     * @return $this
+     */
+    public function setConstants(array $constants)
+    {
+        $normalizedConstants = [];
+        foreach ($constants as $name => $value) {
+            if ($value instanceof PhpConstant) {
+                $name = $value->getName();
+            } else {
+                $constValue = $value;
+                $value = new PhpConstant($name);
+                $value->setValue($constValue);
+            }
 
-			$normalizedConstants[$name] = $value;
-		}
+            $normalizedConstants[$name] = $value;
+        }
 
-		$this->constants->setAll($normalizedConstants);
+        $this->constants->setAll($normalizedConstants);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Adds a constant
-	 *
-	 * @param string|PhpConstant $nameOrConstant constant name or instance
-	 * @param string $value
-	 * @return $this
-	 */
-	public function setConstant($nameOrConstant, $value = null, $isExpression = false) {
-		if ($nameOrConstant instanceof PhpConstant) {
-			$name = $nameOrConstant->getName();
-			$constant = $nameOrConstant;
-		} else {
-			$name = $nameOrConstant;
-			$constant = new PhpConstant($nameOrConstant, $value, $isExpression);
-		}
+    /**
+     * Adds a constant
+     *
+     * @param string|PhpConstant $nameOrConstant constant name or instance
+     * @param string $value
+     * @return $this
+     */
+    public function setConstant($nameOrConstant, $value = null, $isExpression = false)
+    {
+        if ($nameOrConstant instanceof PhpConstant) {
+            $name = $nameOrConstant->getName();
+            $constant = $nameOrConstant;
+        } else {
+            $name = $nameOrConstant;
+            $constant = new PhpConstant($nameOrConstant, $value, $isExpression);
+        }
 
-		$this->constants->set($name, $constant);
+        $this->constants->set($name, $constant);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Removes a constant
-	 *
-	 * @param string|PhpConstant $nameOrConstant constant name
-	 * @throws \InvalidArgumentException If the constant cannot be found
-	 * @return $this
-	 */
-	public function removeConstant($nameOrConstant) {
-		if ($nameOrConstant instanceof PhpConstant) {
-			$nameOrConstant = $nameOrConstant->getName();
-		}
+    /**
+     * Removes a constant
+     *
+     * @param string|PhpConstant $nameOrConstant constant name
+     * @throws \InvalidArgumentException If the constant cannot be found
+     * @return $this
+     */
+    public function removeConstant($nameOrConstant)
+    {
+        if ($nameOrConstant instanceof PhpConstant) {
+            $nameOrConstant = $nameOrConstant->getName();
+        }
 
-		if (!$this->constants->has($nameOrConstant)) {
-			throw new \InvalidArgumentException(sprintf('The constant "%s" does not exist.', $nameOrConstant));
-		}
+        if (!$this->constants->has($nameOrConstant)) {
+            throw new \InvalidArgumentException(sprintf('The constant "%s" does not exist.', $nameOrConstant));
+        }
 
-		$this->constants->remove($nameOrConstant);
+        $this->constants->remove($nameOrConstant);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Checks whether a constant exists
-	 *
-	 * @param string|PhpConstant $nameOrConstant
-	 * @return bool
-	 */
-	public function hasConstant($nameOrConstant) {
-		if ($nameOrConstant instanceof PhpConstant) {
-			$nameOrConstant = $nameOrConstant->getName();
-		}
+    /**
+     * Checks whether a constant exists
+     *
+     * @param string|PhpConstant $nameOrConstant
+     * @return bool
+     */
+    public function hasConstant($nameOrConstant)
+    {
+        if ($nameOrConstant instanceof PhpConstant) {
+            $nameOrConstant = $nameOrConstant->getName();
+        }
 
-		return $this->constants->has($nameOrConstant);
-	}
+        return $this->constants->has($nameOrConstant);
+    }
 
-	/**
-	 * Returns a constant.
-	 *
-	 * @param string|PhpConstant $nameOrConstant
-	 * @throws \InvalidArgumentException If the constant cannot be found
-	 * @return PhpConstant
-	 */
-	public function getConstant($nameOrConstant) {
-		if ($nameOrConstant instanceof PhpConstant) {
-			$nameOrConstant = $nameOrConstant->getName();
-		}
+    /**
+     * Returns a constant.
+     *
+     * @param string|PhpConstant $nameOrConstant
+     * @throws \InvalidArgumentException If the constant cannot be found
+     * @return PhpConstant
+     */
+    public function getConstant($nameOrConstant)
+    {
+        if ($nameOrConstant instanceof PhpConstant) {
+            $nameOrConstant = $nameOrConstant->getName();
+        }
 
-		if (!$this->constants->has($nameOrConstant)) {
-			throw new \InvalidArgumentException(sprintf('The constant "%s" does not exist.', $nameOrConstant));
-		}
+        if (!$this->constants->has($nameOrConstant)) {
+            throw new \InvalidArgumentException(sprintf('The constant "%s" does not exist.', $nameOrConstant));
+        }
 
-		return $this->constants->get($nameOrConstant);
-	}
+        return $this->constants->get($nameOrConstant);
+    }
 
-	/**
-	 * Returns all constants
-	 *
-	 * @return Map
-	 */
-	public function getConstants() {
-		return $this->constants;
-	}
+    /**
+     * Returns all constants
+     *
+     * @return Map
+     */
+    public function getConstants()
+    {
+        return $this->constants;
+    }
 
-	/**
-	 * Returns all constant names
-	 *
-	 * @return Set
-	 */
-	public function getConstantNames() {
-		return $this->constants->keys();
-	}
+    /**
+     * Returns all constant names
+     *
+     * @return Set
+     */
+    public function getConstantNames()
+    {
+        return $this->constants->keys();
+    }
 
-	/**
-	 * Clears all constants
-	 *
-	 * @return $this
-	 */
-	public function clearConstants() {
-		$this->constants->clear();
+    /**
+     * Clears all constants
+     *
+     * @return $this
+     */
+    public function clearConstants()
+    {
+        $this->constants->clear();
 
-		return $this;
-	}
+        return $this;
+    }
 }

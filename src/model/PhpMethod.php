@@ -14,14 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace gossi\codegen\model;
+namespace cristianoc72\codegen\model;
 
-use gossi\codegen\model\parts\AbstractPart;
-use gossi\codegen\model\parts\BodyPart;
-use gossi\codegen\model\parts\FinalPart;
-use gossi\codegen\model\parts\ParametersPart;
-use gossi\codegen\model\parts\ReferenceReturnPart;
-use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
+use cristianoc72\codegen\model\parts\AbstractPart;
+use cristianoc72\codegen\model\parts\BodyPart;
+use cristianoc72\codegen\model\parts\FinalPart;
+use cristianoc72\codegen\model\parts\ParametersPart;
+use cristianoc72\codegen\model\parts\ReferenceReturnPart;
+use cristianoc72\codegen\model\parts\TypeDocblockGeneratorPart;
 use gossi\docblock\tags\ReturnTag;
 
 /**
@@ -30,41 +30,44 @@ use gossi\docblock\tags\ReturnTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
  */
-class PhpMethod extends AbstractPhpMember implements RoutineInterface {
+class PhpMethod extends AbstractPhpMember implements RoutineInterface
+{
+    use AbstractPart;
+    use BodyPart;
+    use FinalPart;
+    use ParametersPart;
+    use ReferenceReturnPart;
+    use TypeDocblockGeneratorPart;
 
-	use AbstractPart;
-	use BodyPart;
-	use FinalPart;
-	use ParametersPart;
-	use ReferenceReturnPart;
-	use TypeDocblockGeneratorPart;
+    /**
+     * Creates a new PHP method.
+     *
+     * @param string $name the method name
+     */
+    public static function create($name)
+    {
+        return new static($name);
+    }
+    
+    public function __construct($name)
+    {
+        parent::__construct($name);
+        $this->initParameters();
+    }
 
-	/**
-	 * Creates a new PHP method.
-	 *
-	 * @param string $name the method name
-	 */
-	public static function create($name) {
-		return new static($name);
-	}
-	
-	public function __construct($name) {
-		parent::__construct($name);
-		$this->initParameters();
-	}
+    /**
+     * Generates docblock based on provided information
+     */
+    public function generateDocblock()
+    {
+        $docblock = $this->getDocblock();
+        $docblock->setShortDescription($this->getDescription());
+        $docblock->setLongDescription($this->getLongDescription());
 
-	/**
-	 * Generates docblock based on provided information
-	 */
-	public function generateDocblock() {
-		$docblock = $this->getDocblock();
-		$docblock->setShortDescription($this->getDescription());
-		$docblock->setLongDescription($this->getLongDescription());
+        // return tag
+        $this->generateTypeTag(new ReturnTag());
 
-		// return tag
-		$this->generateTypeTag(new ReturnTag());
-
-		// param tags
-		$this->generateParamDocblock();
-	}
+        // param tags
+        $this->generateParamDocblock();
+    }
 }

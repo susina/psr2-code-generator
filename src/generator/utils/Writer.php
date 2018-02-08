@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace gossi\codegen\generator\utils;
+namespace cristianoc72\codegen\generator\utils;
 
 /**
  * A writer implementation.
@@ -24,92 +24,103 @@ namespace gossi\codegen\generator\utils;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class Writer {
+class Writer
+{
+    private $content = '';
+    private $indentationLevel = 0;
+    private $indentation;
 
-	private $content = '';
-	private $indentationLevel = 0;
-	private $indentation;
+    private $options = [
+        'indentation_character' => " ",
+        'indentation_size' => 4
+    ];
 
-	private $options = [
-		'indentation_character' => "\t",
-		'indentation_size' => 1
-	];
+    public function __construct($options = [])
+    {
+        $this->options = array_merge($this->options, $options);
 
-	public function __construct($options = []) {
-		$this->options = array_merge($this->options, $options);
+        $this->indentation = str_repeat(
+            $this->options['indentation_character'],
+            $this->options['indentation_size']
+        );
+    }
 
-		$this->indentation = str_repeat($this->options['indentation_character'], 
-			$this->options['indentation_size']);
-	}
+    public function indent()
+    {
+        $this->indentationLevel += 1;
 
-	public function indent() {
-		$this->indentationLevel += 1;
+        return $this;
+    }
 
-		return $this;
-	}
+    public function outdent()
+    {
+        $this->indentationLevel = max($this->indentationLevel - 1, 0);
 
-	public function outdent() {
-		$this->indentationLevel = max($this->indentationLevel - 1, 0);
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     *
+     * @param string $content
+     */
+    public function writeln($content = '')
+    {
+        $this->write($content . "\n");
 
-	/**
-	 *
-	 * @param string $content        	
-	 */
-	public function writeln($content = '') {
-		$this->write($content . "\n");
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     *
+     * @param string $content
+     */
+    public function write($content)
+    {
+        $lines = explode("\n", $content);
+        for ($i = 0, $c = count($lines); $i < $c; $i++) {
+            if ($this->indentationLevel > 0
+                    && !empty($lines[$i])
+                    && (empty($this->content) || "\n" === substr($this->content, -1))) {
+                $this->content .= str_repeat($this->indentation, $this->indentationLevel);
+            }
 
-	/**
-	 *
-	 * @param string $content        	
-	 */
-	public function write($content) {
-		$lines = explode("\n", $content);
-		for ($i = 0, $c = count($lines); $i < $c; $i++) {
-			if ($this->indentationLevel > 0
-					&& !empty($lines[$i])
-					&& (empty($this->content) || "\n" === substr($this->content, -1))) {
-				$this->content .= str_repeat($this->indentation, $this->indentationLevel);
-			}
+            $this->content .= $lines[$i];
 
-			$this->content .= $lines[$i];
+            if ($i + 1 < $c) {
+                $this->content .= "\n";
+            }
+        }
 
-			if ($i + 1 < $c) {
-				$this->content .= "\n";
-			}
-		}
+        return $this;
+    }
 
-		return $this;
-	}
+    public function rtrim()
+    {
+        $addNl = "\n" === substr($this->content, -1);
+        $this->content = rtrim($this->content);
 
-	public function rtrim() {
-		$addNl = "\n" === substr($this->content, -1);
-		$this->content = rtrim($this->content);
+        if ($addNl) {
+            $this->content .= "\n";
+        }
 
-		if ($addNl) {
-			$this->content .= "\n";
-		}
+        return $this;
+    }
 
-		return $this;
-	}
+    public function endsWith($search)
+    {
+        return substr($this->content, -strlen($search)) === $search;
+    }
 
-	public function endsWith($search) {
-		return substr($this->content, -strlen($search)) === $search;
-	}
+    public function reset()
+    {
+        $this->content = '';
+        $this->indentationLevel = 0;
 
-	public function reset() {
-		$this->content = '';
-		$this->indentationLevel = 0;
+        return $this;
+    }
 
-		return $this;
-	}
-
-	public function getContent() {
-		return $this->content;
-	}
+    public function getContent()
+    {
+        return $this->content;
+    }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\model;
+namespace cristianoc72\codegen\model;
 
 use gossi\docblock\Docblock;
 
@@ -10,27 +10,28 @@ use gossi\docblock\Docblock;
  *
  * @author Thomas Gossmann
  */
-interface DocblockInterface {
+interface DocblockInterface
+{
 
-	/**
-	 * Sets a docblock
-	 *
-	 * @param Docblock|string $doc
-	 * @return $this
-	 */
-	public function setDocblock($doc);
+    /**
+     * Sets a docblock
+     *
+     * @param Docblock|string $doc
+     * @return $this
+     */
+    public function setDocblock($doc);
 
-	/**
-	 * Returns a docblock
-	 *
-	 * @return Docblock
-	 */
-	public function getDocblock();
-	
-	/**
-	 * Generates a docblock from provided information
-	 *
-	 * @return $this
-	 */
-	public function generateDocblock();
+    /**
+     * Returns a docblock
+     *
+     * @return Docblock
+     */
+    public function getDocblock();
+    
+    /**
+     * Generates a docblock from provided information
+     *
+     * @return $this
+     */
+    public function generateDocblock();
 }

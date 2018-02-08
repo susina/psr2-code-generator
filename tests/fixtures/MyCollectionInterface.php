@@ -1,4 +1,4 @@
 <?php
-interface MyCollectionInterface extends phootwork\collection\Collection {
-
+interface MyCollectionInterface extends phootwork\collection\Collection
+{
 }

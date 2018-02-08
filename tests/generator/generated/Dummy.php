@@ -7,5 +7,6 @@
  */
 /**
  */
-class Dummy {
+class Dummy
+{
 }

@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace gossi\codegen\model;
+namespace cristianoc72\codegen\model;
 
-use gossi\codegen\model\parts\NamePart;
-use gossi\codegen\model\parts\TypePart;
-use gossi\codegen\model\parts\ValuePart;
+use cristianoc72\codegen\model\parts\NamePart;
+use cristianoc72\codegen\model\parts\TypePart;
+use cristianoc72\codegen\model\parts\ValuePart;
 use gossi\docblock\tags\ParamTag;
 
 /**
@@ -27,84 +27,91 @@ use gossi\docblock\tags\ParamTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
  */
-class PhpParameter extends AbstractModel implements ValueInterface {
+class PhpParameter extends AbstractModel implements ValueInterface
+{
+    use NamePart;
+    use TypePart;
+    use ValuePart;
 
-	use NamePart;
-	use TypePart;
-	use ValuePart;
+    private $passedByReference = false;
 
-	private $passedByReference = false;
+    /**
+     * Creates a new PHP parameter.
+     *
+     * @param string $name the parameter name
+     * @return static
+     */
+    public static function create($name = null)
+    {
+        return new static($name);
+    }
 
-	/**
-	 * Creates a new PHP parameter.
-	 *
-	 * @param string $name the parameter name
-	 * @return static
-	 */
-	public static function create($name = null) {
-		return new static($name);
-	}
+    /**
+     * Creates a new PHP parameter
+     *
+     * @param string $name the parameter name
+     */
+    public function __construct($name = null)
+    {
+        $this->setName($name);
+    }
 
-	/**
-	 * Creates a new PHP parameter
-	 *
-	 * @param string $name the parameter name
-	 */
-	public function __construct($name = null) {
-		$this->setName($name);
-	}
+    /**
+     * Sets whether this parameter is passed by reference
+     *
+     * @param bool $bool `true` if passed by reference and `false` if not
+     * @return $this
+     */
+    public function setPassedByReference($bool)
+    {
+        $this->passedByReference = (boolean) $bool;
 
-	/**
-	 * Sets whether this parameter is passed by reference
-	 *
-	 * @param bool $bool `true` if passed by reference and `false` if not
-	 * @return $this
-	 */
-	public function setPassedByReference($bool) {
-		$this->passedByReference = (boolean) $bool;
+        return $this;
+    }
 
-		return $this;
-	}
+    /**
+     * Returns whether this parameter is passed by reference
+     *
+     * @return bool `true` if passed by reference and `false` if not
+     */
+    public function isPassedByReference()
+    {
+        return $this->passedByReference;
+    }
 
-	/**
-	 * Returns whether this parameter is passed by reference
-	 *
-	 * @return bool `true` if passed by reference and `false` if not
-	 */
-	public function isPassedByReference() {
-		return $this->passedByReference;
-	}
+    /**
+     * Returns a docblock tag for this parameter
+     *
+     * @return ParamTag
+     */
+    public function getDocblockTag()
+    {
+        return ParamTag::create()
+            ->setType($this->getType())
+            ->setVariable($this->getName())
+            ->setDescription($this->getTypeDescription());
+    }
 
-	/**
-	 * Returns a docblock tag for this parameter
-	 *
-	 * @return ParamTag
-	 */
-	public function getDocblockTag() {
-		return ParamTag::create()
-			->setType($this->getType())
-			->setVariable($this->getName())
-			->setDescription($this->getTypeDescription());
-	}
+    /**
+     * Alias for setDescription()
+     *
+     * @see #setDescription
+     * @param string $description
+     * @return $this
+     */
+    public function setTypeDescription($description)
+    {
+        return $this->setDescription($description);
+    }
 
-	/**
-	 * Alias for setDescription()
-	 *
-	 * @see #setDescription
-	 * @param string $description
-	 * @return $this
-	 */
-	public function setTypeDescription($description) {
-		return $this->setDescription($description);
-	}
-
-	/**
-	 * Alias for getDescription()
-	 *
-	 * @see #getDescription
-	 * @return string
-	 */
-	public function getTypeDescription() {
-		return $this->getDescription();
-	}
+    /**
+     * Alias for getDescription()
+     *
+     * @see #getDescription
+     * @return string
+     */
+    public function getTypeDescription()
+    {
+        return $this->getDescription();
+    }
 }

@@ -6,7 +6,8 @@ php:
   - 5.6
   - 7.0
   - 7.1
-  - hhvm
+  - 7.2
+  -nightly
 
 install:
   - composer install
@@ -17,8 +18,3 @@ script:
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash bin/deploy.sh
-
-env:
-  global:
-    - secure: "L2Fk2prteOc0B0QOs29uw+/8mjf/3x3rVOmh1kQKk/wE3SiUX69shJVnN3fnyFlhSOxgru+qtZoBfwmrJQsFVCEjB0O+m01Mt7wswhpGKzLU6hDUL/Qc6YhV9lTOaKWRFUUg9bPHFcMq8WT0bXxv2bX162ERHG+H1m9WcSDDjBE="

@@ -1,22 +1,23 @@
 <?php
-namespace gossi\codegen\tests\generator;
+namespace cristianoc72\codegen\tests\generator;
 
-use gossi\codegen\generator\ModelGenerator;
-use gossi\codegen\model\PhpTrait;
+use cristianoc72\codegen\generator\ModelGenerator;
+use cristianoc72\codegen\model\PhpTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator
  */
-class TraitGeneratorTest extends \PHPUnit_Framework_TestCase {
+class TraitGeneratorTest extends TestCase
+{
+    public function testSignature()
+    {
+        $expected = "trait MyTrait\n{\n}\n";
 
-	public function testSignature() {
-		$expected = 'trait MyTrait {' . "\n" . '}';
+        $trait = PhpTrait::create('MyTrait');
+        $generator = new ModelGenerator();
+        $code = $generator->generate($trait);
 
-		$trait = PhpTrait::create('MyTrait');
-		$generator = new ModelGenerator();
-		$code = $generator->generate($trait);
-
-		$this->assertEquals($expected, $code);
-	}
-
+        $this->assertEquals($expected, $code);
+    }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\parser\visitor;
+namespace cristianoc72\codegen\parser\visitor;
 
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Const_;
@@ -13,42 +13,66 @@ use PhpParser\Node\Stmt\Property;
 use PhpParser\Node\Stmt\TraitUse;
 use PhpParser\Node\Stmt\Trait_;
 use PhpParser\Node\Stmt\UseUse;
-use gossi\codegen\model\AbstractPhpStruct;
+use cristianoc72\codegen\model\AbstractPhpStruct;
 
-class StructParserVisitor implements ParserVisitorInterface {
-	
-	protected $struct;
-	
-	/**
-	 * @return AbstractPhpStruct
-	 */
-	protected function getStruct() {
-		return $this->struct;
-	}
-	
-	public function __construct(AbstractPhpStruct $struct) {
-		$this->struct = $struct;
-	}
+class StructParserVisitor implements ParserVisitorInterface
+{
+    protected $struct;
+    
+    /**
+     * @return AbstractPhpStruct
+     */
+    protected function getStruct()
+    {
+        return $this->struct;
+    }
+    
+    public function __construct(AbstractPhpStruct $struct)
+    {
+        $this->struct = $struct;
+    }
 
-	public function visitStruct(ClassLike $node) {}
+    public function visitStruct(ClassLike $node)
+    {
+    }
 
-	public function visitClass(Class_ $node) {}
+    public function visitClass(Class_ $node)
+    {
+    }
 
-	public function visitInterface(Interface_ $node) {}
+    public function visitInterface(Interface_ $node)
+    {
+    }
 
-	public function visitTrait(Trait_ $node) {}
+    public function visitTrait(Trait_ $node)
+    {
+    }
 
-	public function visitTraitUse(TraitUse $node) {}
+    public function visitTraitUse(TraitUse $node)
+    {
+    }
 
-	public function visitConstants(ClassConst $node) {}
+    public function visitConstants(ClassConst $node)
+    {
+    }
 
-	public function visitConstant(Const_ $node, Doc $doc = null) {}
+    public function visitConstant(Const_ $node, Doc $doc = null)
+    {
+    }
 
-	public function visitProperty(Property $node) {}
+    public function visitProperty(Property $node)
+    {
+    }
 
-	public function visitNamespace(Namespace_ $node) {}
+    public function visitNamespace(Namespace_ $node)
+    {
+    }
 
-	public function visitUseStatement(UseUse $node) {}
+    public function visitUseStatement(UseUse $node)
+    {
+    }
 
-	public function visitMethod(ClassMethod $node) {}
+    public function visitMethod(ClassMethod $node)
+    {
+    }
 }

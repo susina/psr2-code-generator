@@ -1,10 +1,11 @@
 <?php
-class ClassWithExpression {
+class ClassWithExpression
+{
+    const FOO = 'BAR';
 
-	const FOO = 'BAR';
+    public $bembel = ['ebbelwoi' => 'is eh besser', 'als wie' => 'bier'];
 
-	public $bembel = ['ebbelwoi' => 'is eh besser', 'als wie' => 'bier'];
-
-	public function getValue($arr = [self::FOO => 'baz']) {
-	}
+    public function getValue($arr = [self::FOO => 'baz'])
+    {
+    }
 }

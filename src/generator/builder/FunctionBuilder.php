@@ -1,18 +1,18 @@
 <?php
-namespace gossi\codegen\generator\builder;
+namespace cristianoc72\codegen\generator\builder;
 
-use gossi\codegen\generator\builder\parts\RoutineBuilderPart;
-use gossi\codegen\model\AbstractModel;
+use cristianoc72\codegen\generator\builder\parts\RoutineBuilderPart;
+use cristianoc72\codegen\model\AbstractModel;
 
-class FunctionBuilder extends AbstractBuilder {
-	
-	use RoutineBuilderPart;
+class FunctionBuilder extends AbstractBuilder
+{
+    use RoutineBuilderPart;
 
-	public function build(AbstractModel $model) {
-		$this->buildDocblock($model);
-		
-		$this->writeFunctionStatement($model);
-		$this->writeBody($model);
-	}
-
+    public function build(AbstractModel $model)
+    {
+        $this->buildDocblock($model);
+        
+        $this->writeFunctionStatement($model);
+        $this->writeBody($model);
+    }
 }

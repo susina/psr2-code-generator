@@ -1,10 +1,9 @@
 <?php
-namespace gossi\codegen\parser\visitor;
+namespace cristianoc72\codegen\parser\visitor;
 
-use gossi\codegen\parser\visitor\parts\StructParserPart;
+use cristianoc72\codegen\parser\visitor\parts\StructParserPart;
 
-class TraitParserVisitor extends StructParserVisitor {
-
-	use StructParserPart;
-
+class TraitParserVisitor extends StructParserVisitor
+{
+    use StructParserPart;
 }

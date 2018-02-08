@@ -1,29 +1,32 @@
 <?php
-namespace gossi\codegen\tests\parser;
+namespace cristianoc72\codegen\tests\parser;
 
-use gossi\codegen\model\PhpInterface;
-use gossi\codegen\tests\Fixtures;
+use cristianoc72\codegen\model\PhpInterface;
+use cristianoc72\codegen\tests\Fixtures;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group parser
  */
-class InterfaceParserTest extends \PHPUnit_Framework_TestCase {
+class InterfaceParserTest extends TestCase
+{
+    public function setUp()
+    {
+        // they are not explicitely instantiated through new WhatEver(); and such not
+        // required through composer's autoload
+        require_once __DIR__ . '/../fixtures/DummyInterface.php';
+    }
 
-	public function setUp() {
-		// they are not explicitely instantiated through new WhatEver(); and such not
-		// required through composer's autoload
-		require_once __DIR__ . '/../fixtures/DummyInterface.php';
-	}
-
-	public function testDummyInterface() {
-		$expected = Fixtures::createDummyInterface();
-		$actual = PhpInterface::fromFile(__DIR__ . '/../fixtures/DummyInterface.php');
-		$this->assertEquals($expected, $actual);
-	}
-	
-	public function testMyCollectionInterface() {
-		$interface = PhpInterface::fromFile(__DIR__ . '/../fixtures/MyCollectionInterface.php');
-		$interface->hasInterface('phootwork\collection\Collection');
-	}
-
+    public function testDummyInterface()
+    {
+        $expected = Fixtures::createDummyInterface();
+        $actual = PhpInterface::fromFile(__DIR__ . '/../fixtures/DummyInterface.php');
+        $this->assertEquals($expected, $actual);
+    }
+    
+    public function testMyCollectionInterface()
+    {
+        $interface = PhpInterface::fromFile(__DIR__ . '/../fixtures/MyCollectionInterface.php');
+        $this->assertTrue($interface->hasInterface('phootwork\collection\Collection'));
+    }
 }

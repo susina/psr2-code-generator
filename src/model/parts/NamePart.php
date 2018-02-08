@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\model\parts;
+namespace cristianoc72\codegen\model\parts;
 
 /**
  * Name part
@@ -8,29 +8,32 @@ namespace gossi\codegen\model\parts;
  *
  * @author Thomas Gossmann
  */
-trait NamePart {
+trait NamePart
+{
 
-	/** @var string */
-	private $name;
+    /** @var string */
+    private $name;
 
-	/**
-	 * Sets the name
-	 *
-	 * @param string $name
-	 * @return $this
-	 */
-	public function setName($name) {
-		$this->name = $name;
+    /**
+     * Sets the name
+     *
+     * @param string $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Returns the name
-	 *
-	 * @return string
-	 */
-	public function getName() {
-		return $this->name;
-	}
+    /**
+     * Returns the name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }
