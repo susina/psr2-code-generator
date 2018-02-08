@@ -1,9 +1,9 @@
-# PSR2 Code Generator
+# PSR-2 Code Generator
 
+This library is a fork of the awesome https://github.com/gossi/php-code-generator, refactored to generate PSR-2 code.
 
-This library is a fork of the awesome https://github.com/gossi/php-code-generator library, refactored to generate PSR-2 code.
-
-When https://github.com/gossi/php-code-generator/issues/23 will be solved and the original library will support PSR-2, this one will be superseded. 
+When https://github.com/gossi/php-code-generator/issues/23 will be solved and the original library will support PSR-2,
+this one will be superseded. 
 
 ## Installation
 
