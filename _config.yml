@@ -1,1 +1,3 @@
+title: PSR-2 Code Generator
 theme: jekyll-theme-tactile
+exclude: [ README.md ]
