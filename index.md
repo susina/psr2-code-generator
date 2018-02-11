@@ -20,7 +20,7 @@ description: Library to generate php code, following PSR-2 standard
 ## Contents:
 
 1. [Installation](installation.html)
-2. [Getting started guide](getting-started-html)
+2. [Getting started guide](getting-started.html)
 3. [The Model](model.html)
 3. [Generator](generator.html)
 4. [Best practices](best-practices.html)

@@ -1,6 +1,5 @@
 ---
-title: installation
-description:
+title: Installation
 ---
 
 Install via Composer:
