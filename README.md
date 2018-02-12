@@ -21,8 +21,8 @@ composer require cristianoc72/psr2-code-generator
 
 ## Documentation
 
-@TODO Update the documentation site
+Documentation is available at https://cristianoc72.github.io/psr2-code-generator
 
 ## Contributing
 
-Feel free to fork and submit a pull request (don't forget the tests) and I am happy to merge.
+Feel free to fork and submit a pull request. Don't forget the tests and PSR-2 standard, of course.
