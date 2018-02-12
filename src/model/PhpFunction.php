@@ -45,33 +45,6 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
     use TypeDocblockGeneratorPart;
     use TypePart;
 
-    // 	/**
-    // 	 * Creates a PHP function from reflection
-    // 	 *
-    // 	 * @deprecated will be removed in version 0.5
-    // 	 * @param \ReflectionFunction $ref
-    // 	 * @return PhpFunction
-    // 	 */
-    // 	public static function fromReflection(\ReflectionFunction $ref) {
-    // 		$function = self::create($ref->name)
-    // 			->setReferenceReturned($ref->returnsReference())
-    // 			->setBody(ReflectionUtils::getFunctionBody($ref));
-
-    // 		$docblock = new Docblock($ref);
-    // 		$function->setDocblock($docblock);
-    // 		$function->setDescription($docblock->getShortDescription());
-    // 		$function->setLongDescription($docblock->getLongDescription());
-
-    // 		foreach ($ref->getParameters() as $refParam) {
-    // 			assert($refParam instanceof \ReflectionParameter); // hmm - assert here?
-
-    // 			$param = PhpParameter::fromReflection($refParam);
-    // 			$function->addParameter($param);
-    // 		}
-
-    // 		return $function;
-    // 	}
-
     /**
      * Creates a new PHP function
      *

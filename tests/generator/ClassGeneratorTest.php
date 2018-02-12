@@ -75,7 +75,7 @@ class ClassGeneratorTest extends TestCase
 
     public function testUseStatements()
     {
-        $class = new PhpClass('Foo\\Bar');
+        $class = new PhpClass('Foo\\FooBar');
         $class->addUseStatement('Bam\\Baz');
     
         $codegen = new CodeFileGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
@@ -83,7 +83,7 @@ class ClassGeneratorTest extends TestCase
     
         $this->assertEquals($this->getGeneratedContent('FooBar.php'), $code);
     
-        $class = new PhpClass('Foo\\Bar');
+        $class = new PhpClass('Foo\\FooBarWithAlias');
         $class->addUseStatement('Bam\\Baz', 'BamBaz');
     
         $codegen = new CodeFileGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);

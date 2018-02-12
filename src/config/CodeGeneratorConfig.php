@@ -18,7 +18,7 @@ class CodeGeneratorConfig
     /**
      * Creates a new configuration for code generator
      *
-     * @see https://php-code-generator.readthedocs.org/en/latest/generator.html
+     * @see https://cristianoc72.github.io/psr2-code-generator/generator.html
      * @param array $options
      */
     public function __construct(array $options = [])

@@ -3,6 +3,6 @@ namespace Foo;
 
 use Bam\Baz;
 
-class Bar
+class FooBar
 {
 }

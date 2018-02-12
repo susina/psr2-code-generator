@@ -24,43 +24,6 @@ trait ValuePart
 
     /** @var bool */
     private $hasExpression = false;
-
-    /**
-     * @deprecated use `setValue()` instead
-     * @param mixed $value
-     * @return $this
-     */
-    public function setDefaultValue($value)
-    {
-        return $this->setValue($value);
-    }
-
-    /**
-     * @deprecated use `unsetValue()` instead
-     * @return $this
-     */
-    public function unsetDefaultValue()
-    {
-        return $this->unsetValue();
-    }
-
-    /**
-     * @deprecated use `getValue()` instead
-     * @return mixed
-     */
-    public function getDefaultValue()
-    {
-        return $this->getValue();
-    }
-
-    /**
-     * @deprecated use `hasValue()` instead
-     * @return bool
-     */
-    public function hasDefaultValue()
-    {
-        return $this->hasValue();
-    }
     
     /**
      * Returns whether the given value is a primitive
