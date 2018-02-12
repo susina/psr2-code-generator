@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/cristianoc72.html">\cristianoc72</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">365</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-209719881"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-209719881" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-503072688"></a>
+                                <a href="../namespaces/cristianoc72.html" style="margin-left: 30px; padding-left: 0">cristianoc72</a>
+            </div>
+            <div id="namespace-503072688" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-396922701"></a>
+                                <a href="../namespaces/cristianoc72.codegen.html" style="margin-left: 30px; padding-left: 0">codegen</a>
+            </div>
+            <div id="namespace-396922701" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1860111915"></a>
+                                <a href="../namespaces/cristianoc72.codegen.config.html" style="margin-left: 30px; padding-left: 0">config</a>
+            </div>
+            <div id="namespace-1860111915" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.config.CodeFileGeneratorConfig.html">CodeFileGeneratorConfig</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.config.CodeGeneratorConfig.html">CodeGeneratorConfig</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-176443142"></a>
+                                <a href="../namespaces/cristianoc72.codegen.generator.html" style="margin-left: 30px; padding-left: 0">generator</a>
+            </div>
+            <div id="namespace-176443142" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2092461478"></a>
+                                <a href="../namespaces/cristianoc72.codegen.generator.builder.html" style="margin-left: 30px; padding-left: 0">builder</a>
+            </div>
+            <div id="namespace-2092461478" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-964319539"></a>
+                                <a href="../namespaces/cristianoc72.codegen.generator.builder.parts.html" style="margin-left: 30px; padding-left: 0">parts</a>
+            </div>
+            <div id="namespace-964319539" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/cristianoc72.codegen.generator.builder.parts.RoutineBuilderPart.html">RoutineBuilderPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html">StructBuilderPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.generator.builder.parts.TypeBuilderPart.html">TypeBuilderPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.generator.builder.parts.ValueBuilderPart.html">ValueBuilderPart</a></li>
+                                                                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html">AbstractBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.ClassBuilder.html">ClassBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.ConstantBuilder.html">ConstantBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.FunctionBuilder.html">FunctionBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.InterfaceBuilder.html">InterfaceBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.MethodBuilder.html">MethodBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.ParameterBuilder.html">ParameterBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.PropertyBuilder.html">PropertyBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.TraitBuilder.html">TraitBuilder</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1746874742"></a>
+                                <a href="../namespaces/cristianoc72.codegen.generator.comparator.html" style="margin-left: 30px; padding-left: 0">comparator</a>
+            </div>
+            <div id="namespace-1746874742" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.DefaultConstantComparator.html">DefaultConstantComparator</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.DefaultMethodComparator.html">DefaultMethodComparator</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.DefaultPropertyComparator.html">DefaultPropertyComparator</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.DefaultUseStatementComparator.html">DefaultUseStatementComparator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1806614097"></a>
+                                <a href="../namespaces/cristianoc72.codegen.generator.utils.html" style="margin-left: 30px; padding-left: 0">utils</a>
+            </div>
+            <div id="namespace-1806614097" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.utils.Writer.html">Writer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.BuilderFactory.html">BuilderFactory</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.CodeFileGenerator.html">CodeFileGenerator</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.CodeGenerator.html">CodeGenerator</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.ComparatorFactory.html">ComparatorFactory</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.ModelGenerator.html">ModelGenerator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1663583663"></a>
+                                <a href="../namespaces/cristianoc72.codegen.model.html" style="margin-left: 30px; padding-left: 0">model</a>
+            </div>
+            <div id="namespace-1663583663" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-163334347"></a>
+                                <a href="../namespaces/cristianoc72.codegen.model.parts.html" style="margin-left: 30px; padding-left: 0">parts</a>
+            </div>
+            <div id="namespace-163334347" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.AbstractPart.html">AbstractPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.BodyPart.html">BodyPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.ConstantsPart.html">ConstantsPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.DocblockPart.html">DocblockPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.FinalPart.html">FinalPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.InterfacesPart.html">InterfacesPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.LongDescriptionPart.html">LongDescriptionPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.NamePart.html">NamePart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html">ParametersPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.PropertiesPart.html">PropertiesPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.QualifiedNamePart.html">QualifiedNamePart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.ReferenceReturnPart.html">ReferenceReturnPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.TraitsPart.html">TraitsPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.TypeDocblockGeneratorPart.html">TypeDocblockGeneratorPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.TypePart.html">TypePart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.ValuePart.html">ValuePart</a></li>
+                                                                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.ConstantsInterface.html">ConstantsInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.DocblockInterface.html">DocblockInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.GenerateableInterface.html">GenerateableInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.NamespaceInterface.html">NamespaceInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.PropertiesInterface.html">PropertiesInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.RoutineInterface.html">RoutineInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.TraitsInterface.html">TraitsInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.ValueInterface.html">ValueInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.AbstractModel.html">AbstractModel</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.AbstractPhpMember.html">AbstractPhpMember</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.AbstractPhpStruct.html">AbstractPhpStruct</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpClass.html">PhpClass</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpConstant.html">PhpConstant</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpFunction.html">PhpFunction</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpInterface.html">PhpInterface</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpMethod.html">PhpMethod</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpParameter.html">PhpParameter</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpProperty.html">PhpProperty</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpTrait.html">PhpTrait</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-747809584"></a>
+                                <a href="../namespaces/cristianoc72.codegen.parser.html" style="margin-left: 30px; padding-left: 0">parser</a>
+            </div>
+            <div id="namespace-747809584" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-626659649"></a>
+                                <a href="../namespaces/cristianoc72.codegen.parser.visitor.html" style="margin-left: 30px; padding-left: 0">visitor</a>
+            </div>
+            <div id="namespace-626659649" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1155193259"></a>
+                                <a href="../namespaces/cristianoc72.codegen.parser.visitor.parts.html" style="margin-left: 30px; padding-left: 0">parts</a>
+            </div>
+            <div id="namespace-1155193259" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/cristianoc72.codegen.parser.visitor.parts.MemberParserPart.html">MemberParserPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.parser.visitor.parts.StructParserPart.html">StructParserPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.parser.visitor.parts.ValueParserPart.html">ValueParserPart</a></li>
+                                                                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.parser.visitor.ParserVisitorInterface.html">ParserVisitorInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.ClassParserVisitor.html">ClassParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.ConstantParserVisitor.html">ConstantParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.InterfaceParserVisitor.html">InterfaceParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.MethodParserVisitor.html">MethodParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.PropertyParserVisitor.html">PropertyParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.StructParserVisitor.html">StructParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.TraitParserVisitor.html">TraitParserVisitor</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.FileParser.html">FileParser</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.PrettyPrinter.html">PrettyPrinter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-604516810"></a>
+                                <a href="../namespaces/cristianoc72.codegen.utils.html" style="margin-left: 30px; padding-left: 0">utils</a>
+            </div>
+            <div id="namespace-604516810" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.utils.ReflectionUtils.html">ReflectionUtils</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/cristianoc72.codegen.model.parts.html">\cristianoc72\codegen\model\parts</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\cristianoc72\codegen\model\parts</small>ParametersPart</h1>
+                    <p><em>Parameters Part</em></p>
+                    <p>For all models that can have parameters</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_setParameters" class="">setParameters()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_addParameter" class="">addParameter()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_hasParameter" class="">hasParameter()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_addSimpleParameter" class="">addSimpleParameter()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_addSimpleDescParameter" class="">addSimpleDescParameter()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_getParameter" class="">getParameter()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_replaceParameter" class="">replaceParameter()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_removeParameter" class="">removeParameter()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_getParameters" class="">getParameters()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_getDocblock" class="">getDocblock()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_generateParamDocblock" class="">generateParamDocblock()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_initParameters" class="">initParameters()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_removeParameterByPosition" class="">removeParameterByPosition()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_removeParameterByName" class="">removeParameterByName()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#method_checkPosition" class="">checkPosition()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html#property_parameters" class="">$parameters</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\cristianoc72\codegen\model\parts\ParametersPart</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Thomas Gossmann</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_parameters" name="property_parameters" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$parameters</h3>
+                <pre class="signature">$parameters : array</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setParameters" name="method_setParameters" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setParameters()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setParameters(array&lt;mixed,\cristianoc72\codegen\model\PhpParameter&gt;  <span class="argument">$parameters</span>) : $this</pre>
+                <p><em>Sets a collection of parameters</em></p>
+                <p>Note: clears all parameters before setting the new ones</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,<a href="../classes/cristianoc72.codegen.model.PhpParameter.html">\cristianoc72\codegen\model\PhpParameter</a>&gt;</td>
+                                <td>$parameters </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addParameter" name="method_addParameter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addParameter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addParameter(\cristianoc72\codegen\model\PhpParameter  <span class="argument">$parameter</span>) : $this</pre>
+                <p><em>Adds a parameter</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.PhpParameter.html">\cristianoc72\codegen\model\PhpParameter</a></td>
+                                <td>$parameter </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasParameter" name="method_hasParameter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasParameter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasParameter(string  <span class="argument">$name</span>) : boolean</pre>
+                <p><em>Checks whether a parameter exists</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>parameter name</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p><code>true</code> if a parameter exists and <code>false</code> if not</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addSimpleParameter" name="method_addSimpleParameter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addSimpleParameter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addSimpleParameter(string  <span class="argument">$name</span>, null|string  <span class="argument">$type = null</span>, mixed  <span class="argument">$defaultValue = null</span>) : $this</pre>
+                <p><em>A quick way to add a parameter which is created from the given parameters</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>null|string</td>
+                                <td>$type </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$defaultValue </td>
+                                <td><p>omit the argument to define no default value</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addSimpleDescParameter" name="method_addSimpleDescParameter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addSimpleDescParameter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addSimpleDescParameter(string  <span class="argument">$name</span>, null|string  <span class="argument">$type = null</span>, null|string  <span class="argument">$typeDescription = null</span>, mixed  <span class="argument">$defaultValue = null</span>) : $this</pre>
+                <p><em>A quick way to add a parameter with description which is created from the given parameters</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>null|string</td>
+                                <td>$type </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>null|string</td>
+                                <td>$typeDescription </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$defaultValue </td>
+                                <td><p>omit the argument to define no default value</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getParameter" name="method_getParameter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getParameter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getParameter(string|integer  <span class="argument">$nameOrIndex</span>) : \cristianoc72\codegen\model\PhpParameter</pre>
+                <p><em>Returns a parameter by index or name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|integer</td>
+                                <td>$nameOrIndex </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/cristianoc72.codegen.model.PhpParameter.html">\cristianoc72\codegen\model\PhpParameter</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_replaceParameter" name="method_replaceParameter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">replaceParameter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">replaceParameter(integer  <span class="argument">$position</span>, \cristianoc72\codegen\model\PhpParameter  <span class="argument">$parameter</span>) : $this</pre>
+                <p><em>Replaces a parameter at a given position</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$position </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.PhpParameter.html">\cristianoc72\codegen\model\PhpParameter</a></td>
+                                <td>$parameter </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeParameter" name="method_removeParameter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeParameter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeParameter(integer|string|\cristianoc72\codegen\model\PhpParameter  <span class="argument">$param</span>) : $this</pre>
+                <p><em>Remove a parameter at a given position</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer|string|<a href="../classes/cristianoc72.codegen.model.PhpParameter.html">\cristianoc72\codegen\model\PhpParameter</a></td>
+                                <td>$param </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getParameters" name="method_getParameters" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getParameters()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getParameters() : array</pre>
+                <p><em>Returns a collection of parameters</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDocblock" name="method_getDocblock" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getDocblock()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDocblock() : \gossi\docblock\Docblock</pre>
+                <p><em>Returns the docblock</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \gossi\docblock\Docblock
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_generateParamDocblock" name="method_generateParamDocblock" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">generateParamDocblock()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">generateParamDocblock() </pre>
+                <p><em>Generates docblock for params</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_initParameters" name="method_initParameters" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">initParameters()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">initParameters() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeParameterByPosition" name="method_removeParameterByPosition" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">removeParameterByPosition()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeParameterByPosition(  <span class="argument">$position</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$position </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeParameterByName" name="method_removeParameterByName" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">removeParameterByName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeParameterByName(  <span class="argument">$name</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_checkPosition" name="method_checkPosition" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">checkPosition()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">checkPosition(  <span class="argument">$position</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$position </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/model.parts.ParametersPart.html"><div class="path-wrapper">model/parts/ParametersPart.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">ParametersPart.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/model/parts/ParametersPart.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/cristianoc72.html">\cristianoc72</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on February 12th, 2018 at 06:58.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

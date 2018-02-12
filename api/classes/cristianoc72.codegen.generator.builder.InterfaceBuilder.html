@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/cristianoc72.html">\cristianoc72</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">365</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1855902859"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1855902859" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1762976057"></a>
+                                <a href="../namespaces/cristianoc72.html" style="margin-left: 30px; padding-left: 0">cristianoc72</a>
+            </div>
+            <div id="namespace-1762976057" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2080660253"></a>
+                                <a href="../namespaces/cristianoc72.codegen.html" style="margin-left: 30px; padding-left: 0">codegen</a>
+            </div>
+            <div id="namespace-2080660253" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-97062814"></a>
+                                <a href="../namespaces/cristianoc72.codegen.config.html" style="margin-left: 30px; padding-left: 0">config</a>
+            </div>
+            <div id="namespace-97062814" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.config.CodeFileGeneratorConfig.html">CodeFileGeneratorConfig</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.config.CodeGeneratorConfig.html">CodeGeneratorConfig</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-354416680"></a>
+                                <a href="../namespaces/cristianoc72.codegen.generator.html" style="margin-left: 30px; padding-left: 0">generator</a>
+            </div>
+            <div id="namespace-354416680" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1240409777"></a>
+                                <a href="../namespaces/cristianoc72.codegen.generator.builder.html" style="margin-left: 30px; padding-left: 0">builder</a>
+            </div>
+            <div id="namespace-1240409777" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1811111398"></a>
+                                <a href="../namespaces/cristianoc72.codegen.generator.builder.parts.html" style="margin-left: 30px; padding-left: 0">parts</a>
+            </div>
+            <div id="namespace-1811111398" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/cristianoc72.codegen.generator.builder.parts.RoutineBuilderPart.html">RoutineBuilderPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html">StructBuilderPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.generator.builder.parts.TypeBuilderPart.html">TypeBuilderPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.generator.builder.parts.ValueBuilderPart.html">ValueBuilderPart</a></li>
+                                                                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html">AbstractBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.ClassBuilder.html">ClassBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.ConstantBuilder.html">ConstantBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.FunctionBuilder.html">FunctionBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.InterfaceBuilder.html">InterfaceBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.MethodBuilder.html">MethodBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.ParameterBuilder.html">ParameterBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.PropertyBuilder.html">PropertyBuilder</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.TraitBuilder.html">TraitBuilder</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1613799868"></a>
+                                <a href="../namespaces/cristianoc72.codegen.generator.comparator.html" style="margin-left: 30px; padding-left: 0">comparator</a>
+            </div>
+            <div id="namespace-1613799868" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.DefaultConstantComparator.html">DefaultConstantComparator</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.DefaultMethodComparator.html">DefaultMethodComparator</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.DefaultPropertyComparator.html">DefaultPropertyComparator</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.DefaultUseStatementComparator.html">DefaultUseStatementComparator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1500442693"></a>
+                                <a href="../namespaces/cristianoc72.codegen.generator.utils.html" style="margin-left: 30px; padding-left: 0">utils</a>
+            </div>
+            <div id="namespace-1500442693" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.utils.Writer.html">Writer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.BuilderFactory.html">BuilderFactory</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.CodeFileGenerator.html">CodeFileGenerator</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.CodeGenerator.html">CodeGenerator</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.ComparatorFactory.html">ComparatorFactory</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.ModelGenerator.html">ModelGenerator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1456994610"></a>
+                                <a href="../namespaces/cristianoc72.codegen.model.html" style="margin-left: 30px; padding-left: 0">model</a>
+            </div>
+            <div id="namespace-1456994610" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1434897902"></a>
+                                <a href="../namespaces/cristianoc72.codegen.model.parts.html" style="margin-left: 30px; padding-left: 0">parts</a>
+            </div>
+            <div id="namespace-1434897902" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.AbstractPart.html">AbstractPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.BodyPart.html">BodyPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.ConstantsPart.html">ConstantsPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.DocblockPart.html">DocblockPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.FinalPart.html">FinalPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.InterfacesPart.html">InterfacesPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.LongDescriptionPart.html">LongDescriptionPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.NamePart.html">NamePart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.ParametersPart.html">ParametersPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.PropertiesPart.html">PropertiesPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.QualifiedNamePart.html">QualifiedNamePart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.ReferenceReturnPart.html">ReferenceReturnPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.TraitsPart.html">TraitsPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.TypeDocblockGeneratorPart.html">TypeDocblockGeneratorPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.TypePart.html">TypePart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.ValuePart.html">ValuePart</a></li>
+                                                                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.ConstantsInterface.html">ConstantsInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.DocblockInterface.html">DocblockInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.GenerateableInterface.html">GenerateableInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.NamespaceInterface.html">NamespaceInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.PropertiesInterface.html">PropertiesInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.RoutineInterface.html">RoutineInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.TraitsInterface.html">TraitsInterface</a></li>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.ValueInterface.html">ValueInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.AbstractModel.html">AbstractModel</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.AbstractPhpMember.html">AbstractPhpMember</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.AbstractPhpStruct.html">AbstractPhpStruct</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpClass.html">PhpClass</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpConstant.html">PhpConstant</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpFunction.html">PhpFunction</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpInterface.html">PhpInterface</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpMethod.html">PhpMethod</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpParameter.html">PhpParameter</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpProperty.html">PhpProperty</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpTrait.html">PhpTrait</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-18799511"></a>
+                                <a href="../namespaces/cristianoc72.codegen.parser.html" style="margin-left: 30px; padding-left: 0">parser</a>
+            </div>
+            <div id="namespace-18799511" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1703419159"></a>
+                                <a href="../namespaces/cristianoc72.codegen.parser.visitor.html" style="margin-left: 30px; padding-left: 0">visitor</a>
+            </div>
+            <div id="namespace-1703419159" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-439086747"></a>
+                                <a href="../namespaces/cristianoc72.codegen.parser.visitor.parts.html" style="margin-left: 30px; padding-left: 0">parts</a>
+            </div>
+            <div id="namespace-439086747" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/cristianoc72.codegen.parser.visitor.parts.MemberParserPart.html">MemberParserPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.parser.visitor.parts.StructParserPart.html">StructParserPart</a></li>
+                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.parser.visitor.parts.ValueParserPart.html">ValueParserPart</a></li>
+                                                                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.parser.visitor.ParserVisitorInterface.html">ParserVisitorInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.ClassParserVisitor.html">ClassParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.ConstantParserVisitor.html">ConstantParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.InterfaceParserVisitor.html">InterfaceParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.MethodParserVisitor.html">MethodParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.PropertyParserVisitor.html">PropertyParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.StructParserVisitor.html">StructParserVisitor</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.visitor.TraitParserVisitor.html">TraitParserVisitor</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.FileParser.html">FileParser</a></li>
+                                                    <li class="class"><a href="../classes/cristianoc72.codegen.parser.PrettyPrinter.html">PrettyPrinter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1998696420"></a>
+                                <a href="../namespaces/cristianoc72.codegen.utils.html" style="margin-left: 30px; padding-left: 0">utils</a>
+            </div>
+            <div id="namespace-1998696420" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.utils.ReflectionUtils.html">ReflectionUtils</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/cristianoc72.codegen.generator.builder.html">\cristianoc72\codegen\generator\builder</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\cristianoc72\codegen\generator\builder</small>InterfaceBuilder</h1>
+                    <p><em></em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.InterfaceBuilder.html#method_build" class="">build()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html#method_ensureBlankLine" class="">ensureBlankLine()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html#method_generate" class="">generate()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html#method_buildDocblock" class="">buildDocblock()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_buildHeader" class="">buildHeader()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_buildNamespace" class="">buildNamespace()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_buildRequiredFiles" class="">buildRequiredFiles()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_buildUseStatements" class="">buildUseStatements()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_buildTraits" class="">buildTraits()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_buildConstants" class="">buildConstants()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_buildProperties" class="">buildProperties()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_buildMethods" class="">buildMethods()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html#property_generator" class="">$generator</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html#property_writer" class="">$writer</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html#property_config" class="">$config</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_sortUseStatements" class="">sortUseStatements()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_sortConstants" class="">sortConstants()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_sortProperties" class="">sortProperties()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html#method_sortMethods" class="">sortMethods()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.InterfaceBuilder.html#method_buildSignature" class="">buildSignature()</a><br />
+                                                                    <a href="../classes/cristianoc72.codegen.generator.builder.InterfaceBuilder.html#method_sort" class="">sort()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/generator.builder.InterfaceBuilder.html"><div class="path-wrapper">generator/builder/InterfaceBuilder.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html">\cristianoc72\codegen\generator\builder\AbstractBuilder</a></div>
+                                                                                                    <div class="namespace-wrapper">\cristianoc72\codegen\generator\builder\InterfaceBuilder</div>
+                            </dd>
+
+                        
+                                                                                    <dt>Uses traits</dt>
+                                                        <dd>
+                                <a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html">                                    <div class="namespace-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div>
+                                </a>                            </dd>
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_generator" name="property_generator" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$generator</h3>
+                <pre class="signature">$generator : \cristianoc72\codegen\generator\ModelGenerator</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/cristianoc72.codegen.generator.ModelGenerator.html">\cristianoc72\codegen\generator\ModelGenerator</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\AbstractBuilder</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_writer" name="property_writer" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$writer</h3>
+                <pre class="signature">$writer : \cristianoc72\codegen\generator\utils\Writer</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/cristianoc72.codegen.generator.utils.Writer.html">\cristianoc72\codegen\generator\utils\Writer</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\AbstractBuilder</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_config" name="property_config" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$config</h3>
+                <pre class="signature">$config : \cristianoc72\codegen\config\CodeGeneratorConfig</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/cristianoc72.codegen.config.CodeGeneratorConfig.html">\cristianoc72\codegen\config\CodeGeneratorConfig</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\AbstractBuilder</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\cristianoc72\codegen\generator\ModelGenerator  <span class="argument">$generator</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.generator.ModelGenerator.html">\cristianoc72\codegen\generator\ModelGenerator</a></td>
+                                <td>$generator </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\AbstractBuilder</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_build" name="method_build" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">build()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">build(\cristianoc72\codegen\model\AbstractModel  <span class="argument">$model</span>) : void</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.AbstractModel.html">\cristianoc72\codegen\model\AbstractModel</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_ensureBlankLine" name="method_ensureBlankLine" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">ensureBlankLine()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">ensureBlankLine() : void</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\AbstractBuilder</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_generate" name="method_generate" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">generate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">generate(\cristianoc72\codegen\model\AbstractModel  <span class="argument">$model</span>) : void</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.AbstractModel.html">\cristianoc72\codegen\model\AbstractModel</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\AbstractBuilder</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_buildDocblock" name="method_buildDocblock" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">buildDocblock()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">buildDocblock(\cristianoc72\codegen\model\DocblockInterface  <span class="argument">$model</span>) : void</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.DocblockInterface.html">\cristianoc72\codegen\model\DocblockInterface</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\AbstractBuilder</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_buildHeader" name="method_buildHeader" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">buildHeader()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">buildHeader(\cristianoc72\codegen\model\AbstractPhpStruct  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.AbstractPhpStruct.html">\cristianoc72\codegen\model\AbstractPhpStruct</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_buildNamespace" name="method_buildNamespace" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">buildNamespace()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">buildNamespace(\cristianoc72\codegen\model\NamespaceInterface  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.NamespaceInterface.html">\cristianoc72\codegen\model\NamespaceInterface</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_buildRequiredFiles" name="method_buildRequiredFiles" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">buildRequiredFiles()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">buildRequiredFiles(\cristianoc72\codegen\model\AbstractPhpStruct  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.AbstractPhpStruct.html">\cristianoc72\codegen\model\AbstractPhpStruct</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_buildUseStatements" name="method_buildUseStatements" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">buildUseStatements()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">buildUseStatements(\cristianoc72\codegen\model\AbstractPhpStruct  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.AbstractPhpStruct.html">\cristianoc72\codegen\model\AbstractPhpStruct</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_buildTraits" name="method_buildTraits" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">buildTraits()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">buildTraits(\cristianoc72\codegen\model\TraitsInterface  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.TraitsInterface.html">\cristianoc72\codegen\model\TraitsInterface</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_buildConstants" name="method_buildConstants" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">buildConstants()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">buildConstants(\cristianoc72\codegen\model\ConstantsInterface  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.ConstantsInterface.html">\cristianoc72\codegen\model\ConstantsInterface</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_buildProperties" name="method_buildProperties" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">buildProperties()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">buildProperties(\cristianoc72\codegen\model\PropertiesInterface  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.PropertiesInterface.html">\cristianoc72\codegen\model\PropertiesInterface</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_buildMethods" name="method_buildMethods" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">buildMethods()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">buildMethods(\cristianoc72\codegen\model\AbstractPhpStruct  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.AbstractPhpStruct.html">\cristianoc72\codegen\model\AbstractPhpStruct</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sortUseStatements" name="method_sortUseStatements" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">sortUseStatements()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sortUseStatements(\cristianoc72\codegen\model\AbstractPhpStruct  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.AbstractPhpStruct.html">\cristianoc72\codegen\model\AbstractPhpStruct</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sortConstants" name="method_sortConstants" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">sortConstants()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sortConstants(\cristianoc72\codegen\model\ConstantsInterface  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.ConstantsInterface.html">\cristianoc72\codegen\model\ConstantsInterface</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sortProperties" name="method_sortProperties" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">sortProperties()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sortProperties(\cristianoc72\codegen\model\PropertiesInterface  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.PropertiesInterface.html">\cristianoc72\codegen\model\PropertiesInterface</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sortMethods" name="method_sortMethods" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">sortMethods()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sortMethods(\cristianoc72\codegen\model\AbstractPhpStruct  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.AbstractPhpStruct.html">\cristianoc72\codegen\model\AbstractPhpStruct</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html"><div class="path-wrapper">\cristianoc72\codegen\generator\builder\parts\StructBuilderPart</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_buildSignature" name="method_buildSignature" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">buildSignature()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">buildSignature(\cristianoc72\codegen\model\PhpInterface  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.PhpInterface.html">\cristianoc72\codegen\model\PhpInterface</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sort" name="method_sort" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">sort()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sort(\cristianoc72\codegen\model\PhpInterface  <span class="argument">$model</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/cristianoc72.codegen.model.PhpInterface.html">\cristianoc72\codegen\model\PhpInterface</a></td>
+                                <td>$model </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">InterfaceBuilder.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/generator/builder/InterfaceBuilder.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/cristianoc72.html">\cristianoc72</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on February 12th, 2018 at 06:58.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
