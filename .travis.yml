@@ -2,7 +2,7 @@ language: php
 
 env:
   global:
-    - CC_TEST_REPORTER_ID=7f96a6af400960fb4459cadd83716755e76bf172b91163af2503f7a6b961414c
+    - CC_TEST_REPORTER_ID=0c775acf6c2d4540220d6ecb4994d21ac11e119134d011424af97be926ad408d
 
 php:
   - 5.6
@@ -24,9 +24,9 @@ script:
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
-allow_failures:
-  - php: nightly
+matrix:
+  allow_failures:
+    - php: nightly
 
 fast_finish: true
 
