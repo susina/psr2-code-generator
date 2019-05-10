@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator;
 
 use cristianoc72\codegen\config\CodeGeneratorConfig;
@@ -33,7 +34,7 @@ class ModelGenerator
         } elseif ($config instanceof CodeGeneratorConfig) {
             $this->config = $config;
         } else {
-            $this->config = new CodeGeneratorConfig(['generateDocblock' => false]);
+            $this->config = new CodeGeneratorConfig();
         }
         
         $this->writer = new Writer();
@@ -43,7 +44,7 @@ class ModelGenerator
     /**
      * @return CodeGeneratorConfig
      */
-    public function getConfig()
+    public function getConfig(): CodeGeneratorConfig
     {
         return $this->config;
     }
@@ -51,7 +52,7 @@ class ModelGenerator
     /**
      * @return Writer
      */
-    public function getWriter()
+    public function getWriter(): Writer
     {
         return $this->writer;
     }
@@ -59,7 +60,7 @@ class ModelGenerator
     /**
      * @return BuilderFactory
      */
-    public function getFactory()
+    public function getFactory(): BuilderFactory
     {
         return $this->factory;
     }
@@ -68,7 +69,7 @@ class ModelGenerator
      * @param AbstractModel $model
      * @return string
      */
-    public function generate(AbstractModel $model)
+    public function generate(AbstractModel $model): string
     {
         $this->writer->reset();
         

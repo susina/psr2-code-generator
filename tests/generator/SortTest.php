@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace cristianoc72\codegen\tests\generator;
 
 use cristianoc72\codegen\generator\comparator\DefaultUseStatementComparator;
@@ -57,7 +57,7 @@ class SortTest extends TestCase
         $list->add(new PhpConstant('BAZ'));
         
         $list->sort(new DefaultConstantComparator());
-        $ordered = $list->map(function ($item) {
+        $ordered = $list->map(function (PhpConstant $item) {
             return $item->getName();
         })->toArray();
 
@@ -81,7 +81,7 @@ class SortTest extends TestCase
         $list->add(PhpMethod::create('baz'));
         
         $list->sort(new DefaultMethodComparator());
-        $ordered = $list->map(function ($item) {
+        $ordered = $list->map(function (PhpMethod $item) {
             return $item->getName();
         })->toArray();
         
@@ -100,7 +100,7 @@ class SortTest extends TestCase
         $list->add(PhpProperty::create('baz'));
     
         $list->sort(new DefaultPropertyComparator());
-        $ordered = $list->map(function ($item) {
+        $ordered = $list->map(function (PhpProperty $item) {
             return $item->getName();
         })->toArray();
     

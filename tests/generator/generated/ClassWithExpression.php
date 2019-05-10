@@ -1,11 +1,15 @@
-<?php
+<?php declare(strict_types=1);
+
 class ClassWithExpression
 {
     const FOO = 'BAR';
 
     public $bembel = ['ebbelwoi' => 'is eh besser', 'als wie' => 'bier'];
 
-    public function getValue($arr = [self::FOO => 'baz'])
+    /**
+     * @param array $arr
+     */
+    public function getValue(array $arr = [self::FOO => 'baz'])
     {
     }
 }

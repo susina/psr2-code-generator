@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\comparator;
 
 use cristianoc72\codegen\model\PhpProperty;
@@ -15,8 +16,10 @@ class DefaultPropertyComparator implements Comparator
     /**
      * @param PhpProperty $a
      * @param PhpProperty $b
+     *
+     * @return int
      */
-    public function compare($a, $b)
+    public function compare($a, $b): int
     {
         if (($aV = $a->getVisibility()) !== $bV = $b->getVisibility()) {
             $aV = 'public' === $aV ? 3 : ('protected' === $aV ? 2 : 1);

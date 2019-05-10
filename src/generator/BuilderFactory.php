@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator;
 
 use cristianoc72\codegen\generator\builder\AbstractBuilder;
@@ -54,7 +55,7 @@ class BuilderFactory
      * @param AbstractModel $model
      * @return AbstractBuilder
      */
-    public function getBuilder(AbstractModel $model)
+    public function getBuilder(AbstractModel $model): AbstractBuilder
     {
         if ($model instanceof PhpClass) {
             return $this->classBuilder;

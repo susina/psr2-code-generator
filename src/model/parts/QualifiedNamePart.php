@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model\parts;
 
 /**
@@ -13,7 +14,7 @@ trait QualifiedNamePart
     use NamePart;
 
     /** @var string */
-    private $namespace;
+    private $namespace = '';
 
     /**
      * Sets the namespace
@@ -21,7 +22,7 @@ trait QualifiedNamePart
      * @param string $namespace
      * @return $this
      */
-    public function setNamespace($namespace)
+    public function setNamespace(string $namespace): self
     {
         $this->namespace = $namespace;
 
@@ -35,7 +36,7 @@ trait QualifiedNamePart
      * @param string $name
      * @return $this
      */
-    public function setQualifiedName($name)
+    public function setQualifiedName(string $name): self
     {
         if (false !== $pos = strrpos($name, '\\')) {
             $this->namespace = trim(substr($name, 0, $pos), '\\');
@@ -44,7 +45,7 @@ trait QualifiedNamePart
             return $this;
         }
 
-        $this->namespace = null;
+        $this->namespace = '';
         $this->name = $name;
 
         return $this;
@@ -55,7 +56,7 @@ trait QualifiedNamePart
      *
      * @return string
      */
-    public function getNamespace()
+    public function getNamespace(): string
     {
         return $this->namespace;
     }
@@ -65,7 +66,7 @@ trait QualifiedNamePart
      *
      * @return string
      */
-    public function getQualifiedName()
+    public function getQualifiedName(): string
     {
         if ($this->namespace) {
             return $this->namespace . '\\' . $this->name;

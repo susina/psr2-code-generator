@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\config;
 
 use gossi\docblock\Docblock;
@@ -12,28 +13,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class CodeFileGeneratorConfig extends CodeGeneratorConfig
 {
-    protected function configureOptions(OptionsResolver $resolver)
+    protected function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
 
         $resolver->setDefaults([
             'headerComment' => null,
-            'headerDocblock' => null,
-            'blankLineAtEnd' => true,
-            'declareStrictTypes'  => false,
-            'generateScalarTypeHints' => function (Options $options) {
-                return $options['declareStrictTypes'];
-            },
-            'generateReturnTypeHints' => function (Options $options) {
-                return $options['declareStrictTypes'];
-            },
+            'headerDocblock' => null
         ]);
         
         $resolver->setAllowedTypes('headerComment', ['null', 'string', 'gossi\\docblock\\Docblock']);
         $resolver->setAllowedTypes('headerDocblock', ['null', 'string', 'gossi\\docblock\\Docblock']);
-        $resolver->setAllowedTypes('blankLineAtEnd', 'bool');
-        $resolver->setAllowedTypes('declareStrictTypes', 'bool');
-        
+
         $resolver->setNormalizer('headerComment', function (Options $options, $value) {
             return $this->toDocblock($value);
         });
@@ -47,7 +38,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig
      * @param mixed $value
      * @return Docblock|null
      */
-    private function toDocblock($value)
+    private function toDocblock($value): ?Docblock
     {
         if (is_string($value)) {
             $value = Docblock::create()->setLongDescription($value);
@@ -59,9 +50,9 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig
     /**
      * Returns the file header comment
      *
-     * @return string the header comment
+     * @return null|Docblock the header comment
      */
-    public function getHeaderComment()
+    public function getHeaderComment(): ?Docblock
     {
         return $this->options['headerComment'];
     }
@@ -72,9 +63,9 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig
      * @param string $comment the header comment
      * @return $this
      */
-    public function setHeaderComment($comment)
+    public function setHeaderComment(string $comment): self
     {
-        $this->options['headerComment'] = $comment;
+        $this->options['headerComment'] = new Docblock($comment);
         return $this;
     }
 
@@ -83,7 +74,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig
      *
      * @return Docblock the docblock
      */
-    public function getHeaderDocblock()
+    public function getHeaderDocblock(): ?Docblock
     {
         return $this->options['headerDocblock'];
     }
@@ -94,55 +85,9 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig
      * @param Docblock $docblock the docblock
      * @return $this
      */
-    public function setHeaderDocblock(Docblock $docblock)
+    public function setHeaderDocblock(Docblock $docblock): self
     {
         $this->options['headerDocblock'] = $docblock;
-        return $this;
-    }
-
-    /**
-     * Returns whether a blank line should be generated at the end of the file
-     *
-     * @return bool `true` if it will be generated and `false` if not
-     */
-    public function getBlankLineAtEnd()
-    {
-        return $this->options['blankLineAtEnd'];
-    }
-
-    /**
-     * Sets whether a blank line should be generated at the end of the file
-     *
-     * @param bool $show `true` if it will be generated and `false` if not
-     * @return $this
-     */
-    public function setBlankLineAtEnd($show)
-    {
-        $this->options['blankLineAtEnd'] = $show;
-        return $this;
-    }
-
-    /**
-     * Returns whether a `declare(strict_types=1);` statement should be printed
-     * below the header comments (PHP 7)
-     *
-     * @return bool `true` if it will be printed and `false` if not
-     */
-    public function getDeclareStrictTypes()
-    {
-        return $this->options['declareStrictTypes'];
-    }
-
-    /**
-     * Sets whether a `declare(strict_types=1);` statement should be printed
-     * below the header comments (PHP 7)
-     *
-     * @param bool $strict `true` if it will be printed and `false` if not
-     * @return $this
-     */
-    public function setDeclareStrictTypes($strict)
-    {
-        $this->options['declareStrictTypes'] = $strict;
         return $this;
     }
 }

@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model\parts;
 
 use cristianoc72\codegen\model\PhpInterface;
@@ -29,7 +30,7 @@ trait InterfacesPart
      * @param null|string $alias
      * @return $this
      */
-    abstract public function addUseStatement($qualifiedName, $alias = null);
+    abstract public function addUseStatement(string $qualifiedName, ?string $alias = null);
 
     /**
      * Removes a use statement
@@ -37,14 +38,14 @@ trait InterfacesPart
      * @param string $qualifiedName
      * @return $this
      */
-    abstract public function removeUseStatement($qualifiedName);
+    abstract public function removeUseStatement(string $qualifiedName);
 
     /**
      * Returns the namespace
      *
      * @return string
      */
-    abstract public function getNamespace();
+    abstract public function getNamespace(): string;
 
     /**
      * Adds an interface.
@@ -55,7 +56,7 @@ trait InterfacesPart
      * @param PhpInterface|string $interface interface or qualified name
      * @return $this
      */
-    public function addInterface($interface)
+    public function addInterface($interface): self
     {
         if ($interface instanceof PhpInterface) {
             $name = $interface->getName();
@@ -79,7 +80,7 @@ trait InterfacesPart
      *
      * @return Set
      */
-    public function getInterfaces()
+    public function getInterfaces(): Set
     {
         return $this->interfaces;
     }
@@ -89,7 +90,7 @@ trait InterfacesPart
      *
      * @return bool `true` if interfaces are available and `false` if not
      */
-    public function hasInterfaces()
+    public function hasInterfaces(): bool
     {
         return !$this->interfaces->isEmpty();
     }
@@ -97,17 +98,24 @@ trait InterfacesPart
     /**
      * Checks whether an interface exists
      *
-     * @param PhpInterface|string $interface interface name or instance
+     * @param PhpInterface $interface
      * @return bool
      */
-    public function hasInterface($interface)
+    public function hasInterface(PhpInterface $interface): bool
     {
-        if ($interface instanceof PhpInterface) {
-            return $this->interfaces->contains($interface->getName())
-                || $this->interfaces->contains($interface->getQualifiedName());
-        }
+        return $this->interfaces->contains($interface->getName())
+            || $this->interfaces->contains($interface->getQualifiedName());
+    }
 
-        return $this->hasInterface(new PhpInterface($interface));
+    /**
+     * Checks whether an interface exists
+     *
+     * @param string $name interface name
+     * @return bool
+     */
+    public function hasInterfaceByName(string $name): bool
+    {
+        return $this->hasInterface(new PhpInterface($name));
     }
 
     /**
@@ -116,20 +124,28 @@ trait InterfacesPart
      * If the interface is passed as PhpInterface object,
      * the interface is also remove from the use statements.
      *
-     * @param PhpInterface|string $interface interface or qualified name
+     * @param PhpInterface $interface interface or qualified name
      * @return $this
      */
-    public function removeInterface($interface)
+    public function removeInterface(PhpInterface $interface): self
     {
-        if ($interface instanceof PhpInterface) {
-            $name = $interface->getName();
-            $qname = $interface->getQualifiedName();
+        $this->removeUseStatement($interface->getQualifiedName());
+        $this->interfaces->remove($interface->getName());
 
-            $this->removeUseStatement($qname);
-        } else {
-            $name = $interface;
-        }
+        return $this;
+    }
 
+    /**
+     * Removes an interface.
+     *
+     * If the interface is passed as PhpInterface object,
+     * the interface is also remove from the use statements.
+     *
+     * @param string $name interface qualified name
+     * @return $this
+     */
+    public function removeInterfaceByName(string $name): self
+    {
         $this->interfaces->remove($name);
 
         return $this;
@@ -141,7 +157,7 @@ trait InterfacesPart
      * @param PhpInterface[] $interfaces
      * @return $this
      */
-    public function setInterfaces(array $interfaces)
+    public function setInterfaces(array $interfaces): self
     {
         foreach ($interfaces as $interface) {
             $this->addInterface($interface);

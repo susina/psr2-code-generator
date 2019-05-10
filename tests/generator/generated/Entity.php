@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\fixtures;
 
 /**
@@ -28,7 +29,7 @@ abstract class Entity
      * @param string $d
      * @param callable $e
      */
-    final public function __construct($a, array &$b, \stdClass $c, $d = 'foo', callable $e)
+    final public function __construct($a, array &$b, \stdClass $c, string $d = 'foo', callable $e)
     {
     }
 

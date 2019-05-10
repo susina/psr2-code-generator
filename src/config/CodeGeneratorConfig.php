@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\config;
 
 use cristianoc72\codegen\generator\CodeGenerator;
@@ -28,15 +29,10 @@ class CodeGeneratorConfig
         $this->options = $resolver->resolve($options);
     }
     
-    protected function configureOptions(OptionsResolver $resolver)
+    protected function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'generateDocblock' => true,
-            'generateEmptyDocblock' => function (Options $options) {
-                return $options['generateDocblock'];
-            },
-            'generateScalarTypeHints' => false,
-            'generateReturnTypeHints' => false,
+            'generateEmptyDocblock' => false,
             'enableSorting' => true,
             'useStatementSorting' => CodeGenerator::SORT_USESTATEMENTS_DEFAULT,
             'constantSorting' => CodeGenerator::SORT_CONSTANTS_DEFAULT,
@@ -44,10 +40,7 @@ class CodeGeneratorConfig
             'methodSorting' => CodeGenerator::SORT_METHODS_DEFAULT
         ]);
         
-        $resolver->setAllowedTypes('generateDocblock', 'bool');
         $resolver->setAllowedTypes('generateEmptyDocblock', 'bool');
-        $resolver->setAllowedTypes('generateScalarTypeHints', 'bool');
-        $resolver->setAllowedTypes('generateReturnTypeHints', 'bool');
         $resolver->setAllowedTypes('enableSorting', 'bool');
         $resolver->setAllowedTypes('useStatementSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
         $resolver->setAllowedTypes('constantSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
@@ -56,36 +49,11 @@ class CodeGeneratorConfig
     }
 
     /**
-     * Returns whether docblocks should be generated
-     *
-     * @return bool `true` if they will be generated and `false` if not
-     */
-    public function getGenerateDocblock()
-    {
-        return $this->options['generateDocblock'];
-    }
-
-    /**
-     * Sets whether docblocks should be generated
-     *
-     * @param bool $generate `true` if they will be generated and `false` if not
-     * @return $this
-     */
-    public function setGenerateDocblock($generate)
-    {
-        $this->options['generateDocblock'] = $generate;
-        if (!$generate) {
-            $this->options['generateEmptyDocblock'] = $generate;
-        }
-        return $this;
-    }
-
-    /**
      * Returns whether empty docblocks are generated
      *
      * @return bool `true` if they will be generated and `false` if not
      */
-    public function getGenerateEmptyDocblock()
+    public function getGenerateEmptyDocblock(): bool
     {
         return $this->options['generateEmptyDocblock'];
     }
@@ -96,31 +64,19 @@ class CodeGeneratorConfig
      * @param bool $generate `true` if they will be generated and `false` if not
      * @return $this
      */
-    public function setGenerateEmptyDocblock($generate)
+    public function setGenerateEmptyDocblock(bool $generate): self
     {
         $this->options['generateEmptyDocblock'] = $generate;
-        if ($generate) {
-            $this->options['generateDocblock'] = $generate;
-        }
+
         return $this;
     }
 
-    /**
-     * Returns whether scalar type hints will be generated for method parameters (PHP 7)
-     *
-     * @return bool `true` if they will be generated and `false` if not
-     */
-    public function getGenerateScalarTypeHints()
-    {
-        return $this->options['generateScalarTypeHints'];
-    }
-    
     /**
      * Returns whether sorting is enabled
      *
      * @return bool `true` if it is enabled and `false` if not
      */
-    public function isSortingEnabled()
+    public function isSortingEnabled(): bool
     {
         return $this->options['enableSorting'];
     }
@@ -134,7 +90,7 @@ class CodeGeneratorConfig
     {
         return $this->options['useStatementSorting'];
     }
-    
+
     /**
      * Returns the constant sorting
      *
@@ -164,40 +120,6 @@ class CodeGeneratorConfig
     {
         return $this->options['methodSorting'];
     }
-
-    /**
-     * Sets whether scalar type hints will be generated for method parameters (PHP 7)
-     *
-     * @param bool $generate `true` if they will be generated and `false` if not
-     * @return $this
-     */
-    public function setGenerateScalarTypeHints($generate)
-    {
-        $this->options['generateScalarTypeHints'] = $generate;
-        return $this;
-    }
-
-    /**
-     * Returns whether return type hints will be generated for method parameters (PHP 7)
-     *
-     * @return bool `true` if they will be generated and `false` if not
-     */
-    public function getGenerateReturnTypeHints()
-    {
-        return $this->options['generateReturnTypeHints'];
-    }
-
-    /**
-     * Sets whether return type hints will be generated for method parameters (PHP 7)
-     *
-     * @param bool $generate `true` if they will be generated and `false` if not
-     * @return $this
-     */
-    public function setGenerateReturnTypeHints($generate)
-    {
-        $this->options['generateReturnTypeHints'] = $generate;
-        return $this;
-    }
     
     /**
      * Returns whether sorting is enabled
@@ -205,7 +127,7 @@ class CodeGeneratorConfig
      * @param $enabled bool `true` if it is enabled and `false` if not
      * @return $this
      */
-    public function setSortingEnabled($enabled)
+    public function setSortingEnabled(bool $enabled): self
     {
         $this->options['enableSorting'] = $enabled;
         return $this;
@@ -217,7 +139,7 @@ class CodeGeneratorConfig
      * @param $sorting string|bool|Comparator|\Closure
      * @return $this
      */
-    public function setUseStatementSorting($sorting)
+    public function setUseStatementSorting(bool $sorting): self
     {
         $this->options['useStatementSorting'] = $sorting;
         return $this;
@@ -229,7 +151,7 @@ class CodeGeneratorConfig
      * @param $sorting string|bool|Comparator|\Closure
      * @return $this
      */
-    public function setConstantSorting($sorting)
+    public function setConstantSorting($sorting): self
     {
         $this->options['constantSorting'] = $sorting;
         return $this;
@@ -241,7 +163,7 @@ class CodeGeneratorConfig
      * @param $sorting string|bool|Comparator|\Closure
      * @return $this
      */
-    public function setPropertySorting($sorting)
+    public function setPropertySorting($sorting): self
     {
         $this->options['propertySorting'] = $sorting;
         return $this;
@@ -253,7 +175,7 @@ class CodeGeneratorConfig
      * @param $sorting string|bool|Comparator|\Closure
      * @return $this
      */
-    public function setMethodSorting($sorting)
+    public function setMethodSorting($sorting): self
     {
         $this->options['methodSorting'] = $sorting;
         return $this;

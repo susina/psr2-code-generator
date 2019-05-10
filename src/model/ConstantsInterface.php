@@ -1,5 +1,9 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model;
+
+use phootwork\collection\Map;
+use phootwork\collection\Set;
 
 /**
  * Interface to all php structs that can have constants
@@ -22,51 +26,76 @@ interface ConstantsInterface
     /**
      * Adds a constant
      *
-     * @param string|PhpConstant $nameOrConstant constant or name
+     * @param PhpConstant $constant
+     * @return $this
+     */
+    public function setConstant(PhpConstant $constant);
+
+    /**
+     * Adds a constant passing its name
+     *
+     * @param string $name constant name
      * @param string $value
      * @return $this
      */
-    public function setConstant($nameOrConstant, $value = null);
+    public function setConstantByName(string $name, ?string $value = null);
 
     /**
      * Removes a constant
      *
-     * @param string|PhpConstant $nameOrConstant $nameOrConstant constant or name
+     * @param PhpConstant $constant
      * @throws \InvalidArgumentException If the constant cannot be found
      * @return $this
      */
-    public function removeConstant($nameOrConstant);
+    public function removeConstant(PhpConstant $constant);
+
+    /**
+     * Removes a constant passing its name
+     *
+     * @param string $name constant name
+     * @throws \InvalidArgumentException If the constant cannot be found
+     * @return $this
+     */
+    public function removeConstantByName(string $name);
 
     /**
      * Checks whether a constant exists
      *
-     * @param string|PhpConstant $nameOrConstant
+     * @param PhpConstant $constant
      * @return bool
      */
-    public function hasConstant($nameOrConstant);
+    public function hasConstant(PhpConstant $constant): bool;
+
+    /**
+     * Checks whether a constant exists
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function hasConstantByName(string $name): bool;
 
     /**
      * Returns a constant
      *
-     * @param string|PhpConstant $nameOrConstant constant or name
+     * @param string $name
      * @throws \InvalidArgumentException If the constant cannot be found
      * @return PhpConstant
      */
-    public function getConstant($nameOrConstant);
+    public function getConstant(string $name): PhpConstant;
 
     /**
      * Returns constants
      *
-     * @return PhpConstant[]
+     * @return Map
      */
-    public function getConstants();
+    public function getConstants(): Map;
 
     /**
      * Returns all constant names
      *
-     * @return string[]
+     * @return Set
      */
-    public function getConstantNames();
+    public function getConstantNames(): Set;
 
     /**
      * Clears all constants

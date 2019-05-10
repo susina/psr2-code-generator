@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace cristianoc72\codegen\tests\generator;
 
 use cristianoc72\codegen\generator\ModelGenerator;
@@ -82,18 +82,20 @@ class MethodGeneratorTest extends TestCase
         $generator = new ModelGenerator();
         
         $method = PhpMethod::create('foo')->addParameter(PhpParameter::create('bar'));
-        $this->assertEquals("public function foo(\$bar)\n{\n}\n", $generator->generate($method));
+        $this->assertEquals("/**\n * @param \$bar\n */\npublic function foo(\$bar)\n{\n}\n", $generator->generate($method));
         
         $method = PhpMethod::create('foo')
             ->addParameter(PhpParameter::create('bar'))
             ->addParameter(PhpParameter::create('baz'));
-        $this->assertEquals("public function foo(\$bar, \$baz)\n{\n}\n", $generator->generate($method));
+        $this->assertEquals("/**\n * @param \$bar\n * @param \$baz\n */\npublic function foo(\$bar, \$baz)\n{\n}\n",
+            $generator->generate($method)
+        );
     }
     
     public function testReturnType()
     {
-        $expected = "public function foo(): int\n{\n}\n";
-        $generator = new ModelGenerator(['generateReturnTypeHints' => true, 'generateDocblock' => false]);
+        $expected = "/**\n * @return int\n */\npublic function foo(): int\n{\n}\n";
+        $generator = new ModelGenerator();
 
         $method = PhpMethod::create('foo')->setType('int');
         $this->assertEquals($expected, $generator->generate($method));

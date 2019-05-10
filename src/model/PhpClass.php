@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model;
 
 use cristianoc72\codegen\model\parts\AbstractPart;
@@ -7,11 +8,6 @@ use cristianoc72\codegen\model\parts\FinalPart;
 use cristianoc72\codegen\model\parts\InterfacesPart;
 use cristianoc72\codegen\model\parts\PropertiesPart;
 use cristianoc72\codegen\model\parts\TraitsPart;
-use cristianoc72\codegen\parser\FileParser;
-use cristianoc72\codegen\parser\visitor\ClassParserVisitor;
-use cristianoc72\codegen\parser\visitor\ConstantParserVisitor;
-use cristianoc72\codegen\parser\visitor\MethodParserVisitor;
-use cristianoc72\codegen\parser\visitor\PropertyParserVisitor;
 
 /**
  * Represents a PHP class.
@@ -31,35 +27,17 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
     private $parentClassName;
 
     /**
-     * Creates a PHP class from file
-     *
-     * @param string $filename
-     * @return PhpClass
-     */
-    public static function fromFile($filename)
-    {
-        $class = new PhpClass();
-        $parser = new FileParser($filename);
-        $parser->addVisitor(new ClassParserVisitor($class));
-        $parser->addVisitor(new MethodParserVisitor($class));
-        $parser->addVisitor(new ConstantParserVisitor($class));
-        $parser->addVisitor(new PropertyParserVisitor($class));
-        $parser->parse();
-        
-        return $class;
-    }
-
-    /**
      * Creates a new PHP class
      *
      * @param string $name the qualified name
      */
-    public function __construct($name = null)
+    public function __construct(?string $name = null)
     {
         parent::__construct($name);
         $this->initProperties();
         $this->initConstants();
         $this->initInterfaces();
+        $this->initTraits();
     }
 
     /**
@@ -67,7 +45,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
      *
      * @return string
      */
-    public function getParentClassName()
+    public function getParentClassName(): ?string
     {
         return $this->parentClassName;
     }
@@ -78,14 +56,14 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
      * @param string|null $name the new parent
      * @return $this
      */
-    public function setParentClassName($name)
+    public function setParentClassName(?string $name): self
     {
         $this->parentClassName = $name;
 
         return $this;
     }
 
-    public function generateDocblock()
+    public function generateDocblock(): self
     {
         parent::generateDocblock();
 
@@ -96,5 +74,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
         foreach ($this->properties as $prop) {
             $prop->generateDocblock();
         }
+
+        return $this;
     }
 }

@@ -1,12 +1,17 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder\parts;
 
-use cristianoc72\codegen\generator\ComparatorFactory;
+use cristianoc72\codegen\generator\comparator\DefaultConstantComparator;
+use cristianoc72\codegen\generator\comparator\DefaultMethodComparator;
+use cristianoc72\codegen\generator\comparator\DefaultPropertyComparator;
+use cristianoc72\codegen\generator\comparator\DefaultUseStatementComparator;
 use cristianoc72\codegen\model\AbstractModel;
 use cristianoc72\codegen\model\AbstractPhpStruct;
 use cristianoc72\codegen\model\ConstantsInterface;
 use cristianoc72\codegen\model\DocblockInterface;
 use cristianoc72\codegen\model\NamespaceInterface;
+use cristianoc72\codegen\model\PhpTrait;
 use cristianoc72\codegen\model\PropertiesInterface;
 use cristianoc72\codegen\model\TraitsInterface;
 
@@ -30,7 +35,7 @@ trait StructBuilderPart
      */
     abstract protected function buildDocblock(DocblockInterface $model);
     
-    protected function buildHeader(AbstractPhpStruct $model)
+    protected function buildHeader(AbstractPhpStruct $model): void
     {
         $this->buildNamespace($model);
         $this->buildRequiredFiles($model);
@@ -38,14 +43,14 @@ trait StructBuilderPart
         $this->buildDocblock($model);
     }
     
-    protected function buildNamespace(NamespaceInterface $model)
+    protected function buildNamespace(NamespaceInterface $model): void
     {
         if ($namespace = $model->getNamespace()) {
             $this->writer->writeln('namespace ' . $namespace . ';');
         }
     }
     
-    protected function buildRequiredFiles(AbstractPhpStruct $model)
+    protected function buildRequiredFiles(AbstractPhpStruct $model): void
     {
         if ($files = $model->getRequiredFiles()) {
             $this->ensureBlankLine();
@@ -55,7 +60,7 @@ trait StructBuilderPart
         }
     }
     
-    protected function buildUseStatements(AbstractPhpStruct $model)
+    protected function buildUseStatements(AbstractPhpStruct $model): void
     {
         if ($useStatements = $model->getUseStatements()) {
             $this->ensureBlankLine();
@@ -83,52 +88,53 @@ trait StructBuilderPart
         }
     }
     
-    protected function buildTraits(TraitsInterface $model)
+    protected function buildTraits(TraitsInterface $model): void
     {
+        /** @var PhpTrait $trait */
         foreach ($model->getTraits() as $trait) {
             $this->writer->write('use ');
-            $this->writer->writeln($trait . ';');
+            $this->writer->writeln($trait->getName() . ';');
         }
     }
     
-    protected function buildConstants(ConstantsInterface $model)
+    protected function buildConstants(ConstantsInterface $model): void
     {
         foreach ($model->getConstants() as $constant) {
             $this->generate($constant);
         }
     }
     
-    protected function buildProperties(PropertiesInterface $model)
+    protected function buildProperties(PropertiesInterface $model): void
     {
         foreach ($model->getProperties() as $property) {
             $this->generate($property);
         }
     }
     
-    protected function buildMethods(AbstractPhpStruct $model)
+    protected function buildMethods(AbstractPhpStruct $model): void
     {
         foreach ($model->getMethods() as $method) {
             $this->generate($method);
         }
     }
     
-    private function sortUseStatements(AbstractPhpStruct $model)
+    private function sortUseStatements(AbstractPhpStruct $model): void
     {
         if ($this->config->isSortingEnabled()
                 && ($useStatementSorting = $this->config->getUseStatementSorting()) !== false) {
             if (is_string($useStatementSorting)) {
-                $useStatementSorting = ComparatorFactory::createUseStatementComparator($useStatementSorting);
+                $useStatementSorting = new DefaultUseStatementComparator();
             }
             $model->getUseStatements()->sort($useStatementSorting);
         }
     }
     
-    private function sortConstants(ConstantsInterface $model)
+    private function sortConstants(ConstantsInterface $model): void
     {
         if ($this->config->isSortingEnabled()
                 && ($constantSorting = $this->config->getConstantSorting()) !== false) {
             if (is_string($constantSorting)) {
-                $constantSorting = ComparatorFactory::createConstantComparator($constantSorting);
+                $constantSorting = new DefaultConstantComparator();
             }
             $model->getConstants()->sort($constantSorting);
         }
@@ -139,7 +145,7 @@ trait StructBuilderPart
         if ($this->config->isSortingEnabled()
                 && ($propertySorting = $this->config->getPropertySorting()) !== false) {
             if (is_string($propertySorting)) {
-                $propertySorting = ComparatorFactory::createPropertyComparator($propertySorting);
+                $propertySorting = new DefaultPropertyComparator();
             }
             $model->getProperties()->sort($propertySorting);
         }
@@ -150,7 +156,7 @@ trait StructBuilderPart
         if ($this->config->isSortingEnabled()
                 && ($methodSorting = $this->config->getMethodSorting()) !== false) {
             if (is_string($methodSorting)) {
-                $methodSorting = ComparatorFactory::createMethodComparator($methodSorting);
+                $methodSorting = new DefaultMethodComparator();
             }
             $model->getMethods()->sort($methodSorting);
         }

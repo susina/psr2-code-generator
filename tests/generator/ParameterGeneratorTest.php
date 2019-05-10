@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace cristianoc72\codegen\tests\generator;
 
 use cristianoc72\codegen\generator\ModelGenerator;
@@ -21,53 +21,13 @@ class ParameterGeneratorTest extends TestCase
 
         $this->assertEquals($expected, $code);
     }
-    
+
     public function testTypeHints()
     {
         $generator = new ModelGenerator();
-        
+
         $param = PhpParameter::create('foo')->setType('Request');
         $this->assertEquals('Request $foo', $generator->generate($param));
-    }
-    
-    public function testPhp5TypeHints()
-    {
-        $generator = new ModelGenerator(['generateScalarTypeHints' => false]);
-    
-        $param = PhpParameter::create('foo')->setType('string');
-        $this->assertEquals('$foo', $generator->generate($param));
-    
-        $param = PhpParameter::create('foo')->setType('int');
-        $this->assertEquals('$foo', $generator->generate($param));
-    
-        $param = PhpParameter::create('foo')->setType('integer');
-        $this->assertEquals('$foo', $generator->generate($param));
-    
-        $param = PhpParameter::create('foo')->setType('float');
-        $this->assertEquals('$foo', $generator->generate($param));
-    
-        $param = PhpParameter::create('foo')->setType('double');
-        $this->assertEquals('$foo', $generator->generate($param));
-    
-        $param = PhpParameter::create('foo')->setType('bool');
-        $this->assertEquals('$foo', $generator->generate($param));
-    
-        $param = PhpParameter::create('foo')->setType('boolean');
-        $this->assertEquals('$foo', $generator->generate($param));
-    
-        $param = PhpParameter::create('foo')->setType('mixed');
-        $this->assertEquals('$foo', $generator->generate($param));
-    
-        $param = PhpParameter::create('foo')->setType('object');
-        $this->assertEquals('$foo', $generator->generate($param));
-    
-        $param = PhpParameter::create('foo')->setType('resource');
-        $this->assertEquals('$foo', $generator->generate($param));
-    }
-    
-    public function testPhp7TypeHints()
-    {
-        $generator = new ModelGenerator(['generateScalarTypeHints' => true]);
         
         $param = PhpParameter::create('foo')->setType('string');
         $this->assertEquals('string $foo', $generator->generate($param));

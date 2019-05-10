@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpProperty;
@@ -30,13 +30,13 @@ class PropertyTest extends TestCase
     {
         $prop = new PhpProperty('needsName');
 
-        $this->assertNull($prop->getExpression());
+        $this->assertEquals('', $prop->getExpression());
         $this->assertFalse($prop->isExpression());
         $this->assertSame($prop, $prop->setExpression('null'));
         $this->assertEquals('null', $prop->getExpression());
         $this->assertTrue($prop->isExpression());
         $this->assertSame($prop, $prop->unsetExpression());
-        $this->assertNull($prop->getExpression());
+        $this->assertEquals('', $prop->getExpression());
         $this->assertFalse($prop->isExpression());
     }
 

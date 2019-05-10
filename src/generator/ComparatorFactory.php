@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator;
 
 use cristianoc72\codegen\generator\comparator\DefaultConstantComparator;
@@ -13,64 +14,47 @@ class ComparatorFactory
     /**
      * Creates a comparator for use statements
      *
-     * @param string $type
+     * @deprecated Instantiate the comparator
      * @return Comparator
      */
-    public static function createUseStatementComparator($type)
+    public static function createUseStatementComparator()
     {
-        // 		switch ($type) {
-        // 			case CodeGenerator::SORT_USESTATEMENTS_DEFAULT:
-        // 			default:
-        // 				return new DefaultUseStatementComparator();
-        // 		}
         return new DefaultUseStatementComparator();
     }
     
     /**
      * Creates a comparator for constants
      *
+     * @deprecated Instantiate the comparator
      * @param string $type
      * @return Comparator
      */
-    public static function createConstantComparator($type)
+    public static function createConstantComparator()
     {
-        // 		switch ($type) {
-        // 			case CodeGenerator::SORT_CONSTANTS_DEFAULT:
-        // 			default:
-        // 				return new DefaultConstantComparator();
-        // 		}
         return new DefaultConstantComparator();
     }
     
     /**
      * Creates a comparator for properties
      *
+     * @deprecated Instantiate the comparator
      * @param string $type
      * @return Comparator
      */
-    public static function createPropertyComparator($type)
+    public static function createPropertyComparator()
     {
-        // 		switch ($type) {
-        // 			case CodeGenerator::SORT_PROPERTIES_DEFAULT:
-        // 			default:
-        // 				return new DefaultPropertyComparator();
-        // 		}
         return new DefaultPropertyComparator();
     }
     
     /**
      * Creates a comparator for methods
      *
+     * @deprecated Instantiate the comparator
      * @param string $type
      * @return Comparator
      */
-    public static function createMethodComparator($type)
+    public static function createMethodComparator()
     {
-        // 		switch ($type) {
-        // 			case CodeGenerator::SORT_METHODS_DEFAULT:
-        // 			default:
-        // 				return new DefaultMethodComparator();
-        // 		}
         return new DefaultMethodComparator();
     }
 }

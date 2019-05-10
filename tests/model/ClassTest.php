@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpClass;
@@ -27,18 +27,17 @@ class ClassTest extends TestCase
             'foo' => 'bar',
             new PhpConstant('rabimmel', 'rabammel')
         ]));
-        $this->assertTrue($class->hasConstant('rabimmel'));
+        $this->assertTrue($class->hasConstantByName('rabimmel'));
         $this->assertEquals(['foo', 'rabimmel'], $class->getConstantNames()->toArray());
         $this->assertEquals('bar', $class->getConstant('foo')->getValue());
-        $this->assertSame($class, $class->setConstant('bar', 'baz'));
+        $this->assertSame($class, $class->setConstantByName('bar', 'baz'));
         $this->assertEquals(['foo', 'rabimmel', 'bar'], $class->getConstantNames()->toArray());
         $this->assertEquals(3, $class->getConstants()->size());
-        $this->assertSame($class, $class->removeConstant('foo'));
+        $this->assertSame($class, $class->removeConstantByName('foo'));
         $this->assertEquals(['rabimmel', 'bar'], $class->getConstantNames()->toArray());
         $this->assertSame($class, $class->setConstant($bim = new PhpConstant('bim', 'bam')));
-        $this->assertTrue($class->hasConstant('bim'));
+        $this->assertTrue($class->hasConstantByName('bim'));
         $this->assertSame($bim, $class->getConstant('bim'));
-        $this->assertSame($bim, $class->getConstant($bim));
         $this->assertTrue($class->hasConstant($bim));
         $this->assertSame($class, $class->removeConstant($bim));
         $this->assertFalse($class->hasConstant($bim));
@@ -47,10 +46,12 @@ class ClassTest extends TestCase
         $class->clearConstants();
         $this->assertTrue($class->getConstants()->isEmpty());
 
-        $class->setConstant('FOO', 'bar');
+        $class->setConstantByName('FOO', 'bar');
         $this->assertEquals('bar', $class->getConstant('FOO')->getValue());
-        $class->setConstant('NMBR', 300, true);
-        $this->assertEquals(300, $class->getConstant('NMBR')->getExpression());
+        $class->setConstantByName('NMBR', 300, true);
+        $this->assertEquals(300, $class->getConstant('NMBR')->getValue());
+        $this->assertFalse($class->getConstant('NMBR')->isExpression());
+        $this->assertEquals('', $class->getConstant('NMBR')->getExpression());
 
         try {
             $this->assertEmpty($class->getConstant('constant-not-found'));
@@ -65,7 +66,7 @@ class ClassTest extends TestCase
     public function testRemoveConstantThrowsExceptionWhenConstantDoesNotExist()
     {
         $class = new PhpClass();
-        $class->removeConstant('foo');
+        $class->removeConstantByName('foo');
     }
 
     /**
@@ -134,12 +135,12 @@ class ClassTest extends TestCase
 
         $interface = new PhpInterface('my\name\space\Interface');
         $class->addInterface($interface);
-        $this->assertTrue($class->hasInterface('my\name\space\Interface'));
+        $this->assertTrue($class->hasInterfaceByName('my\name\space\Interface'));
         $this->assertSame($class, $class->removeInterface($interface));
 
         $class->addInterface(new PhpInterface('other\name\space\Interface'));
         $this->assertTrue($class->hasUseStatement('other\name\space\Interface'));
-        $this->assertSame($class, $class->removeInterface('other\name\space\Interface'));
+        $this->assertSame($class, $class->removeInterfaceByName('other\name\space\Interface'));
         $this->assertTrue($class->hasUseStatement('other\name\space\Interface'));
     }
 
@@ -147,31 +148,28 @@ class ClassTest extends TestCase
     {
         $class = new PhpClass('my\name\space\Class');
 
-        $this->assertEquals([], $class->getTraits());
+        $this->assertEquals([], $class->getTraits()->toArray());
         $this->assertSame($class, $class->setTraits([
             'foo',
             'bar'
         ]));
-        $this->assertEquals([
-            'foo',
-            'bar'
-        ], $class->getTraits());
-        $this->assertSame($class, $class->addTrait('stdClass'));
-        $this->assertEquals([
-            'foo',
-            'bar',
-            'stdClass'
-        ], $class->getTraits());
+        $fooTrait = new PhpTrait('foo');
+        $barTrait = new PhpTrait('bar');
+        $stdTrait = new PhpTrait('stdClass');
+        $this->assertEquals([$fooTrait, $barTrait], $class->getTraits()->toArray());
+        $this->assertSame($class, $class->addTrait($stdTrait));
+        $this->assertEquals([$fooTrait, $barTrait, $stdTrait], $class->getTraits()->toArray());
 
         $trait = new PhpTrait('my\name\space\Trait');
         $class->addTrait($trait);
-        $this->assertTrue($class->hasTrait('my\name\space\Trait'));
+        $this->assertTrue($class->hasTraitByName('Trait'));
+        $this->assertFalse($class->getUseStatements()->contains('my\name\space\\'), 'No use statement added since it\'s the same namespace');
         $this->assertSame($class, $class->removeTrait($trait));
 
         $class->addTrait(new PhpTrait('other\name\space\Trait'));
         $this->assertTrue($class->hasUseStatement('other\name\space\Trait'));
-        $this->assertSame($class, $class->removeTrait('other\name\space\Trait'));
-        $this->assertTrue($class->hasUseStatement('other\name\space\Trait'));
+        $this->assertSame($class, $class->removeTraitByName('other\name\space\Trait'));
+        $this->assertFalse($class->hasUseStatement('other\name\space\Trait'), 'Use statement removed.');
     }
 
     public function testProperties()
@@ -181,8 +179,8 @@ class ClassTest extends TestCase
         $this->assertTrue($class->getProperties()->isEmpty());
         $this->assertSame($class, $class->setProperty($prop = new PhpProperty('foo')));
         $this->assertSame(['foo' => $prop], $class->getProperties()->toArray());
-        $this->assertTrue($class->hasProperty('foo'));
-        $this->assertSame($class, $class->removeProperty('foo'));
+        $this->assertTrue($class->hasPropertyByName('foo'));
+        $this->assertSame($class, $class->removePropertyByName('foo'));
         $this->assertTrue($class->getProperties()->isEmpty());
 
         $prop = new PhpProperty('bam');
@@ -193,7 +191,6 @@ class ClassTest extends TestCase
         $class->setProperty($orphaned = new PhpProperty('orphaned'));
         $this->assertSame($class, $orphaned->getParent());
         $this->assertSame($orphaned, $class->getProperty('orphaned'));
-        $this->assertSame($orphaned, $class->getProperty($orphaned));
         $this->assertTrue($class->hasProperty($orphaned));
         $this->assertSame($class, $class->setProperties([
             $prop,
@@ -223,7 +220,7 @@ class ClassTest extends TestCase
     public function testRemoveNonExistentProperty()
     {
         $class = new PhpClass();
-        $class->removeProperty('haha');
+        $class->removePropertyByName('haha');
     }
 
     public function testLongDescription()
@@ -234,10 +231,10 @@ class ClassTest extends TestCase
         $this->assertEquals('very long description', $class->getLongDescription());
     }
 
-    public function testDescripion()
+    public function testMultilineDescripion()
     {
         $class = new PhpClass();
-        $class->setDescription(['multiline', 'description']);
+        $class->setMultilineDescription(['multiline', 'description']);
         $this->assertEquals("multiline\ndescription", $class->getDescription());
     }
 }

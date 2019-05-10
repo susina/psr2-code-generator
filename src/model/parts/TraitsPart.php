@@ -1,7 +1,9 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model\parts;
 
 use cristianoc72\codegen\model\PhpTrait;
+use phootwork\collection\Set;
 
 /**
  * Traits part
@@ -13,8 +15,13 @@ use cristianoc72\codegen\model\PhpTrait;
 trait TraitsPart
 {
 
-    /** @var array */
-    private $traits = [];
+    /** @var Set */
+    private $traits;
+
+    private function initTraits()
+    {
+        $this->traits = new Set();
+    }
 
     /**
      * Adds a use statement with an optional alias
@@ -23,7 +30,7 @@ trait TraitsPart
      * @param null|string $alias
      * @return $this
      */
-    abstract public function addUseStatement($qualifiedName, $alias = null);
+    abstract public function addUseStatement(string $qualifiedName, ?string $alias = null);
 
     /**
      * Removes a use statement
@@ -31,14 +38,14 @@ trait TraitsPart
      * @param string $qualifiedName
      * @return $this
      */
-    abstract public function removeUseStatement($qualifiedName);
+    abstract public function removeUseStatement(string $qualifiedName);
 
     /**
      * Returns the namespace
      *
      * @return string
      */
-    abstract public function getNamespace();
+    abstract public function getNamespace(): string;
 
     /**
      * Adds a trait.
@@ -46,26 +53,15 @@ trait TraitsPart
      * If the trait is passed as PhpTrait object,
      * the trait is also added as use statement.
      *
-     * @param PhpTrait|string $trait trait or qualified name
+     * @param PhpTrait $trait trait or qualified name
      * @return $this
      */
-    public function addTrait($trait)
+    public function addTrait(PhpTrait $trait): self
     {
-        if ($trait instanceof PhpTrait) {
-            $name = $trait->getName();
-            $qname = $trait->getQualifiedName();
-            $namespace = $trait->getNamespace();
-
-            if ($namespace != $this->getNamespace()) {
-                $this->addUseStatement($qname);
-            }
-        } else {
-            $name = $trait;
+        if ($trait->getNamespace() != $this->getNamespace()) {
+            $this->addUseStatement($trait->getQualifiedName());
         }
-
-        if (!in_array($name, $this->traits)) {
-            $this->traits[] = $name;
-        }
+        $this->traits->add($trait);
 
         return $this;
     }
@@ -73,9 +69,9 @@ trait TraitsPart
     /**
      * Returns a collection of traits
      *
-     * @return string[]
+     * @return Set
      */
-    public function getTraits()
+    public function getTraits(): Set
     {
         return $this->traits;
     }
@@ -83,16 +79,26 @@ trait TraitsPart
     /**
      * Checks whether a trait exists
      *
-     * @param PhpTrait|string $trait
+     * @param PhpTrait $trait
      * @return bool `true` if it exists and `false` if not
      */
-    public function hasTrait($trait)
+    public function hasTrait(PhpTrait $trait): bool
     {
-        if (!$trait instanceof PhpTrait) {
-            $trait = new PhpTrait($trait);
-        }
-        $name = $trait->getName();
-        return in_array($name, $this->traits);
+        return $this->traits->contains($trait);
+    }
+
+    /**
+     * Checks whether a trait exists
+     *
+     * @param string $name
+     * @return bool `true` if it exists and `false` if not
+     */
+    public function hasTraitByName(string $name): bool
+    {
+        return
+            $this->traits->search($name, function(PhpTrait $element, string $query) {
+                return $element->getName() === $query;
+            });
     }
 
     /**
@@ -101,28 +107,33 @@ trait TraitsPart
      * If the trait is passed as PhpTrait object,
      * the trait is also removed from use statements.
      *
-     * @param PhpTrait|string $trait trait or qualified name
+     * @param PhpTrait $trait trait or qualified name
      * @return $this
      */
-    public function removeTrait($trait)
+    public function removeTrait(PhpTrait $trait): self
     {
-        if ($trait instanceof PhpTrait) {
-            $name = $trait->getName();
-        } else {
-            $name = $trait;
-        }
-
-        $index = array_search($name, $this->traits);
-        if ($index) {
-            unset($this->traits[$name]);
-
-            if ($trait instanceof PhpTrait) {
-                $qname = $trait->getQualifiedName();
-                $this->removeUseStatement($qname);
-            }
-        }
+        $this->removeUseStatement($trait->getQualifiedName());
+        $this->traits->remove($trait);
 
         return $this;
+    }
+
+    /**
+     * Removes a trait.
+     *
+     * If the trait is passed as PhpTrait object,
+     * the trait is also removed from use statements.
+     *
+     * @param string $traitName trait qualified name
+     * @return $this
+     */
+    public function removeTraitByName(string $traitName): self
+    {
+        $toRemove = $this->traits->find($traitName, function(PhpTrait $element, string $query) {
+            return $element->getQualifiedName() === $query;
+        });
+
+        return $this->removeTrait($toRemove);
     }
 
     /**
@@ -130,11 +141,23 @@ trait TraitsPart
      *
      * @param PhpTrait[] $traits
      * @return $this
+     * @throw \InvalidArgumentException if wrong type given
      */
     public function setTraits(array $traits)
     {
+        $this->traits->clear();
         foreach ($traits as $trait) {
-            $this->addTrait($trait);
+            if (is_string($trait)) {
+                $trait = new PhpTrait($trait);
+            }
+
+            if ($trait instanceof PhpTrait) {
+                $this->traits->add($trait);
+                continue;
+            }
+
+            throw new \InvalidArgumentException('`setTrait` function expects an array of `PhpTrait` instance: '
+                . gettype($trait) . ' given.');
         }
 
         return $this;

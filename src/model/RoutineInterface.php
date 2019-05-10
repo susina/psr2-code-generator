@@ -1,5 +1,8 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model;
+
+use phootwork\collection\ArrayList;
 
 interface RoutineInterface
 {
@@ -28,7 +31,7 @@ interface RoutineInterface
      * @param string $name parameter name
      * @return bool `true` if a parameter exists and `false` if not
      */
-    public function hasParameter($name);
+    public function hasParameter(string $name): bool;
     
     /**
      * A quick way to add a parameter which is created from the given parameters
@@ -39,7 +42,7 @@ interface RoutineInterface
      *
      * @return $this
      */
-    public function addSimpleParameter($name, $type = null, $defaultValue = null);
+    public function addSimpleParameter(string $name, ?string $type = null, $defaultValue = null);
     
     /**
      * A quick way to add a parameter with description which is created from the given parameters
@@ -51,17 +54,26 @@ interface RoutineInterface
      *
      * @return $this
      */
-    public function addSimpleDescParameter($name, $type = null, $typeDescription = null, $defaultValue = null);
+    public function addSimpleDescParameter(string $name, ?string $type = null, ?string $typeDescription = null, $defaultValue = null);
     
     /**
-     * Returns a parameter by index or name
+     * Returns a parameter by name
      *
-     * @param string|int $nameOrIndex
+     * @param string $name
      * @throws \InvalidArgumentException
      * @return PhpParameter
      */
-    public function getParameter($nameOrIndex);
-    
+    public function getParameterByName(string $name): PhpParameter;
+
+    /**
+     * Returns a parameter from a given position
+     *
+     * @param int $position
+     * @throws \InvalidArgumentException
+     * @return PhpParameter
+     */
+    public function getParameterByPosition(int $position): PhpParameter;
+
     /**
      * Replaces a parameter at a given position
      *
@@ -70,22 +82,22 @@ interface RoutineInterface
      * @throws \InvalidArgumentException
      * @return $this
      */
-    public function replaceParameter($position, PhpParameter $parameter);
+    public function replaceParameter(int $position, PhpParameter $parameter);
     
     /**
-     * Remove a parameter at a given position
+     * Remove a parameter
      *
-     * @param int|string|PhpParameter $param
+     * @param PhpParameter $param
      * @return $this
      */
-    public function removeParameter($param);
-    
+    public function removeParameter(PhpParameter $param);
+
     /**
      * Returns a collection of parameters
      *
-     * @return array
+     * @return PhpParameter[]
      */
-    public function getParameters();
+    public function getParameters(): array;
     
     /**
      * Set true if a reference is returned of false if not
@@ -93,14 +105,14 @@ interface RoutineInterface
      * @param bool $bool
      * @return $this
      */
-    public function setReferenceReturned($bool);
+    public function setReferenceReturned(bool $bool);
     
     /**
      * Returns whether a reference is returned
      *
      * @return bool
      */
-    public function isReferenceReturned();
+    public function isReferenceReturned(): bool;
     
     /**
      * Sets the body for this
@@ -108,12 +120,12 @@ interface RoutineInterface
      * @param string $body
      * @return $this
      */
-    public function setBody($body);
+    public function setBody(string $body);
     
     /**
      * Returns the body
      *
      * @return string
      */
-    public function getBody();
+    public function getBody(): string;
 }

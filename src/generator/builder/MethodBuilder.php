@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder;
 
 use cristianoc72\codegen\generator\builder\parts\RoutineBuilderPart;
@@ -9,7 +10,7 @@ class MethodBuilder extends AbstractBuilder
 {
     use RoutineBuilderPart;
 
-    public function build(AbstractModel $model)
+    public function build(AbstractModel $model): void
     {
         $this->buildDocblock($model);
         

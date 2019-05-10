@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder\parts;
 
 use cristianoc72\codegen\model\AbstractModel;
@@ -26,15 +27,14 @@ trait TypeBuilderPart
     /**
      *
      * @param AbstractModel $model
-     * @param bool $allowed
      * @return string|null
      */
-    private function getType(AbstractModel $model, $allowed)
+    private function getType(AbstractModel $model): ?string
     {
         $type = $model->getType();
         if (!empty($type) && strpos($type, '|') === false
                 && (!in_array($type, self::$noTypeHints)
-                    || ($allowed && in_array($type, self::$php7typeHints)))
+                    || (in_array($type, self::$php7typeHints)))
                 ) {
             if (isset(self::$typeHintMap[$type])) {
                 return self::$typeHintMap[$type];

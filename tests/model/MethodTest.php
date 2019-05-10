@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpMethod;
@@ -21,13 +21,13 @@ class MethodTest extends TestCase
         $this->assertSame($params, $method->getParameters());
 
         $this->assertSame($method, $method->addParameter($param = new PhpParameter('b')));
-        $this->assertSame($param, $method->getParameter('b'));
-        $this->assertSame($param, $method->getParameter(1));
+        $this->assertSame($param, $method->getParameterByName('b'));
+        $this->assertSame($param, $method->getParameterByPosition(1));
         $params[] = $param;
         $this->assertSame($params, $method->getParameters());
 
-        $this->assertSame($method, $method->removeParameter(0));
-        $this->assertEquals('b', $method->getParameter(0)->getName());
+        $this->assertSame($method, $method->removeParameterByPosition(0));
+        $this->assertEquals('b', $method->getParameterByPosition(0)->getName());
         
         unset($params[0]);
         $this->assertEquals([
@@ -37,14 +37,14 @@ class MethodTest extends TestCase
         $this->assertSame($method, $method->addParameter($param = new PhpParameter('c')));
         $params[] = $param;
         $params = array_values($params);
-        $this->assertSame($params, $method->getParameters());
+        $this->assertEquals($params, $method->getParameters());
 
         $this->assertSame($method, $method->replaceParameter(0, $param = new PhpParameter('a')));
         $params[0] = $param;
-        $this->assertSame($params, $method->getParameters());
+        $this->assertEquals($params, $method->getParameters());
         
         $method->removeParameter($param);
-        $method->removeParameter('c');
+        $method->removeParameterByName('c');
         $this->assertEquals([], $method->getParameters());
     }
 
@@ -54,7 +54,7 @@ class MethodTest extends TestCase
     public function testGetNonExistentParameterByName()
     {
         $method = new PhpMethod('doink');
-        $method->getParameter('x');
+        $method->getParameterByName('x');
     }
 
     /**
@@ -63,7 +63,7 @@ class MethodTest extends TestCase
     public function testGetNonExistentParameterByIndex()
     {
         $method = new PhpMethod('doink');
-        $method->getParameter(5);
+        $method->getParameterByPosition(5);
     }
 
     /**
@@ -81,7 +81,7 @@ class MethodTest extends TestCase
     public function testRemoveNonExistentParameterByIndex()
     {
         $method = new PhpMethod('doink');
-        $method->removeParameter(5);
+        $method->removeParameterByPosition(5);
     }
 
     public function testBody()

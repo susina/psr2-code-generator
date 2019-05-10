@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder;
 
 use cristianoc72\codegen\generator\builder\parts\StructBuilderPart;
@@ -13,7 +14,7 @@ class ClassBuilder extends AbstractBuilder
      * {@inheritDoc}
      * @param PhpClass $model
      */
-    public function build(AbstractModel $model)
+    public function build(AbstractModel $model): void
     {
         $this->sort($model);
         
@@ -31,7 +32,7 @@ class ClassBuilder extends AbstractBuilder
         $this->writer->outdent()->rtrim()->write("}\n");
     }
     
-    private function buildSignature(PhpClass $model)
+    private function buildSignature(PhpClass $model): void
     {
         if ($model->isAbstract()) {
             $this->writer->write('abstract ');
@@ -54,7 +55,7 @@ class ClassBuilder extends AbstractBuilder
         }
     }
     
-    private function sort(PhpClass $model)
+    private function sort(PhpClass $model): void
     {
         $this->sortUseStatements($model);
         $this->sortConstants($model);

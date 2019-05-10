@@ -1,10 +1,13 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\generator;
 
 use cristianoc72\codegen\generator\CodeFileGenerator;
 use cristianoc72\codegen\generator\ModelGenerator;
 use cristianoc72\codegen\model\PhpClass;
-use cristianoc72\codegen\tests\Fixtures;
+use cristianoc72\codegen\model\PhpMethod;
+use cristianoc72\codegen\model\PhpProperty;
+use cristianoc72\codegen\model\PhpTrait;
 use cristianoc72\codegen\tests\parts\TestUtils;
 use cristianoc72\codegen\generator\CodeGenerator;
 use PHPUnit\Framework\TestCase;
@@ -78,7 +81,7 @@ class ClassGeneratorTest extends TestCase
         $class = new PhpClass('Foo\\FooBar');
         $class->addUseStatement('Bam\\Baz');
     
-        $codegen = new CodeFileGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
+        $codegen = new CodeFileGenerator(['generateEmptyDocblock' => false]);
         $code = $codegen->generate($class);
     
         $this->assertEquals($this->getGeneratedContent('FooBar.php'), $code);
@@ -86,7 +89,7 @@ class ClassGeneratorTest extends TestCase
         $class = new PhpClass('Foo\\FooBarWithAlias');
         $class->addUseStatement('Bam\\Baz', 'BamBaz');
     
-        $codegen = new CodeFileGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
+        $codegen = new CodeFileGenerator(['generateEmptyDocblock' => false]);
         $code = $codegen->generate($class);
     
         $this->assertEquals($this->getGeneratedContent('FooBarWithAlias.php'), $code);
@@ -103,19 +106,26 @@ class ClassGeneratorTest extends TestCase
 
     public function testABClass()
     {
-        $class = Fixtures::createABClass();
+        $class = PhpClass::create()
+            ->setName('ABClass')
+            ->setMethod(PhpMethod::create('a'))
+            ->setMethod(PhpMethod::create('b'))
+            ->setProperty(PhpProperty::create('a'))
+            ->setProperty(PhpProperty::create('b'))
+            ->setConstantByName('a', 'foo')
+            ->setConstantByName('b', 'bar');
     
         $modelGenerator = new ModelGenerator();
         $modelCode = $modelGenerator->generate($class);
         $this->assertEquals($this->getGeneratedContent('ABClass.php'), $modelCode);
-        $generator = new CodeGenerator(['generateDocblock' => false]);
+        $generator = new CodeGenerator();
         $code = $generator->generate($class);
         $this->assertEquals($modelCode, $code);
         
-        $modelGenerator = new ModelGenerator(['generateDocblock' => true]);
+        $modelGenerator = new ModelGenerator(['generateEmptyDocblock' => true]);
         $modelCode = $modelGenerator->generate($class);
         $this->assertEquals($this->getGeneratedContent('ABClassWithComments.php'), $modelCode);
-        $generator = new CodeGenerator(['generateDocblock' => true]);
+        $generator = new CodeGenerator(['generateEmptyDocblock' => true]);
         $code = $generator->generate($class);
         $this->assertEquals($modelCode, $code);
     }
@@ -125,7 +135,7 @@ class ClassGeneratorTest extends TestCase
         $class = PhpClass::create('RequireTraitsClass')
             ->addRequiredFile('FooBar.php')
             ->addRequiredFile('ABClass.php')
-            ->addTrait('Iterator');
+            ->addTrait(new PhpTrait('Iterator'));
         
         $generator = new ModelGenerator();
         $code = $generator->generate($class);

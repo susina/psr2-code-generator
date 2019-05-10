@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -41,7 +41,7 @@ class PhpParameter extends AbstractModel implements ValueInterface
      * @param string $name the parameter name
      * @return static
      */
-    public static function create($name = null)
+    public static function create(string $name = null)
     {
         return new static($name);
     }
@@ -51,9 +51,9 @@ class PhpParameter extends AbstractModel implements ValueInterface
      *
      * @param string $name the parameter name
      */
-    public function __construct($name = null)
+    public function __construct(string $name = null)
     {
-        $this->setName($name);
+        $this->setName($name ?? '');
     }
 
     /**
@@ -62,7 +62,7 @@ class PhpParameter extends AbstractModel implements ValueInterface
      * @param bool $bool `true` if passed by reference and `false` if not
      * @return $this
      */
-    public function setPassedByReference($bool)
+    public function setPassedByReference(bool $bool): self
     {
         $this->passedByReference = (boolean) $bool;
 
@@ -74,7 +74,7 @@ class PhpParameter extends AbstractModel implements ValueInterface
      *
      * @return bool `true` if passed by reference and `false` if not
      */
-    public function isPassedByReference()
+    public function isPassedByReference(): bool
     {
         return $this->passedByReference;
     }
@@ -99,7 +99,7 @@ class PhpParameter extends AbstractModel implements ValueInterface
      * @param string $description
      * @return $this
      */
-    public function setTypeDescription($description)
+    public function setTypeDescription(string $description): self
     {
         return $this->setDescription($description);
     }
@@ -110,7 +110,7 @@ class PhpParameter extends AbstractModel implements ValueInterface
      * @see #getDescription
      * @return string
      */
-    public function getTypeDescription()
+    public function getTypeDescription(): string
     {
         return $this->getDescription();
     }

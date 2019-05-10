@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder;
 
 use cristianoc72\codegen\model\AbstractModel;
@@ -9,7 +10,7 @@ class TraitBuilder extends AbstractBuilder
 {
     use StructBuilderPart;
     
-    public function build(AbstractModel $model)
+    public function build(AbstractModel $model): void
     {
         $this->sort($model);
     

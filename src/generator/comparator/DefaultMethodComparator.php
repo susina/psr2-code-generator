@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace cristianoc72\codegen\generator\comparator;
 
 use cristianoc72\codegen\model\PhpMethod;
@@ -15,8 +15,10 @@ class DefaultMethodComparator implements Comparator
     /**
      * @param PhpMethod $a
      * @param PhpMethod $b
+     *
+     * @return int
      */
-    public function compare($a, $b)
+    public function compare($a, $b): int
     {
         if ($a->isStatic() !== $isStatic = $b->isStatic()) {
             return $isStatic ? 1 : -1;

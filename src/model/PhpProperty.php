@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -37,7 +37,7 @@ class PhpProperty extends AbstractPhpMember implements ValueInterface
      * @param string $name the properties name
      * @return static
      */
-    public static function create($name)
+    public static function create(string $name)
     {
         return new static($name);
     }

@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpClass;
@@ -73,7 +74,7 @@ class DocblockTest extends TestCase
 
         $this->assertFalse($class->getDocblock()->isEmpty());
         $this->assertNotNull($class->getProperty(self::PROP)->getDocblock());
-        $this->assertNotNull($class->getMethod(self::METHOD)->getDocblock());
+        $this->assertNotNull($class->getMethodByName(self::METHOD)->getDocblock());
         $this->assertNotNull($class->getConstant(self::CONSTANT)->getDocblock());
 
         $docblock = $class->getDocblock();
@@ -106,7 +107,7 @@ class DocblockTest extends TestCase
         $interface->generateDocblock();
 
         $this->assertFalse($interface->getDocblock()->isEmpty());
-        $this->assertNotNull($interface->getMethod(self::METHOD)->getDocblock());
+        $this->assertNotNull($interface->getMethodByName(self::METHOD)->getDocblock());
         $this->assertNotNull($interface->getConstant(self::CONSTANT)->getDocblock());
     }
 
@@ -125,7 +126,7 @@ class DocblockTest extends TestCase
 
         $this->assertFalse($trait->getDocblock()->isEmpty());
         $this->assertNotNull($trait->getProperty(self::PROP)->getDocblock());
-        $this->assertNotNull($trait->getMethod(self::METHOD)->getDocblock());
+        $this->assertNotNull($trait->getMethodByName(self::METHOD)->getDocblock());
     }
 
     public function testEmptyTrait()

@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model;
 
 /**
@@ -15,12 +16,12 @@ interface NamespaceInterface
      * @param string $namespace
      * @return $this
      */
-    public function setNamespace($namespace);
+    public function setNamespace(string $namespace);
 
     /**
      * Returns the namespace
      *
      * @return string
      */
-    public function getNamespace();
+    public function getNamespace(): string;
 }

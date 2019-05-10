@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder;
 
 use cristianoc72\codegen\config\CodeGeneratorConfig;
@@ -36,7 +37,7 @@ abstract class AbstractBuilder
      * @param AbstractModel $model
      * @return void
      */
-    protected function generate(AbstractModel $model)
+    protected function generate(AbstractModel $model): void
     {
         $builder = $this->generator->getFactory()->getBuilder($model);
         $builder->build($model);
@@ -45,7 +46,7 @@ abstract class AbstractBuilder
     /**
      * @return void
      */
-    protected function ensureBlankLine()
+    protected function ensureBlankLine(): void
     {
         if (!$this->writer->endsWith("\n\n") && (strlen($this->writer->rtrim()->getContent()) > 0) &&
             !$this->writer->endsWith("{\n")) {
@@ -57,12 +58,10 @@ abstract class AbstractBuilder
      * @param DocblockInterface $model
      * @return void
      */
-    protected function buildDocblock(DocblockInterface $model)
+    protected function buildDocblock(DocblockInterface $model): void
     {
         $this->ensureBlankLine();
-        if ($this->config->getGenerateDocblock()) {
-            $model->generateDocblock();
-        }
+        $model->generateDocblock();
         $docblock = $model->getDocblock();
         if (!$docblock->isEmpty() || $this->config->getGenerateEmptyDocblock()) {
             $this->writer->writeln($docblock->toString());

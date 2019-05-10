@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
@@ -23,36 +23,24 @@ namespace cristianoc72\codegen\generator\utils;
  * This may be used to simplify writing well-formatted code.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+ * @author Cristiano Cinotti <cristianocinotti@gmail.com>
  */
 class Writer
 {
+    /** PSR-2 4 spaces indentation */
+    const INDENTATION = '    ';
+
     private $content = '';
     private $indentationLevel = 0;
-    private $indentation;
 
-    private $options = [
-        'indentation_character' => " ",
-        'indentation_size' => 4
-    ];
-
-    public function __construct($options = [])
-    {
-        $this->options = array_merge($this->options, $options);
-
-        $this->indentation = str_repeat(
-            $this->options['indentation_character'],
-            $this->options['indentation_size']
-        );
-    }
-
-    public function indent()
+    public function indent(): self
     {
         $this->indentationLevel += 1;
 
         return $this;
     }
 
-    public function outdent()
+    public function outdent(): self
     {
         $this->indentationLevel = max($this->indentationLevel - 1, 0);
 
@@ -60,10 +48,11 @@ class Writer
     }
 
     /**
-     *
      * @param string $content
+     *
+     * @return Writer
      */
-    public function writeln($content = '')
+    public function writeln(string $content = ''): self
     {
         $this->write($content . "\n");
 
@@ -71,17 +60,18 @@ class Writer
     }
 
     /**
-     *
      * @param string $content
+     *
+     * @return Writer
      */
-    public function write($content)
+    public function write(string $content): self
     {
         $lines = explode("\n", $content);
         for ($i = 0, $c = count($lines); $i < $c; $i++) {
             if ($this->indentationLevel > 0
                     && !empty($lines[$i])
                     && (empty($this->content) || "\n" === substr($this->content, -1))) {
-                $this->content .= str_repeat($this->indentation, $this->indentationLevel);
+                $this->content .= str_repeat(self::INDENTATION, $this->indentationLevel);
             }
 
             $this->content .= $lines[$i];
@@ -94,7 +84,7 @@ class Writer
         return $this;
     }
 
-    public function rtrim()
+    public function rtrim(): self
     {
         $addNl = "\n" === substr($this->content, -1);
         $this->content = rtrim($this->content);
@@ -106,12 +96,17 @@ class Writer
         return $this;
     }
 
-    public function endsWith($search)
+    /**
+     * @param string $search
+     *
+     * @return bool
+     */
+    public function endsWith(string $search): bool
     {
         return substr($this->content, -strlen($search)) === $search;
     }
 
-    public function reset()
+    public function reset(): self
     {
         $this->content = '';
         $this->indentationLevel = 0;
@@ -119,7 +114,10 @@ class Writer
         return $this;
     }
 
-    public function getContent()
+    /**
+     * @return string
+     */
+    public function getContent(): string
     {
         return $this->content;
     }

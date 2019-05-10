@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model\parts;
 
 use gossi\docblock\tags\AbstractTag;
@@ -19,28 +20,28 @@ trait TypeDocblockGeneratorPart
      *
      * @return Docblock
      */
-    abstract protected function getDocblock();
+    abstract public function getDocblock(): Docblock;
 
     /**
      * Returns the type
      *
      * @return string
      */
-    abstract public function getType();
+    abstract public function getType(): string;
 
     /**
      * Returns the type description
      *
      * @return string
      */
-    abstract public function getTypeDescription();
+    abstract public function getTypeDescription(): string;
 
     /**
      * Generates a type tag (return or var) but checks if one exists and updates this one
      *
      * @param AbstractTag $tag
      */
-    protected function generateTypeTag(AbstractTag $tag)
+    protected function generateTypeTag(AbstractTag $tag): void
     {
         $docblock = $this->getDocblock();
         $type = $this->getType();

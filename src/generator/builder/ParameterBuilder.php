@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder;
 
 use cristianoc72\codegen\generator\builder\parts\TypeBuilderPart;
@@ -10,9 +11,9 @@ class ParameterBuilder extends AbstractBuilder
     use ValueBuilderPart;
     use TypeBuilderPart;
 
-    public function build(AbstractModel $model)
+    public function build(AbstractModel $model): void
     {
-        $type = $this->getType($model, $this->config->getGenerateScalarTypeHints());
+        $type = $this->getType($model);
         if ($type !== null) {
             $this->writer->write($type . ' ');
         }

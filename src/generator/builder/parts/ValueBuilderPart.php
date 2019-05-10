@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder\parts;
 
 use cristianoc72\codegen\model\ValueInterface;
@@ -6,7 +7,7 @@ use cristianoc72\codegen\model\PhpConstant;
 
 trait ValueBuilderPart
 {
-    private function writeValue(ValueInterface $model)
+    private function writeValue(ValueInterface $model): void
     {
         if ($model->isExpression()) {
             $this->writer->write($model->getExpression());

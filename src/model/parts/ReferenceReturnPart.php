@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model\parts;
 
 /**
@@ -20,7 +21,7 @@ trait ReferenceReturnPart
      * @param bool $bool
      * @return $this
      */
-    public function setReferenceReturned($bool)
+    public function setReferenceReturned(bool $bool): self
     {
         $this->referenceReturned = (boolean) $bool;
 
@@ -32,7 +33,7 @@ trait ReferenceReturnPart
      *
      * @return bool
      */
-    public function isReferenceReturned()
+    public function isReferenceReturned(): bool
     {
         return $this->referenceReturned;
     }

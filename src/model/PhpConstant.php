@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model;
 
 use cristianoc72\codegen\model\parts\DocblockPart;
@@ -32,7 +33,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
      * @param bool $isExpression
      * @return static
      */
-    public static function create($name = null, $value = null, $isExpression = false)
+    public static function create(string $name= '', $value = null, bool $isExpression = false)
     {
         return new static($name, $value, $isExpression);
     }
@@ -44,11 +45,11 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
      * @param mixed $value
      * @param bool $isExpression
      */
-    public function __construct($name = null, $value = null, $isExpression = false)
+    public function __construct(string $name = '', $value = null, bool $isExpression = false)
     {
         $this->setName($name);
 
-        if ($isExpression) {
+        if ($isExpression && is_string($value)) {
             $this->setExpression($value);
         } else {
             $this->setValue($value);

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -50,7 +50,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param string $name the fqcn
      * @return static
      */
-    public static function create($name = null)
+    public static function create(string $name = null)
     {
         return new static($name);
     }
@@ -60,9 +60,9 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      *
      * @param string $name the fqcn
      */
-    public function __construct($name = null)
+    public function __construct(?string $name = null)
     {
-        $this->setQualifiedName($name);
+        $this->setQualifiedName($name ?? '');
         $this->docblock = new Docblock();
         $this->useStatements = new Map();
         $this->requiredFiles = new Set();
@@ -75,7 +75,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param array $files
      * @return $this
      */
-    public function setRequiredFiles(array $files)
+    public function setRequiredFiles(array $files): self
     {
         $this->requiredFiles = new Set($files);
 
@@ -88,7 +88,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param string $file
      * @return $this
      */
-    public function addRequiredFile($file)
+    public function addRequiredFile(string $file): self
     {
         $this->requiredFiles->add($file);
 
@@ -100,7 +100,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      *
      * @return Set collection of filenames
      */
-    public function getRequiredFiles()
+    public function getRequiredFiles(): Set
     {
         return $this->requiredFiles;
     }
@@ -113,7 +113,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param array $useStatements
      * @return $this
      */
-    public function setUseStatements(array $useStatements)
+    public function setUseStatements(array $useStatements): self
     {
         $this->useStatements->clear();
         foreach ($useStatements as $alias => $useStatement) {
@@ -130,7 +130,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param null|string $alias
      * @return $this
      */
-    public function addUseStatement($qualifiedName, $alias = null)
+    public function addUseStatement(string $qualifiedName, ?string $alias = null): self
     {
         if (!is_string($alias)) {
             if (false === strpos($qualifiedName, '\\')) {
@@ -150,7 +150,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      *
      * @return $this
      */
-    public function clearUseStatements()
+    public function clearUseStatements(): self
     {
         $this->useStatements->clear();
         
@@ -163,7 +163,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param ... use statements multiple qualified names
      * @return $this
      */
-    public function declareUses()
+    public function declareUses(): self
     {
         foreach (func_get_args() as $name) {
             $this->declareUse($name);
@@ -182,7 +182,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param null|string $alias
      * @return string the used alias
      */
-    public function declareUse($qualifiedName, $alias = null)
+    public function declareUse(string $qualifiedName, ?string $alias = null)
     {
         $qualifiedName = trim($qualifiedName, '\\');
         if (!$this->hasUseStatement($qualifiedName)) {
@@ -197,7 +197,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param string $qualifiedName
      * @return bool
      */
-    public function hasUseStatement($qualifiedName)
+    public function hasUseStatement(string $qualifiedName): bool
     {
         return $this->useStatements->contains($qualifiedName);
     }
@@ -208,7 +208,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param string $qualifiedName
      * @return string the alias
      */
-    public function getUseAlias($qualifiedName)
+    public function getUseAlias(string $qualifiedName): string
     {
         return $this->useStatements->getKey($qualifiedName);
     }
@@ -219,7 +219,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param string $qualifiedName
      * @return $this
      */
-    public function removeUseStatement($qualifiedName)
+    public function removeUseStatement(string $qualifiedName): self
     {
         $this->useStatements->remove($this->useStatements->getKey($qualifiedName));
         return $this;
@@ -230,7 +230,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      *
      * @return Map collection of use statements
      */
-    public function getUseStatements()
+    public function getUseStatements(): Map
     {
         return $this->useStatements;
     }
@@ -241,7 +241,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param PhpMethod[] $methods
      * @return $this
      */
-    public function setMethods(array $methods)
+    public function setMethods(array $methods): self
     {
         foreach ($this->methods as $method) {
             $method->setParent(null);
@@ -261,7 +261,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @param PhpMethod $method
      * @return $this
      */
-    public function setMethod(PhpMethod $method)
+    public function setMethod(PhpMethod $method): self
     {
         $method->setParent($this);
         $this->methods->set($method->getName(), $method);
@@ -272,59 +272,82 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
     /**
      * Removes a method
      *
-     * @param string|PhpMethod $nameOrMethod method name or Method instance
-     * @throws \InvalidArgumentException if the method cannot be found
+     * @param string $name method name or Method instance
+     * @return $this
+     * @throws \InvalidArgumentException If the method does not exist
+     */
+    public function removeMethodByName(string $name): self
+    {
+        if (!$this->methods->has($name)) {
+            throw new \InvalidArgumentException(sprintf('The method "%s" does not exist.', $name));
+        }
+        $m = $this->methods->get($name);
+        $m->setParent(null);
+        $this->methods->remove($name);
+
+        return $this;
+    }
+
+    /**
+     * Removes a method
+     *
+     * @param PhpMethod $method Method instance
      * @return $this
      */
-    public function removeMethod($nameOrMethod)
+    public function removeMethod(PhpMethod $method): self
     {
-        if ($nameOrMethod instanceof PhpMethod) {
-            $nameOrMethod = $nameOrMethod->getName();
-        }
-
-        if (!$this->methods->has($nameOrMethod)) {
-            throw new \InvalidArgumentException(sprintf('The method "%s" does not exist.', $nameOrMethod));
-        }
-        $m = $this->methods->get($nameOrMethod);
-        $m->setParent(null);
-        $this->methods->remove($nameOrMethod);
-
+        $this->removeMethodByName($method->getName());
         return $this;
     }
 
     /**
      * Checks whether a method exists or not
      *
-     * @param string|PhpMethod $nameOrMethod method name or Method instance
+     * @param PhpMethod $method
      * @return bool `true` if it exists and `false` if not
      */
-    public function hasMethod($nameOrMethod)
+    public function hasMethod(PhpMethod $method): bool
     {
-        if ($nameOrMethod instanceof PhpMethod) {
-            $nameOrMethod = $nameOrMethod->getName();
-        }
+        return $this->hasMethodByName($method->getName());
+    }
 
-        return $this->methods->has($nameOrMethod);
+    /**
+     * Checks whether a method exists or not
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function hasMethodByName(string $name): bool
+    {
+        return $this->methods->has($name);
     }
 
     /**
      * Returns a method
      *
-     * @param string $nameOrMethod the methods name
+     * @param PhpMethod $method
      * @throws \InvalidArgumentException if the method cannot be found
      * @return PhpMethod
      */
-    public function getMethod($nameOrMethod)
+    public function getMethod(PhpMethod $method)
     {
-        if ($nameOrMethod instanceof PhpMethod) {
-            $nameOrMethod = $nameOrMethod->getName();
+        return $this->getMethodByName($method->getName());
+    }
+
+    /**
+     * Returns amethod
+     *
+     * @param string $name
+     * @return PhpMethod
+     * @throws \InvalidArgumentException If the method does not exists
+     */
+    public function getMethodByName(string $name): PhpMethod
+    {
+        if (!$this->methods->has($name)) {
+            throw new \InvalidArgumentException(sprintf('The method "%s" does not exist.', $name));
         }
 
-        if (!$this->methods->has($nameOrMethod)) {
-            throw new \InvalidArgumentException(sprintf('The method "%s" does not exist.', $nameOrMethod));
-        }
-
-        return $this->methods->get($nameOrMethod);
+        return $this->methods->get($name);
     }
 
     /**
@@ -332,7 +355,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      *
      * @return Map collection of methods
      */
-    public function getMethods()
+    public function getMethods(): Map
     {
         return $this->methods;
     }
@@ -342,7 +365,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      *
      * @return Set
      */
-    public function getMethodNames()
+    public function getMethodNames(): Set
     {
         return $this->methods->keys();
     }
@@ -352,11 +375,11 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      *
      * @return $this
      */
-    public function clearMethods()
+    public function clearMethods(): self
     {
-        foreach ($this->methods as $method) {
-            $method->setParent(null);
-        }
+        $this->methods->each(function(string $key, PhpMethod $element) {
+            $element->setParent(null);
+        });
         $this->methods->clear();
 
         return $this;

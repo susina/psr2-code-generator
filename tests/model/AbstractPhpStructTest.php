@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpClass;
@@ -27,7 +27,7 @@ class AbstractPhpStructTest extends TestCase
     public function testQualifiedName()
     {
         $class = new PhpClass();
-        $this->assertNull($class->getName());
+        $this->assertEquals('', $class->getName());
 
         $class = new PhpClass('foo');
         $this->assertEquals('foo', $class->getName());
@@ -94,8 +94,9 @@ class AbstractPhpStructTest extends TestCase
         $this->assertSame([
             'foo' => $method
         ], $class->getMethods()->toArray());
-        $this->assertTrue($class->hasMethod('foo'));
-        $this->assertSame($method, $class->getMethod('foo'));
+        $this->assertTrue($class->hasMethodByName('foo'));
+        $this->assertTrue($class->hasMethod($method));
+        $this->assertSame($method, $class->getMethodByName('foo'));
         $this->assertSame($class, $class->removeMethod($method));
         $this->assertEquals([], $class->getMethods()->toArray());
         $class->setMethod($orphaned = new PhpMethod('orphaned'));
@@ -121,7 +122,7 @@ class AbstractPhpStructTest extends TestCase
         $this->assertTrue($class->getMethods()->isEmpty());
 
         try {
-            $this->assertEmpty($class->getMethod('method-not-found'));
+            $this->assertEmpty($class->getMethodByName('method-not-found'));
         } catch (\InvalidArgumentException $e) {
             $this->assertNotNull($e);
         }
@@ -133,7 +134,7 @@ class AbstractPhpStructTest extends TestCase
     public function testRemoveMethodThrowsExceptionWhenConstantDoesNotExist()
     {
         $class = new PhpClass();
-        $class->removeMethod('foo');
+        $class->removeMethodByName('foo');
     }
 
     /**
@@ -142,7 +143,7 @@ class AbstractPhpStructTest extends TestCase
     public function testGetMethodThrowsExceptionWhenConstantDoesNotExist()
     {
         $class = new PhpClass();
-        $class->getMethod('foo');
+        $class->getMethodByName('foo');
     }
 
     public function testDocblock()

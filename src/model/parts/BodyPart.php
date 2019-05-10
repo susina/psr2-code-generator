@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model\parts;
 
 /**
@@ -20,7 +21,7 @@ trait BodyPart
      * @param string $body
      * @return $this
      */
-    public function setBody($body)
+    public function setBody(string $body): self
     {
         $this->body = $body;
 
@@ -32,7 +33,7 @@ trait BodyPart
      *
      * @return string
      */
-    public function getBody()
+    public function getBody(): string
     {
         return $this->body;
     }

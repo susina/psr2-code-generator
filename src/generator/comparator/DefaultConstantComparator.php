@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\comparator;
 
 use cristianoc72\codegen\model\PhpConstant;
@@ -17,12 +18,14 @@ class DefaultConstantComparator implements Comparator
     {
         $this->comparator = new DefaultUseStatementComparator();
     }
-    
+
     /**
      * @param PhpConstant $a
      * @param PhpConstant $b
+     *
+     * @return int
      */
-    public function compare($a, $b)
+    public function compare($a, $b): int
     {
         return $this->comparator->compare($a->getName(), $b->getName());
     }

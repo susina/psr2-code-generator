@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -43,16 +43,16 @@ class PhpMethod extends AbstractPhpMember implements RoutineInterface
      * Creates a new PHP method.
      *
      * @param string $name the method name
+     * @return static
      */
-    public static function create($name)
+    public static function create(string $name)
     {
         return new static($name);
     }
     
-    public function __construct($name)
+    public function __construct(string $name)
     {
         parent::__construct($name);
-        $this->initParameters();
     }
 
     /**

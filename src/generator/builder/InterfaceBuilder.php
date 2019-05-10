@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder;
 
 use cristianoc72\codegen\generator\builder\parts\StructBuilderPart;
@@ -9,7 +10,7 @@ class InterfaceBuilder extends AbstractBuilder
 {
     use StructBuilderPart;
     
-    public function build(AbstractModel $model)
+    public function build(AbstractModel $model): void
     {
         $this->sort($model);
     
@@ -25,7 +26,7 @@ class InterfaceBuilder extends AbstractBuilder
         $this->writer->outdent()->rtrim()->write("}\n");
     }
     
-    private function buildSignature(PhpInterface $model)
+    private function buildSignature(PhpInterface $model): void
     {
         $this->writer->write('interface ');
         $this->writer->write($model->getName());
@@ -36,7 +37,7 @@ class InterfaceBuilder extends AbstractBuilder
         }
     }
     
-    private function sort(PhpInterface $model)
+    private function sort(PhpInterface $model): void
     {
         $this->sortUseStatements($model);
         $this->sortConstants($model);

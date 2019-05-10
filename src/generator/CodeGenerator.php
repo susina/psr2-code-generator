@@ -1,7 +1,9 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator;
 
 use cristianoc72\codegen\config\CodeGeneratorConfig;
+use cristianoc72\codegen\model\AbstractModel;
 use cristianoc72\codegen\model\GenerateableInterface;
 
 /**
@@ -53,7 +55,7 @@ class CodeGenerator
      *
      * @return CodeGeneratorConfig
      */
-    public function getConfig()
+    public function getConfig(): CodeGeneratorConfig
     {
         return $this->config;
     }
@@ -61,10 +63,10 @@ class CodeGenerator
     /**
      * Generates code from a given model
      *
-     * @param GenerateableInterface $model
+     * @param AbstractModel $model
      * @return string the generated code
      */
-    public function generate(GenerateableInterface $model)
+    public function generate(AbstractModel $model): string
     {
         return $this->generator->generate($model);
     }

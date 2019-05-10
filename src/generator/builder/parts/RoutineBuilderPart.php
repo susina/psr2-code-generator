@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder\parts;
 
 use cristianoc72\codegen\model\AbstractModel;
@@ -13,8 +14,8 @@ trait RoutineBuilderPart
      * @return void
      */
     abstract protected function generate(AbstractModel $model);
-    
-    protected function writeFunctionStatement(RoutineInterface $model)
+
+    protected function writeFunctionStatement(RoutineInterface $model): void
     {
         $this->writer->write('function ');
         
@@ -28,7 +29,7 @@ trait RoutineBuilderPart
         $this->writeFunctionReturnType($model);
     }
     
-    protected function writeParameters(RoutineInterface $model)
+    protected function writeParameters(RoutineInterface $model): void
     {
         $first = true;
         foreach ($model->getParameters() as $parameter) {
@@ -41,15 +42,15 @@ trait RoutineBuilderPart
         }
     }
     
-    protected function writeFunctionReturnType(RoutineInterface $model)
+    protected function writeFunctionReturnType(RoutineInterface $model): void
     {
-        $type = $this->getType($model, $this->config->getGenerateReturnTypeHints());
-        if ($type !== null && $this->config->getGenerateReturnTypeHints()) {
+        $type = $this->getType($model);
+        if ($type !== null) {
             $this->writer->write(': ')->write($type);
         }
     }
     
-    protected function writeBody(RoutineInterface $model)
+    protected function writeBody(RoutineInterface $model): void
     {
         $this->writer->writeln("\n{\n")->indent();
         $this->writer->writeln(trim($model->getBody()));

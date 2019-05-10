@@ -1,7 +1,10 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator;
 
 use cristianoc72\codegen\config\CodeFileGeneratorConfig;
+use cristianoc72\codegen\config\CodeGeneratorConfig;
+use cristianoc72\codegen\model\AbstractModel;
 use cristianoc72\codegen\model\GenerateableInterface;
 use phootwork\lang\Text;
 
@@ -41,9 +44,9 @@ class CodeFileGenerator extends CodeGenerator
     /**
      * {@inheritDoc}
      *
-     * @return CodeFileGeneratorConfig
+     * @return CodeGeneratorConfig
      */
-    public function getConfig()
+    public function getConfig(): CodeGeneratorConfig
     {
         return $this->config;
     }
@@ -51,9 +54,9 @@ class CodeFileGenerator extends CodeGenerator
     /**
      * {@inheritDoc}
      */
-    public function generate(GenerateableInterface $model)
+    public function generate(AbstractModel $model): string
     {
-        $content = "<?php\n";
+        $content = "<?php declare(strict_types=1);\n\n";
 
         $comment = $this->config->getHeaderComment();
         if ($comment !== null && !$comment->isEmpty()) {
@@ -65,13 +68,9 @@ class CodeFileGenerator extends CodeGenerator
             $content .= $docblock->toString() . "\n";
         }
 
-        if ($this->config->getDeclareStrictTypes()) {
-            $content .= "declare(strict_types=1);\n\n";
-        }
-
         $content .= parent::generate($model);
 
-        if ($this->config->getBlankLineAtEnd() && !Text::create($content)->endsWith("\n")) {
+        if (!Text::create($content)->endsWith("\n")) {
             $content .= "\n";
         }
 

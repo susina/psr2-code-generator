@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model\parts;
 
 /**
@@ -19,7 +20,7 @@ trait AbstractPart
      *
      * @return bool `true` for abstract and `false` if not
      */
-    public function isAbstract()
+    public function isAbstract(): bool
     {
         return $this->abstract;
     }
@@ -30,7 +31,7 @@ trait AbstractPart
      * @param bool $bool `true` for abstract and `false` if not
      * @return $this
      */
-    public function setAbstract($bool)
+    public function setAbstract(bool $bool): self
     {
         $this->abstract = (boolean) $bool;
 
