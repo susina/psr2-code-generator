@@ -96,7 +96,7 @@ trait TraitsPart
     public function hasTraitByName(string $name): bool
     {
         return
-            $this->traits->search($name, function(PhpTrait $element, string $query) {
+            $this->traits->search($name, function (PhpTrait $element, string $query) {
                 return $element->getName() === $query;
             });
     }
@@ -129,7 +129,7 @@ trait TraitsPart
      */
     public function removeTraitByName(string $traitName): self
     {
-        $toRemove = $this->traits->find($traitName, function(PhpTrait $element, string $query) {
+        $toRemove = $this->traits->find($traitName, function (PhpTrait $element, string $query) {
             return $element->getQualifiedName() === $query;
         });
 

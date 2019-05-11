@@ -5,8 +5,6 @@ namespace cristianoc72\codegen\generator;
 use cristianoc72\codegen\config\CodeFileGeneratorConfig;
 use cristianoc72\codegen\config\CodeGeneratorConfig;
 use cristianoc72\codegen\model\AbstractModel;
-use cristianoc72\codegen\model\GenerateableInterface;
-use phootwork\lang\Text;
 
 /**
  * Code file generator.
@@ -69,10 +67,6 @@ class CodeFileGenerator extends CodeGenerator
         }
 
         $content .= parent::generate($model);
-
-        if (!Text::create($content)->endsWith("\n")) {
-            $content .= "\n";
-        }
 
         return $content;
     }

@@ -88,7 +88,7 @@ class BuilderFactory
         if ($model instanceof PhpTrait) {
             return $this->traitBuilder;
         }
-        
-        return null;
+
+        throw new \InvalidArgumentException(sprintf("No builder for '%s' objects.", get_class($model)));
     }
 }

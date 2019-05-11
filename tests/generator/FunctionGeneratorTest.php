@@ -32,7 +32,8 @@ class FunctionGeneratorTest extends TestCase
         $method = PhpFunction::create('foo')
             ->addParameter(PhpParameter::create('bar'))
             ->addParameter(PhpParameter::create('baz'));
-        $this->assertEquals("/**\n * @param \$bar\n * @param \$baz\n */\nfunction foo(\$bar, \$baz)\n{\n}\n",
+        $this->assertEquals(
+            "/**\n * @param \$bar\n * @param \$baz\n */\nfunction foo(\$bar, \$baz)\n{\n}\n",
             $generator->generate($method)
         );
     }

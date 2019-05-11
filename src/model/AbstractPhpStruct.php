@@ -377,7 +377,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      */
     public function clearMethods(): self
     {
-        $this->methods->each(function(string $key, PhpMethod $element) {
+        $this->methods->each(function (string $key, PhpMethod $element) {
             $element->setParent(null);
         });
         $this->methods->clear();
