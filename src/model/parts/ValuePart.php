@@ -45,7 +45,7 @@ trait ValuePart
     /**
      * Sets the value
      *
-     * @param string|integer|float|bool|null|PhpConstant $value
+     * @param mixed $value
      * @throws \InvalidArgumentException if the value is not an accepted primitve
      * @return $this
      */

@@ -2,10 +2,12 @@
 
 namespace cristianoc72\codegen\generator\builder\parts;
 
+use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\generator\comparator\DefaultConstantComparator;
 use cristianoc72\codegen\generator\comparator\DefaultMethodComparator;
 use cristianoc72\codegen\generator\comparator\DefaultPropertyComparator;
 use cristianoc72\codegen\generator\comparator\DefaultUseStatementComparator;
+use cristianoc72\codegen\generator\utils\Writer;
 use cristianoc72\codegen\model\AbstractModel;
 use cristianoc72\codegen\model\AbstractPhpStruct;
 use cristianoc72\codegen\model\ConstantsInterface;
@@ -34,6 +36,10 @@ trait StructBuilderPart
      * @return void
      */
     abstract protected function buildDocblock(DocblockInterface $model);
+
+    abstract protected function getConfig(): GeneratorConfig;
+
+    abstract protected function getWriter(): Writer;
     
     protected function buildHeader(AbstractPhpStruct $model): void
     {
@@ -46,7 +52,7 @@ trait StructBuilderPart
     protected function buildNamespace(NamespaceInterface $model): void
     {
         if ($namespace = $model->getNamespace()) {
-            $this->writer->writeln('namespace ' . $namespace . ';');
+            $this->getWriter()->writeln('namespace ' . $namespace . ';');
         }
     }
     
@@ -55,7 +61,7 @@ trait StructBuilderPart
         if ($files = $model->getRequiredFiles()) {
             $this->ensureBlankLine();
             foreach ($files as $file) {
-                $this->writer->writeln('require_once ' . var_export($file, true) . ';');
+                $this->getWriter()->writeln('require_once ' . var_export($file, true) . ';');
             }
         }
     }
@@ -65,24 +71,24 @@ trait StructBuilderPart
         if ($useStatements = $model->getUseStatements()) {
             $this->ensureBlankLine();
             foreach ($useStatements as $alias => $namespace) {
-                if (false === strpos($namespace, '\\')) {
-                    $commonName = $namespace;
+                if (false !== $pos = strrpos($namespace, '\\')) {
+                    $commonName = substr($namespace, $pos + 1);
                 } else {
-                    $commonName = substr($namespace, strrpos($namespace, '\\') + 1);
+                    $commonName = $namespace;
                 }
     
-                if (false === strpos($namespace, '\\') && !$model->getNamespace()) {
+                if (false === $pos && !$model->getNamespace()) {
                     //avoid fatal 'The use statement with non-compound name '$commonName' has no effect'
                     continue;
                 }
     
-                $this->writer->write('use ' . $namespace);
+                $this->getWriter()->write('use ' . $namespace);
     
                 if ($commonName !== $alias) {
-                    $this->writer->write(' as ' . $alias);
+                    $this->getWriter()->write(' as ' . $alias);
                 }
     
-                $this->writer->writeln(';');
+                $this->getWriter()->writeln(';');
             }
             $this->ensureBlankLine();
         }
@@ -92,8 +98,8 @@ trait StructBuilderPart
     {
         /** @var PhpTrait $trait */
         foreach ($model->getTraits() as $trait) {
-            $this->writer->write('use ');
-            $this->writer->writeln($trait->getName() . ';');
+            $this->getWriter()->write('use ');
+            $this->getWriter()->writeln($trait->getName() . ';');
         }
     }
     
@@ -120,9 +126,9 @@ trait StructBuilderPart
     
     private function sortUseStatements(AbstractPhpStruct $model): void
     {
-        if ($this->config->isSortingEnabled()
-                && ($useStatementSorting = $this->config->getUseStatementSorting()) !== false) {
-            if (is_string($useStatementSorting)) {
+        if ($this->getConfig()->isSortingEnabled()
+                && ($useStatementSorting = $this->getConfig()->getUseStatementSorting()) !== false) {
+            if (is_string($useStatementSorting) || true === $useStatementSorting) {
                 $useStatementSorting = new DefaultUseStatementComparator();
             }
             $model->getUseStatements()->sort($useStatementSorting);
@@ -131,9 +137,9 @@ trait StructBuilderPart
     
     private function sortConstants(ConstantsInterface $model): void
     {
-        if ($this->config->isSortingEnabled()
-                && ($constantSorting = $this->config->getConstantSorting()) !== false) {
-            if (is_string($constantSorting)) {
+        if ($this->getConfig()->isSortingEnabled()
+                && ($constantSorting = $this->getConfig()->getConstantSorting()) !== false) {
+            if (is_string($constantSorting) || true === $constantSorting) {
                 $constantSorting = new DefaultConstantComparator();
             }
             $model->getConstants()->sort($constantSorting);
@@ -142,9 +148,9 @@ trait StructBuilderPart
     
     private function sortProperties(PropertiesInterface $model)
     {
-        if ($this->config->isSortingEnabled()
-                && ($propertySorting = $this->config->getPropertySorting()) !== false) {
-            if (is_string($propertySorting)) {
+        if ($this->getConfig()->isSortingEnabled()
+                && ($propertySorting = $this->getConfig()->getPropertySorting()) !== false) {
+            if (is_string($propertySorting) || true === $propertySorting) {
                 $propertySorting = new DefaultPropertyComparator();
             }
             $model->getProperties()->sort($propertySorting);
@@ -153,9 +159,9 @@ trait StructBuilderPart
         
     private function sortMethods(AbstractPhpStruct $model)
     {
-        if ($this->config->isSortingEnabled()
-                && ($methodSorting = $this->config->getMethodSorting()) !== false) {
-            if (is_string($methodSorting)) {
+        if ($this->getConfig()->isSortingEnabled()
+                && ($methodSorting = $this->getConfig()->getMethodSorting()) !== false) {
+            if (is_string($methodSorting) || true === $methodSorting) {
                 $methodSorting = new DefaultMethodComparator();
             }
             $model->getMethods()->sort($methodSorting);

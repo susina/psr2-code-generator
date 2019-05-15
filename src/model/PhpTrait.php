@@ -37,5 +37,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
         foreach ($this->properties as $prop) {
             $prop->generateDocblock();
         }
+
+        return $this;
     }
 }

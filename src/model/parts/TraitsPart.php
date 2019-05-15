@@ -18,34 +18,10 @@ trait TraitsPart
     /** @var Set */
     private $traits;
 
-    private function initTraits()
+    private function initTraits(): void
     {
         $this->traits = new Set();
     }
-
-    /**
-     * Adds a use statement with an optional alias
-     *
-     * @param string $qualifiedName
-     * @param null|string $alias
-     * @return $this
-     */
-    abstract public function addUseStatement(string $qualifiedName, ?string $alias = null);
-
-    /**
-     * Removes a use statement
-     *
-     * @param string $qualifiedName
-     * @return $this
-     */
-    abstract public function removeUseStatement(string $qualifiedName);
-
-    /**
-     * Returns the namespace
-     *
-     * @return string
-     */
-    abstract public function getNamespace(): string;
 
     /**
      * Adds a trait.
@@ -92,11 +68,13 @@ trait TraitsPart
      *
      * @param string $name
      * @return bool `true` if it exists and `false` if not
+     *
+     * @psalm-suppress TooManyArguments
      */
     public function hasTraitByName(string $name): bool
     {
         return
-            $this->traits->search($name, function (PhpTrait $element, string $query) {
+            $this->traits->search($name, function (PhpTrait $element, string $query): bool {
                 return $element->getName() === $query;
             });
     }
@@ -126,10 +104,12 @@ trait TraitsPart
      *
      * @param string $traitName trait qualified name
      * @return $this
+     *
+     * @psalm-suppress TooManyArguments
      */
     public function removeTraitByName(string $traitName): self
     {
-        $toRemove = $this->traits->find($traitName, function (PhpTrait $element, string $query) {
+        $toRemove = $this->traits->find($traitName, function(PhpTrait $element, string $query): bool {
             return $element->getQualifiedName() === $query;
         });
 
@@ -139,7 +119,7 @@ trait TraitsPart
     /**
      * Sets a collection of traits
      *
-     * @param PhpTrait[] $traits
+     * @param array $traits
      * @return $this
      * @throw \InvalidArgumentException if wrong type given
      */

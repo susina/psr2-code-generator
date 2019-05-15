@@ -1,22 +1,25 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\generator;
 
+use cristianoc72\codegen\generator\builder\PropertyBuilder;
+use cristianoc72\codegen\generator\builder\TraitBuilder;
 use cristianoc72\codegen\generator\ModelGenerator;
+use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpProperty;
 use cristianoc72\codegen\model\PhpConstant;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator
  */
-class PropertyGeneratorTest extends TestCase
+class PropertyGeneratorTest extends GeneratorTestCase
 {
     public function testPublic()
     {
         $expected = 'public $foo;'."\n";
     
         $prop = PhpProperty::create('foo');
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($prop);
     
         $this->assertEquals($expected, $code);
@@ -27,7 +30,7 @@ class PropertyGeneratorTest extends TestCase
         $expected = 'protected $foo;'."\n";
 
         $prop = PhpProperty::create('foo')->setVisibility(PhpProperty::VISIBILITY_PROTECTED);
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($prop);
 
         $this->assertEquals($expected, $code);
@@ -38,7 +41,7 @@ class PropertyGeneratorTest extends TestCase
         $expected = 'private $foo;'."\n";
     
         $prop = PhpProperty::create('foo')->setVisibility(PhpProperty::VISIBILITY_PRIVATE);
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($prop);
     
         $this->assertEquals($expected, $code);
@@ -49,7 +52,7 @@ class PropertyGeneratorTest extends TestCase
         $expected = 'public static $foo;'."\n";
     
         $prop = PhpProperty::create('foo')->setStatic(true);
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($prop);
     
         $this->assertEquals($expected, $code);
@@ -57,7 +60,7 @@ class PropertyGeneratorTest extends TestCase
     
     public function testValues()
     {
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         
         $prop = PhpProperty::create('foo')->setValue('string');
         $this->assertEquals('public $foo = \'string\';'."\n", $generator->generate($prop));
@@ -82,5 +85,16 @@ class PropertyGeneratorTest extends TestCase
         
         $prop = PhpProperty::create('foo')->setExpression("['bar' => 'baz']");
         $this->assertEquals('public $foo = [\'bar\' => \'baz\'];'."\n", $generator->generate($prop));
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testWrongClassThrowsException()
+    {
+        $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
+        $wrongModel = PhpMethod::create('myMethod');
+        $builder = new PropertyBuilder($generator);
+        $builder->build($wrongModel);
     }
 }

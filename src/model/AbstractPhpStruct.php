@@ -133,10 +133,10 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
     public function addUseStatement(string $qualifiedName, ?string $alias = null): self
     {
         if (!is_string($alias)) {
-            if (false === strpos($qualifiedName, '\\')) {
-                $alias = $qualifiedName;
+            if (false !== $pos = strrpos($qualifiedName, '\\')) {
+                $alias = substr($qualifiedName, $pos + 1);
             } else {
-                $alias = substr($qualifiedName, strrpos($qualifiedName, '\\') + 1);
+                $alias = $qualifiedName;
             }
         }
 

@@ -79,7 +79,9 @@ trait ParametersPart
     public function addSimpleParameter(string $name, ?string $type = null, $defaultValue = null): self
     {
         $parameter = new PhpParameter($name);
-        $parameter->setType($type);
+        if (null !== $type) {
+            $parameter->setType($type);
+        }
 
         if (2 < func_num_args()) {
             $parameter->setValue($defaultValue);
@@ -228,7 +230,7 @@ trait ParametersPart
     /**
      * Returns an array of parameters
      *
-     * @return array
+     * @return PhpParameter[]
      */
     public function getParameters(): array
     {
@@ -244,6 +246,8 @@ trait ParametersPart
 
     /**
      * Generates docblock for params
+     *
+     * @psalm-suppress TooManyArguments
      */
     protected function generateParamDocblock()
     {

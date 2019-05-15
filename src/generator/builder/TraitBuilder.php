@@ -12,6 +12,10 @@ class TraitBuilder extends AbstractBuilder
     
     public function build(AbstractModel $model): void
     {
+        if (! $model instanceof PhpTrait) {
+            throw new \InvalidArgumentException('The trait builder can only build Trait classes.');
+        }
+
         $this->sort($model);
     
         $this->buildHeader($model);
@@ -20,17 +24,17 @@ class TraitBuilder extends AbstractBuilder
         $this->buildSignature($model);
     
         // body
-        $this->writer->writeln("\n{\n")->indent();
+        $this->getWriter()->writeln("\n{\n")->indent();
         $this->buildTraits($model);
         $this->buildProperties($model);
         $this->buildMethods($model);
-        $this->writer->outdent()->rtrim()->write("}\n");
+        $this->getWriter()->outdent()->rtrim()->write("}\n");
     }
     
     private function buildSignature(PhpTrait $model)
     {
-        $this->writer->write('trait ');
-        $this->writer->write($model->getName());
+        $this->getWriter()->write('trait ');
+        $this->getWriter()->write($model->getName());
     }
     
     private function sort(PhpTrait $model)

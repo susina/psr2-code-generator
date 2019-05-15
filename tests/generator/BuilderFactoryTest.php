@@ -14,7 +14,10 @@ class BuilderFactoryTest extends TestCase
      */
     public function testWrongModelClassThrowsException()
     {
-        $generator = $this->getMockBuilder(ModelGenerator::class)->getMock();
+        $generator = $this->getMockBuilder(ModelGenerator::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
         $model = new FakeModel();
         $builderFactory = new BuilderFactory($generator);
         $builderFactory->getBuilder($model);

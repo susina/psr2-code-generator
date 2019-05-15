@@ -2,7 +2,7 @@
 
 namespace cristianoc72\codegen\generator;
 
-use cristianoc72\codegen\config\CodeGeneratorConfig;
+use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\generator\utils\Writer;
 use cristianoc72\codegen\model\AbstractModel;
 
@@ -10,6 +10,7 @@ use cristianoc72\codegen\model\AbstractModel;
  * Model Generator
  *
  * @author Thomas Gossmann
+ * @author Cristiano Cinotti
  */
 class ModelGenerator
 {
@@ -20,31 +21,24 @@ class ModelGenerator
     /** @var BuilderFactory */
     private $factory;
     
-    /** @var CodeGeneratorConfig */
+    /** @var GeneratorConfig */
     private $config;
 
     /**
      *
-     * @param CodeGeneratorConfig|array $config
+     * @param GeneratorConfig $config
      */
-    public function __construct($config = null)
+    public function __construct(GeneratorConfig $config)
     {
-        if (is_array($config)) {
-            $this->config = new CodeGeneratorConfig($config);
-        } elseif ($config instanceof CodeGeneratorConfig) {
-            $this->config = $config;
-        } else {
-            $this->config = new CodeGeneratorConfig();
-        }
-        
+        $this->config = $config;
         $this->writer = new Writer();
         $this->factory = new BuilderFactory($this);
     }
     
     /**
-     * @return CodeGeneratorConfig
+     * @return GeneratorConfig
      */
-    public function getConfig(): CodeGeneratorConfig
+    public function getConfig(): GeneratorConfig
     {
         return $this->config;
     }

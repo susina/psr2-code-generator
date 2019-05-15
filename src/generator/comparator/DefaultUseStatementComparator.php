@@ -34,7 +34,7 @@ class DefaultUseStatementComparator implements Comparator
     
     private function getAscii(?string $str): int
     {
-        $ord = ord($str);
+        $ord = ord($str ?? '');
         if ($ord >= 65 && $ord <= 90) {
             $ord += 32;
         } elseif ($ord >= 97 && $ord <= 122) {

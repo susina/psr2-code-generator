@@ -28,7 +28,7 @@ trait TypePart
     public function setType(string $type, string $description = '')
     {
         $this->type = $type;
-        if (null !== $description) {
+        if ('' !== $description) {
             $this->setTypeDescription($description);
         }
 

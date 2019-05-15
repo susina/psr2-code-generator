@@ -37,5 +37,7 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
         foreach ($this->constants as $constant) {
             $constant->generateDocblock();
         }
+
+        return $this;
     }
 }

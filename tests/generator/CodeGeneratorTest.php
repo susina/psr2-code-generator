@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 namespace cristianoc72\codegen\tests\generator;
 
-use cristianoc72\codegen\config\CodeGeneratorConfig;
+use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\generator\CodeGenerator;
 use PHPUnit\Framework\TestCase;
 
@@ -10,13 +10,21 @@ use PHPUnit\Framework\TestCase;
  */
 class CodeGeneratorTest extends TestCase
 {
-    public function testConfig()
+    public function testConstructor()
     {
         $generator = new CodeGenerator(null);
-        $this->assertTrue($generator->getConfig() instanceof CodeGeneratorConfig);
+        $this->assertTrue($generator->getConfig() instanceof GeneratorConfig);
         
-        $config = new CodeGeneratorConfig();
+        $config = new GeneratorConfig();
         $generator = new CodeGenerator($config);
         $this->assertSame($config, $generator->getConfig());
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testPassWrongConfigThrowsException()
+    {
+        $generator = new CodeGenerator(256);
     }
 }

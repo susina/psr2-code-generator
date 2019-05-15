@@ -2,6 +2,7 @@
 
 namespace cristianoc72\codegen\generator\builder\parts;
 
+use cristianoc72\codegen\generator\utils\Writer;
 use cristianoc72\codegen\model\AbstractModel;
 use cristianoc72\codegen\model\RoutineInterface;
 
@@ -15,17 +16,22 @@ trait RoutineBuilderPart
      */
     abstract protected function generate(AbstractModel $model);
 
+    abstract protected function getWriter(): Writer;
+
+    /**
+     * @param RoutineInterface $model
+     */
     protected function writeFunctionStatement(RoutineInterface $model): void
     {
-        $this->writer->write('function ');
+        $this->getWriter()->write('function ');
         
         if ($model->isReferenceReturned()) {
-            $this->writer->write('& ');
+            $this->getWriter()->write('& ');
         }
         
-        $this->writer->write($model->getName() . '(');
+        $this->getWriter()->write($model->getName() . '(');
         $this->writeParameters($model);
-        $this->writer->write(')');
+        $this->getWriter()->write(')');
         $this->writeFunctionReturnType($model);
     }
     
@@ -34,26 +40,31 @@ trait RoutineBuilderPart
         $first = true;
         foreach ($model->getParameters() as $parameter) {
             if (!$first) {
-                $this->writer->write(', ');
+                $this->getWriter()->write(', ');
             }
             $first = false;
     
             $this->generate($parameter);
         }
     }
-    
+
+    /**
+     * @param RoutineInterface $model
+     *
+     * @psalm-suppress InvalidArgument
+     */
     protected function writeFunctionReturnType(RoutineInterface $model): void
     {
         $type = $this->getType($model);
         if ($type !== null) {
-            $this->writer->write(': ')->write($type);
+            $this->getWriter()->write(': ')->write($type);
         }
     }
     
     protected function writeBody(RoutineInterface $model): void
     {
-        $this->writer->writeln("\n{\n")->indent();
-        $this->writer->writeln(trim($model->getBody()));
-        $this->writer->outdent()->rtrim()->writeln('}');
+        $this->getWriter()->writeln("\n{\n")->indent();
+        $this->getWriter()->writeln(trim($model->getBody()));
+        $this->getWriter()->outdent()->rtrim()->writeln('}');
     }
 }

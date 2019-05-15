@@ -68,5 +68,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 
         // var tag
         $this->generateTypeTag(new VarTag());
+
+        return $this;
     }
 }

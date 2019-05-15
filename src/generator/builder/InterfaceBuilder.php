@@ -12,6 +12,10 @@ class InterfaceBuilder extends AbstractBuilder
     
     public function build(AbstractModel $model): void
     {
+        if (! $model instanceof PhpInterface) {
+            throw new \InvalidArgumentException('Interface builder can build interface classes only');
+        }
+
         $this->sort($model);
     
         $this->buildHeader($model);
@@ -20,20 +24,20 @@ class InterfaceBuilder extends AbstractBuilder
         $this->buildSignature($model);
     
         // body
-        $this->writer->writeln("\n{")->indent();
+        $this->getWriter()->writeln("\n{")->indent();
         $this->buildConstants($model);
         $this->buildMethods($model);
-        $this->writer->outdent()->rtrim()->write("}\n");
+        $this->getWriter()->outdent()->rtrim()->write("}\n");
     }
     
     private function buildSignature(PhpInterface $model): void
     {
-        $this->writer->write('interface ');
-        $this->writer->write($model->getName());
+        $this->getWriter()->write('interface ');
+        $this->getWriter()->write($model->getName());
         
         if ($model->hasInterfaces()) {
-            $this->writer->write(' extends ');
-            $this->writer->write(implode(', ', $model->getInterfaces()->toArray()));
+            $this->getWriter()->write(' extends ');
+            $this->getWriter()->write(implode(', ', $model->getInterfaces()->toArray()));
         }
     }
     

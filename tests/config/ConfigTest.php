@@ -2,8 +2,7 @@
 
 namespace cristianoc72\codegen\tests\config;
 
-use cristianoc72\codegen\config\CodeFileGeneratorConfig;
-use cristianoc72\codegen\config\CodeGeneratorConfig;
+use cristianoc72\codegen\config\GeneratorConfig;
 use gossi\docblock\Docblock;
 use cristianoc72\codegen\generator\CodeGenerator;
 use phootwork\lang\ComparableComparator;
@@ -15,9 +14,9 @@ use PHPUnit\Framework\TestCase;
  */
 class ConfigTest extends TestCase
 {
-    public function testCodeGeneratorConfigDefaults()
+    public function testGeneratorConfigDefaults()
     {
-        $config = new CodeGeneratorConfig();
+        $config = new GeneratorConfig();
 
         $this->assertFalse($config->getGenerateEmptyDocblock());
         $this->assertTrue($config->isSortingEnabled());
@@ -25,11 +24,13 @@ class ConfigTest extends TestCase
         $this->assertEquals(CodeGenerator::SORT_CONSTANTS_DEFAULT, $config->getConstantSorting());
         $this->assertEquals(CodeGenerator::SORT_PROPERTIES_DEFAULT, $config->getPropertySorting());
         $this->assertEquals(CodeGenerator::SORT_METHODS_DEFAULT, $config->getMethodSorting());
+        $this->assertNull($config->getHeaderComment());
+        $this->assertNull($config->getHeaderDocblock());
     }
 
-    public function testCodeGeneratorConfigSetters()
+    public function testGeneratorConfigSetters()
     {
-        $config = new CodeGeneratorConfig();
+        $config = new GeneratorConfig();
 
         $this->assertFalse($config->getGenerateEmptyDocblock());
 
@@ -56,19 +57,6 @@ class ConfigTest extends TestCase
         
         $config->setSortingEnabled(false);
         $this->assertFalse($config->isSortingEnabled());
-    }
-
-    public function testCodeFileGeneratorConfigDefaults()
-    {
-        $config = new CodeFileGeneratorConfig();
-
-        $this->assertNull($config->getHeaderComment());
-        $this->assertNull($config->getHeaderDocblock());
-    }
-
-    public function testCodeFileGeneratorConfigSetters()
-    {
-        $config = new CodeFileGeneratorConfig();
 
         $this->assertEquals('hello world', $config->setHeaderComment('hello world')->getHeaderComment()->getShortDescription());
 

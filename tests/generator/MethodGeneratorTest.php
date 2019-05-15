@@ -1,22 +1,24 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\generator;
 
+use cristianoc72\codegen\generator\builder\MethodBuilder;
 use cristianoc72\codegen\generator\ModelGenerator;
 use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
-use PHPUnit\Framework\TestCase;
+use cristianoc72\codegen\model\PhpProperty;
 
 /**
  * @group generator
  */
-class MethodGeneratorTest extends TestCase
+class MethodGeneratorTest extends GeneratorTestCase
 {
     public function testPublic()
     {
         $expected = "public function foo()\n{\n}\n";
     
         $method = PhpMethod::create('foo');
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
     
         $this->assertEquals($expected, $code);
@@ -27,7 +29,7 @@ class MethodGeneratorTest extends TestCase
         $expected = "protected function foo()\n{\n}\n";
 
         $method = PhpMethod::create('foo')->setVisibility(PhpMethod::VISIBILITY_PROTECTED);
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
 
         $this->assertEquals($expected, $code);
@@ -38,7 +40,7 @@ class MethodGeneratorTest extends TestCase
         $expected = "private function foo()\n{\n}\n";
     
         $method = PhpMethod::create('foo')->setVisibility(PhpMethod::VISIBILITY_PRIVATE);
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
     
         $this->assertEquals($expected, $code);
@@ -49,7 +51,7 @@ class MethodGeneratorTest extends TestCase
         $expected = "public static function foo()\n{\n}\n";
     
         $method = PhpMethod::create('foo')->setStatic(true);
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
     
         $this->assertEquals($expected, $code);
@@ -60,7 +62,7 @@ class MethodGeneratorTest extends TestCase
         $expected = "abstract public function foo();\n";
     
         $method = PhpMethod::create('foo')->setAbstract(true);
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
     
         $this->assertEquals($expected, $code);
@@ -71,7 +73,7 @@ class MethodGeneratorTest extends TestCase
         $expected = "public function & foo()\n{\n}\n";
     
         $method = PhpMethod::create('foo')->setReferenceReturned(true);
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
     
         $this->assertEquals($expected, $code);
@@ -79,7 +81,7 @@ class MethodGeneratorTest extends TestCase
     
     public function testParameters()
     {
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         
         $method = PhpMethod::create('foo')->addParameter(PhpParameter::create('bar'));
         $this->assertEquals("/**\n * @param \$bar\n */\npublic function foo(\$bar)\n{\n}\n", $generator->generate($method));
@@ -96,9 +98,20 @@ class MethodGeneratorTest extends TestCase
     public function testReturnType()
     {
         $expected = "/**\n * @return int\n */\npublic function foo(): int\n{\n}\n";
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
 
         $method = PhpMethod::create('foo')->setType('int');
         $this->assertEquals($expected, $generator->generate($method));
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testWrongClassThrowsException()
+    {
+        $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
+        $wrongModel = PhpProperty::create('myMethod');
+        $builder = new MethodBuilder($generator);
+        $builder->build($wrongModel);
     }
 }

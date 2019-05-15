@@ -2,8 +2,6 @@
 
 namespace cristianoc72\codegen\model;
 
-use phootwork\collection\ArrayList;
-
 interface RoutineInterface
 {
 
@@ -128,4 +126,11 @@ interface RoutineInterface
      * @return string
      */
     public function getBody(): string;
+
+    /**
+     * Returns the name of the routine
+     *
+     * @return string
+     */
+    public function getName(): string;
 }

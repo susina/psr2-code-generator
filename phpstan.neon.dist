@@ -1,0 +1,7 @@
+parameters:
+    level: 4
+    paths:
+        - src
+        - tests
+    excludes_analyse:
+        - %rootDir%/../../../tests/generator/generated #fixtures directory

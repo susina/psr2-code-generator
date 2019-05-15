@@ -3,6 +3,7 @@
 namespace cristianoc72\codegen\config;
 
 use cristianoc72\codegen\generator\CodeGenerator;
+use gossi\docblock\Docblock;
 use phootwork\lang\Comparator;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -11,8 +12,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * Configuration for code generation
  *
  * @author Thomas Gossmann
+ * @author Cristiano Cinotti
  */
-class CodeGeneratorConfig
+class GeneratorConfig
 {
     protected $options;
 
@@ -22,8 +24,9 @@ class CodeGeneratorConfig
      * @see https://cristianoc72.github.io/psr2-code-generator/generator.html
      * @param array $options
      */
-    public function __construct(array $options = [])
+    public function __construct(?array $options = null)
     {
+        $options = $options ?? [];
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
         $this->options = $resolver->resolve($options);
@@ -37,7 +40,9 @@ class CodeGeneratorConfig
             'useStatementSorting' => CodeGenerator::SORT_USESTATEMENTS_DEFAULT,
             'constantSorting' => CodeGenerator::SORT_CONSTANTS_DEFAULT,
             'propertySorting' => CodeGenerator::SORT_PROPERTIES_DEFAULT,
-            'methodSorting' => CodeGenerator::SORT_METHODS_DEFAULT
+            'methodSorting' => CodeGenerator::SORT_METHODS_DEFAULT,
+            'headerComment' => null,
+            'headerDocblock' => null
         ]);
         
         $resolver->setAllowedTypes('generateEmptyDocblock', 'bool');
@@ -46,6 +51,15 @@ class CodeGeneratorConfig
         $resolver->setAllowedTypes('constantSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
         $resolver->setAllowedTypes('propertySorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
         $resolver->setAllowedTypes('methodSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
+        $resolver->setAllowedTypes('headerComment', ['null', 'string', 'gossi\\docblock\\Docblock']);
+        $resolver->setAllowedTypes('headerDocblock', ['null', 'string', 'gossi\\docblock\\Docblock']);
+
+        $resolver->setNormalizer('headerComment', function (Options $options, $value) {
+            return $this->toDocblock($value);
+        });
+        $resolver->setNormalizer('headerDocblock', function (Options $options, $value) {
+            return $this->toDocblock($value);
+        });
     }
 
     /**
@@ -178,6 +192,64 @@ class CodeGeneratorConfig
     public function setMethodSorting($sorting): self
     {
         $this->options['methodSorting'] = $sorting;
+        return $this;
+    }
+
+    /**
+     *
+     * @param mixed $value
+     * @return Docblock|null
+     */
+    private function toDocblock($value): ?Docblock
+    {
+        if (is_string($value)) {
+            $value = Docblock::create()->setLongDescription($value);
+        }
+
+        return $value;
+    }
+
+    /**
+     * Returns the file header comment
+     *
+     * @return null|Docblock the header comment
+     */
+    public function getHeaderComment(): ?Docblock
+    {
+        return $this->options['headerComment'];
+    }
+
+    /**
+     * Sets the file header comment
+     *
+     * @param string $comment the header comment
+     * @return $this
+     */
+    public function setHeaderComment(string $comment): self
+    {
+        $this->options['headerComment'] = new Docblock($comment);
+        return $this;
+    }
+
+    /**
+     * Returns the file header docblock
+     *
+     * @return Docblock the docblock
+     */
+    public function getHeaderDocblock(): ?Docblock
+    {
+        return $this->options['headerDocblock'];
+    }
+
+    /**
+     * Sets the file header docblock
+     *
+     * @param Docblock $docblock the docblock
+     * @return $this
+     */
+    public function setHeaderDocblock(Docblock $docblock): self
+    {
+        $this->options['headerDocblock'] = $docblock;
         return $this;
     }
 }

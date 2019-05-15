@@ -2,6 +2,7 @@
 
 namespace cristianoc72\codegen\model\parts;
 
+use cristianoc72\codegen\model\AbstractPhpStruct;
 use cristianoc72\codegen\model\PhpInterface;
 use phootwork\collection\Set;
 
@@ -22,30 +23,6 @@ trait InterfacesPart
     {
         $this->interfaces = new Set();
     }
-
-    /**
-     * Adds a use statement with an optional alias
-     *
-     * @param string $qualifiedName
-     * @param null|string $alias
-     * @return $this
-     */
-    abstract public function addUseStatement(string $qualifiedName, ?string $alias = null);
-
-    /**
-     * Removes a use statement
-     *
-     * @param string $qualifiedName
-     * @return $this
-     */
-    abstract public function removeUseStatement(string $qualifiedName);
-
-    /**
-     * Returns the namespace
-     *
-     * @return string
-     */
-    abstract public function getNamespace(): string;
 
     /**
      * Adds an interface.

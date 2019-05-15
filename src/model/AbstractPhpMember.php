@@ -62,7 +62,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
     /** @var string */
     private $visibility = self::VISIBILITY_PUBLIC;
 
-    /** @var AbstractPhpStruct */
+    /** @var ?AbstractPhpStruct */
     private $parent;
 
     /**

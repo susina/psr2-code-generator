@@ -1,18 +1,20 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\generator;
 
+use cristianoc72\codegen\generator\builder\ConstantBuilder;
 use cristianoc72\codegen\generator\ModelGenerator;
 use cristianoc72\codegen\model\PhpConstant;
-use PHPUnit\Framework\TestCase;
+use cristianoc72\codegen\model\PhpMethod;
 
 /**
  * @group generator
  */
-class ConstantGeneratorTest extends TestCase
+class ConstantGeneratorTest extends GeneratorTestCase
 {
     public function testValues()
     {
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         
         $prop = PhpConstant::create('FOO')->setValue('string');
         $this->assertEquals('const FOO = \'string\';'."\n", $generator->generate($prop));
@@ -37,5 +39,16 @@ class ConstantGeneratorTest extends TestCase
         
         $prop = PhpConstant::create('FOO')->setExpression("['bar' => 'baz']");
         $this->assertEquals('const FOO = [\'bar\' => \'baz\'];'."\n", $generator->generate($prop));
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testWrongClassThrowsException()
+    {
+        $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
+        $wrongModel = PhpMethod::create('myMethod');
+        $builder = new ConstantBuilder($generator);
+        $builder->build($wrongModel);
     }
 }

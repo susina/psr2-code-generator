@@ -81,5 +81,7 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 
         // param tags
         $this->generateParamDocblock();
+
+        return $this;
     }
 }

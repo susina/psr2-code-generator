@@ -1,22 +1,25 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\generator;
 
+use cristianoc72\codegen\generator\builder\ParameterBuilder;
+use cristianoc72\codegen\generator\builder\PropertyBuilder;
 use cristianoc72\codegen\generator\ModelGenerator;
+use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
 use cristianoc72\codegen\model\PhpConstant;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator
  */
-class ParameterGeneratorTest extends TestCase
+class ParameterGeneratorTest extends GeneratorTestCase
 {
     public function testPassedByReference()
     {
         $expected = '&$foo';
     
         $param = PhpParameter::create('foo')->setPassedByReference(true);
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($param);
 
         $this->assertEquals($expected, $code);
@@ -24,7 +27,7 @@ class ParameterGeneratorTest extends TestCase
 
     public function testTypeHints()
     {
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
 
         $param = PhpParameter::create('foo')->setType('Request');
         $this->assertEquals('Request $foo', $generator->generate($param));
@@ -62,7 +65,7 @@ class ParameterGeneratorTest extends TestCase
     
     public function testValues()
     {
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         
         $prop = PhpParameter::create('foo')->setValue('string');
         $this->assertEquals('$foo = \'string\'', $generator->generate($prop));
@@ -87,5 +90,16 @@ class ParameterGeneratorTest extends TestCase
         
         $prop = PhpParameter::create('foo')->setExpression("['bar' => 'baz']");
         $this->assertEquals('$foo = [\'bar\' => \'baz\']', $generator->generate($prop));
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testWrongClassThrowsException()
+    {
+        $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
+        $wrongModel = PhpMethod::create('myMethod');
+        $builder = new ParameterBuilder($generator);
+        $builder->build($wrongModel);
     }
 }

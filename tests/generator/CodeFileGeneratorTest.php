@@ -9,19 +9,14 @@ use cristianoc72\codegen\model\PhpFunction;
 use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
 use cristianoc72\codegen\model\PhpProperty;
-use cristianoc72\codegen\tests\remove_fixtures;
-use cristianoc72\codegen\tests\parts\TestUtils;
-use cristianoc72\codegen\config\CodeFileGeneratorConfig;
+use cristianoc72\codegen\config\GeneratorConfig;
 use gossi\docblock\Docblock;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator
  */
-class CodeFileGeneratorTest extends TestCase
+class CodeFileGeneratorTest extends GeneratorTestCase
 {
-    use TestUtils;
-
     public function testStrictTypesDeclaration()
     {
         $expected = "<?php declare(strict_types=1);
@@ -48,21 +43,21 @@ function fn(\$a)
             ->setConstant(PhpConstant::create('FOO', 'BAR'))
             ->setProperty(
                 PhpProperty::create('bembel')
-                ->setExpression("['ebbelwoi' => 'is eh besser', 'als wie' => 'bier']")
+                    ->setExpression("['ebbelwoi' => 'is eh besser', 'als wie' => 'bier']")
             )
             ->setMethod(PhpMethod::create('getValue')
                 ->addParameter(
                     PhpParameter::create('arr')
-                    ->setExpression('[self::FOO => \'baz\']')
-                    ->setType('array')
-            ));
-    
+                        ->setExpression('[self::FOO => \'baz\']')
+                        ->setType('array')
+                ));
+
         $codegen = new CodeFileGenerator();
         $code = $codegen->generate($class);
 
         $this->assertEquals($this->getGeneratedContent('ClassWithExpression.php'), $code);
     }
-    
+
     public function testDocblocks()
     {
         $generator = new CodeFileGenerator([
@@ -70,29 +65,29 @@ function fn(\$a)
             'headerDocblock' => 'woop',
             'generateEmptyDocblock' => true
         ]);
-        
+
         $class = new PhpClass('Dummy');
         $code = $generator->generate($class);
-        
+
         $this->assertEquals($this->getGeneratedContent('Dummy.php'), $code);
     }
-    
+
     public function testEntity()
     {
         $class = $this->createEntity();
 
         $generator = new CodeFileGenerator(['generateEmptyDocblock' => false]);
         $code = $generator->generate($class);
-        
+
         $this->assertEquals($this->getGeneratedContent('Entity.php'), $code);
     }
-    
+
     public function testConfig()
     {
         $generator = new CodeFileGenerator(null);
-        $this->assertTrue($generator->getConfig() instanceof CodeFileGeneratorConfig);
-        
-        $config = new CodeFileGeneratorConfig();
+        $this->assertTrue($generator->getConfig() instanceof GeneratorConfig);
+
+        $config = new GeneratorConfig();
         $generator = new CodeFileGenerator($config);
         $this->assertSame($config, $generator->getConfig());
     }

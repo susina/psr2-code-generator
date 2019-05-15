@@ -2,7 +2,7 @@
 
 namespace cristianoc72\codegen\generator\builder;
 
-use cristianoc72\codegen\config\CodeGeneratorConfig;
+use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\generator\ModelGenerator;
 use cristianoc72\codegen\generator\utils\Writer;
 use cristianoc72\codegen\model\AbstractModel;
@@ -15,10 +15,10 @@ abstract class AbstractBuilder
     protected $generator;
     
     /** @var Writer */
-    protected $writer;
+    private $writer;
     
-    /** @var CodeGeneratorConfig */
-    protected $config;
+    /** @var GeneratorConfig */
+    private $config;
     
     public function __construct(ModelGenerator $generator)
     {
@@ -32,7 +32,20 @@ abstract class AbstractBuilder
      * @return void
      */
     abstract public function build(AbstractModel $model);
-    
+
+    /**
+     * @return GeneratorConfig
+     */
+    protected function getConfig(): GeneratorConfig
+    {
+        return $this->config;
+    }
+
+    protected function getWriter(): Writer
+    {
+        return $this->writer;
+    }
+
     /**
      * @param AbstractModel $model
      * @return void

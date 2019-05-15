@@ -6,10 +6,13 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/aa8d57cef69166ace691/test_coverage)](https://codeclimate.com/github/cristianoc72/psr2-code-generator/test_coverage)
 [![StyleCI](https://styleci.io/repos/120793787/shield?branch=master)](https://styleci.io/repos/120793787)
 
-This library is a fork of the awesome https://github.com/gossi/php-code-generator, refactored to generate PSR-2 code.
+This library is a light version of the awesome https://github.com/gossi/php-code-generator, refactored to generate PSR-2 code.
 
-When https://github.com/gossi/php-code-generator/issues/23 will be solved and the original library will support PSR-2,
-this one will be superseded. 
+Differences and restrictions from the original library:
+- php 7.2+ strictly typed
+- generate PSR-2 code *ONLY*
+- generate only php 7.1+ code (strict types)
+- no reflection nor reverse engeneering
 
 ## Installation
 

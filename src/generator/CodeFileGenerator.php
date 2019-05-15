@@ -2,9 +2,9 @@
 
 namespace cristianoc72\codegen\generator;
 
-use cristianoc72\codegen\config\CodeFileGeneratorConfig;
-use cristianoc72\codegen\config\CodeGeneratorConfig;
+use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\model\AbstractModel;
+use gossi\docblock\Docblock;
 
 /**
  * Code file generator.
@@ -13,42 +13,10 @@ use cristianoc72\codegen\model\AbstractModel;
  * generate header comments.
  *
  * @author Thomas Gossmann
+ * @author Cristiano Cinotti
  */
 class CodeFileGenerator extends CodeGenerator
 {
-
-    /**
-     * Creates a new CodeFileGenerator
-     *
-     * @see https://php-code-generator.readthedocs.org/en/latest/generator.html
-     * @param CodeFileGeneratorConfig|array $config
-     */
-    public function __construct($config = null)
-    {
-        parent::__construct($config);
-    }
-    
-    protected function configure($config = null)
-    {
-        if (is_array($config)) {
-            $this->config = new CodeFileGeneratorConfig($config);
-        } elseif ($config instanceof CodeFileGeneratorConfig) {
-            $this->config = $config;
-        } else {
-            $this->config = new CodeFileGeneratorConfig();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return CodeGeneratorConfig
-     */
-    public function getConfig(): CodeGeneratorConfig
-    {
-        return $this->config;
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -56,12 +24,14 @@ class CodeFileGenerator extends CodeGenerator
     {
         $content = "<?php declare(strict_types=1);\n\n";
 
-        $comment = $this->config->getHeaderComment();
+        /** @var Docblock $comment */
+        $comment = $this->getConfig()->getHeaderComment();
         if ($comment !== null && !$comment->isEmpty()) {
             $content .= str_replace('/**', '/*', $comment->toString()) . "\n";
         }
 
-        $docblock = $this->config->getHeaderDocblock();
+        /** @var Docblock $docblock */
+        $docblock = $this->getConfig()->getHeaderDocblock();
         if ($docblock !== null && !$docblock->isEmpty()) {
             $content .= $docblock->toString() . "\n";
         }

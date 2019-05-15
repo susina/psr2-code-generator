@@ -2,9 +2,8 @@
 
 namespace cristianoc72\codegen\generator;
 
-use cristianoc72\codegen\config\CodeGeneratorConfig;
+use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\model\AbstractModel;
-use cristianoc72\codegen\model\GenerateableInterface;
 
 /**
  * Code generator
@@ -12,6 +11,7 @@ use cristianoc72\codegen\model\GenerateableInterface;
  * Generates code for any generateable model
  *
  * @author Thomas Gossmann
+ * @author Cristiano Cinotti
  */
 class CodeGenerator
 {
@@ -23,7 +23,7 @@ class CodeGenerator
     
     const SORT_METHODS_DEFAULT = 'default';
 
-    /** @var CodeGeneratorConfig */
+    /** @var GeneratorConfig */
     protected $config;
     
     /** @var ModelGenerator */
@@ -31,31 +31,28 @@ class CodeGenerator
 
     /**
      *
-     * @param CodeGeneratorConfig|array $config
+     * @param GeneratorConfig|array $config
      */
     public function __construct($config = null)
     {
-        $this->configure($config);
-        $this->generator = new ModelGenerator($this->config);
-    }
-    
-    protected function configure($config = null)
-    {
-        if (is_array($config)) {
-            $this->config = new CodeGeneratorConfig($config);
-        } elseif ($config instanceof CodeGeneratorConfig) {
-            $this->config = $config;
-        } else {
-            $this->config = new CodeGeneratorConfig();
+        if (null === $config || is_array($config)) {
+            $config = new GeneratorConfig($config);
         }
+
+        if (! $config instanceof GeneratorConfig) {
+            throw new \InvalidArgumentException('CodeGenerator constructor expects an array or a GeneratorConfig object.');
+        }
+
+        $this->config = $config;
+        $this->generator = new ModelGenerator($this->config);
     }
 
     /**
      * Returns the used configuration
      *
-     * @return CodeGeneratorConfig
+     * @return GeneratorConfig
      */
-    public function getConfig(): CodeGeneratorConfig
+    public function getConfig(): GeneratorConfig
     {
         return $this->config;
     }

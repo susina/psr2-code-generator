@@ -3,6 +3,7 @@
 namespace cristianoc72\codegen\generator\builder\parts;
 
 use cristianoc72\codegen\model\AbstractModel;
+use cristianoc72\codegen\model\RoutineInterface;
 
 trait TypeBuilderPart
 {
@@ -28,6 +29,9 @@ trait TypeBuilderPart
      *
      * @param AbstractModel $model
      * @return string|null
+     *
+     * @psalm-suppress UndefinedMethod
+     * Concrete model classes using this trait always have `getType()` method.
      */
     private function getType(AbstractModel $model): ?string
     {

@@ -69,5 +69,7 @@ class PhpMethod extends AbstractPhpMember implements RoutineInterface
 
         // param tags
         $this->generateParamDocblock();
+
+        return $this;
     }
 }

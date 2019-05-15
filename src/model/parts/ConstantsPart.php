@@ -12,6 +12,7 @@ use phootwork\collection\Set;
  * For all models that can contain constants
  *
  * @author Thomas Gossmann
+ * @author Cristiano Cinotti
  */
 trait ConstantsPart
 {
@@ -72,19 +73,6 @@ trait ConstantsPart
      * @return $this
      */
     public function setConstant(PhpConstant $constant): self
-    {
-        $this->constants->set($constant->getName(), $constant);
-
-        return $this;
-    }
-
-    /**
-     * Adds a PhpConstant object
-     *
-     * @param PhpConstant $constant
-     * @return $this
-     */
-    public function addConstant(PhpConstant $constant): self
     {
         $this->constants->set($constant->getName(), $constant);
 

@@ -4,6 +4,7 @@ namespace cristianoc72\codegen\generator\builder;
 
 use cristianoc72\codegen\model\AbstractModel;
 use cristianoc72\codegen\generator\builder\parts\ValueBuilderPart;
+use cristianoc72\codegen\model\PhpProperty;
 
 class PropertyBuilder extends AbstractBuilder
 {
@@ -11,17 +12,21 @@ class PropertyBuilder extends AbstractBuilder
 
     public function build(AbstractModel $model): void
     {
+        if (! $model instanceof PhpProperty) {
+            throw new \InvalidArgumentException('The property builder can build property classesonly.');
+        }
+
         $this->buildDocblock($model);
         
-        $this->writer->write($model->getVisibility() . ' ');
-        $this->writer->write($model->isStatic() ? 'static ' : '');
-        $this->writer->write('$' . $model->getName());
+        $this->getWriter()->write($model->getVisibility() . ' ');
+        $this->getWriter()->write($model->isStatic() ? 'static ' : '');
+        $this->getWriter()->write('$' . $model->getName());
         
         if ($model->hasValue()) {
-            $this->writer->write(' = ');
+            $this->getWriter()->write(' = ');
             $this->writeValue($model);
         }
         
-        $this->writer->writeln(';');
+        $this->getWriter()->writeln(';');
     }
 }

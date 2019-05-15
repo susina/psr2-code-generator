@@ -12,10 +12,13 @@ class ClassBuilder extends AbstractBuilder
 
     /**
      * {@inheritDoc}
-     * @param PhpClass $model
      */
     public function build(AbstractModel $model): void
     {
+        if (! $model instanceof PhpClass) {
+            throw new \InvalidArgumentException('Class builder can build only class objects.');
+        }
+
         $this->sort($model);
         
         $this->buildHeader($model);
@@ -24,34 +27,34 @@ class ClassBuilder extends AbstractBuilder
         $this->buildSignature($model);
         
         // body
-        $this->writer->writeln("\n{")->indent();
+        $this->getWriter()->writeln("\n{")->indent();
         $this->buildTraits($model);
         $this->buildConstants($model);
         $this->buildProperties($model);
         $this->buildMethods($model);
-        $this->writer->outdent()->rtrim()->write("}\n");
+        $this->getWriter()->outdent()->rtrim()->write("}\n");
     }
     
     private function buildSignature(PhpClass $model): void
     {
         if ($model->isAbstract()) {
-            $this->writer->write('abstract ');
+            $this->getWriter()->write('abstract ');
         }
         
         if ($model->isFinal()) {
-            $this->writer->write('final ');
+            $this->getWriter()->write('final ');
         }
         
-        $this->writer->write('class ');
-        $this->writer->write($model->getName());
+        $this->getWriter()->write('class ');
+        $this->getWriter()->write($model->getName());
         
         if ($parentClassName = $model->getParentClassName()) {
-            $this->writer->write(' extends ' . $parentClassName);
+            $this->getWriter()->write(' extends ' . $parentClassName);
         }
         
         if ($model->hasInterfaces()) {
-            $this->writer->write(' implements ');
-            $this->writer->write(implode(', ', $model->getInterfaces()->toArray()));
+            $this->getWriter()->write(' implements ');
+            $this->getWriter()->write(implode(', ', $model->getInterfaces()->toArray()));
         }
     }
     

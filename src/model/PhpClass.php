@@ -58,7 +58,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
      */
     public function setParentClassName(?string $name): self
     {
-        $this->parentClassName = $name;
+        $this->parentClassName = $name ?? '';
 
         return $this;
     }

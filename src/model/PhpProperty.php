@@ -53,5 +53,7 @@ class PhpProperty extends AbstractPhpMember implements ValueInterface
 
         // var tag
         $this->generateTypeTag(new VarTag());
+
+        return $this;
     }
 }

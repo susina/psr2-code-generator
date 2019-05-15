@@ -2,8 +2,8 @@
 
 namespace cristianoc72\codegen\model\parts;
 
-use gossi\docblock\tags\AbstractTag;
 use gossi\docblock\Docblock;
+use gossi\docblock\tags\AbstractTypeTag;
 
 /**
  * Type docblock generator part
@@ -39,9 +39,9 @@ trait TypeDocblockGeneratorPart
     /**
      * Generates a type tag (return or var) but checks if one exists and updates this one
      *
-     * @param AbstractTag $tag
+     * @param AbstractTypeTag $tag
      */
-    protected function generateTypeTag(AbstractTag $tag): void
+    protected function generateTypeTag(AbstractTypeTag $tag): void
     {
         $docblock = $this->getDocblock();
         $type = $this->getType();

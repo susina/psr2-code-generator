@@ -108,7 +108,7 @@ class ClassTest extends TestCase
         $this->assertSame($class, $class->setParentClassName('stdClass'));
         $this->assertEquals('stdClass', $class->getParentClassName());
         $this->assertSame($class, $class->setParentClassName(null));
-        $this->assertNull($class->getParentClassName());
+        $this->assertEquals('', $class->getParentClassName());
     }
 
     public function testInterfaces()
@@ -153,6 +153,8 @@ class ClassTest extends TestCase
             'foo',
             'bar'
         ]));
+        $this->assertTrue($class->hasTraitByName('foo'));
+        $this->assertTrue($class->hasTraitByName('bar'));
         $fooTrait = new PhpTrait('foo');
         $barTrait = new PhpTrait('bar');
         $stdTrait = new PhpTrait('stdClass');
@@ -162,7 +164,7 @@ class ClassTest extends TestCase
 
         $trait = new PhpTrait('my\name\space\Trait');
         $class->addTrait($trait);
-        $this->assertTrue($class->hasTraitByName('Trait'));
+        $this->assertTrue($class->hasTrait($trait));
         $this->assertFalse($class->getUseStatements()->contains('my\name\space\\'), 'No use statement added since it\'s the same namespace');
         $this->assertSame($class, $class->removeTrait($trait));
 
@@ -170,6 +172,20 @@ class ClassTest extends TestCase
         $this->assertTrue($class->hasUseStatement('other\name\space\Trait'));
         $this->assertSame($class, $class->removeTraitByName('other\name\space\Trait'));
         $this->assertFalse($class->hasUseStatement('other\name\space\Trait'), 'Use statement removed.');
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testSetTraitsWrongTypeThrowsException()
+    {
+        $class = new PhpClass('my\name\space\Class');
+
+        $this->assertEquals([], $class->getTraits()->toArray());
+        $this->assertSame($class, $class->setTraits([
+            true,
+            128
+        ]));
     }
 
     public function testProperties()

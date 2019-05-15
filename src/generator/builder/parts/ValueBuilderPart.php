@@ -2,22 +2,25 @@
 
 namespace cristianoc72\codegen\generator\builder\parts;
 
+use cristianoc72\codegen\generator\utils\Writer;
 use cristianoc72\codegen\model\ValueInterface;
 use cristianoc72\codegen\model\PhpConstant;
 
 trait ValueBuilderPart
 {
+    abstract protected function getWriter(): Writer;
+
     private function writeValue(ValueInterface $model): void
     {
         if ($model->isExpression()) {
-            $this->writer->write($model->getExpression());
+            $this->getWriter()->write($model->getExpression());
         } else {
             $value = $model->getValue();
 
             if ($value instanceof PhpConstant) {
-                $this->writer->write($value->getName());
+                $this->getWriter()->write($value->getName());
             } else {
-                $this->writer->write($this->exportVar($value));
+                $this->getWriter()->write($this->exportVar($value));
             }
         }
     }

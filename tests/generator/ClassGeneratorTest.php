@@ -2,29 +2,27 @@
 
 namespace cristianoc72\codegen\tests\generator;
 
+use cristianoc72\codegen\config\GeneratorConfig;
+use cristianoc72\codegen\generator\builder\ClassBuilder;
 use cristianoc72\codegen\generator\CodeFileGenerator;
 use cristianoc72\codegen\generator\ModelGenerator;
 use cristianoc72\codegen\model\PhpClass;
 use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpProperty;
 use cristianoc72\codegen\model\PhpTrait;
-use cristianoc72\codegen\tests\parts\TestUtils;
 use cristianoc72\codegen\generator\CodeGenerator;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator
  */
-class ClassGeneratorTest extends TestCase
+class ClassGeneratorTest extends GeneratorTestCase
 {
-    use TestUtils;
-
     public function testSignature()
     {
         $expected = "class MyClass\n{\n}\n";
 
         $class = PhpClass::create('MyClass');
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($class);
 
         $this->assertEquals($expected, $code);
@@ -35,7 +33,7 @@ class ClassGeneratorTest extends TestCase
         $expected = "abstract class MyClass\n{\n}\n";
     
         $class = PhpClass::create('MyClass')->setAbstract(true);
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($class);
     
         $this->assertEquals($expected, $code);
@@ -46,7 +44,7 @@ class ClassGeneratorTest extends TestCase
         $expected = "final class MyClass\n{\n}\n";
     
         $class = PhpClass::create('MyClass')->setFinal(true);
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($class);
     
         $this->assertEquals($expected, $code);
@@ -54,7 +52,7 @@ class ClassGeneratorTest extends TestCase
     
     public function testInterfaces()
     {
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
     
         $expected = "class MyClass implements \Iterator\n{\n}\n";
         $class = PhpClass::create('MyClass')->addInterface('\Iterator');
@@ -70,7 +68,7 @@ class ClassGeneratorTest extends TestCase
         $expected = "class MyClass extends MyParent\n{\n}\n";
     
         $class = PhpClass::create('MyClass')->setParentClassName('MyParent');
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($class);
     
         $this->assertEquals($expected, $code);
@@ -97,7 +95,7 @@ class ClassGeneratorTest extends TestCase
         $class = new PhpClass('Foo');
         $class->addUseStatement('Bar');
         
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($class);
         $expected = "class Foo\n{\n}\n";
         
@@ -115,14 +113,17 @@ class ClassGeneratorTest extends TestCase
             ->setConstantByName('a', 'foo')
             ->setConstantByName('b', 'bar');
     
-        $modelGenerator = new ModelGenerator();
+        $modelGenerator = new ModelGenerator($this->getConfig());
         $modelCode = $modelGenerator->generate($class);
         $this->assertEquals($this->getGeneratedContent('ABClass.php'), $modelCode);
         $generator = new CodeGenerator();
         $code = $generator->generate($class);
         $this->assertEquals($modelCode, $code);
-        
-        $modelGenerator = new ModelGenerator(['generateEmptyDocblock' => true]);
+
+        $config = $this->createMock(GeneratorConfig::class);
+        $config->method('getGenerateEmptyDocblock')->willReturn(true);
+
+        $modelGenerator = new ModelGenerator($config);
         $modelCode = $modelGenerator->generate($class);
         $this->assertEquals($this->getGeneratedContent('ABClassWithComments.php'), $modelCode);
         $generator = new CodeGenerator(['generateEmptyDocblock' => true]);
@@ -137,8 +138,19 @@ class ClassGeneratorTest extends TestCase
             ->addRequiredFile('ABClass.php')
             ->addTrait(new PhpTrait('Iterator'));
         
-        $generator = new ModelGenerator();
+        $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($class);
         $this->assertEquals($this->getGeneratedContent('RequireTraitsClass.php'), $code);
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testWrongClassThrowsException()
+    {
+        $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
+        $wrongModel = PhpMethod::create('myMethod');
+        $builder = new ClassBuilder($generator);
+        $builder->build($wrongModel);
     }
 }
