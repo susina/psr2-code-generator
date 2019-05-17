@@ -104,7 +104,7 @@ class ClassTest extends TestCase
     {
         $class = new PhpClass();
 
-        $this->assertNull($class->getParentClassName());
+        $this->assertEquals('', $class->getParentClassName());
         $this->assertSame($class, $class->setParentClassName('stdClass'));
         $this->assertEquals('stdClass', $class->getParentClassName());
         $this->assertSame($class, $class->setParentClassName(null));

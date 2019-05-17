@@ -13,6 +13,9 @@ use cristianoc72\codegen\model\parts\TraitsPart;
  * Represents a PHP class.
  *
  * @author Thomas Gossmann
+ * @author Cristiano Cinotti
+ *
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, ConstantsInterface, PropertiesInterface
 {
@@ -24,7 +27,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
     use TraitsPart;
 
     /** @var string */
-    private $parentClassName;
+    private $parentClassName = '';
 
     /**
      * Creates a new PHP class
@@ -67,13 +70,13 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
     {
         parent::generateDocblock();
 
-        foreach ($this->constants as $constant) {
-            $constant->generateDocblock();
-        }
+        $this->constants->each(function (string $key, PhpConstant $element): void {
+            $element->generateDocblock();
+        });
 
-        foreach ($this->properties as $prop) {
-            $prop->generateDocblock();
-        }
+        $this->properties->each(function (string $key, PhpProperty $element): void {
+            $element->generateDocblock();
+        });
 
         return $this;
     }

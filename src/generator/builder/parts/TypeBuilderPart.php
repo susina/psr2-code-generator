@@ -7,14 +7,17 @@ use cristianoc72\codegen\model\RoutineInterface;
 
 trait TypeBuilderPart
 {
+    /** @var string[] */
     protected static $noTypeHints = [
         'string', 'int', 'integer', 'bool', 'boolean', 'float', 'double', 'object', 'mixed', 'resource'
     ];
-    
+
+    /** @var string[] */
     protected static $php7typeHints = [
         'string', 'int', 'integer', 'bool', 'boolean', 'float', 'double'
     ];
-    
+
+    /** @var array */
     protected static $typeHintMap = [
         'string' => 'string',
         'int' => 'int',

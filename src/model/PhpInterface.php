@@ -9,6 +9,8 @@ use cristianoc72\codegen\model\parts\InterfacesPart;
  * Represents a PHP interface.
  *
  * @author Thomas Gossmann
+ *
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, ConstantsInterface
 {
@@ -30,13 +32,13 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
     /**
      * @inheritDoc
      */
-    public function generateDocblock()
+    public function generateDocblock(): self
     {
         parent::generateDocblock();
 
-        foreach ($this->constants as $constant) {
-            $constant->generateDocblock();
-        }
+        $this->constants->each(function (string $key, PhpConstant $element): void {
+            $element->generateDocblock();
+        });
 
         return $this;
     }

@@ -25,6 +25,8 @@ use gossi\docblock\tags\VarTag;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
+ *
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class PhpProperty extends AbstractPhpMember implements ValueInterface
 {
@@ -45,7 +47,7 @@ class PhpProperty extends AbstractPhpMember implements ValueInterface
     /**
      * Generates docblock based on provided information
      */
-    public function generateDocblock()
+    public function generateDocblock(): self
     {
         $docblock = $this->getDocblock();
         $docblock->setShortDescription($this->getDescription());

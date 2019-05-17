@@ -19,7 +19,7 @@ trait PropertiesPart
     /** @var Map */
     private $properties;
     
-    private function initProperties()
+    private function initProperties(): void
     {
         $this->properties = new Map();
     }
@@ -150,9 +150,9 @@ trait PropertiesPart
      */
     public function clearProperties(): self
     {
-        foreach ($this->properties as $property) {
-            $property->setParent(null);
-        }
+        $this->properties->each(function (string $key, PhpProperty $element): void {
+            $element->setParent(null);
+        });
         $this->properties->clear();
 
         return $this;

@@ -243,11 +243,11 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      */
     public function setMethods(array $methods): self
     {
-        foreach ($this->methods as $method) {
-            $method->setParent(null);
-        }
-
+        $this->methods->each(function (string $key, PhpMethod $element): void {
+            $element->setParent(null);
+        });
         $this->methods->clear();
+
         foreach ($methods as $method) {
             $this->setMethod($method);
         }
@@ -377,7 +377,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      */
     public function clearMethods(): self
     {
-        $this->methods->each(function (string $key, PhpMethod $element) {
+        $this->methods->each(function (string $key, PhpMethod $element): void {
             $element->setParent(null);
         });
         $this->methods->clear();
@@ -395,10 +395,9 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
         $docblock = $this->getDocblock();
         $docblock->setShortDescription($this->getDescription());
         $docblock->setLongDescription($this->getLongDescription());
-
-        foreach ($this->methods as $method) {
-            $method->generateDocblock();
-        }
+        $this->methods->each(function (string $key, PhpMethod $element): void {
+            $element->generateDocblock();
+        });
 
         return $this;
     }

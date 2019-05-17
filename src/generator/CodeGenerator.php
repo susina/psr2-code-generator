@@ -31,7 +31,7 @@ class CodeGenerator
 
     /**
      *
-     * @param GeneratorConfig|array $config
+     * @param mixed $config
      */
     public function __construct($config = null)
     {

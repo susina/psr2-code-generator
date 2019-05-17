@@ -3,6 +3,7 @@
 namespace cristianoc72\codegen\generator\builder\parts;
 
 use cristianoc72\codegen\config\GeneratorConfig;
+use cristianoc72\codegen\generator\builder\AbstractBuilder;
 use cristianoc72\codegen\generator\comparator\DefaultConstantComparator;
 use cristianoc72\codegen\generator\comparator\DefaultMethodComparator;
 use cristianoc72\codegen\generator\comparator\DefaultPropertyComparator;
@@ -13,13 +14,15 @@ use cristianoc72\codegen\model\AbstractPhpStruct;
 use cristianoc72\codegen\model\ConstantsInterface;
 use cristianoc72\codegen\model\DocblockInterface;
 use cristianoc72\codegen\model\NamespaceInterface;
+use cristianoc72\codegen\model\PhpConstant;
+use cristianoc72\codegen\model\PhpMethod;
+use cristianoc72\codegen\model\PhpProperty;
 use cristianoc72\codegen\model\PhpTrait;
 use cristianoc72\codegen\model\PropertiesInterface;
 use cristianoc72\codegen\model\TraitsInterface;
 
 trait StructBuilderPart
 {
-    
     /**
      * @return void
      */
@@ -58,11 +61,11 @@ trait StructBuilderPart
     
     protected function buildRequiredFiles(AbstractPhpStruct $model): void
     {
-        if ($files = $model->getRequiredFiles()) {
+        if (!$model->getRequiredFiles()->isEmpty()) {
             $this->ensureBlankLine();
-            foreach ($files as $file) {
-                $this->getWriter()->writeln('require_once ' . var_export($file, true) . ';');
-            }
+            $model->getRequiredFiles()->each(function (string $element): void {
+                $this->getWriter()->writeln('require_once ' . var_export($element, true) . ';');
+            });
         }
     }
     
@@ -70,7 +73,7 @@ trait StructBuilderPart
     {
         if ($useStatements = $model->getUseStatements()) {
             $this->ensureBlankLine();
-            foreach ($useStatements as $alias => $namespace) {
+            foreach ($useStatements->toArray() as $alias => $namespace) {
                 if (false !== $pos = strrpos($namespace, '\\')) {
                     $commonName = substr($namespace, $pos + 1);
                 } else {
@@ -96,32 +99,31 @@ trait StructBuilderPart
     
     protected function buildTraits(TraitsInterface $model): void
     {
-        /** @var PhpTrait $trait */
-        foreach ($model->getTraits() as $trait) {
+        $model->getTraits()->each(function (PhpTrait $element): void {
             $this->getWriter()->write('use ');
-            $this->getWriter()->writeln($trait->getName() . ';');
-        }
+            $this->getWriter()->writeln($element->getName() . ';');
+        });
     }
     
     protected function buildConstants(ConstantsInterface $model): void
     {
-        foreach ($model->getConstants() as $constant) {
-            $this->generate($constant);
-        }
+        $model->getConstants()->each(function (string $key, PhpConstant $element): void {
+            $this->generate($element);
+        });
     }
     
     protected function buildProperties(PropertiesInterface $model): void
     {
-        foreach ($model->getProperties() as $property) {
-            $this->generate($property);
-        }
+        $model->getProperties()->each(function (string $key, PhpProperty $element): void {
+            $this->generate($element);
+        });
     }
     
     protected function buildMethods(AbstractPhpStruct $model): void
     {
-        foreach ($model->getMethods() as $method) {
-            $this->generate($method);
-        }
+        $model->getMethods()->each(function (string $key, PhpMethod $element): void {
+            $this->generate($element);
+        });
     }
     
     private function sortUseStatements(AbstractPhpStruct $model): void
@@ -146,7 +148,7 @@ trait StructBuilderPart
         }
     }
     
-    private function sortProperties(PropertiesInterface $model)
+    private function sortProperties(PropertiesInterface $model): void
     {
         if ($this->getConfig()->isSortingEnabled()
                 && ($propertySorting = $this->getConfig()->getPropertySorting()) !== false) {
@@ -157,7 +159,7 @@ trait StructBuilderPart
         }
     }
         
-    private function sortMethods(AbstractPhpStruct $model)
+    private function sortMethods(AbstractPhpStruct $model): void
     {
         if ($this->getConfig()->isSortingEnabled()
                 && ($methodSorting = $this->getConfig()->getMethodSorting()) !== false) {

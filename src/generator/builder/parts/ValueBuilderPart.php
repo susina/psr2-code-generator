@@ -24,7 +24,12 @@ trait ValueBuilderPart
             }
         }
     }
-    
+
+    /**
+     * @param mixed $value
+     *
+     * @return mixed|string
+     */
     private function exportVar($value)
     {
         // Simply to be sure a null value is displayed in lowercase.

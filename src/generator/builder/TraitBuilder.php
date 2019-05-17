@@ -31,13 +31,13 @@ class TraitBuilder extends AbstractBuilder
         $this->getWriter()->outdent()->rtrim()->write("}\n");
     }
     
-    private function buildSignature(PhpTrait $model)
+    private function buildSignature(PhpTrait $model): void
     {
         $this->getWriter()->write('trait ');
         $this->getWriter()->write($model->getName());
     }
     
-    private function sort(PhpTrait $model)
+    private function sort(PhpTrait $model): void
     {
         $this->sortUseStatements($model);
         $this->sortProperties($model);

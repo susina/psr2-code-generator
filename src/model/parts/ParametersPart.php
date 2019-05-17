@@ -249,14 +249,14 @@ trait ParametersPart
      *
      * @psalm-suppress TooManyArguments
      */
-    protected function generateParamDocblock()
+    protected function generateParamDocblock(): void
     {
         $docblock = $this->getDocblock();
         $tags = $docblock->getTags('param');
         foreach ($this->parameters as $param) {
             $ptag = $param->getDocblockTag();
 
-            $tag = $tags->find($ptag, function (ParamTag $tag, ParamTag $ptag) {
+            $tag = $tags->find($ptag, function (ParamTag $tag, ParamTag $ptag): bool {
                 return $tag->getVariable() == $ptag->getVariable();
             });
 

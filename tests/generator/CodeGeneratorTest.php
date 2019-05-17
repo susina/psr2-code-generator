@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\generator;
 
 use cristianoc72\codegen\config\GeneratorConfig;

@@ -6,11 +6,12 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/aa8d57cef69166ace691/test_coverage)](https://codeclimate.com/github/cristianoc72/psr2-code-generator/test_coverage)
 [![StyleCI](https://styleci.io/repos/120793787/shield?branch=master)](https://styleci.io/repos/120793787)
 
+Psr2-code-generator is a library to generate PHP code programmatically, via a nice fluent api.
 This library is a light version of the awesome https://github.com/gossi/php-code-generator, refactored to generate PSR-2 code.
 
 Differences and restrictions from the original library:
 - php 7.2+ strictly typed
-- generate PSR-2 code *ONLY*
+- generate PSR-2 code **ONLY**
 - generate only php 7.1+ code (strict types)
 - no reflection nor reverse engeneering
 

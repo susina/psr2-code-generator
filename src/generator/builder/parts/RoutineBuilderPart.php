@@ -52,6 +52,7 @@ trait RoutineBuilderPart
      * @param RoutineInterface $model
      *
      * @psalm-suppress InvalidArgument
+     * $model is always and AbstractModel subclass
      */
     protected function writeFunctionReturnType(RoutineInterface $model): void
     {

@@ -26,14 +26,29 @@ class BuilderFactory
 
     /** @var ModelGenerator */
     private $generator;
-    
+
+    /** @var ClassBuilder  */
     private $classBuilder;
+
+    /** @var ConstantBuilder  */
     private $constantBuilder;
+
+    /** @var FunctionBuilder  */
     private $functionBuilder;
+
+    /** @var InterfaceBuilder  */
     private $interfaceBuilder;
+
+    /** @var MethodBuilder  */
     private $methodBuilder;
+
+    /** @var ParameterBuilder  */
     private $parameterBuilder;
+
+    /** @var PropertyBuilder  */
     private $propertyBuilder;
+
+    /** @var TraitBuilder  */
     private $traitBuilder;
     
     public function __construct(ModelGenerator $generator)

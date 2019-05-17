@@ -19,7 +19,7 @@ trait InterfacesPart
     /** @var Set */
     private $interfaces;
     
-    private function initInterfaces()
+    private function initInterfaces(): void
     {
         $this->interfaces = new Set();
     }

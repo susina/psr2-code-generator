@@ -16,12 +16,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class GeneratorConfig
 {
+    /** @var array  */
     protected $options;
 
     /**
      * Creates a new configuration for code generator
      *
-     * @see https://cristianoc72.github.io/psr2-code-generator/generator.html
      * @param array $options
      */
     public function __construct(?array $options = null)
@@ -54,10 +54,10 @@ class GeneratorConfig
         $resolver->setAllowedTypes('headerComment', ['null', 'string', 'gossi\\docblock\\Docblock']);
         $resolver->setAllowedTypes('headerDocblock', ['null', 'string', 'gossi\\docblock\\Docblock']);
 
-        $resolver->setNormalizer('headerComment', function (Options $options, $value) {
+        $resolver->setNormalizer('headerComment', function (Options $options, ?string $value): ?Docblock {
             return $this->toDocblock($value);
         });
-        $resolver->setNormalizer('headerDocblock', function (Options $options, $value) {
+        $resolver->setNormalizer('headerDocblock', function (Options $options, ?string $value): ?Docblock {
             return $this->toDocblock($value);
         });
     }
@@ -150,10 +150,10 @@ class GeneratorConfig
     /**
      * Returns the use statement sorting
      *
-     * @param $sorting string|bool|Comparator|\Closure
+     * @param string|bool|Comparator|\Closure $sorting
      * @return $this
      */
-    public function setUseStatementSorting(bool $sorting): self
+    public function setUseStatementSorting($sorting): self
     {
         $this->options['useStatementSorting'] = $sorting;
         return $this;
@@ -162,7 +162,7 @@ class GeneratorConfig
     /**
      * Returns the constant sorting
      *
-     * @param $sorting string|bool|Comparator|\Closure
+     * @param string|bool|Comparator|\Closure $sorting
      * @return $this
      */
     public function setConstantSorting($sorting): self
@@ -174,7 +174,7 @@ class GeneratorConfig
     /**
      * Returns the property sorting
      *
-     * @param $sorting string|bool|Comparator|\Closure
+     * @param string|bool|Comparator|\Closure $sorting
      * @return $this
      */
     public function setPropertySorting($sorting): self
@@ -186,7 +186,7 @@ class GeneratorConfig
     /**
      * Returns the method sorting
      *
-     * @param $sorting string|bool|Comparator|\Closure
+     * @param string|bool|Comparator|\Closure $sorting
      * @return $this
      */
     public function setMethodSorting($sorting): self

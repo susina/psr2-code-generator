@@ -16,11 +16,10 @@ use phootwork\collection\Set;
  */
 trait ConstantsPart
 {
-
     /** @var Map */
     private $constants;
     
-    private function initConstants()
+    private function initConstants(): void
     {
         $this->constants = new Map();
     }

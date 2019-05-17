@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\comparator;
 
 use cristianoc72\codegen\model\PhpMethod;

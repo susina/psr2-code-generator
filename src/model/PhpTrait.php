@@ -9,6 +9,8 @@ use cristianoc72\codegen\model\parts\TraitsPart;
  * Represents a PHP trait.
  *
  * @author Thomas Gossmann
+ *
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, PropertiesInterface
 {
@@ -19,6 +21,8 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
      * Creates a new PHP trait
      *
      * @param string $name qualified name
+     *
+     * @psalm-suppress PropertyNotSetInConstructor
      */
     public function __construct(string $name = null)
     {
@@ -30,13 +34,13 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
     /**
      * @inheritDoc
      */
-    public function generateDocblock()
+    public function generateDocblock(): self
     {
         parent::generateDocblock();
 
-        foreach ($this->properties as $prop) {
-            $prop->generateDocblock();
-        }
+        $this->properties->each(function (string $key, PhpProperty $element): void {
+            $element->generateDocblock();
+        });
 
         return $this;
     }

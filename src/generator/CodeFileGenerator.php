@@ -24,13 +24,13 @@ class CodeFileGenerator extends CodeGenerator
     {
         $content = "<?php declare(strict_types=1);\n\n";
 
-        /** @var Docblock $comment */
+        /** @var ?Docblock $comment */
         $comment = $this->getConfig()->getHeaderComment();
         if ($comment !== null && !$comment->isEmpty()) {
             $content .= str_replace('/**', '/*', $comment->toString()) . "\n";
         }
 
-        /** @var Docblock $docblock */
+        /** @var ?Docblock $docblock */
         $docblock = $this->getConfig()->getHeaderDocblock();
         if ($docblock !== null && !$docblock->isEmpty()) {
             $content .= $docblock->toString() . "\n";

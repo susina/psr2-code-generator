@@ -30,7 +30,10 @@ class Writer
     /** PSR-2 4 spaces indentation */
     const INDENTATION = '    ';
 
+    /** @var string */
     private $content = '';
+
+    /** @var int */
     private $indentationLevel = 0;
 
     public function indent(): self

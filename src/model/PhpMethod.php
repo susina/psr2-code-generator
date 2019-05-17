@@ -29,6 +29,8 @@ use gossi\docblock\tags\ReturnTag;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
+ *
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class PhpMethod extends AbstractPhpMember implements RoutineInterface
 {
@@ -58,7 +60,7 @@ class PhpMethod extends AbstractPhpMember implements RoutineInterface
     /**
      * Generates docblock based on provided information
      */
-    public function generateDocblock()
+    public function generateDocblock(): self
     {
         $docblock = $this->getDocblock();
         $docblock->setShortDescription($this->getDescription());

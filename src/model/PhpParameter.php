@@ -33,6 +33,7 @@ class PhpParameter extends AbstractModel implements ValueInterface
     use TypePart;
     use ValuePart;
 
+    /** @var bool */
     private $passedByReference = false;
 
     /**

@@ -12,6 +12,7 @@ use phootwork\lang\Comparator;
  */
 class DefaultConstantComparator implements Comparator
 {
+    /** @var DefaultUseStatementComparator  */
     private $comparator;
     
     public function __construct()
