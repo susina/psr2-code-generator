@@ -110,7 +110,7 @@ use cristianoc72\codegen\model\PhpClass;
 use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
 
-\\ You can pass the name or the qualified name when you instantiate your model
+// You can pass the name or the qualified name when you instantiate your model
 $class = new PhpClass('my\\cool\\Tool');
 $class
     ->setMethod(PhpMethod::create('__construct')
@@ -313,7 +313,7 @@ namespace \\my\\cool\\namespace;
  */
 class MyAwesomeClass extend FantasticFramework
 {
-    \\properties and methods according to the model
+    //properties and methods according to the model
     .........
 }
 ```
@@ -347,7 +347,7 @@ namespace \\my\\cool\\namespace;
  */
 class MyAwesomeClass extend FantasticFramework
 {
-    \\properties and methods according to the model
+    //properties and methods according to the model
     .........
 }
 ```
