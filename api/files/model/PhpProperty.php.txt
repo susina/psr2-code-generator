@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -25,6 +25,8 @@ use gossi\docblock\tags\VarTag;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
+ *
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class PhpProperty extends AbstractPhpMember implements ValueInterface
 {
@@ -37,7 +39,7 @@ class PhpProperty extends AbstractPhpMember implements ValueInterface
      * @param string $name the properties name
      * @return static
      */
-    public static function create($name)
+    public static function create(string $name)
     {
         return new static($name);
     }
@@ -45,7 +47,7 @@ class PhpProperty extends AbstractPhpMember implements ValueInterface
     /**
      * Generates docblock based on provided information
      */
-    public function generateDocblock()
+    public function generateDocblock(): self
     {
         $docblock = $this->getDocblock();
         $docblock->setShortDescription($this->getDescription());
@@ -53,6 +55,8 @@ class PhpProperty extends AbstractPhpMember implements ValueInterface
 
         // var tag
         $this->generateTypeTag(new VarTag());
+
+        return $this;
     }
 }
 

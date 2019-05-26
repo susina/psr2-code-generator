@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\comparator;
 
 use cristianoc72\codegen\model\PhpConstant;
@@ -11,18 +12,23 @@ use phootwork\lang\Comparator;
  */
 class DefaultConstantComparator implements Comparator
 {
+    /** @var DefaultUseStatementComparator  */
     private $comparator;
     
     public function __construct()
     {
         $this->comparator = new DefaultUseStatementComparator();
     }
-    
+
     /**
      * @param PhpConstant $a
      * @param PhpConstant $b
+     *
+     * @return int
+     *
+     * @psalm-suppress MoreSpecificImplementedParamType
      */
-    public function compare($a, $b)
+    public function compare($a, $b): int
     {
         return $this->comparator->compare($a->getName(), $b->getName());
     }

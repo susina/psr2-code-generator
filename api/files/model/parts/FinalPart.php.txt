@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model\parts;
 
 /**
@@ -19,7 +20,7 @@ trait FinalPart
      *
      * @return bool `true` for final and `false` if not
      */
-    public function isFinal()
+    public function isFinal(): bool
     {
         return $this->final;
     }
@@ -30,7 +31,7 @@ trait FinalPart
      * @param bool $bool `true` for final and `false` if not
      * @return $this
      */
-    public function setFinal($bool)
+    public function setFinal(bool $bool): self
     {
         $this->final = (boolean) $bool;
 

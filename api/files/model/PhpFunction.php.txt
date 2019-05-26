@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
@@ -51,7 +51,7 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
      * @param string $name qualified name
      * @return static
      */
-    public static function create($name = null)
+    public static function create(string $name = null)
     {
         return new static($name);
     }
@@ -61,17 +61,16 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
      *
      * @param string $name qualified name
      */
-    public function __construct($name = null)
+    public function __construct(string $name = null)
     {
-        $this->setQualifiedName($name);
+        $this->setQualifiedName($name ?? '');
         $this->docblock = new Docblock();
-        $this->initParameters();
     }
 
     /**
      * @inheritDoc
      */
-    public function generateDocblock()
+    public function generateDocblock(): self
     {
         $docblock = $this->getDocblock();
         $docblock->setShortDescription($this->getDescription());
@@ -82,6 +81,8 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 
         // param tags
         $this->generateParamDocblock();
+
+        return $this;
     }
 }
 

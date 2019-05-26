@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model\parts;
 
 /**
@@ -12,14 +13,14 @@ trait LongDescriptionPart
 {
 
     /** @var string */
-    private $longDescription;
+    private $longDescription = '';
 
     /**
      * Returns the long description
      *
      * @return string
      */
-    public function getLongDescription()
+    public function getLongDescription(): string
     {
         return $this->longDescription;
     }
@@ -30,7 +31,7 @@ trait LongDescriptionPart
      * @param string $longDescription
      * @return $this
      */
-    public function setLongDescription($longDescription)
+    public function setLongDescription(string $longDescription): self
     {
         $this->longDescription = $longDescription;
         return $this;

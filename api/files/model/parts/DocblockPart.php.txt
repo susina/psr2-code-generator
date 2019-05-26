@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model\parts;
 
 use gossi\docblock\Docblock;
@@ -22,7 +23,7 @@ trait DocblockPart
      * @param Docblock|string $doc
      * @return $this
      */
-    public function setDocblock($doc)
+    public function setDocblock($doc): self
     {
         if (is_string($doc)) {
             $doc = trim($doc);
@@ -38,7 +39,7 @@ trait DocblockPart
      *
      * @return Docblock
      */
-    public function getDocblock()
+    public function getDocblock(): Docblock
     {
         return $this->docblock;
     }

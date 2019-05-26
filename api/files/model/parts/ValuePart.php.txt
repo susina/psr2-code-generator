@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model\parts;
 
 use cristianoc72\codegen\model\PhpConstant;
@@ -20,7 +21,7 @@ trait ValuePart
     private $hasValue = false;
 
     /** @var string */
-    private $expression;
+    private $expression = '';
 
     /** @var bool */
     private $hasExpression = false;
@@ -31,7 +32,7 @@ trait ValuePart
      * @param mixed $value
      * @return boolean
      */
-    private function isPrimitive($value)
+    private function isPrimitive($value): bool
     {
         return (is_string($value)
             || is_int($value)
@@ -44,11 +45,11 @@ trait ValuePart
     /**
      * Sets the value
      *
-     * @param string|integer|float|bool|null|PhpConstant $value
+     * @param mixed $value
      * @throws \InvalidArgumentException if the value is not an accepted primitve
      * @return $this
      */
-    public function setValue($value)
+    public function setValue($value): self
     {
         if (!$this->isPrimitive($value)) {
             throw new \InvalidArgumentException('Use setValue() only for primitives and PhpConstant, anyway use setExpression() instead.');
@@ -64,7 +65,7 @@ trait ValuePart
      *
      * @return $this
      */
-    public function unsetValue()
+    public function unsetValue(): self
     {
         $this->value = null;
         $this->hasValue = false;
@@ -87,7 +88,7 @@ trait ValuePart
      *
      * @return bool
      */
-    public function hasValue()
+    public function hasValue(): bool
     {
         return $this->hasValue || $this->hasExpression;
     }
@@ -97,7 +98,7 @@ trait ValuePart
      *
      * @return bool
      */
-    public function isExpression()
+    public function isExpression(): bool
     {
         return $this->hasExpression;
     }
@@ -108,7 +109,7 @@ trait ValuePart
      * @param string $expr
      * @return $this
      */
-    public function setExpression($expr)
+    public function setExpression(string $expr): self
     {
         $this->expression = $expr;
         $this->hasExpression = true;
@@ -121,7 +122,7 @@ trait ValuePart
      *
      * @return string
      */
-    public function getExpression()
+    public function getExpression(): string
     {
         return $this->expression;
     }
@@ -131,9 +132,9 @@ trait ValuePart
      *
      * @return $this
      */
-    public function unsetExpression()
+    public function unsetExpression(): self
     {
-        $this->expression = null;
+        $this->expression = '';
         $this->hasExpression = false;
 
         return $this;

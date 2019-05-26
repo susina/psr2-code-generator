@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model;
 
 use phootwork\collection\Map;
@@ -26,42 +27,59 @@ interface PropertiesInterface
     /**
      * Removes a property
      *
-     * @param PhpProperty|string $nameOrProperty property name or instance
+     * @param PhpProperty $property property instance
      * @throws \InvalidArgumentException If the property cannot be found
      * @return $this
      */
-    public function removeProperty($nameOrProperty);
+    public function removeProperty(PhpProperty $property);
+
+    /**
+     * Removes a property by its name
+     *
+     * @param string $name property instance
+     * @throws \InvalidArgumentException If the property cannot be found
+     * @return $this
+     */
+    public function removePropertyByName(string $name);
     
     /**
      * Checks whether a property exists
      *
-     * @param PhpProperty|string $nameOrProperty property name or instance
+     * @param PhpProperty $property
      * @return bool `true` if a property exists and `false` if not
      */
-    public function hasProperty($nameOrProperty);
+    public function hasProperty(PhpProperty $property): bool;
+
+    /**
+     * Checks whether a property exists
+     *
+     * @param string $name property name
+     * @return bool `true` if a property exists and `false` if not
+     */
+    public function hasPropertyByName(string $name): bool;
     
     /**
      * Returns a property
      *
-     * @param string $nameOrProperty property name
+     * @param string $name property name
      * @throws \InvalidArgumentException If the property cannot be found
      * @return PhpProperty
      */
-    public function getProperty($nameOrProperty);
+    public function getProperty(string $name): PhpProperty;
     
     /**
      * Returns a collection of properties
      *
      * @return Map
      */
-    public function getProperties();
+    public function getProperties(): Map;
     
     /**
      * Returns all property names
      *
      * @return Set
      */
-    public function getPropertyNames();
+    public function getPropertyNames(): Set;
     
     /**
      * Clears all properties

@@ -1,7 +1,8 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder;
 
-use cristianoc72\codegen\config\CodeGeneratorConfig;
+use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\generator\ModelGenerator;
 use cristianoc72\codegen\generator\utils\Writer;
 use cristianoc72\codegen\model\AbstractModel;
@@ -14,10 +15,10 @@ abstract class AbstractBuilder
     protected $generator;
     
     /** @var Writer */
-    protected $writer;
+    private $writer;
     
-    /** @var CodeGeneratorConfig */
-    protected $config;
+    /** @var GeneratorConfig */
+    private $config;
     
     public function __construct(ModelGenerator $generator)
     {
@@ -31,12 +32,25 @@ abstract class AbstractBuilder
      * @return void
      */
     abstract public function build(AbstractModel $model);
-    
+
+    /**
+     * @return GeneratorConfig
+     */
+    protected function getConfig(): GeneratorConfig
+    {
+        return $this->config;
+    }
+
+    protected function getWriter(): Writer
+    {
+        return $this->writer;
+    }
+
     /**
      * @param AbstractModel $model
      * @return void
      */
-    protected function generate(AbstractModel $model)
+    protected function generate(AbstractModel $model): void
     {
         $builder = $this->generator->getFactory()->getBuilder($model);
         $builder->build($model);
@@ -45,7 +59,7 @@ abstract class AbstractBuilder
     /**
      * @return void
      */
-    protected function ensureBlankLine()
+    protected function ensureBlankLine(): void
     {
         if (!$this->writer->endsWith("\n\n") && (strlen($this->writer->rtrim()->getContent()) > 0) &&
             !$this->writer->endsWith("{\n")) {
@@ -57,12 +71,10 @@ abstract class AbstractBuilder
      * @param DocblockInterface $model
      * @return void
      */
-    protected function buildDocblock(DocblockInterface $model)
+    protected function buildDocblock(DocblockInterface $model): void
     {
         $this->ensureBlankLine();
-        if ($this->config->getGenerateDocblock()) {
-            $model->generateDocblock();
-        }
+        $model->generateDocblock();
         $docblock = $model->getDocblock();
         if (!$docblock->isEmpty() || $this->config->getGenerateEmptyDocblock()) {
             $this->writer->writeln($docblock->toString());

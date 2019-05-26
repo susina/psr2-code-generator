@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types = 1);
+
 namespace cristianoc72\codegen\model\parts;
 
 use cristianoc72\codegen\model\PhpParameter;
@@ -15,14 +16,9 @@ use gossi\docblock\Docblock;
 trait ParametersPart
 {
 
-    /** @var array */
+    /** @var PhpParameter[] */
     private $parameters = [];
     
-    private function initParameters()
-    {
-        // 		$this->parameters = new ArrayList();
-    }
-
     /**
      * Sets a collection of parameters
      *
@@ -31,7 +27,7 @@ trait ParametersPart
      * @param PhpParameter[] $parameters
      * @return $this
      */
-    public function setParameters(array $parameters)
+    public function setParameters(array $parameters): self
     {
         $this->parameters = [];
         foreach ($parameters as $parameter) {
@@ -47,7 +43,7 @@ trait ParametersPart
      * @param PhpParameter $parameter
      * @return $this
      */
-    public function addParameter(PhpParameter $parameter)
+    public function addParameter(PhpParameter $parameter): self
     {
         $this->parameters[] = $parameter;
 
@@ -60,7 +56,7 @@ trait ParametersPart
      * @param string $name parameter name
      * @return bool `true` if a parameter exists and `false` if not
      */
-    public function hasParameter($name)
+    public function hasParameter(string $name): bool
     {
         foreach ($this->parameters as $param) {
             if ($param->getName() == $name) {
@@ -80,16 +76,19 @@ trait ParametersPart
      *
      * @return $this
      */
-    public function addSimpleParameter($name, $type = null, $defaultValue = null)
+    public function addSimpleParameter(string $name, ?string $type = null, $defaultValue = null): self
     {
         $parameter = new PhpParameter($name);
-        $parameter->setType($type);
+        if (null !== $type) {
+            $parameter->setType($type);
+        }
 
         if (2 < func_num_args()) {
             $parameter->setValue($defaultValue);
         }
 
         $this->addParameter($parameter);
+
         return $this;
     }
 
@@ -103,41 +102,51 @@ trait ParametersPart
      *
      * @return $this
      */
-    public function addSimpleDescParameter($name, $type = null, $typeDescription = null, $defaultValue = null)
+    public function addSimpleDescParameter(string $name, ?string $type = null, ?string $typeDescription = null, $defaultValue = null): self
     {
         $parameter = new PhpParameter($name);
-        $parameter->setType($type);
-        $parameter->setTypeDescription($typeDescription);
+        $parameter->setType($type ?? '');
+        $parameter->setTypeDescription($typeDescription ?? '');
 
         if (3 < func_num_args() == 3) {
             $parameter->setValue($defaultValue);
         }
 
         $this->addParameter($parameter);
+
         return $this;
     }
 
     /**
      * Returns a parameter by index or name
      *
-     * @param string|int $nameOrIndex
+     * @param string $name
      * @throws \InvalidArgumentException
      * @return PhpParameter
      */
-    public function getParameter($nameOrIndex)
+    public function getParameterByName(string $name): PhpParameter
     {
-        if (is_int($nameOrIndex)) {
-            $this->checkPosition($nameOrIndex);
-            return $this->parameters[$nameOrIndex];
-        }
-
         foreach ($this->parameters as $param) {
-            if ($param->getName() === $nameOrIndex) {
+            if ($param->getName() === $name) {
                 return $param;
             }
         }
 
-        throw new \InvalidArgumentException(sprintf('There is no parameter named "%s".', $nameOrIndex));
+        throw new \InvalidArgumentException(sprintf('There is no parameter named "%s".', $name));
+    }
+
+    /**
+     * Returns a parameter by index or name
+     *
+     * @param int $position
+     * @throws \InvalidArgumentException
+     * @return PhpParameter
+     */
+    public function getParameterByPosition(int $position): PhpParameter
+    {
+        $this->checkPosition($position);
+
+        return $this->parameters[$position];
     }
 
     /**
@@ -148,7 +157,7 @@ trait ParametersPart
      * @throws \InvalidArgumentException
      * @return $this
      */
-    public function replaceParameter($position, PhpParameter $parameter)
+    public function replaceParameter(int $position, PhpParameter $parameter): self
     {
         $this->checkPosition($position);
         $this->parameters[$position] = $parameter;
@@ -157,32 +166,41 @@ trait ParametersPart
     }
 
     /**
-     * Remove a parameter at a given position
+     * Remove the given parameter
      *
-     * @param int|string|PhpParameter $param
+     * @param PhpParameter $param
      * @return $this
+     * @throws \InvalidArgumentException If the parameter doesn't exist
      */
-    public function removeParameter($param)
+    public function removeParameter(PhpParameter $param): self
     {
-        if (is_int($param)) {
-            $this->removeParameterByPosition($param);
-        } elseif (is_string($param)) {
-            $this->removeParameterByName($param);
-        } elseif ($param instanceof PhpParameter) {
-            $this->removeParameterByName($param->getName());
-        }
-
-        return $this;
+        return $this->removeParameterByName($param->getName());
     }
-    
-    private function removeParameterByPosition($position)
+
+    /**
+     * Remove the parameter at the given position
+     *
+     * @param int $position
+     * @return $this
+     * @throws \InvalidArgumentException If the parameter doesn't exist
+     */
+    public function removeParameterByPosition(int $position): self
     {
         $this->checkPosition($position);
         unset($this->parameters[$position]);
         $this->parameters = array_values($this->parameters);
+
+        return $this;
     }
-    
-    private function removeParameterByName($name)
+
+    /**
+     * Remove a parameter having the given name
+     *
+     * @param string $name
+     * @return $this
+     * @throws \InvalidArgumentException If the parameter doesn't exist
+     */
+    public function removeParameterByName(string $name): self
     {
         $position = null;
         foreach ($this->parameters as $index => $param) {
@@ -194,9 +212,15 @@ trait ParametersPart
         if ($position !== null) {
             $this->removeParameterByPosition($position);
         }
+
+        return $this;
     }
-    
-    private function checkPosition($position)
+
+    /**
+     * @param int $position
+     * @throws \InvalidArgumentException if the position is not correct
+     */
+    private function checkPosition(int $position): void
     {
         if ($position < 0 || $position > count($this->parameters)) {
             throw new \InvalidArgumentException(sprintf('The position must be in the range [0, %d].', count($this->parameters)));
@@ -204,11 +228,11 @@ trait ParametersPart
     }
 
     /**
-     * Returns a collection of parameters
+     * Returns an array of parameters
      *
-     * @return array
+     * @return PhpParameter[]
      */
-    public function getParameters()
+    public function getParameters(): array
     {
         return $this->parameters;
     }
@@ -218,19 +242,21 @@ trait ParametersPart
      *
      * @return Docblock
      */
-    abstract protected function getDocblock();
+    abstract protected function getDocblock(): Docblock;
 
     /**
      * Generates docblock for params
+     *
+     * @psalm-suppress TooManyArguments
      */
-    protected function generateParamDocblock()
+    protected function generateParamDocblock(): void
     {
         $docblock = $this->getDocblock();
         $tags = $docblock->getTags('param');
         foreach ($this->parameters as $param) {
             $ptag = $param->getDocblockTag();
 
-            $tag = $tags->find($ptag, function (ParamTag $tag, ParamTag $ptag) {
+            $tag = $tags->find($ptag, function (ParamTag $tag, ParamTag $ptag): bool {
                 return $tag->getVariable() == $ptag->getVariable();
             });
 

@@ -1,6 +1,8 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder\parts;
 
+use cristianoc72\codegen\generator\utils\Writer;
 use cristianoc72\codegen\model\AbstractModel;
 use cristianoc72\codegen\model\RoutineInterface;
 
@@ -13,47 +15,58 @@ trait RoutineBuilderPart
      * @return void
      */
     abstract protected function generate(AbstractModel $model);
-    
-    protected function writeFunctionStatement(RoutineInterface $model)
+
+    abstract protected function getWriter(): Writer;
+
+    /**
+     * @param RoutineInterface $model
+     */
+    protected function writeFunctionStatement(RoutineInterface $model): void
     {
-        $this->writer->write('function ');
+        $this->getWriter()->write('function ');
         
         if ($model->isReferenceReturned()) {
-            $this->writer->write('& ');
+            $this->getWriter()->write('& ');
         }
         
-        $this->writer->write($model->getName() . '(');
+        $this->getWriter()->write($model->getName() . '(');
         $this->writeParameters($model);
-        $this->writer->write(')');
+        $this->getWriter()->write(')');
         $this->writeFunctionReturnType($model);
     }
     
-    protected function writeParameters(RoutineInterface $model)
+    protected function writeParameters(RoutineInterface $model): void
     {
         $first = true;
         foreach ($model->getParameters() as $parameter) {
             if (!$first) {
-                $this->writer->write(', ');
+                $this->getWriter()->write(', ');
             }
             $first = false;
     
             $this->generate($parameter);
         }
     }
-    
-    protected function writeFunctionReturnType(RoutineInterface $model)
+
+    /**
+     * @param RoutineInterface $model
+     *
+     * @psalm-suppress InvalidArgument
+     * $model is always and AbstractModel subclass
+     */
+    protected function writeFunctionReturnType(RoutineInterface $model): void
     {
-        $type = $this->getType($model, $this->config->getGenerateReturnTypeHints());
-        if ($type !== null && $this->config->getGenerateReturnTypeHints()) {
-            $this->writer->write(': ')->write($type);
+        $type = $this->getType($model);
+        if ($type !== null) {
+            $this->getWriter()->write(': ')->write($type);
         }
     }
     
-    protected function writeBody(RoutineInterface $model)
+    protected function writeBody(RoutineInterface $model): void
     {
-        $this->writer->writeln("\n{\n")->indent();
-        $this->writer->writeln(trim($model->getBody()));
-        $this->writer->outdent()->rtrim()->writeln('}');
+        $this->getWriter()->writeln("\n{\n")->indent();
+        $this->getWriter()->writeln(trim($model->getBody()));
+        $this->getWriter()->outdent()->rtrim()->writeln('}');
     }
 }
 

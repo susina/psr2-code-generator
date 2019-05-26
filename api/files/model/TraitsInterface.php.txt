@@ -1,5 +1,8 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\model;
+
+use phootwork\collection\Set;
 
 /**
  * Represents models that can have traits
@@ -15,25 +18,33 @@ interface TraitsInterface
      * If the trait is passed as PhpTrait object,
      * the trait is also added as use statement.
      *
-     * @param PhpTrait|string $trait trait or qualified name
+     * @param PhpTrait $trait
      * @return $this
      */
-    public function addTrait($trait);
+    public function addTrait(PhpTrait $trait);
 
     /**
      * Returns a collection of traits
      *
-     * @return string[]
+     * @return Set
      */
-    public function getTraits();
+    public function getTraits(): Set;
 
     /**
      * Checks whether a trait exists
      *
-     * @param PhpTrait|string $trait
+     * @param PhpTrait $trait
      * @return bool `true` if it exists and `false` if not
      */
-    public function hasTrait($trait);
+    public function hasTrait(PhpTrait $trait): bool;
+
+    /**
+     * Checks whether a trait exists
+     *
+     * @param string $traitName The name of the trait
+     * @return bool `true` if it exists and `false` if not
+     */
+    public function hasTraitByName(string $traitName): bool;
 
     /**
      * Removes a trait.
@@ -41,10 +52,21 @@ interface TraitsInterface
      * If the trait is passed as PhpTrait object,
      * the trait is also removed from use statements.
      *
-     * @param PhpTrait|string $trait trait or qualified name
+     * @param PhpTrait $trait
      * @return $this
      */
-    public function removeTrait($trait);
+    public function removeTrait(PhpTrait $trait);
+
+    /**
+     * Removes a trait.
+     *
+     * If the trait is passed as PhpTrait object,
+     * the trait is also removed from use statements.
+     *
+     * @param string $traitName trait qualified name
+     * @return $this
+     */
+    public function removeTraitByName(string $traitName);
 
     /**
      * Sets a collection of traits

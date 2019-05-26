@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -62,7 +62,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
     /** @var string */
     private $visibility = self::VISIBILITY_PUBLIC;
 
-    /** @var AbstractPhpStruct */
+    /** @var ?AbstractPhpStruct */
     private $parent;
 
     /**
@@ -70,7 +70,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
      *
      * @param string $name the name of the member
      */
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->setName($name);
         $this->docblock = new Docblock();
@@ -85,7 +85,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
      * @param string $visibility the new visibility
      * @return $this
      */
-    public function setVisibility($visibility)
+    public function setVisibility(string $visibility): self
     {
         if ($visibility !== self::VISIBILITY_PRIVATE
                 && $visibility !== self::VISIBILITY_PROTECTED
@@ -103,7 +103,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
      *
      * @return string the visibility
      */
-    public function getVisibility()
+    public function getVisibility(): string
     {
         return $this->visibility;
     }
@@ -114,7 +114,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
      * @param bool $bool
      * @return $this
      */
-    public function setStatic($bool)
+    public function setStatic(bool $bool): self
     {
         $this->static = (boolean) $bool;
 
@@ -126,7 +126,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
      *
      * @return bool `true` if static and `false` if not
      */
-    public function isStatic()
+    public function isStatic(): bool
     {
         return $this->static;
     }
@@ -138,7 +138,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
      * @param AbstractPhpStruct|null $parent
      * @return $this
      */
-    public function setParent($parent)
+    public function setParent(?AbstractPhpStruct $parent): self
     {
         $this->parent = $parent;
         return $this;
@@ -150,7 +150,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
      * @internal
      * @return AbstractPhpStruct
      */
-    public function getParent()
+    public function getParent(): ?AbstractPhpStruct
     {
         return $this->parent;
     }

@@ -1,36 +1,42 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\generator\builder;
 
 use cristianoc72\codegen\generator\builder\parts\RoutineBuilderPart;
 use cristianoc72\codegen\model\AbstractModel;
 use cristianoc72\codegen\model\PhpInterface;
+use cristianoc72\codegen\model\PhpMethod;
 
 class MethodBuilder extends AbstractBuilder
 {
     use RoutineBuilderPart;
 
-    public function build(AbstractModel $model)
+    public function build(AbstractModel $model): void
     {
+        if (! $model instanceof PhpMethod) {
+            throw new \InvalidArgumentException('Method builder can build method classes only.');
+        }
+
         $this->buildDocblock($model);
         
         if ($model->isFinal()) {
-            $this->writer->write('final ');
+            $this->getWriter()->write('final ');
         }
         
         if ($model->isAbstract()) {
-            $this->writer->write('abstract ');
+            $this->getWriter()->write('abstract ');
         }
         
-        $this->writer->write($model->getVisibility() . ' ');
+        $this->getWriter()->write($model->getVisibility() . ' ');
         
         if ($model->isStatic()) {
-            $this->writer->write('static ');
+            $this->getWriter()->write('static ');
         }
         
         $this->writeFunctionStatement($model);
         
         if ($model->isAbstract() || $model->getParent() instanceof PhpInterface) {
-            $this->writer->writeln(';');
+            $this->getWriter()->writeln(';');
         
             return;
         }
