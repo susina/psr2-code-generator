@@ -48,38 +48,34 @@ class MethodTest extends TestCase
         $this->assertEquals([], $method->getParameters());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testGetNonExistentParameterByName()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $method = new PhpMethod('doink');
         $method->getParameterByName('x');
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testGetNonExistentParameterByIndex()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $method = new PhpMethod('doink');
         $method->getParameterByPosition(5);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testReplaceNonExistentParameterByIndex()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $method = new PhpMethod('doink');
         $method->replaceParameter(5, new PhpParameter());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testRemoveNonExistentParameterByIndex()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $method = new PhpMethod('doink');
         $method->removeParameterByPosition(5);
     }

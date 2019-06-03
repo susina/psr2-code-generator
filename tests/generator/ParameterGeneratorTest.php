@@ -92,11 +92,10 @@ class ParameterGeneratorTest extends GeneratorTestCase
         $this->assertEquals('$foo = [\'bar\' => \'baz\']', $generator->generate($prop));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testWrongClassThrowsException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
         $wrongModel = PhpMethod::create('myMethod');
         $builder = new ParameterBuilder($generator);

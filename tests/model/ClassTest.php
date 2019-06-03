@@ -60,20 +60,18 @@ class ClassTest extends TestCase
         }
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testRemoveConstantThrowsExceptionWhenConstantDoesNotExist()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $class = new PhpClass();
         $class->removeConstantByName('foo');
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testGetConstantThrowsExceptionWhenConstantDoesNotExist()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $class = new PhpClass();
         $class->getConstant('foo');
     }
@@ -174,11 +172,10 @@ class ClassTest extends TestCase
         $this->assertFalse($class->hasUseStatement('other\name\space\Trait'), 'Use statement removed.');
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testSetTraitsWrongTypeThrowsException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $class = new PhpClass('my\name\space\Class');
 
         $this->assertEquals([], $class->getTraits()->toArray());
@@ -230,11 +227,10 @@ class ClassTest extends TestCase
         }
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testRemoveNonExistentProperty()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $class = new PhpClass();
         $class->removePropertyByName('haha');
     }

@@ -36,11 +36,10 @@ class InterfaceGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $generator->generate($interface));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testWrongClassThrowsException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
         $wrongModel = PhpMethod::create('myMethod');
         $builder = new InterfaceBuilder($generator);

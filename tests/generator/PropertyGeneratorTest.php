@@ -87,11 +87,10 @@ class PropertyGeneratorTest extends GeneratorTestCase
         $this->assertEquals('public $foo = [\'bar\' => \'baz\'];'."\n", $generator->generate($prop));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testWrongClassThrowsException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
         $wrongModel = PhpMethod::create('myMethod');
         $builder = new PropertyBuilder($generator);

@@ -143,11 +143,10 @@ class ClassGeneratorTest extends GeneratorTestCase
         $this->assertEquals($this->getGeneratedContent('RequireTraitsClass.php'), $code);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testWrongClassThrowsException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
         $wrongModel = PhpMethod::create('myMethod');
         $builder = new ClassBuilder($generator);

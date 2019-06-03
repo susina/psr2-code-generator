@@ -128,20 +128,18 @@ class AbstractPhpStructTest extends TestCase
         }
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testRemoveMethodThrowsExceptionWhenConstantDoesNotExist()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $class = new PhpClass();
         $class->removeMethodByName('foo');
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testGetMethodThrowsExceptionWhenConstantDoesNotExist()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $class = new PhpClass();
         $class->getMethodByName('foo');
     }

@@ -49,11 +49,10 @@ class FunctionGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $generator->generate($method));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testWrongClassThrowsException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
         $wrongModel = PhpMethod::create('myMethod');
         $builder = new FunctionBuilder($generator);

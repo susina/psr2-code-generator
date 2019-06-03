@@ -23,11 +23,10 @@ class TraitGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testInvalidModelThrowsException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
         $wrongModel = PhpMethod::create('myMethod');
         $builder = new TraitBuilder($generator);

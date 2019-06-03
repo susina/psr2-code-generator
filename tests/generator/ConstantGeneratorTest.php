@@ -41,11 +41,10 @@ class ConstantGeneratorTest extends GeneratorTestCase
         $this->assertEquals('const FOO = [\'bar\' => \'baz\'];'."\n", $generator->generate($prop));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testWrongClassThrowsException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $generator = $this->getMockBuilder(ModelGenerator::class)->disableOriginalConstructor()->getMock();
         $wrongModel = PhpMethod::create('myMethod');
         $builder = new ConstantBuilder($generator);

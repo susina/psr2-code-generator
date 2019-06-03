@@ -59,12 +59,11 @@ class PropertyTest extends TestCase
         $this->isValueBool(PhpProperty::create('x')->setValue(false));
         $this->isValueNull(PhpProperty::create('x')->setValue(null));
     }
-    
-    /**
-     * @expectedException \InvalidArgumentException
-     */
+
     public function testInvalidValue()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         PhpProperty::create('x')->setValue(new \stdClass());
     }
 }

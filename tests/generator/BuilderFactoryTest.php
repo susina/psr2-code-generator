@@ -9,11 +9,10 @@ use PHPUnit\Framework\TestCase;
 
 class BuilderFactoryTest extends TestCase
 {
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testWrongModelClassThrowsException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $generator = $this->getMockBuilder(ModelGenerator::class)
             ->disableOriginalConstructor()
             ->getMock();

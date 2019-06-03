@@ -28,11 +28,10 @@ class AbstractPhpMemberTest extends TestCase
         $this->assertEquals('private', $member->getVisibility());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testSetVisibilityThrowsExOnInvalidValue()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $member = $this->getMember();
         $member->setVisibility('foo');
     }

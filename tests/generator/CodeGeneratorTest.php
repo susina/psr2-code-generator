@@ -21,11 +21,10 @@ class CodeGeneratorTest extends TestCase
         $this->assertSame($config, $generator->getConfig());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testPassWrongConfigThrowsException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $generator = new CodeGenerator(256);
     }
 }
