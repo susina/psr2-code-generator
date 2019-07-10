@@ -37,4 +37,18 @@ trait BodyPart
     {
         return $this->body;
     }
+
+    /**
+     * Append a string to the body of this
+     * 
+     * @param string $toAppend
+     *
+     * @return $this
+     */
+    public function appendToBody(string $toAppend): self
+    {
+        $this->body .= $toAppend;
+
+        return $this;
+    }
 }

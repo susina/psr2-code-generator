@@ -87,6 +87,8 @@ class MethodTest extends TestCase
         $this->assertSame('', $method->getBody());
         $this->assertSame($method, $method->setBody('foo'));
         $this->assertEquals('foo', $method->getBody());
+        $this->assertSame($method, $method->appendToBody(" appended bar"));
+        $this->assertEquals("foo appended bar", $method->getBody());
     }
 
     public function testReferenceReturned()
