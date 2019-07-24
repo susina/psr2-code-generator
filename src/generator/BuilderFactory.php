@@ -72,38 +72,35 @@ class BuilderFactory
      */
     public function getBuilder(AbstractModel $model): AbstractBuilder
     {
-        if ($model instanceof PhpClass) {
-            return $this->classBuilder;
-        }
-        
-        if ($model instanceof PhpConstant) {
-            return $this->constantBuilder;
-        }
-        
-        if ($model instanceof PhpFunction) {
-            return $this->functionBuilder;
-        }
-        
-        if ($model instanceof PhpInterface) {
-            return $this->interfaceBuilder;
-        }
-        
-        if ($model instanceof PhpMethod) {
-            return $this->methodBuilder;
-        }
-        
-        if ($model instanceof PhpParameter) {
-            return $this->parameterBuilder;
-        }
-        
-        if ($model instanceof PhpProperty) {
-            return $this->propertyBuilder;
-        }
-        
-        if ($model instanceof PhpTrait) {
-            return $this->traitBuilder;
+        switch ($class = get_class($model)) {
+            case PhpClass::class:
+                $builder = $this->classBuilder;
+                break;
+            case PhpFunction::class:
+                $builder = $this->functionBuilder;
+                break;
+            case PhpInterface::class:
+                $builder = $this->interfaceBuilder;
+                break;
+            case PhpMethod::class:
+                $builder = $this->methodBuilder;
+                break;
+            case PhpParameter::class:
+                $builder = $this->parameterBuilder;
+                break;
+            case PhpProperty::class:
+                $builder = $this->propertyBuilder;
+                break;
+            case PhpTrait::class:
+                $builder = $this->traitBuilder;
+                break;
+            case PhpConstant::class:
+                $builder = $this->constantBuilder;
+                break;
+            default:
+                throw new \InvalidArgumentException(sprintf("No builder for '%s' objects.", $class));
         }
 
-        throw new \InvalidArgumentException(sprintf("No builder for '%s' objects.", get_class($model)));
+        return $builder;
     }
 }
