@@ -40,7 +40,7 @@ trait BodyPart
 
     /**
      * Append a string to the body of this
-     * 
+     *
      * @param string $toAppend
      *
      * @return $this

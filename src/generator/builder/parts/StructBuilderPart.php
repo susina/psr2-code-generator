@@ -20,6 +20,7 @@ use cristianoc72\codegen\model\PhpProperty;
 use cristianoc72\codegen\model\PhpTrait;
 use cristianoc72\codegen\model\PropertiesInterface;
 use cristianoc72\codegen\model\TraitsInterface;
+use phootwork\lang\Text;
 
 trait StructBuilderPart
 {
@@ -71,30 +72,29 @@ trait StructBuilderPart
     
     protected function buildUseStatements(AbstractPhpStruct $model): void
     {
-        if ($useStatements = $model->getUseStatements()) {
-            $this->ensureBlankLine();
-            foreach ($useStatements->toArray() as $alias => $namespace) {
-                if (false !== $pos = strrpos($namespace, '\\')) {
-                    $commonName = substr($namespace, $pos + 1);
-                } else {
-                    $commonName = $namespace;
-                }
-    
-                if (false === $pos && !$model->getNamespace()) {
-                    //avoid fatal 'The use statement with non-compound name '$commonName' has no effect'
-                    continue;
-                }
-    
-                $this->getWriter()->write('use ' . $namespace);
-    
-                if ($commonName !== $alias) {
-                    $this->getWriter()->write(' as ' . $alias);
-                }
-    
-                $this->getWriter()->writeln(';');
-            }
-            $this->ensureBlankLine();
+        if ($model->getUseStatements()->isEmpty()) {
+            return;
         }
+
+        $this->ensureBlankLine();
+        $model->getUseStatements()->each(function (string $alias, string $value) use ($model) {
+            $namespace = new Text($value);
+            if (!$namespace->contains('\\') && '' === $model->getNamespace()) {
+                //avoid fatal 'The use statement with non-compound name '$commonName' has no effect'
+                return;
+            }
+
+            $commonName = $namespace->substring((int) $namespace->lastIndexOf('\\'))->trimStart('\\');
+            $this->getWriter()->write("use $namespace");
+
+            if ($commonName->toString() !== $alias) {
+                $this->getWriter()->write(" as $alias");
+            }
+
+            $this->getWriter()->writeln(';');
+        });
+        
+        $this->ensureBlankLine();
     }
     
     protected function buildTraits(TraitsInterface $model): void
