@@ -20,6 +20,8 @@ use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
 use cristianoc72\codegen\model\PhpProperty;
 use cristianoc72\codegen\model\PhpTrait;
+use \InvalidArgumentException;
+use phootwork\collection\Map;
 
 class BuilderFactory
 {
@@ -27,41 +29,23 @@ class BuilderFactory
     /** @var ModelGenerator */
     private $generator;
 
-    /** @var ClassBuilder  */
-    private $classBuilder;
-
-    /** @var ConstantBuilder  */
-    private $constantBuilder;
-
-    /** @var FunctionBuilder  */
-    private $functionBuilder;
-
-    /** @var InterfaceBuilder  */
-    private $interfaceBuilder;
-
-    /** @var MethodBuilder  */
-    private $methodBuilder;
-
-    /** @var ParameterBuilder  */
-    private $parameterBuilder;
-
-    /** @var PropertyBuilder  */
-    private $propertyBuilder;
-
-    /** @var TraitBuilder  */
-    private $traitBuilder;
+    /** @var Map */
+    private $builders;
     
     public function __construct(ModelGenerator $generator)
     {
         $this->generator = $generator;
-        $this->classBuilder = new ClassBuilder($generator);
-        $this->constantBuilder = new ConstantBuilder($generator);
-        $this->functionBuilder = new FunctionBuilder($generator);
-        $this->interfaceBuilder = new InterfaceBuilder($generator);
-        $this->methodBuilder = new MethodBuilder($generator);
-        $this->parameterBuilder = new ParameterBuilder($generator);
-        $this->propertyBuilder = new PropertyBuilder($generator);
-        $this->traitBuilder = new TraitBuilder($generator);
+        $this->builders = new Map();
+        $this->builders->setAll([
+            PhpClass::class     => new ClassBuilder($generator),
+            PhpConstant::class  => new ConstantBuilder($generator),
+            PhpFunction::class  => new FunctionBuilder($generator),
+            PhpInterface::class => new InterfaceBuilder($generator),
+            PhpMethod::class    => new MethodBuilder($generator),
+            PhpParameter::class => new ParameterBuilder($generator),
+            PhpProperty::class  => new PropertyBuilder($generator),
+            PhpTrait::class     => new TraitBuilder($generator)
+        ]);
     }
     
     /**
@@ -72,35 +56,13 @@ class BuilderFactory
      */
     public function getBuilder(AbstractModel $model): AbstractBuilder
     {
-        switch ($class = get_class($model)) {
-            case PhpClass::class:
-                $builder = $this->classBuilder;
-                break;
-            case PhpFunction::class:
-                $builder = $this->functionBuilder;
-                break;
-            case PhpInterface::class:
-                $builder = $this->interfaceBuilder;
-                break;
-            case PhpMethod::class:
-                $builder = $this->methodBuilder;
-                break;
-            case PhpParameter::class:
-                $builder = $this->parameterBuilder;
-                break;
-            case PhpProperty::class:
-                $builder = $this->propertyBuilder;
-                break;
-            case PhpTrait::class:
-                $builder = $this->traitBuilder;
-                break;
-            case PhpConstant::class:
-                $builder = $this->constantBuilder;
-                break;
-            default:
-                throw new \InvalidArgumentException(sprintf("No builder for '%s' objects.", $class));
+
+        $modelClass = get_class($model);
+
+        if (!$this->builders->has($modelClass)) {
+            throw new InvalidArgumentException(sprintf("No builder for '%s' objects.", get_class($model)));
         }
 
-        return $builder;
+        return $this->builders->get($modelClass);
     }
 }
