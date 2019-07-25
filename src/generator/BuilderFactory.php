@@ -56,7 +56,6 @@ class BuilderFactory
      */
     public function getBuilder(AbstractModel $model): AbstractBuilder
     {
-
         $modelClass = get_class($model);
 
         if (!$this->builders->has($modelClass)) {
