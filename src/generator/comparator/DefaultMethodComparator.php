@@ -10,7 +10,7 @@ use phootwork\lang\Comparator;
  *
  * Orders them by static first, then visibility and last by property name
  */
-class DefaultMethodComparator implements Comparator
+class DefaultMethodComparator extends AbstractMemberComparator
 {
 
     /**
@@ -27,13 +27,6 @@ class DefaultMethodComparator implements Comparator
             return $isStatic ? 1 : -1;
         }
         
-        if (($aV = $a->getVisibility()) !== $bV = $b->getVisibility()) {
-            $aV = 'public' === $aV ? 3 : ('protected' === $aV ? 2 : 1);
-            $bV = 'public' === $bV ? 3 : ('protected' === $bV ? 2 : 1);
-        
-            return $aV > $bV ? -1 : 1;
-        }
-        
-        return strcasecmp($a->getName(), $b->getName());
+        return $this->compareMembers($a, $b);
     }
 }
