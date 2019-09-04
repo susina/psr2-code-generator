@@ -3,7 +3,7 @@
 namespace cristianoc72\codegen\model\parts;
 
 /**
- * Abstract Part
+ * Abstract Part.
  *
  * Keeps track if the model has an abstract modifier or not
  *
@@ -11,12 +11,11 @@ namespace cristianoc72\codegen\model\parts;
  */
 trait AbstractPart
 {
-
     /** @var bool */
     private $abstract = false;
 
     /**
-     * Returns whether this is abstract
+     * Returns whether this is abstract.
      *
      * @return bool `true` for abstract and `false` if not
      */
@@ -26,14 +25,15 @@ trait AbstractPart
     }
 
     /**
-     * Sets this to abstract
+     * Sets this to abstract.
      *
      * @param bool $bool `true` for abstract and `false` if not
+     *
      * @return $this
      */
     public function setAbstract(bool $bool): self
     {
-        $this->abstract = (boolean) $bool;
+        $this->abstract = (bool) $bool;
 
         return $this;
     }

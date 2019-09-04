@@ -3,7 +3,6 @@
 namespace cristianoc72\codegen\generator\builder\parts;
 
 use cristianoc72\codegen\config\GeneratorConfig;
-use cristianoc72\codegen\generator\builder\AbstractBuilder;
 use cristianoc72\codegen\generator\comparator\DefaultConstantComparator;
 use cristianoc72\codegen\generator\comparator\DefaultMethodComparator;
 use cristianoc72\codegen\generator\comparator\DefaultPropertyComparator;
@@ -28,15 +27,17 @@ trait StructBuilderPart
      * @return void
      */
     abstract protected function ensureBlankLine();
-    
+
     /**
      * @param AbstractModel $model
+     *
      * @return void
      */
     abstract protected function generate(AbstractModel $model);
-    
+
     /**
      * @param DocblockInterface $model
+     *
      * @return void
      */
     abstract protected function buildDocblock(DocblockInterface $model);
@@ -44,7 +45,7 @@ trait StructBuilderPart
     abstract protected function getConfig(): GeneratorConfig;
 
     abstract protected function getWriter(): Writer;
-    
+
     protected function buildHeader(AbstractPhpStruct $model): void
     {
         $this->buildNamespace($model);
@@ -52,24 +53,24 @@ trait StructBuilderPart
         $this->buildUseStatements($model);
         $this->buildDocblock($model);
     }
-    
+
     protected function buildNamespace(NamespaceInterface $model): void
     {
         if ($namespace = $model->getNamespace()) {
-            $this->getWriter()->writeln('namespace ' . $namespace . ';');
+            $this->getWriter()->writeln('namespace '.$namespace.';');
         }
     }
-    
+
     protected function buildRequiredFiles(AbstractPhpStruct $model): void
     {
         if (!$model->getRequiredFiles()->isEmpty()) {
             $this->ensureBlankLine();
             $model->getRequiredFiles()->each(function (string $element): void {
-                $this->getWriter()->writeln('require_once ' . var_export($element, true) . ';');
+                $this->getWriter()->writeln('require_once '.var_export($element, true).';');
             });
         }
     }
-    
+
     protected function buildUseStatements(AbstractPhpStruct $model): void
     {
         if ($model->getUseStatements()->isEmpty()) {
@@ -93,39 +94,39 @@ trait StructBuilderPart
 
             $this->getWriter()->writeln(';');
         });
-        
+
         $this->ensureBlankLine();
     }
-    
+
     protected function buildTraits(TraitsInterface $model): void
     {
         $model->getTraits()->each(function (PhpTrait $element): void {
             $this->getWriter()->write('use ');
-            $this->getWriter()->writeln($element->getName() . ';');
+            $this->getWriter()->writeln($element->getName().';');
         });
     }
-    
+
     protected function buildConstants(ConstantsInterface $model): void
     {
         $model->getConstants()->each(function (string $key, PhpConstant $element): void {
             $this->generate($element);
         });
     }
-    
+
     protected function buildProperties(PropertiesInterface $model): void
     {
         $model->getProperties()->each(function (string $key, PhpProperty $element): void {
             $this->generate($element);
         });
     }
-    
+
     protected function buildMethods(AbstractPhpStruct $model): void
     {
         $model->getMethods()->each(function (string $key, PhpMethod $element): void {
             $this->generate($element);
         });
     }
-    
+
     private function sortUseStatements(AbstractPhpStruct $model): void
     {
         if ($this->getConfig()->isSortingEnabled()
@@ -136,7 +137,7 @@ trait StructBuilderPart
             $model->getUseStatements()->sort($useStatementSorting);
         }
     }
-    
+
     private function sortConstants(ConstantsInterface $model): void
     {
         if ($this->getConfig()->isSortingEnabled()
@@ -147,7 +148,7 @@ trait StructBuilderPart
             $model->getConstants()->sort($constantSorting);
         }
     }
-    
+
     private function sortProperties(PropertiesInterface $model): void
     {
         if ($this->getConfig()->isSortingEnabled()
@@ -158,7 +159,7 @@ trait StructBuilderPart
             $model->getProperties()->sort($propertySorting);
         }
     }
-        
+
     private function sortMethods(AbstractPhpStruct $model): void
     {
         if ($this->getConfig()->isSortingEnabled()

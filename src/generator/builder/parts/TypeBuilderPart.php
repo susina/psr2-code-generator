@@ -3,34 +3,33 @@
 namespace cristianoc72\codegen\generator\builder\parts;
 
 use cristianoc72\codegen\model\AbstractModel;
-use cristianoc72\codegen\model\RoutineInterface;
 
 trait TypeBuilderPart
 {
     /** @var string[] */
     protected static $noTypeHints = [
-        'string', 'int', 'integer', 'bool', 'boolean', 'float', 'double', 'object', 'mixed', 'resource'
+        'string', 'int', 'integer', 'bool', 'boolean', 'float', 'double', 'object', 'mixed', 'resource',
     ];
 
     /** @var string[] */
     protected static $php7typeHints = [
-        'string', 'int', 'integer', 'bool', 'boolean', 'float', 'double'
+        'string', 'int', 'integer', 'bool', 'boolean', 'float', 'double',
     ];
 
     /** @var array */
     protected static $typeHintMap = [
-        'string' => 'string',
-        'int' => 'int',
+        'string'  => 'string',
+        'int'     => 'int',
         'integer' => 'int',
-        'bool' => 'bool',
+        'bool'    => 'bool',
         'boolean' => 'bool',
-        'float' => 'float',
-        'double' => 'float'
+        'float'   => 'float',
+        'double'  => 'float',
     ];
-    
+
     /**
-     *
      * @param AbstractModel $model
+     *
      * @return string|null
      *
      * @psalm-suppress UndefinedMethod
@@ -46,10 +45,10 @@ trait TypeBuilderPart
             if (isset(self::$typeHintMap[$type])) {
                 return self::$typeHintMap[$type];
             }
-            
+
             return $type;
         }
-        
+
         return null;
     }
 }

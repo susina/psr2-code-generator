@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 namespace cristianoc72\codegen\model;
 
 use cristianoc72\codegen\model\parts\AbstractPart;
@@ -45,20 +46,21 @@ class PhpMethod extends AbstractPhpMember implements RoutineInterface
      * Creates a new PHP method.
      *
      * @param string $name the method name
+     *
      * @return static
      */
     public static function create(string $name)
     {
         return new static($name);
     }
-    
+
     public function __construct(string $name)
     {
         parent::__construct($name);
     }
 
     /**
-     * Generates docblock based on provided information
+     * Generates docblock based on provided information.
      */
     public function generateDocblock(): self
     {

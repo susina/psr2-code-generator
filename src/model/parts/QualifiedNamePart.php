@@ -3,7 +3,7 @@
 namespace cristianoc72\codegen\model\parts;
 
 /**
- * Qualified name part
+ * Qualified name part.
  *
  * For all models that have a name and namespace
  *
@@ -17,9 +17,10 @@ trait QualifiedNamePart
     private $namespace = '';
 
     /**
-     * Sets the namespace
+     * Sets the namespace.
      *
      * @param string $namespace
+     *
      * @return $this
      */
     public function setNamespace(string $namespace): self
@@ -34,6 +35,7 @@ trait QualifiedNamePart
      * including the namespace.
      *
      * @param string $name
+     *
      * @return $this
      */
     public function setQualifiedName(string $name): self
@@ -52,7 +54,7 @@ trait QualifiedNamePart
     }
 
     /**
-     * Returns the namespace
+     * Returns the namespace.
      *
      * @return string
      */
@@ -62,14 +64,14 @@ trait QualifiedNamePart
     }
 
     /**
-     * Returns the qualified name
+     * Returns the qualified name.
      *
      * @return string
      */
     public function getQualifiedName(): string
     {
         if ($this->namespace) {
-            return $this->namespace . '\\' . $this->name;
+            return $this->namespace.'\\'.$this->name;
         }
 
         return $this->name;

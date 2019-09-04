@@ -9,18 +9,18 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Configuration for code generation
+ * Configuration for code generation.
  *
  * @author Thomas Gossmann
  * @author Cristiano Cinotti
  */
 class GeneratorConfig
 {
-    /** @var array  */
+    /** @var array */
     protected $options;
 
     /**
-     * Creates a new configuration for code generator
+     * Creates a new configuration for code generator.
      *
      * @param array $options
      */
@@ -31,20 +31,20 @@ class GeneratorConfig
         $this->configureOptions($resolver);
         $this->options = $resolver->resolve($options);
     }
-    
+
     protected function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'generateEmptyDocblock' => false,
-            'enableSorting' => true,
-            'useStatementSorting' => CodeGenerator::SORT_USESTATEMENTS_DEFAULT,
-            'constantSorting' => CodeGenerator::SORT_CONSTANTS_DEFAULT,
-            'propertySorting' => CodeGenerator::SORT_PROPERTIES_DEFAULT,
-            'methodSorting' => CodeGenerator::SORT_METHODS_DEFAULT,
-            'headerComment' => null,
-            'headerDocblock' => null
+            'enableSorting'         => true,
+            'useStatementSorting'   => CodeGenerator::SORT_USESTATEMENTS_DEFAULT,
+            'constantSorting'       => CodeGenerator::SORT_CONSTANTS_DEFAULT,
+            'propertySorting'       => CodeGenerator::SORT_PROPERTIES_DEFAULT,
+            'methodSorting'         => CodeGenerator::SORT_METHODS_DEFAULT,
+            'headerComment'         => null,
+            'headerDocblock'        => null,
         ]);
-        
+
         $resolver->setAllowedTypes('generateEmptyDocblock', 'bool');
         $resolver->setAllowedTypes('enableSorting', 'bool');
         $resolver->setAllowedTypes('useStatementSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
@@ -63,7 +63,7 @@ class GeneratorConfig
     }
 
     /**
-     * Returns whether empty docblocks are generated
+     * Returns whether empty docblocks are generated.
      *
      * @return bool `true` if they will be generated and `false` if not
      */
@@ -73,9 +73,10 @@ class GeneratorConfig
     }
 
     /**
-     * Sets whether empty docblocks are generated
+     * Sets whether empty docblocks are generated.
      *
      * @param bool $generate `true` if they will be generated and `false` if not
+     *
      * @return $this
      */
     public function setGenerateEmptyDocblock(bool $generate): self
@@ -86,7 +87,7 @@ class GeneratorConfig
     }
 
     /**
-     * Returns whether sorting is enabled
+     * Returns whether sorting is enabled.
      *
      * @return bool `true` if it is enabled and `false` if not
      */
@@ -94,9 +95,9 @@ class GeneratorConfig
     {
         return $this->options['enableSorting'];
     }
-    
+
     /**
-     * Returns the use statement sorting
+     * Returns the use statement sorting.
      *
      * @return string|bool|Comparator|\Closure
      */
@@ -106,7 +107,7 @@ class GeneratorConfig
     }
 
     /**
-     * Returns the constant sorting
+     * Returns the constant sorting.
      *
      * @return string|bool|Comparator|\Closure
      */
@@ -114,9 +115,9 @@ class GeneratorConfig
     {
         return $this->options['constantSorting'];
     }
-    
+
     /**
-     * Returns the property sorting
+     * Returns the property sorting.
      *
      * @return string|bool|Comparator|\Closure
      */
@@ -124,9 +125,9 @@ class GeneratorConfig
     {
         return $this->options['propertySorting'];
     }
-    
+
     /**
-     * Returns the method sorting
+     * Returns the method sorting.
      *
      * @return string|bool|Comparator|\Closure
      */
@@ -134,70 +135,80 @@ class GeneratorConfig
     {
         return $this->options['methodSorting'];
     }
-    
+
     /**
-     * Returns whether sorting is enabled
+     * Returns whether sorting is enabled.
      *
      * @param $enabled bool `true` if it is enabled and `false` if not
+     *
      * @return $this
      */
     public function setSortingEnabled(bool $enabled): self
     {
         $this->options['enableSorting'] = $enabled;
+
         return $this;
     }
-    
+
     /**
-     * Returns the use statement sorting
+     * Returns the use statement sorting.
      *
      * @param string|bool|Comparator|\Closure $sorting
+     *
      * @return $this
      */
     public function setUseStatementSorting($sorting): self
     {
         $this->options['useStatementSorting'] = $sorting;
+
         return $this;
     }
-    
+
     /**
-     * Returns the constant sorting
+     * Returns the constant sorting.
      *
      * @param string|bool|Comparator|\Closure $sorting
+     *
      * @return $this
      */
     public function setConstantSorting($sorting): self
     {
         $this->options['constantSorting'] = $sorting;
+
         return $this;
     }
-    
+
     /**
-     * Returns the property sorting
+     * Returns the property sorting.
      *
      * @param string|bool|Comparator|\Closure $sorting
+     *
      * @return $this
      */
     public function setPropertySorting($sorting): self
     {
         $this->options['propertySorting'] = $sorting;
+
         return $this;
     }
-    
+
     /**
-     * Returns the method sorting
+     * Returns the method sorting.
      *
      * @param string|bool|Comparator|\Closure $sorting
+     *
      * @return $this
      */
     public function setMethodSorting($sorting): self
     {
         $this->options['methodSorting'] = $sorting;
+
         return $this;
     }
 
     /**
-     *
      * @param mixed $value
+     *
      * @return Docblock|null
      */
     private function toDocblock($value): ?Docblock
@@ -210,7 +221,7 @@ class GeneratorConfig
     }
 
     /**
-     * Returns the file header comment
+     * Returns the file header comment.
      *
      * @return null|Docblock the header comment
      */
@@ -220,19 +231,21 @@ class GeneratorConfig
     }
 
     /**
-     * Sets the file header comment
+     * Sets the file header comment.
      *
      * @param string $comment the header comment
+     *
      * @return $this
      */
     public function setHeaderComment(string $comment): self
     {
         $this->options['headerComment'] = new Docblock($comment);
+
         return $this;
     }
 
     /**
-     * Returns the file header docblock
+     * Returns the file header docblock.
      *
      * @return Docblock the docblock
      */
@@ -242,14 +255,16 @@ class GeneratorConfig
     }
 
     /**
-     * Sets the file header docblock
+     * Sets the file header docblock.
      *
      * @param Docblock $docblock the docblock
+     *
      * @return $this
      */
     public function setHeaderDocblock(Docblock $docblock): self
     {
         $this->options['headerDocblock'] = $docblock;
+
         return $this;
     }
 }

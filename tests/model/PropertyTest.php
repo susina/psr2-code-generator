@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpProperty;
@@ -50,7 +51,7 @@ class PropertyTest extends TestCase
         $this->assertTrue($prop->hasValue());
         $this->assertTrue($prop->isExpression());
     }
-    
+
     public function testValues()
     {
         $this->isValueString(PhpProperty::create('x')->setValue('hello'));

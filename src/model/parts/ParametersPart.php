@@ -1,13 +1,13 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace cristianoc72\codegen\model\parts;
 
 use cristianoc72\codegen\model\PhpParameter;
-use gossi\docblock\tags\ParamTag;
 use gossi\docblock\Docblock;
+use gossi\docblock\tags\ParamTag;
 
 /**
- * Parameters Part
+ * Parameters Part.
  *
  * For all models that can have parameters
  *
@@ -15,16 +15,16 @@ use gossi\docblock\Docblock;
  */
 trait ParametersPart
 {
-
     /** @var PhpParameter[] */
     private $parameters = [];
-    
+
     /**
-     * Sets a collection of parameters
+     * Sets a collection of parameters.
      *
      * Note: clears all parameters before setting the new ones
      *
      * @param PhpParameter[] $parameters
+     *
      * @return $this
      */
     public function setParameters(array $parameters): self
@@ -38,9 +38,10 @@ trait ParametersPart
     }
 
     /**
-     * Adds a parameter
+     * Adds a parameter.
      *
      * @param PhpParameter $parameter
+     *
      * @return $this
      */
     public function addParameter(PhpParameter $parameter): self
@@ -51,9 +52,10 @@ trait ParametersPart
     }
 
     /**
-     * Checks whether a parameter exists
+     * Checks whether a parameter exists.
      *
      * @param string $name parameter name
+     *
      * @return bool `true` if a parameter exists and `false` if not
      */
     public function hasParameter(string $name): bool
@@ -63,12 +65,12 @@ trait ParametersPart
                 return true;
             }
         }
-        
+
         return false;
     }
 
     /**
-     * A quick way to add a parameter which is created from the given parameters
+     * A quick way to add a parameter which is created from the given parameters.
      *
      * @param string      $name
      * @param null|string $type
@@ -93,12 +95,12 @@ trait ParametersPart
     }
 
     /**
-     * A quick way to add a parameter with description which is created from the given parameters
+     * A quick way to add a parameter with description which is created from the given parameters.
      *
      * @param string      $name
      * @param null|string $type
      * @param null|string $typeDescription
-     * @param mixed       $defaultValue omit the argument to define no default value
+     * @param mixed       $defaultValue    omit the argument to define no default value
      *
      * @return $this
      */
@@ -118,10 +120,12 @@ trait ParametersPart
     }
 
     /**
-     * Returns a parameter by index or name
+     * Returns a parameter by index or name.
      *
      * @param string $name
+     *
      * @throws \InvalidArgumentException
+     *
      * @return PhpParameter
      */
     public function getParameterByName(string $name): PhpParameter
@@ -136,10 +140,12 @@ trait ParametersPart
     }
 
     /**
-     * Returns a parameter by index or name
+     * Returns a parameter by index or name.
      *
      * @param int $position
+     *
      * @throws \InvalidArgumentException
+     *
      * @return PhpParameter
      */
     public function getParameterByPosition(int $position): PhpParameter
@@ -150,11 +156,13 @@ trait ParametersPart
     }
 
     /**
-     * Replaces a parameter at a given position
+     * Replaces a parameter at a given position.
      *
-     * @param int $position
+     * @param int          $position
      * @param PhpParameter $parameter
+     *
      * @throws \InvalidArgumentException
+     *
      * @return $this
      */
     public function replaceParameter(int $position, PhpParameter $parameter): self
@@ -166,11 +174,13 @@ trait ParametersPart
     }
 
     /**
-     * Remove the given parameter
+     * Remove the given parameter.
      *
      * @param PhpParameter $param
-     * @return $this
+     *
      * @throws \InvalidArgumentException If the parameter doesn't exist
+     *
+     * @return $this
      */
     public function removeParameter(PhpParameter $param): self
     {
@@ -178,11 +188,13 @@ trait ParametersPart
     }
 
     /**
-     * Remove the parameter at the given position
+     * Remove the parameter at the given position.
      *
      * @param int $position
-     * @return $this
+     *
      * @throws \InvalidArgumentException If the parameter doesn't exist
+     *
+     * @return $this
      */
     public function removeParameterByPosition(int $position): self
     {
@@ -194,11 +206,13 @@ trait ParametersPart
     }
 
     /**
-     * Remove a parameter having the given name
+     * Remove a parameter having the given name.
      *
      * @param string $name
-     * @return $this
+     *
      * @throws \InvalidArgumentException If the parameter doesn't exist
+     *
+     * @return $this
      */
     public function removeParameterByName(string $name): self
     {
@@ -208,7 +222,7 @@ trait ParametersPart
                 $position = $index;
             }
         }
-        
+
         if ($position !== null) {
             $this->removeParameterByPosition($position);
         }
@@ -218,6 +232,7 @@ trait ParametersPart
 
     /**
      * @param int $position
+     *
      * @throws \InvalidArgumentException if the position is not correct
      */
     private function checkPosition(int $position): void
@@ -228,7 +243,7 @@ trait ParametersPart
     }
 
     /**
-     * Returns an array of parameters
+     * Returns an array of parameters.
      *
      * @return PhpParameter[]
      */
@@ -238,14 +253,14 @@ trait ParametersPart
     }
 
     /**
-     * Returns the docblock
+     * Returns the docblock.
      *
      * @return Docblock
      */
     abstract protected function getDocblock(): Docblock;
 
     /**
-     * Generates docblock for params
+     * Generates docblock for params.
      *
      * @psalm-suppress TooManyArguments
      */

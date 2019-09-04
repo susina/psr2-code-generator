@@ -6,15 +6,15 @@ use cristianoc72\codegen\model\PhpConstant;
 use phootwork\lang\Comparator;
 
 /**
- * Default property comparator
+ * Default property comparator.
  *
  * Orders them by lower cased first, then upper cased
  */
 class DefaultConstantComparator implements Comparator
 {
-    /** @var DefaultUseStatementComparator  */
+    /** @var DefaultUseStatementComparator */
     private $comparator;
-    
+
     public function __construct()
     {
         $this->comparator = new DefaultUseStatementComparator();

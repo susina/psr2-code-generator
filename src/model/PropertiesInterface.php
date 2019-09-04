@@ -7,82 +7,91 @@ use phootwork\collection\Set;
 
 interface PropertiesInterface
 {
-
     /**
-     * Sets a collection of properties
+     * Sets a collection of properties.
      *
      * @param PhpProperty[] $properties
+     *
      * @return $this
      */
     public function setProperties(array $properties);
-    
+
     /**
-     * Adds a property
+     * Adds a property.
      *
      * @param PhpProperty $property
+     *
      * @return $this
      */
     public function setProperty(PhpProperty $property);
-    
+
     /**
-     * Removes a property
+     * Removes a property.
      *
      * @param PhpProperty $property property instance
+     *
      * @throws \InvalidArgumentException If the property cannot be found
+     *
      * @return $this
      */
     public function removeProperty(PhpProperty $property);
 
     /**
-     * Removes a property by its name
+     * Removes a property by its name.
      *
      * @param string $name property instance
+     *
      * @throws \InvalidArgumentException If the property cannot be found
+     *
      * @return $this
      */
     public function removePropertyByName(string $name);
-    
+
     /**
-     * Checks whether a property exists
+     * Checks whether a property exists.
      *
      * @param PhpProperty $property
+     *
      * @return bool `true` if a property exists and `false` if not
      */
     public function hasProperty(PhpProperty $property): bool;
 
     /**
-     * Checks whether a property exists
+     * Checks whether a property exists.
      *
      * @param string $name property name
+     *
      * @return bool `true` if a property exists and `false` if not
      */
     public function hasPropertyByName(string $name): bool;
-    
+
     /**
-     * Returns a property
+     * Returns a property.
      *
      * @param string $name property name
+     *
      * @throws \InvalidArgumentException If the property cannot be found
+     *
      * @return PhpProperty
      */
     public function getProperty(string $name): PhpProperty;
-    
+
     /**
-     * Returns a collection of properties
+     * Returns a collection of properties.
      *
      * @return Map
      */
     public function getProperties(): Map;
-    
+
     /**
-     * Returns all property names
+     * Returns all property names.
      *
      * @return Set
      */
     public function getPropertyNames(): Set;
-    
+
     /**
-     * Clears all properties
+     * Clears all properties.
      *
      * @return $this
      */

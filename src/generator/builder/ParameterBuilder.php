@@ -14,24 +14,24 @@ class ParameterBuilder extends AbstractBuilder
 
     public function build(AbstractModel $model): void
     {
-        if (! $model instanceof PhpParameter) {
+        if (!$model instanceof PhpParameter) {
             throw new \InvalidArgumentException('Parameter builder can build parameter classes only.');
         }
 
         $type = $this->getType($model);
         if ($type !== null) {
-            $this->getWriter()->write($type . ' ');
+            $this->getWriter()->write($type.' ');
         }
-    
+
         if ($model->isPassedByReference()) {
             $this->getWriter()->write('&');
         }
-    
-        $this->getWriter()->write('$' . $model->getName());
-    
+
+        $this->getWriter()->write('$'.$model->getName());
+
         if ($model->hasValue()) {
             $this->getWriter()->write(' = ');
-    
+
             $this->writeValue($model);
         }
     }

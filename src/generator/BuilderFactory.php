@@ -20,18 +20,17 @@ use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
 use cristianoc72\codegen\model\PhpProperty;
 use cristianoc72\codegen\model\PhpTrait;
-use \InvalidArgumentException;
+use InvalidArgumentException;
 use phootwork\collection\Map;
 
 class BuilderFactory
 {
-
     /** @var ModelGenerator */
     private $generator;
 
     /** @var Map */
     private $builders;
-    
+
     public function __construct(ModelGenerator $generator)
     {
         $this->generator = $generator;
@@ -44,14 +43,15 @@ class BuilderFactory
             PhpMethod::class    => new MethodBuilder($generator),
             PhpParameter::class => new ParameterBuilder($generator),
             PhpProperty::class  => new PropertyBuilder($generator),
-            PhpTrait::class     => new TraitBuilder($generator)
+            PhpTrait::class     => new TraitBuilder($generator),
         ]);
     }
-    
+
     /**
-     * Returns the related builder for the given model
+     * Returns the related builder for the given model.
      *
      * @param AbstractModel $model
+     *
      * @return AbstractBuilder
      */
     public function getBuilder(AbstractModel $model): AbstractBuilder

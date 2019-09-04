@@ -3,7 +3,7 @@
 namespace cristianoc72\codegen\model\parts;
 
 /**
- * Reference return part
+ * Reference return part.
  *
  * Keeps track whether the return value is a reference or not
  *
@@ -11,25 +11,25 @@ namespace cristianoc72\codegen\model\parts;
  */
 trait ReferenceReturnPart
 {
-
     /** @var bool */
     private $referenceReturned = false;
 
     /**
-     * Set true if a reference is returned of false if not
+     * Set true if a reference is returned of false if not.
      *
      * @param bool $bool
+     *
      * @return $this
      */
     public function setReferenceReturned(bool $bool): self
     {
-        $this->referenceReturned = (boolean) $bool;
+        $this->referenceReturned = (bool) $bool;
 
         return $this;
     }
 
     /**
-     * Returns whether a reference is returned
+     * Returns whether a reference is returned.
      *
      * @return bool
      */

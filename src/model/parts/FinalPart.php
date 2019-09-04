@@ -3,7 +3,7 @@
 namespace cristianoc72\codegen\model\parts;
 
 /**
- * Abstract Part
+ * Abstract Part.
  *
  * Keeps track if the model has a final modifier or not
  *
@@ -11,12 +11,11 @@ namespace cristianoc72\codegen\model\parts;
  */
 trait FinalPart
 {
-
     /** @var bool */
     private $final = false;
 
     /**
-     * Returns whether this is final
+     * Returns whether this is final.
      *
      * @return bool `true` for final and `false` if not
      */
@@ -26,14 +25,15 @@ trait FinalPart
     }
 
     /**
-     * Sets this final
+     * Sets this final.
      *
      * @param bool $bool `true` for final and `false` if not
+     *
      * @return $this
      */
     public function setFinal(bool $bool): self
     {
-        $this->final = (boolean) $bool;
+        $this->final = (bool) $bool;
 
         return $this;
     }

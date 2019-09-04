@@ -3,23 +3,23 @@
 namespace cristianoc72\codegen\model;
 
 /**
- * Represents models that have a namespace
+ * Represents models that have a namespace.
  *
  * @author Thomas Gossmann
  */
 interface NamespaceInterface
 {
-
     /**
-     * Sets the namespace
+     * Sets the namespace.
      *
      * @param string $namespace
+     *
      * @return $this
      */
     public function setNamespace(string $namespace);
 
     /**
-     * Returns the namespace
+     * Returns the namespace.
      *
      * @return string
      */

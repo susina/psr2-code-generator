@@ -2,12 +2,11 @@
 
 namespace cristianoc72\codegen\model\parts;
 
-use cristianoc72\codegen\model\AbstractPhpStruct;
 use cristianoc72\codegen\model\PhpInterface;
 use phootwork\collection\Set;
 
 /**
- * Interfaces part
+ * Interfaces part.
  *
  * For all models that can contain interfaces
  *
@@ -15,10 +14,9 @@ use phootwork\collection\Set;
  */
 trait InterfacesPart
 {
-
     /** @var Set */
     private $interfaces;
-    
+
     private function initInterfaces(): void
     {
         $this->interfaces = new Set();
@@ -31,6 +29,7 @@ trait InterfacesPart
      * the interface is also added as use statement.
      *
      * @param PhpInterface|string $interface interface or qualified name
+     *
      * @return $this
      */
     public function addInterface($interface): self
@@ -53,7 +52,7 @@ trait InterfacesPart
     }
 
     /**
-     * Returns the interfaces
+     * Returns the interfaces.
      *
      * @return Set
      */
@@ -63,7 +62,7 @@ trait InterfacesPart
     }
 
     /**
-     * Checks whether interfaces exists
+     * Checks whether interfaces exists.
      *
      * @return bool `true` if interfaces are available and `false` if not
      */
@@ -73,9 +72,10 @@ trait InterfacesPart
     }
 
     /**
-     * Checks whether an interface exists
+     * Checks whether an interface exists.
      *
      * @param PhpInterface $interface
+     *
      * @return bool
      */
     public function hasInterface(PhpInterface $interface): bool
@@ -85,9 +85,10 @@ trait InterfacesPart
     }
 
     /**
-     * Checks whether an interface exists
+     * Checks whether an interface exists.
      *
      * @param string $name interface name
+     *
      * @return bool
      */
     public function hasInterfaceByName(string $name): bool
@@ -102,6 +103,7 @@ trait InterfacesPart
      * the interface is also remove from the use statements.
      *
      * @param PhpInterface $interface interface or qualified name
+     *
      * @return $this
      */
     public function removeInterface(PhpInterface $interface): self
@@ -119,6 +121,7 @@ trait InterfacesPart
      * the interface is also remove from the use statements.
      *
      * @param string $name interface qualified name
+     *
      * @return $this
      */
     public function removeInterfaceByName(string $name): self
@@ -129,9 +132,10 @@ trait InterfacesPart
     }
 
     /**
-     * Sets a collection of interfaces
+     * Sets a collection of interfaces.
      *
      * @param PhpInterface[] $interfaces
+     *
      * @return $this
      */
     public function setInterfaces(array $interfaces): self

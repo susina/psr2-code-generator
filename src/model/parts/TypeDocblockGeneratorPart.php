@@ -6,7 +6,7 @@ use gossi\docblock\Docblock;
 use gossi\docblock\tags\AbstractTypeTag;
 
 /**
- * Type docblock generator part
+ * Type docblock generator part.
  *
  * For all models that have a type and need docblock tag generated from it
  *
@@ -14,30 +14,29 @@ use gossi\docblock\tags\AbstractTypeTag;
  */
 trait TypeDocblockGeneratorPart
 {
-
     /**
-     * Returns the docblock
+     * Returns the docblock.
      *
      * @return Docblock
      */
     abstract public function getDocblock(): Docblock;
 
     /**
-     * Returns the type
+     * Returns the type.
      *
      * @return string
      */
     abstract public function getType(): string;
 
     /**
-     * Returns the type description
+     * Returns the type description.
      *
      * @return string
      */
     abstract public function getTypeDescription(): string;
 
     /**
-     * Generates a type tag (return or var) but checks if one exists and updates this one
+     * Generates a type tag (return or var) but checks if one exists and updates this one.
      *
      * @param AbstractTypeTag $tag
      */

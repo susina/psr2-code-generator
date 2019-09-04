@@ -5,7 +5,7 @@ namespace cristianoc72\codegen\generator\comparator;
 use phootwork\lang\Comparator;
 
 /**
- * Default use statement comparator
+ * Default use statement comparator.
  *
  * Compares use statements case-sensitive, with lower-case beeing sorted first
  */
@@ -24,14 +24,14 @@ class DefaultUseStatementComparator implements Comparator
                 break;
             }
         }
-        
+
         if ($cmp1 === null && $cmp2 === null) {
             return 0;
         }
-        
+
         return $this->getAscii($cmp1) - $this->getAscii($cmp2);
     }
-    
+
     private function getAscii(?string $str): int
     {
         $ord = ord($str ?? '');
@@ -40,6 +40,7 @@ class DefaultUseStatementComparator implements Comparator
         } elseif ($ord >= 97 && $ord <= 122) {
             $ord -= 32;
         }
+
         return $ord;
     }
 }

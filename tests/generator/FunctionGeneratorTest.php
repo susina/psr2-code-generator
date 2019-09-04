@@ -16,21 +16,21 @@ class FunctionGeneratorTest extends GeneratorTestCase
     public function testReferenceReturned()
     {
         $expected = "function & foo()\n{\n}\n";
-    
+
         $method = PhpFunction::create('foo')->setReferenceReturned(true);
         $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
-    
+
         $this->assertEquals($expected, $code);
     }
-    
+
     public function testParameters()
     {
         $generator = new ModelGenerator($this->getConfig());
-        
+
         $method = PhpFunction::create('foo')->addParameter(PhpParameter::create('bar'));
         $this->assertEquals("/**\n * @param \$bar\n */\nfunction foo(\$bar)\n{\n}\n", $generator->generate($method));
-        
+
         $method = PhpFunction::create('foo')
             ->addParameter(PhpParameter::create('bar'))
             ->addParameter(PhpParameter::create('baz'));
@@ -39,7 +39,7 @@ class FunctionGeneratorTest extends GeneratorTestCase
             $generator->generate($method)
         );
     }
-    
+
     public function testReturnType()
     {
         $expected = "/**\n * @return int\n */\nfunction foo(): int\n{\n}\n";

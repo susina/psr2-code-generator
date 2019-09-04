@@ -162,7 +162,7 @@ class DocblockTest extends TestCase
         $constant = $this->getConstant();
         $constant->generateDocblock();
 
-        $this->assertEquals($expected, '' . $constant->getDocblock()->toString());
+        $this->assertEquals($expected, ''.$constant->getDocblock()->toString());
     }
 
     public function testEmptyConstant()

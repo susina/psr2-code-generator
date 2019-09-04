@@ -7,7 +7,7 @@ use phootwork\collection\Map;
 use phootwork\collection\Set;
 
 /**
- * Properties part
+ * Properties part.
  *
  * For all models that can have properties
  *
@@ -15,19 +15,19 @@ use phootwork\collection\Set;
  */
 trait PropertiesPart
 {
-
     /** @var Map */
     private $properties;
-    
+
     private function initProperties(): void
     {
         $this->properties = new Map();
     }
 
     /**
-     * Sets a collection of properties
+     * Sets a collection of properties.
      *
      * @param PhpProperty[] $properties
+     *
      * @return $this
      */
     public function setProperties(array $properties): self
@@ -41,9 +41,10 @@ trait PropertiesPart
     }
 
     /**
-     * Adds a property
+     * Adds a property.
      *
      * @param PhpProperty $property
+     *
      * @return $this
      */
     public function setProperty(PhpProperty $property): self
@@ -55,10 +56,12 @@ trait PropertiesPart
     }
 
     /**
-     * Removes a property
+     * Removes a property.
      *
      * @param PhpProperty $property
+     *
      * @throws \InvalidArgumentException If the property cannot be found
+     *
      * @return $this
      */
     public function removeProperty(PhpProperty $property): self
@@ -67,10 +70,12 @@ trait PropertiesPart
     }
 
     /**
-     * Removes a property
+     * Removes a property.
      *
      * @param string $name property name
+     *
      * @throws \InvalidArgumentException If the property cannot be found
+     *
      * @return $this
      */
     public function removePropertyByName(string $name): self
@@ -86,9 +91,10 @@ trait PropertiesPart
     }
 
     /**
-     * Checks whether a property exists
+     * Checks whether a property exists.
      *
      * @param PhpProperty $property
+     *
      * @return bool `true` if a property exists and `false` if not
      */
     public function hasProperty(PhpProperty $property): bool
@@ -97,9 +103,10 @@ trait PropertiesPart
     }
 
     /**
-     * Checks whether a property exists
+     * Checks whether a property exists.
      *
      * @param string $name property name
+     *
      * @return bool `true` if a property exists and `false` if not
      */
     public function hasPropertyByName(string $name): bool
@@ -108,10 +115,12 @@ trait PropertiesPart
     }
 
     /**
-     * Returns a property
+     * Returns a property.
      *
      * @param string $name property name
+     *
      * @throws \InvalidArgumentException If the property cannot be found
+     *
      * @return PhpProperty
      */
     public function getProperty(string $name): PhpProperty
@@ -124,7 +133,7 @@ trait PropertiesPart
     }
 
     /**
-     * Returns a collection of properties
+     * Returns a collection of properties.
      *
      * @return Map
      */
@@ -134,7 +143,7 @@ trait PropertiesPart
     }
 
     /**
-     * Returns all property names
+     * Returns all property names.
      *
      * @return Set
      */
@@ -144,7 +153,7 @@ trait PropertiesPart
     }
 
     /**
-     * Clears all properties
+     * Clears all properties.
      *
      * @return $this
      */

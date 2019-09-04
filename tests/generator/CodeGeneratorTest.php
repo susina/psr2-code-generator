@@ -15,7 +15,7 @@ class CodeGeneratorTest extends TestCase
     {
         $generator = new CodeGenerator(null);
         $this->assertTrue($generator->getConfig() instanceof GeneratorConfig);
-        
+
         $config = new GeneratorConfig();
         $generator = new CodeGenerator($config);
         $this->assertSame($config, $generator->getConfig());

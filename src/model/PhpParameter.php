@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 namespace cristianoc72\codegen\model;
 
 use cristianoc72\codegen\model\parts\NamePart;
@@ -40,6 +41,7 @@ class PhpParameter extends AbstractModel implements ValueInterface
      * Creates a new PHP parameter.
      *
      * @param string $name the parameter name
+     *
      * @return static
      */
     public static function create(string $name = null)
@@ -48,7 +50,7 @@ class PhpParameter extends AbstractModel implements ValueInterface
     }
 
     /**
-     * Creates a new PHP parameter
+     * Creates a new PHP parameter.
      *
      * @param string $name the parameter name
      */
@@ -58,20 +60,21 @@ class PhpParameter extends AbstractModel implements ValueInterface
     }
 
     /**
-     * Sets whether this parameter is passed by reference
+     * Sets whether this parameter is passed by reference.
      *
      * @param bool $bool `true` if passed by reference and `false` if not
+     *
      * @return $this
      */
     public function setPassedByReference(bool $bool): self
     {
-        $this->passedByReference = (boolean) $bool;
+        $this->passedByReference = (bool) $bool;
 
         return $this;
     }
 
     /**
-     * Returns whether this parameter is passed by reference
+     * Returns whether this parameter is passed by reference.
      *
      * @return bool `true` if passed by reference and `false` if not
      */
@@ -81,7 +84,7 @@ class PhpParameter extends AbstractModel implements ValueInterface
     }
 
     /**
-     * Returns a docblock tag for this parameter
+     * Returns a docblock tag for this parameter.
      *
      * @return ParamTag
      */
@@ -94,10 +97,12 @@ class PhpParameter extends AbstractModel implements ValueInterface
     }
 
     /**
-     * Alias for setDescription()
+     * Alias for setDescription().
      *
      * @see #setDescription
+     *
      * @param string $description
+     *
      * @return $this
      */
     public function setTypeDescription(string $description): self
@@ -106,9 +111,10 @@ class PhpParameter extends AbstractModel implements ValueInterface
     }
 
     /**
-     * Alias for getDescription()
+     * Alias for getDescription().
      *
      * @see #getDescription
+     *
      * @return string
      */
     public function getTypeDescription(): string

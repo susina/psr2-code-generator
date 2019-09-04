@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpFunction;
@@ -12,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class ParameterTest extends TestCase
 {
     use ValueTests;
-    
+
     public function testByReference()
     {
         $param = new PhpParameter();
@@ -77,7 +78,7 @@ class ParameterTest extends TestCase
         $this->assertEquals('string', $param3->getType());
         $this->assertNull($param3->getValue());
     }
-    
+
     public function testValues()
     {
         $this->isValueString(PhpParameter::create()->setValue('hello'));

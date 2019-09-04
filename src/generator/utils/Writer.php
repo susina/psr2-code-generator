@@ -15,6 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 namespace cristianoc72\codegen\generator\utils;
 
 /**
@@ -57,7 +58,7 @@ class Writer
      */
     public function writeln(string $content = ''): self
     {
-        $this->write($content . "\n");
+        $this->write($content."\n");
 
         return $this;
     }

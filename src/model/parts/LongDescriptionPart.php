@@ -3,7 +3,7 @@
 namespace cristianoc72\codegen\model\parts;
 
 /**
- * Long description part
+ * Long description part.
  *
  * For all models that can have an additional long description
  *
@@ -11,12 +11,11 @@ namespace cristianoc72\codegen\model\parts;
  */
 trait LongDescriptionPart
 {
-
     /** @var string */
     private $longDescription = '';
 
     /**
-     * Returns the long description
+     * Returns the long description.
      *
      * @return string
      */
@@ -26,14 +25,16 @@ trait LongDescriptionPart
     }
 
     /**
-     * Sets the long description
+     * Sets the long description.
      *
      * @param string $longDescription
+     *
      * @return $this
      */
     public function setLongDescription(string $longDescription): self
     {
         $this->longDescription = $longDescription;
+
         return $this;
     }
 }

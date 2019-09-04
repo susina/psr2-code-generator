@@ -15,6 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 namespace cristianoc72\codegen\model;
 
 use cristianoc72\codegen\model\parts\BodyPart;
@@ -46,9 +47,10 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
     use TypePart;
 
     /**
-     * Creates a new PHP function
+     * Creates a new PHP function.
      *
      * @param string $name qualified name
+     *
      * @return static
      */
     public static function create(string $name = null)
@@ -57,7 +59,7 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
     }
 
     /**
-     * Creates a new PHP function
+     * Creates a new PHP function.
      *
      * @param string $name qualified name
      */
@@ -68,7 +70,7 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function generateDocblock(): self
     {

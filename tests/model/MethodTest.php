@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpMethod;
@@ -16,7 +17,7 @@ class MethodTest extends TestCase
 
         $this->assertEquals([], $method->getParameters());
         $this->assertSame($method, $method->setParameters($params = [
-            new PhpParameter('a')
+            new PhpParameter('a'),
         ]));
         $this->assertSame($params, $method->getParameters());
 
@@ -28,10 +29,10 @@ class MethodTest extends TestCase
 
         $this->assertSame($method, $method->removeParameterByPosition(0));
         $this->assertEquals('b', $method->getParameterByPosition(0)->getName());
-        
+
         unset($params[0]);
         $this->assertEquals([
-            $param
+            $param,
         ], $method->getParameters());
 
         $this->assertSame($method, $method->addParameter($param = new PhpParameter('c')));
@@ -42,7 +43,7 @@ class MethodTest extends TestCase
         $this->assertSame($method, $method->replaceParameter(0, $param = new PhpParameter('a')));
         $params[0] = $param;
         $this->assertEquals($params, $method->getParameters());
-        
+
         $method->removeParameter($param);
         $method->removeParameterByName('c');
         $this->assertEquals([], $method->getParameters());
@@ -87,8 +88,8 @@ class MethodTest extends TestCase
         $this->assertSame('', $method->getBody());
         $this->assertSame($method, $method->setBody('foo'));
         $this->assertEquals('foo', $method->getBody());
-        $this->assertSame($method, $method->appendToBody(" appended bar"));
-        $this->assertEquals("foo appended bar", $method->getBody());
+        $this->assertSame($method, $method->appendToBody(' appended bar'));
+        $this->assertEquals('foo appended bar', $method->getBody());
     }
 
     public function testReferenceReturned()

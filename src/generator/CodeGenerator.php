@@ -6,7 +6,7 @@ use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\model\AbstractModel;
 
 /**
- * Code generator
+ * Code generator.
  *
  * Generates code for any generateable model
  *
@@ -16,21 +16,20 @@ use cristianoc72\codegen\model\AbstractModel;
 class CodeGenerator
 {
     const SORT_USESTATEMENTS_DEFAULT = 'default';
-    
+
     const SORT_CONSTANTS_DEFAULT = 'default';
-    
+
     const SORT_PROPERTIES_DEFAULT = 'default';
-    
+
     const SORT_METHODS_DEFAULT = 'default';
 
     /** @var GeneratorConfig */
     protected $config;
-    
+
     /** @var ModelGenerator */
     protected $generator;
 
     /**
-     *
      * @param mixed $config
      */
     public function __construct($config = null)
@@ -39,7 +38,7 @@ class CodeGenerator
             $config = new GeneratorConfig($config);
         }
 
-        if (! $config instanceof GeneratorConfig) {
+        if (!$config instanceof GeneratorConfig) {
             throw new \InvalidArgumentException('CodeGenerator constructor expects an array or a GeneratorConfig object.');
         }
 
@@ -48,7 +47,7 @@ class CodeGenerator
     }
 
     /**
-     * Returns the used configuration
+     * Returns the used configuration.
      *
      * @return GeneratorConfig
      */
@@ -58,9 +57,10 @@ class CodeGenerator
     }
 
     /**
-     * Generates code from a given model
+     * Generates code from a given model.
      *
      * @param AbstractModel $model
+     *
      * @return string the generated code
      */
     public function generate(AbstractModel $model): string

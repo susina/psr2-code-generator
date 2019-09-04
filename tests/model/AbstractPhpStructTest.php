@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpClass;
-use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpInterface;
+use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpTrait;
 use PHPUnit\Framework\TestCase;
 
@@ -16,10 +17,10 @@ class AbstractPhpStructTest extends TestCase
     {
         $class = PhpClass::create();
         $this->assertTrue($class instanceof PhpClass);
-        
+
         $interface = PhpInterface::create();
         $this->assertTrue($interface instanceof PhpInterface);
-        
+
         $trait = PhpTrait::create();
         $this->assertTrue($trait instanceof PhpTrait);
     }
@@ -51,30 +52,30 @@ class AbstractPhpStructTest extends TestCase
 
         $this->assertTrue($class->getUseStatements()->isEmpty());
         $this->assertSame($class, $class->setUseStatements([
-            'foo' => 'bar'
+            'foo' => 'bar',
         ]));
         $this->assertEquals([
-            'foo' => 'bar'
+            'foo' => 'bar',
         ], $class->getUseStatements()->toArray());
         $this->assertSame($class, $class->addUseStatement('Foo\Bar'));
         $this->assertEquals([
             'foo' => 'bar',
-            'Bar' => 'Foo\Bar'
+            'Bar' => 'Foo\Bar',
         ], $class->getUseStatements()->toArray());
         $this->assertSame($class, $class->addUseStatement('Foo\Bar', 'Baz'));
         $this->assertEquals([
             'foo' => 'bar',
             'Bar' => 'Foo\Bar',
-            'Baz' => 'Foo\Bar'
+            'Baz' => 'Foo\Bar',
         ], $class->getUseStatements()->toArray());
         $this->assertTrue($class->hasUseStatement('bar'));
         $class->removeUseStatement('bar');
         $this->assertFalse($class->hasUseStatement('bar'));
-        
+
         $class->clearUseStatements();
         $class->addUseStatement('ArrayList');
         $this->assertEquals([
-            'ArrayList' => 'ArrayList'
+            'ArrayList' => 'ArrayList',
         ], $class->getUseStatements()->toArray());
 
         // declareUse
@@ -92,7 +93,7 @@ class AbstractPhpStructTest extends TestCase
         $this->assertTrue($class->getMethods()->isEmpty());
         $this->assertSame($class, $class->setMethod($method = new PhpMethod('foo')));
         $this->assertSame([
-            'foo' => $method
+            'foo' => $method,
         ], $class->getMethods()->toArray());
         $this->assertTrue($class->hasMethodByName('foo'));
         $this->assertTrue($class->hasMethod($method));
@@ -104,11 +105,11 @@ class AbstractPhpStructTest extends TestCase
         $this->assertTrue($class->hasMethod($orphaned));
         $this->assertSame($class, $class->setMethods([
             $method,
-            $method2 = new PhpMethod('bar')
+            $method2 = new PhpMethod('bar'),
         ]));
         $this->assertSame([
             'foo' => $method,
-            'bar' => $method2
+            'bar' => $method2,
         ], $class->getMethods()->toArray());
         $this->assertEquals(['foo', 'bar'], $class->getMethodNames()->toArray());
         $this->assertNull($orphaned->getParent());
@@ -159,15 +160,15 @@ class AbstractPhpStructTest extends TestCase
 
         $this->assertEquals([], $class->getRequiredFiles()->toArray());
         $this->assertSame($class, $class->setRequiredFiles([
-            'foo'
+            'foo',
         ]));
         $this->assertEquals([
-            'foo'
+            'foo',
         ], $class->getRequiredFiles()->toArray());
         $this->assertSame($class, $class->addRequiredFile('bar'));
         $this->assertEquals([
             'foo',
-            'bar'
+            'bar',
         ], $class->getRequiredFiles()->toArray());
     }
 }

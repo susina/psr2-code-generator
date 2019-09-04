@@ -12,12 +12,12 @@ class FunctionBuilder extends AbstractBuilder
 
     public function build(AbstractModel $model): void
     {
-        if (! $model instanceof PhpFunction) {
+        if (!$model instanceof PhpFunction) {
             throw new \InvalidArgumentException('Function builder can build function classes only.');
         }
 
         $this->buildDocblock($model);
-        
+
         $this->writeFunctionStatement($model);
         $this->writeBody($model);
     }

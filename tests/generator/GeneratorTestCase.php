@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
 
-
 namespace cristianoc72\codegen\tests\generator;
 
 use cristianoc72\codegen\config\GeneratorConfig;
@@ -15,6 +14,6 @@ class GeneratorTestCase extends TestCase
 
     protected function getGeneratedContent(string $file)
     {
-        return file_get_contents(__DIR__ . '/../generator/generated/' . $file);
+        return file_get_contents(__DIR__.'/../generator/generated/'.$file);
     }
 }

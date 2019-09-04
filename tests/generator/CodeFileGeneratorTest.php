@@ -2,6 +2,7 @@
 
 namespace cristianoc72\codegen\tests\generator;
 
+use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\generator\CodeFileGenerator;
 use cristianoc72\codegen\model\PhpClass;
 use cristianoc72\codegen\model\PhpConstant;
@@ -9,7 +10,6 @@ use cristianoc72\codegen\model\PhpFunction;
 use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
 use cristianoc72\codegen\model\PhpProperty;
-use cristianoc72\codegen\config\GeneratorConfig;
 use gossi\docblock\Docblock;
 
 /**
@@ -19,15 +19,15 @@ class CodeFileGeneratorTest extends GeneratorTestCase
 {
     public function testStrictTypesDeclaration()
     {
-        $expected = "<?php declare(strict_types=1);
+        $expected = '<?php declare(strict_types=1);
 
 /**
- * @param \$a
+ * @param $a
  */
-function fn(\$a)
+function fn($a)
 {
 }
-";
+';
         $fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a'));
 
         $codegen = new CodeFileGenerator(['generateEmptyDocblock' => false]);
@@ -61,9 +61,9 @@ function fn(\$a)
     public function testDocblocks()
     {
         $generator = new CodeFileGenerator([
-            'headerComment' => 'hui buuh',
-            'headerDocblock' => 'woop',
-            'generateEmptyDocblock' => true
+            'headerComment'         => 'hui buuh',
+            'headerDocblock'        => 'woop',
+            'generateEmptyDocblock' => true,
         ]);
 
         $class = new PhpClass('Dummy');

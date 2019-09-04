@@ -5,7 +5,7 @@ namespace cristianoc72\codegen\model;
 use gossi\docblock\Docblock;
 
 /**
- * Docblock interface to represent models that have a docblock
+ * Docblock interface to represent models that have a docblock.
  *
  * Implementation is realized in the `DocblockPart`
  *
@@ -13,24 +13,24 @@ use gossi\docblock\Docblock;
  */
 interface DocblockInterface
 {
-
     /**
-     * Sets a docblock
+     * Sets a docblock.
      *
      * @param Docblock|string $doc
+     *
      * @return $this
      */
     public function setDocblock($doc);
 
     /**
-     * Returns a docblock
+     * Returns a docblock.
      *
      * @return Docblock
      */
     public function getDocblock(): Docblock;
-    
+
     /**
-     * Generates a docblock from provided information
+     * Generates a docblock from provided information.
      *
      * @return $this
      */

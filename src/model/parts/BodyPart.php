@@ -3,7 +3,7 @@
 namespace cristianoc72\codegen\model\parts;
 
 /**
- * Body Part
+ * Body Part.
  *
  * For all models that do have a code body
  *
@@ -11,14 +11,14 @@ namespace cristianoc72\codegen\model\parts;
  */
 trait BodyPart
 {
-
     /** @var string */
     private $body = '';
 
     /**
-     * Sets the body for this
+     * Sets the body for this.
      *
      * @param string $body
+     *
      * @return $this
      */
     public function setBody(string $body): self
@@ -29,7 +29,7 @@ trait BodyPart
     }
 
     /**
-     * Returns the body
+     * Returns the body.
      *
      * @return string
      */
@@ -39,7 +39,7 @@ trait BodyPart
     }
 
     /**
-     * Append a string to the body of this
+     * Append a string to the body of this.
      *
      * @param string $toAppend
      *

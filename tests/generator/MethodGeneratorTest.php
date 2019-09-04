@@ -16,14 +16,14 @@ class MethodGeneratorTest extends GeneratorTestCase
     public function testPublic()
     {
         $expected = "public function foo()\n{\n}\n";
-    
+
         $method = PhpMethod::create('foo');
         $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
-    
+
         $this->assertEquals($expected, $code);
     }
-    
+
     public function testProtected()
     {
         $expected = "protected function foo()\n{\n}\n";
@@ -34,58 +34,58 @@ class MethodGeneratorTest extends GeneratorTestCase
 
         $this->assertEquals($expected, $code);
     }
-    
+
     public function testPrivate()
     {
         $expected = "private function foo()\n{\n}\n";
-    
+
         $method = PhpMethod::create('foo')->setVisibility(PhpMethod::VISIBILITY_PRIVATE);
         $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
-    
+
         $this->assertEquals($expected, $code);
     }
-    
+
     public function testStatic()
     {
         $expected = "public static function foo()\n{\n}\n";
-    
+
         $method = PhpMethod::create('foo')->setStatic(true);
         $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
-    
+
         $this->assertEquals($expected, $code);
     }
-    
+
     public function testAbstract()
     {
         $expected = "abstract public function foo();\n";
-    
+
         $method = PhpMethod::create('foo')->setAbstract(true);
         $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
-    
+
         $this->assertEquals($expected, $code);
     }
-    
+
     public function testReferenceReturned()
     {
         $expected = "public function & foo()\n{\n}\n";
-    
+
         $method = PhpMethod::create('foo')->setReferenceReturned(true);
         $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($method);
-    
+
         $this->assertEquals($expected, $code);
     }
-    
+
     public function testParameters()
     {
         $generator = new ModelGenerator($this->getConfig());
-        
+
         $method = PhpMethod::create('foo')->addParameter(PhpParameter::create('bar'));
         $this->assertEquals("/**\n * @param \$bar\n */\npublic function foo(\$bar)\n{\n}\n", $generator->generate($method));
-        
+
         $method = PhpMethod::create('foo')
             ->addParameter(PhpParameter::create('bar'))
             ->addParameter(PhpParameter::create('baz'));
@@ -94,7 +94,7 @@ class MethodGeneratorTest extends GeneratorTestCase
             $generator->generate($method)
         );
     }
-    
+
     public function testReturnType()
     {
         $expected = "/**\n * @return int\n */\npublic function foo(): int\n{\n}\n";

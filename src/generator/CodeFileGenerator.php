@@ -2,7 +2,6 @@
 
 namespace cristianoc72\codegen\generator;
 
-use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\model\AbstractModel;
 use gossi\docblock\Docblock;
 
@@ -18,7 +17,7 @@ use gossi\docblock\Docblock;
 class CodeFileGenerator extends CodeGenerator
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function generate(AbstractModel $model): string
     {
@@ -27,13 +26,13 @@ class CodeFileGenerator extends CodeGenerator
         /** @var ?Docblock $comment */
         $comment = $this->getConfig()->getHeaderComment();
         if ($comment !== null && !$comment->isEmpty()) {
-            $content .= str_replace('/**', '/*', $comment->toString()) . "\n";
+            $content .= str_replace('/**', '/*', $comment->toString())."\n";
         }
 
         /** @var ?Docblock $docblock */
         $docblock = $this->getConfig()->getHeaderDocblock();
         if ($docblock !== null && !$docblock->isEmpty()) {
-            $content .= $docblock->toString() . "\n";
+            $content .= $docblock->toString()."\n";
         }
 
         $content .= parent::generate($model);

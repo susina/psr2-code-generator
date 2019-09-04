@@ -5,7 +5,7 @@ namespace cristianoc72\codegen\model\parts;
 use cristianoc72\codegen\model\PhpConstant;
 
 /**
- * Value part
+ * Value part.
  *
  * For all models that have a value (or expression)
  *
@@ -13,7 +13,6 @@ use cristianoc72\codegen\model\PhpConstant;
  */
 trait ValuePart
 {
-
     /** @var mixed */
     private $value;
 
@@ -25,28 +24,31 @@ trait ValuePart
 
     /** @var bool */
     private $hasExpression = false;
-    
+
     /**
-     * Returns whether the given value is a primitive
+     * Returns whether the given value is a primitive.
      *
      * @param mixed $value
-     * @return boolean
+     *
+     * @return bool
      */
     private function isPrimitive($value): bool
     {
-        return (is_string($value)
+        return is_string($value)
             || is_int($value)
             || is_float($value)
             || is_bool($value)
             || is_null($value)
-            || ($value instanceof PhpConstant));
+            || ($value instanceof PhpConstant);
     }
 
     /**
-     * Sets the value
+     * Sets the value.
      *
      * @param mixed $value
+     *
      * @throws \InvalidArgumentException if the value is not an accepted primitve
+     *
      * @return $this
      */
     public function setValue($value): self
@@ -61,7 +63,7 @@ trait ValuePart
     }
 
     /**
-     * Unsets the value
+     * Unsets the value.
      *
      * @return $this
      */
@@ -74,9 +76,9 @@ trait ValuePart
     }
 
     /**
-     * Returns the value
+     * Returns the value.
      *
-     * @return string|integer|float|bool|null|PhpConstant
+     * @return string|int|float|bool|null|PhpConstant
      */
     public function getValue()
     {
@@ -84,7 +86,7 @@ trait ValuePart
     }
 
     /**
-     * Checks whether a value or expression is set
+     * Checks whether a value or expression is set.
      *
      * @return bool
      */
@@ -94,7 +96,7 @@ trait ValuePart
     }
 
     /**
-     * Returns whether an expression is set
+     * Returns whether an expression is set.
      *
      * @return bool
      */
@@ -104,9 +106,10 @@ trait ValuePart
     }
 
     /**
-     * Sets an expression
+     * Sets an expression.
      *
      * @param string $expr
+     *
      * @return $this
      */
     public function setExpression(string $expr): self
@@ -118,7 +121,7 @@ trait ValuePart
     }
 
     /**
-     * Returns the expression
+     * Returns the expression.
      *
      * @return string
      */
@@ -128,7 +131,7 @@ trait ValuePart
     }
 
     /**
-     * Unsets the expression
+     * Unsets the expression.
      *
      * @return $this
      */

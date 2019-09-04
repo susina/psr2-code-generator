@@ -9,9 +9,10 @@ use cristianoc72\codegen\model\RoutineInterface;
 trait RoutineBuilderPart
 {
     use TypeBuilderPart;
-    
+
     /**
      * @param AbstractModel $model
+     *
      * @return void
      */
     abstract protected function generate(AbstractModel $model);
@@ -24,17 +25,17 @@ trait RoutineBuilderPart
     protected function writeFunctionStatement(RoutineInterface $model): void
     {
         $this->getWriter()->write('function ');
-        
+
         if ($model->isReferenceReturned()) {
             $this->getWriter()->write('& ');
         }
-        
-        $this->getWriter()->write($model->getName() . '(');
+
+        $this->getWriter()->write($model->getName().'(');
         $this->writeParameters($model);
         $this->getWriter()->write(')');
         $this->writeFunctionReturnType($model);
     }
-    
+
     protected function writeParameters(RoutineInterface $model): void
     {
         $first = true;
@@ -43,7 +44,7 @@ trait RoutineBuilderPart
                 $this->getWriter()->write(', ');
             }
             $first = false;
-    
+
             $this->generate($parameter);
         }
     }
@@ -61,7 +62,7 @@ trait RoutineBuilderPart
             $this->getWriter()->write(': ')->write($type);
         }
     }
-    
+
     protected function writeBody(RoutineInterface $model): void
     {
         $this->getWriter()->writeln("\n{\n")->indent();

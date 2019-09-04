@@ -7,7 +7,7 @@ use phootwork\collection\Map;
 use phootwork\collection\Set;
 
 /**
- * Constants part
+ * Constants part.
  *
  * For all models that can contain constants
  *
@@ -18,16 +18,17 @@ trait ConstantsPart
 {
     /** @var Map */
     private $constants;
-    
+
     private function initConstants(): void
     {
         $this->constants = new Map();
     }
 
     /**
-     * Sets a collection of constants
+     * Sets a collection of constants.
      *
      * @param array|PhpConstant[] $constants
+     *
      * @return $this
      */
     public function setConstants(array $constants): self
@@ -51,11 +52,12 @@ trait ConstantsPart
     }
 
     /**
-     * Create a PhpConstant instance and adds it to the constants Map
+     * Create a PhpConstant instance and adds it to the constants Map.
      *
-     * @param string $name constant name
-     * @param mixed $value
-     * @param bool $isExpression
+     * @param string $name         constant name
+     * @param mixed  $value
+     * @param bool   $isExpression
+     *
      * @return $this
      */
     public function setConstantByName(string $name, $value = null, bool $isExpression = false): self
@@ -66,9 +68,10 @@ trait ConstantsPart
     }
 
     /**
-     * Add a PhpConstant object
+     * Add a PhpConstant object.
      *
      * @param PhpConstant $constant
+     *
      * @return $this
      */
     public function setConstant(PhpConstant $constant): self
@@ -79,10 +82,12 @@ trait ConstantsPart
     }
 
     /**
-     * Removes a constant
+     * Removes a constant.
      *
      * @param PhpConstant $constant
+     *
      * @throws \InvalidArgumentException If the constant cannot be found
+     *
      * @return $this
      */
     public function removeConstant(PhpConstant $constant): self
@@ -91,10 +96,12 @@ trait ConstantsPart
     }
 
     /**
-     * Removes a constant
+     * Removes a constant.
      *
      * @param string $name constant name
+     *
      * @throws \InvalidArgumentException If the constant cannot be found
+     *
      * @return $this
      */
     public function removeConstantByName(string $name): self
@@ -108,9 +115,10 @@ trait ConstantsPart
     }
 
     /**
-     * Checks whether a constant exists
+     * Checks whether a constant exists.
      *
      * @param PhpConstant $constant
+     *
      * @return bool
      */
     public function hasConstant(PhpConstant $constant): bool
@@ -119,9 +127,10 @@ trait ConstantsPart
     }
 
     /**
-     * Checks whether a constant exists
+     * Checks whether a constant exists.
      *
      * @param string $name constant name
+     *
      * @return bool
      */
     public function hasConstantByName(string $name): bool
@@ -133,7 +142,9 @@ trait ConstantsPart
      * Returns a constant.
      *
      * @param string $name constant name
+     *
      * @throws \InvalidArgumentException If the constant cannot be found
+     *
      * @return PhpConstant
      */
     public function getConstant(string $name): PhpConstant
@@ -146,7 +157,7 @@ trait ConstantsPart
     }
 
     /**
-     * Returns all constants
+     * Returns all constants.
      *
      * @return Map
      */
@@ -156,7 +167,7 @@ trait ConstantsPart
     }
 
     /**
-     * Returns all constant names
+     * Returns all constant names.
      *
      * @return Set
      */
@@ -166,7 +177,7 @@ trait ConstantsPart
     }
 
     /**
-     * Clears all constants
+     * Clears all constants.
      *
      * @return $this
      */

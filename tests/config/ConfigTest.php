@@ -3,8 +3,8 @@
 namespace cristianoc72\codegen\tests\config;
 
 use cristianoc72\codegen\config\GeneratorConfig;
-use gossi\docblock\Docblock;
 use cristianoc72\codegen\generator\CodeGenerator;
+use gossi\docblock\Docblock;
 use phootwork\lang\ComparableComparator;
 use phootwork\lang\Comparator;
 use PHPUnit\Framework\TestCase;
@@ -42,19 +42,19 @@ class ConfigTest extends TestCase
 
         $config->setUseStatementSorting(false);
         $this->assertFalse($config->getUseStatementSorting());
-        
+
         $config->setConstantSorting('abc');
         $this->assertEquals('abc', $config->getConstantSorting());
-        
+
         $config->setPropertySorting(new ComparableComparator());
         $this->assertTrue($config->getPropertySorting() instanceof Comparator);
-        
+
         $cmp = function ($a, $b) {
             return strcmp($a, $b);
         };
         $config->setMethodSorting($cmp);
         $this->assertSame($cmp, $config->getMethodSorting());
-        
+
         $config->setSortingEnabled(false);
         $this->assertFalse($config->isSortingEnabled());
 

@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpClass;
@@ -25,7 +26,7 @@ class ClassTest extends TestCase
         $this->assertTrue($class->getConstants()->isEmpty());
         $this->assertSame($class, $class->setConstants([
             'foo' => 'bar',
-            new PhpConstant('rabimmel', 'rabammel')
+            new PhpConstant('rabimmel', 'rabammel'),
         ]));
         $this->assertTrue($class->hasConstantByName('rabimmel'));
         $this->assertEquals(['foo', 'rabimmel'], $class->getConstantNames()->toArray());
@@ -117,17 +118,17 @@ class ClassTest extends TestCase
         $this->assertTrue($class->getInterfaces()->isEmpty());
         $this->assertSame($class, $class->setInterfaces([
             'foo',
-            'bar'
+            'bar',
         ]));
         $this->assertEquals([
             'foo',
-            'bar'
+            'bar',
         ], $class->getInterfaces()->toArray());
         $this->assertSame($class, $class->addInterface('stdClass'));
         $this->assertEquals([
             'foo',
             'bar',
-            'stdClass'
+            'stdClass',
         ], $class->getInterfaces()->toArray());
         $this->assertTrue($class->hasInterfaces());
 
@@ -149,7 +150,7 @@ class ClassTest extends TestCase
         $this->assertEquals([], $class->getTraits()->toArray());
         $this->assertSame($class, $class->setTraits([
             'foo',
-            'bar'
+            'bar',
         ]));
         $this->assertTrue($class->hasTraitByName('foo'));
         $this->assertTrue($class->hasTraitByName('bar'));
@@ -181,7 +182,7 @@ class ClassTest extends TestCase
         $this->assertEquals([], $class->getTraits()->toArray());
         $this->assertSame($class, $class->setTraits([
             true,
-            128
+            128,
         ]));
     }
 
@@ -207,11 +208,11 @@ class ClassTest extends TestCase
         $this->assertTrue($class->hasProperty($orphaned));
         $this->assertSame($class, $class->setProperties([
             $prop,
-            $prop2 = new PhpProperty('bar')
+            $prop2 = new PhpProperty('bar'),
         ]));
         $this->assertSame([
             'bam' => $prop,
-            'bar' => $prop2
+            'bar' => $prop2,
         ], $class->getProperties()->toArray());
         $this->assertEquals(['bam', 'bar'], $class->getPropertyNames()->toArray());
         $this->assertNull($orphaned->getParent());

@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 namespace cristianoc72\codegen\tests\model;
 
 use PHPUnit\Framework\TestCase;
@@ -57,7 +58,7 @@ class AbstractPhpMemberTest extends TestCase
     private function getMember()
     {
         return $this->getMockForAbstractClass('cristianoc72\codegen\model\AbstractPhpMember', [
-            '__not_null__'
+            '__not_null__',
         ]);
     }
 }

@@ -6,7 +6,7 @@ use cristianoc72\codegen\model\PhpTrait;
 use phootwork\collection\Set;
 
 /**
- * Traits part
+ * Traits part.
  *
  * For all models that can have traits
  *
@@ -14,7 +14,6 @@ use phootwork\collection\Set;
  */
 trait TraitsPart
 {
-
     /** @var Set */
     private $traits;
 
@@ -30,6 +29,7 @@ trait TraitsPart
      * the trait is also added as use statement.
      *
      * @param PhpTrait $trait trait or qualified name
+     *
      * @return $this
      */
     public function addTrait(PhpTrait $trait): self
@@ -43,7 +43,7 @@ trait TraitsPart
     }
 
     /**
-     * Returns a collection of traits
+     * Returns a collection of traits.
      *
      * @return Set
      */
@@ -53,9 +53,10 @@ trait TraitsPart
     }
 
     /**
-     * Checks whether a trait exists
+     * Checks whether a trait exists.
      *
      * @param PhpTrait $trait
+     *
      * @return bool `true` if it exists and `false` if not
      */
     public function hasTrait(PhpTrait $trait): bool
@@ -64,9 +65,10 @@ trait TraitsPart
     }
 
     /**
-     * Checks whether a trait exists
+     * Checks whether a trait exists.
      *
      * @param string $name
+     *
      * @return bool `true` if it exists and `false` if not
      *
      * @psalm-suppress TooManyArguments
@@ -86,6 +88,7 @@ trait TraitsPart
      * the trait is also removed from use statements.
      *
      * @param PhpTrait $trait trait or qualified name
+     *
      * @return $this
      */
     public function removeTrait(PhpTrait $trait): self
@@ -103,6 +106,7 @@ trait TraitsPart
      * the trait is also removed from use statements.
      *
      * @param string $traitName trait qualified name
+     *
      * @return $this
      *
      * @psalm-suppress TooManyArguments
@@ -117,9 +121,10 @@ trait TraitsPart
     }
 
     /**
-     * Sets a collection of traits
+     * Sets a collection of traits.
      *
      * @param array $traits
+     *
      * @return $this
      * @throw \InvalidArgumentException if wrong type given
      */
@@ -137,7 +142,7 @@ trait TraitsPart
             }
 
             throw new \InvalidArgumentException('`setTrait` function expects an array of `PhpTrait` instance: '
-                . gettype($trait) . ' given.');
+                .gettype($trait).' given.');
         }
 
         return $this;

@@ -3,7 +3,7 @@
 namespace cristianoc72\codegen\model\parts;
 
 /**
- * Type part
+ * Type part.
  *
  * For all models that have a type
  *
@@ -11,7 +11,6 @@ namespace cristianoc72\codegen\model\parts;
  */
 trait TypePart
 {
-
     /** @var string */
     private $type = '';
 
@@ -19,10 +18,11 @@ trait TypePart
     private $typeDescription = '';
 
     /**
-     * Sets the type
+     * Sets the type.
      *
      * @param string $type
      * @param string $description
+     *
      * @return $this
      */
     public function setType(string $type, string $description = '')
@@ -36,19 +36,21 @@ trait TypePart
     }
 
     /**
-     * Sets the description for the type
+     * Sets the description for the type.
      *
      * @param string $description
+     *
      * @return $this
      */
     public function setTypeDescription(string $description)
     {
         $this->typeDescription = $description;
+
         return $this;
     }
 
     /**
-     * Returns the type
+     * Returns the type.
      *
      * @return string
      */
@@ -58,7 +60,7 @@ trait TypePart
     }
 
     /**
-     * Returns the type description
+     * Returns the type description.
      *
      * @return string
      */

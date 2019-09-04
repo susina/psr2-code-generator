@@ -3,7 +3,7 @@
 namespace cristianoc72\codegen\model\parts;
 
 /**
- * Name part
+ * Name part.
  *
  * For all models that do have a name
  *
@@ -11,14 +11,14 @@ namespace cristianoc72\codegen\model\parts;
  */
 trait NamePart
 {
-
     /** @var string */
     private $name;
 
     /**
-     * Sets the name
+     * Sets the name.
      *
      * @param string $name
+     *
      * @return $this
      */
     public function setName(string $name): self
@@ -29,7 +29,7 @@ trait NamePart
     }
 
     /**
-     * Returns the name
+     * Returns the name.
      *
      * @return string
      */

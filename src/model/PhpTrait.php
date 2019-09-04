@@ -18,7 +18,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
     use TraitsPart;
 
     /**
-     * Creates a new PHP trait
+     * Creates a new PHP trait.
      *
      * @param string $name qualified name
      *
@@ -32,7 +32,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function generateDocblock(): self
     {

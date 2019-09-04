@@ -6,13 +6,12 @@ use cristianoc72\codegen\model\PhpProperty;
 use phootwork\lang\Comparator;
 
 /**
- * Default property comparator
+ * Default property comparator.
  *
  * Orders them by visibility first then by method name
  */
 class DefaultPropertyComparator extends AbstractMemberComparator
 {
-
     /**
      * @param PhpProperty $a
      * @param PhpProperty $b

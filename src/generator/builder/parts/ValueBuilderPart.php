@@ -3,8 +3,8 @@
 namespace cristianoc72\codegen\generator\builder\parts;
 
 use cristianoc72\codegen\generator\utils\Writer;
-use cristianoc72\codegen\model\ValueInterface;
 use cristianoc72\codegen\model\PhpConstant;
+use cristianoc72\codegen\model\ValueInterface;
 
 trait ValueBuilderPart
 {
@@ -36,7 +36,7 @@ trait ValueBuilderPart
         if (is_null($value)) {
             return 'null';
         }
-        
+
         return var_export($value, true);
     }
 }

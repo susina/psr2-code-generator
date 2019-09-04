@@ -10,25 +10,25 @@ use cristianoc72\codegen\model\DocblockInterface;
 
 abstract class AbstractBuilder
 {
-
     /** @var ModelGenerator */
     protected $generator;
-    
+
     /** @var Writer */
     private $writer;
-    
+
     /** @var GeneratorConfig */
     private $config;
-    
+
     public function __construct(ModelGenerator $generator)
     {
         $this->generator = $generator;
         $this->writer = $generator->getWriter();
         $this->config = $generator->getConfig();
     }
-    
+
     /**
      * @param AbstractModel $model
+     *
      * @return void
      */
     abstract public function build(AbstractModel $model);
@@ -48,6 +48,7 @@ abstract class AbstractBuilder
 
     /**
      * @param AbstractModel $model
+     *
      * @return void
      */
     protected function generate(AbstractModel $model): void
@@ -55,7 +56,7 @@ abstract class AbstractBuilder
         $builder = $this->generator->getFactory()->getBuilder($model);
         $builder->build($model);
     }
-    
+
     /**
      * @return void
      */
@@ -66,9 +67,10 @@ abstract class AbstractBuilder
             $this->writer->writeln();
         }
     }
-    
+
     /**
      * @param DocblockInterface $model
+     *
      * @return void
      */
     protected function buildDocblock(DocblockInterface $model): void

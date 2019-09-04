@@ -3,18 +3,17 @@
 namespace cristianoc72\codegen\model;
 
 /**
- * Parent of all models
+ * Parent of all models.
  *
  * @author Thomas Gossmann
  */
 abstract class AbstractModel
 {
-
     /** @var string */
     protected $description = '';
 
     /**
-     * Returns this description
+     * Returns this description.
      *
      * @return string
      */
@@ -24,9 +23,10 @@ abstract class AbstractModel
     }
 
     /**
-     * Sets the description, which will also be used when generating a docblock
+     * Sets the description, which will also be used when generating a docblock.
      *
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription(string $description): self
@@ -38,14 +38,16 @@ abstract class AbstractModel
 
     /**
      * Sets a multi-line description, which will also be used when generating a docblock.
-     * Each line is a value of the `$description` array
+     * Each line is a value of the `$description` array.
      *
      * @param array $description
+     *
      * @return $this
      */
     public function setMultilineDescription(array $description): self
     {
         $this->description = implode("\n", $description);
+
         return $this;
     }
 }
