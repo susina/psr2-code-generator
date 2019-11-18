@@ -30,3 +30,15 @@ Documentation is available at https://cristianoc72.github.io/psr2-code-generator
 ## Contributing
 
 Feel free to fork and submit a pull request. Don't forget the tests and PSR-2 standard, of course.
+
+### Tools manager
+
+We use some development tools:
+
+- [Psalm](https://psalm.dev/) for static analysis
+- [php-cs-fixer](https://cs.symfony.com/) for code standard
+- [PhpDox](http://phpdox.de/) for api generation
+
+Since "the more dependencies the more conflicts", we prefer to manage the tools via [Phive](https://phar.io/): an awesome
+system to quick verify and install phar archives. Alternatively, you can manually
+download the `.phar` archives of the tools.
