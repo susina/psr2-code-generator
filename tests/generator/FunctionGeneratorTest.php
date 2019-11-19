@@ -13,7 +13,7 @@ use cristianoc72\codegen\model\PhpParameter;
  */
 class FunctionGeneratorTest extends GeneratorTestCase
 {
-    public function testReferenceReturned()
+    public function testReferenceReturned(): void
     {
         $expected = "function & foo()\n{\n}\n";
 
@@ -24,7 +24,7 @@ class FunctionGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testParameters()
+    public function testParameters(): void
     {
         $generator = new ModelGenerator($this->getConfig());
 
@@ -40,7 +40,7 @@ class FunctionGeneratorTest extends GeneratorTestCase
         );
     }
 
-    public function testReturnType()
+    public function testReturnType(): void
     {
         $expected = "/**\n * @return int\n */\nfunction foo(): int\n{\n}\n";
         $generator = new ModelGenerator($this->getConfig());
@@ -49,7 +49,7 @@ class FunctionGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $generator->generate($method));
     }
 
-    public function testWrongClassThrowsException()
+    public function testWrongClassThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 

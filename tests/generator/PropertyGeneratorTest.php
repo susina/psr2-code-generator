@@ -13,7 +13,7 @@ use cristianoc72\codegen\model\PhpProperty;
  */
 class PropertyGeneratorTest extends GeneratorTestCase
 {
-    public function testPublic()
+    public function testPublic(): void
     {
         $expected = 'public $foo;'."\n";
 
@@ -24,7 +24,7 @@ class PropertyGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testProtected()
+    public function testProtected(): void
     {
         $expected = 'protected $foo;'."\n";
 
@@ -35,7 +35,7 @@ class PropertyGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testPrivate()
+    public function testPrivate(): void
     {
         $expected = 'private $foo;'."\n";
 
@@ -46,7 +46,7 @@ class PropertyGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testStatic()
+    public function testStatic(): void
     {
         $expected = 'public static $foo;'."\n";
 
@@ -57,7 +57,7 @@ class PropertyGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testValues()
+    public function testValues(): void
     {
         $generator = new ModelGenerator($this->getConfig());
 
@@ -86,7 +86,7 @@ class PropertyGeneratorTest extends GeneratorTestCase
         $this->assertEquals('public $foo = [\'bar\' => \'baz\'];'."\n", $generator->generate($prop));
     }
 
-    public function testWrongClassThrowsException()
+    public function testWrongClassThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -94,5 +94,18 @@ class PropertyGeneratorTest extends GeneratorTestCase
         $wrongModel = PhpMethod::create('myMethod');
         $builder = new PropertyBuilder($generator);
         $builder->build($wrongModel);
+    }
+
+    public function testPhp74TypedProperties(): void
+    {
+        $config = $this->getConfig();
+        $config->method('isPhp74Properties')->willReturn(true);
+        $expected = 'private string $foo;'."\n";
+
+        $prop = PhpProperty::create('foo')->setVisibility(PhpProperty::VISIBILITY_PRIVATE)->setType('string');
+        $generator = new ModelGenerator($config);
+        $code = $generator->generate($prop);
+
+        $this->assertStringContainsString($expected, $code);
     }
 }

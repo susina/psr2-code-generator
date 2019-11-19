@@ -30,7 +30,7 @@ class DocblockTest extends TestCase
     /**
      * @return PhpMethod
      */
-    private function getMethod()
+    private function getMethod(): PhpMethod
     {
         return PhpMethod::create(self::METHOD)
             ->setDescription('my method')
@@ -42,7 +42,7 @@ class DocblockTest extends TestCase
     /**
      * @return PhpProperty
      */
-    private function getProperty()
+    private function getProperty(): PhpProperty
     {
         return PhpProperty::create(self::PROP)
             ->setDescription('my prop')
@@ -53,7 +53,7 @@ class DocblockTest extends TestCase
     /**
      * @return PhpConstant
      */
-    private function getConstant()
+    private function getConstant(): PhpConstant
     {
         return PhpConstant::create(self::CONSTANT)
             ->setDescription('my constant')
@@ -61,7 +61,7 @@ class DocblockTest extends TestCase
             ->setType('boolean', 'this constant is a boolean');
     }
 
-    public function testClass()
+    public function testClass(): void
     {
         $class = new PhpClass();
         $class->setName('class-name')
@@ -93,14 +93,14 @@ class DocblockTest extends TestCase
         $this->assertEquals($expected, $docblock->toString());
     }
 
-    public function testEmptyClass()
+    public function testEmptyClass(): void
     {
         $class = new PhpClass();
         $class->generateDocblock();
         $this->assertTrue($class->getDocblock()->isEmpty());
     }
 
-    public function testInterface()
+    public function testInterface(): void
     {
         $interface = new PhpInterface();
         $interface->setDescription('my interface')->setLongDescription('this is my very long description')->setConstant($this->getConstant())->setMethod($this->getMethod());
@@ -111,14 +111,14 @@ class DocblockTest extends TestCase
         $this->assertNotNull($interface->getConstant(self::CONSTANT)->getDocblock());
     }
 
-    public function testEmptyInterface()
+    public function testEmptyInterface(): void
     {
         $interface = new PhpInterface();
         $interface->generateDocblock();
         $this->assertTrue($interface->getDocblock()->isEmpty());
     }
 
-    public function testTrait()
+    public function testTrait(): void
     {
         $trait = new PhpTrait();
         $trait->setDescription('my trait')->setLongDescription('this is my very long description')->setProperty($this->getProperty())->setMethod($this->getMethod());
@@ -129,28 +129,28 @@ class DocblockTest extends TestCase
         $this->assertNotNull($trait->getMethodByName(self::METHOD)->getDocblock());
     }
 
-    public function testEmptyTrait()
+    public function testEmptyTrait(): void
     {
         $trait = new PhpTrait();
         $trait->generateDocblock();
         $this->assertTrue($trait->getDocblock()->isEmpty());
     }
 
-    public function testFunction()
+    public function testFunction(): void
     {
         $function = PhpFunction::create(self::METHOD)->setType('string', 'this method returns a string')->addParameter(new PhpParameter('a'));
         $function->generateDocblock();
         $this->assertFalse($function->getDocblock()->isEmpty());
     }
 
-    public function testEmptyFunction()
+    public function testEmptyFunction(): void
     {
         $function = new PhpFunction();
         $function->generateDocblock();
         $this->assertTrue($function->getDocblock()->isEmpty());
     }
 
-    public function testConstant()
+    public function testConstant(): void
     {
         $expected = '/**
  * my constant
@@ -165,14 +165,14 @@ class DocblockTest extends TestCase
         $this->assertEquals($expected, ''.$constant->getDocblock()->toString());
     }
 
-    public function testEmptyConstant()
+    public function testEmptyConstant(): void
     {
         $constant = new PhpConstant();
         $constant->generateDocblock();
         $this->assertTrue($constant->getDocblock()->isEmpty());
     }
 
-    public function testProperty()
+    public function testProperty(): void
     {
         $expected = '/**
  * my prop
@@ -187,14 +187,14 @@ class DocblockTest extends TestCase
         $this->assertEquals($expected, $property->getDocblock()->toString());
     }
 
-    public function testEmptyProperty()
+    public function testEmptyProperty(): void
     {
         $property = new PhpProperty(self::PROP);
         $property->generateDocblock();
         $this->assertTrue($property->getDocblock()->isEmpty());
     }
 
-    public function testMethod()
+    public function testMethod(): void
     {
         $expected = '/**
  * my method
@@ -222,20 +222,20 @@ class DocblockTest extends TestCase
         $this->assertEquals($expected, $docblock->toString());
     }
 
-    public function testEmptyMethod()
+    public function testEmptyMethod(): void
     {
         $method = new PhpMethod(self::METHOD);
         $method->generateDocblock();
         $this->assertTrue($method->getDocblock()->isEmpty());
     }
 
-    public function testEmptyDocblock()
+    public function testEmptyDocblock(): void
     {
         $docblock = new Docblock();
         $this->assertEquals("/**\n */", $docblock->toString());
     }
 
-    public function testObjectParam()
+    public function testObjectParam(): void
     {
         $expected = '/**
  * @param Request $r

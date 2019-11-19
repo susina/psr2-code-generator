@@ -2,6 +2,7 @@
 
 namespace cristianoc72\codegen\tests\model;
 
+use cristianoc72\codegen\model\AbstractPhpMember;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -9,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class AbstractPhpMemberTest extends TestCase
 {
-    public function testSetGetStatic()
+    public function testSetGetStatic(): void
     {
         $member = $this->getMember();
 
@@ -20,7 +21,7 @@ class AbstractPhpMemberTest extends TestCase
         $this->assertFalse($member->isStatic());
     }
 
-    public function testSetGetVisibility()
+    public function testSetGetVisibility(): void
     {
         $member = $this->getMember();
 
@@ -29,7 +30,7 @@ class AbstractPhpMemberTest extends TestCase
         $this->assertEquals('private', $member->getVisibility());
     }
 
-    public function testSetVisibilityThrowsExOnInvalidValue()
+    public function testSetVisibilityThrowsExOnInvalidValue(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -37,7 +38,7 @@ class AbstractPhpMemberTest extends TestCase
         $member->setVisibility('foo');
     }
 
-    public function testSetGetName()
+    public function testSetGetName(): void
     {
         $member = $this->getMember();
 
@@ -46,7 +47,7 @@ class AbstractPhpMemberTest extends TestCase
         $this->assertEquals('foo', $member->getName());
     }
 
-    public function testSetGetDocblock()
+    public function testSetGetDocblock(): void
     {
         $member = $this->getMember();
 
@@ -55,7 +56,7 @@ class AbstractPhpMemberTest extends TestCase
         $this->assertEquals('foo', $member->getDocblock()->getShortDescription());
     }
 
-    private function getMember()
+    private function getMember(): AbstractPhpMember
     {
         return $this->getMockForAbstractClass('cristianoc72\codegen\model\AbstractPhpMember', [
             '__not_null__',

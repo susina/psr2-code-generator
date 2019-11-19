@@ -4,7 +4,9 @@ namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpProperty;
 use cristianoc72\codegen\tests\parts\ValueTests;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 /**
  * @group model
@@ -13,7 +15,7 @@ class PropertyTest extends TestCase
 {
     use ValueTests;
 
-    public function testSetGetValue()
+    public function testSetGetValue(): void
     {
         $prop = new PhpProperty('needsName');
 
@@ -27,7 +29,7 @@ class PropertyTest extends TestCase
         $this->assertFalse($prop->hasValue());
     }
 
-    public function testSetGetExpression()
+    public function testSetGetExpression(): void
     {
         $prop = new PhpProperty('needsName');
 
@@ -41,7 +43,7 @@ class PropertyTest extends TestCase
         $this->assertFalse($prop->isExpression());
     }
 
-    public function testValueAndExpression()
+    public function testValueAndExpression(): void
     {
         $prop = new PhpProperty('needsName');
 
@@ -52,7 +54,8 @@ class PropertyTest extends TestCase
         $this->assertTrue($prop->isExpression());
     }
 
-    public function testValues()
+    
+    public function testValues(): void
     {
         $this->isValueString(PhpProperty::create('x')->setValue('hello'));
         $this->isValueInteger(PhpProperty::create('x')->setValue(2));
@@ -61,10 +64,10 @@ class PropertyTest extends TestCase
         $this->isValueNull(PhpProperty::create('x')->setValue(null));
     }
 
-    public function testInvalidValue()
+    public function testInvalidValue(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
 
-        PhpProperty::create('x')->setValue(new \stdClass());
+        PhpProperty::create('x')->setValue(new stdClass());
     }
 }

@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ConfigTest extends TestCase
 {
-    public function testGeneratorConfigDefaults()
+    public function testGeneratorConfigDefaults(): void
     {
         $config = new GeneratorConfig();
 
@@ -26,9 +26,10 @@ class ConfigTest extends TestCase
         $this->assertEquals(CodeGenerator::SORT_METHODS_DEFAULT, $config->getMethodSorting());
         $this->assertNull($config->getHeaderComment());
         $this->assertNull($config->getHeaderDocblock());
+        $this->assertFalse($config->isPhp74Properties());
     }
 
-    public function testGeneratorConfigSetters()
+    public function testGeneratorConfigSetters(): void
     {
         $config = new GeneratorConfig();
 

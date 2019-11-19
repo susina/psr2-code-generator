@@ -8,7 +8,6 @@ use cristianoc72\codegen\model\PhpInterface;
 use cristianoc72\codegen\model\PhpProperty;
 use cristianoc72\codegen\model\PhpTrait;
 use cristianoc72\codegen\tests\parts\ModelAssertions;
-use cristianoc72\codegen\tests\parts\ValueTests;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,9 +16,8 @@ use PHPUnit\Framework\TestCase;
 class ClassTest extends TestCase
 {
     use ModelAssertions;
-    use ValueTests;
 
-    public function testConstants()
+    public function testConstants(): void
     {
         $class = new PhpClass();
 
@@ -61,7 +59,7 @@ class ClassTest extends TestCase
         }
     }
 
-    public function testRemoveConstantThrowsExceptionWhenConstantDoesNotExist()
+    public function testRemoveConstantThrowsExceptionWhenConstantDoesNotExist(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -69,7 +67,7 @@ class ClassTest extends TestCase
         $class->removeConstantByName('foo');
     }
 
-    public function testGetConstantThrowsExceptionWhenConstantDoesNotExist()
+    public function testGetConstantThrowsExceptionWhenConstantDoesNotExist(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -77,7 +75,7 @@ class ClassTest extends TestCase
         $class->getConstant('foo');
     }
 
-    public function testAbstract()
+    public function testAbstract(): void
     {
         $class = new PhpClass();
 
@@ -88,7 +86,7 @@ class ClassTest extends TestCase
         $this->assertFalse($class->isAbstract());
     }
 
-    public function testFinal()
+    public function testFinal(): void
     {
         $class = new PhpClass();
 
@@ -99,7 +97,7 @@ class ClassTest extends TestCase
         $this->assertFalse($class->isFinal());
     }
 
-    public function testParentClassName()
+    public function testParentClassName(): void
     {
         $class = new PhpClass();
 
@@ -110,7 +108,7 @@ class ClassTest extends TestCase
         $this->assertEquals('', $class->getParentClassName());
     }
 
-    public function testInterfaces()
+    public function testInterfaces(): void
     {
         $class = new PhpClass('my\name\space\Class');
 
@@ -143,7 +141,7 @@ class ClassTest extends TestCase
         $this->assertTrue($class->hasUseStatement('other\name\space\Interface'));
     }
 
-    public function testTraits()
+    public function testTraits(): void
     {
         $class = new PhpClass('my\name\space\Class');
 
@@ -173,7 +171,7 @@ class ClassTest extends TestCase
         $this->assertFalse($class->hasUseStatement('other\name\space\Trait'), 'Use statement removed.');
     }
 
-    public function testSetTraitsWrongTypeThrowsException()
+    public function testSetTraitsWrongTypeThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -186,7 +184,7 @@ class ClassTest extends TestCase
         ]));
     }
 
-    public function testProperties()
+    public function testProperties(): void
     {
         $class = new PhpClass();
 
@@ -228,7 +226,7 @@ class ClassTest extends TestCase
         }
     }
 
-    public function testRemoveNonExistentProperty()
+    public function testRemoveNonExistentProperty(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -236,7 +234,7 @@ class ClassTest extends TestCase
         $class->removePropertyByName('haha');
     }
 
-    public function testLongDescription()
+    public function testLongDescription(): void
     {
         $class = new PhpClass();
 
@@ -244,7 +242,7 @@ class ClassTest extends TestCase
         $this->assertEquals('very long description', $class->getLongDescription());
     }
 
-    public function testMultilineDescripion()
+    public function testMultilineDescripion(): void
     {
         $class = new PhpClass();
         $class->setMultilineDescription(['multiline', 'description']);

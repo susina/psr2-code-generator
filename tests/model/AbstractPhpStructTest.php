@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class AbstractPhpStructTest extends TestCase
 {
-    public function testCreate()
+    public function testCreate(): void
     {
         $class = PhpClass::create();
         $this->assertTrue($class instanceof PhpClass);
@@ -25,7 +25,7 @@ class AbstractPhpStructTest extends TestCase
         $this->assertTrue($trait instanceof PhpTrait);
     }
 
-    public function testQualifiedName()
+    public function testQualifiedName(): void
     {
         $class = new PhpClass();
         $this->assertEquals('', $class->getName());
@@ -46,7 +46,7 @@ class AbstractPhpStructTest extends TestCase
         $this->assertEquals('a\b\Name', $class->getQualifiedName());
     }
 
-    public function testUseStatements()
+    public function testUseStatements(): void
     {
         $class = new PhpClass();
 
@@ -86,7 +86,7 @@ class AbstractPhpStructTest extends TestCase
         $this->assertTrue($class->hasUseStatement('phootwork\collection\Map'));
     }
 
-    public function testMethods()
+    public function testMethods(): void
     {
         $class = new PhpClass();
 
@@ -129,7 +129,7 @@ class AbstractPhpStructTest extends TestCase
         }
     }
 
-    public function testRemoveMethodThrowsExceptionWhenConstantDoesNotExist()
+    public function testRemoveMethodThrowsExceptionWhenConstantDoesNotExist(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -137,7 +137,7 @@ class AbstractPhpStructTest extends TestCase
         $class->removeMethodByName('foo');
     }
 
-    public function testGetMethodThrowsExceptionWhenConstantDoesNotExist()
+    public function testGetMethodThrowsExceptionWhenConstantDoesNotExist(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -145,7 +145,7 @@ class AbstractPhpStructTest extends TestCase
         $class->getMethodByName('foo');
     }
 
-    public function testDocblock()
+    public function testDocblock(): void
     {
         $class = new PhpClass();
 
@@ -154,7 +154,7 @@ class AbstractPhpStructTest extends TestCase
         $this->assertEquals('foo', $class->getDocblock()->getShortDescription());
     }
 
-    public function testRequiredFiles()
+    public function testRequiredFiles(): void
     {
         $class = new PhpClass();
 

@@ -13,7 +13,7 @@ use cristianoc72\codegen\model\PhpProperty;
  */
 class MethodGeneratorTest extends GeneratorTestCase
 {
-    public function testPublic()
+    public function testPublic(): void
     {
         $expected = "public function foo()\n{\n}\n";
 
@@ -24,7 +24,7 @@ class MethodGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testProtected()
+    public function testProtected(): void
     {
         $expected = "protected function foo()\n{\n}\n";
 
@@ -35,7 +35,7 @@ class MethodGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testPrivate()
+    public function testPrivate(): void
     {
         $expected = "private function foo()\n{\n}\n";
 
@@ -46,7 +46,7 @@ class MethodGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testStatic()
+    public function testStatic(): void
     {
         $expected = "public static function foo()\n{\n}\n";
 
@@ -57,7 +57,7 @@ class MethodGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testAbstract()
+    public function testAbstract(): void
     {
         $expected = "abstract public function foo();\n";
 
@@ -68,7 +68,7 @@ class MethodGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testReferenceReturned()
+    public function testReferenceReturned(): void
     {
         $expected = "public function & foo()\n{\n}\n";
 
@@ -79,7 +79,7 @@ class MethodGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testParameters()
+    public function testParameters(): void
     {
         $generator = new ModelGenerator($this->getConfig());
 
@@ -95,7 +95,7 @@ class MethodGeneratorTest extends GeneratorTestCase
         );
     }
 
-    public function testReturnType()
+    public function testReturnType(): void
     {
         $expected = "/**\n * @return int\n */\npublic function foo(): int\n{\n}\n";
         $generator = new ModelGenerator($this->getConfig());
@@ -104,7 +104,7 @@ class MethodGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $generator->generate($method));
     }
 
-    public function testWrongClassThrowsException()
+    public function testWrongClassThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 

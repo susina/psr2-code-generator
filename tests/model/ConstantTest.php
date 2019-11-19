@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class ConstantTest extends TestCase
 {
-    public function testConstantExpression()
+    public function testConstantExpression(): void
     {
         $const = new PhpConstant('great', 'beautiful(expression)', true);
 

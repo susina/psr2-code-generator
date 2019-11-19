@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class BuilderFactoryTest extends TestCase
 {
-    public function testWrongModelClassThrowsException()
+    public function testWrongModelClassThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 

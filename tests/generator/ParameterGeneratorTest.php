@@ -13,7 +13,7 @@ use cristianoc72\codegen\model\PhpParameter;
  */
 class ParameterGeneratorTest extends GeneratorTestCase
 {
-    public function testPassedByReference()
+    public function testPassedByReference(): void
     {
         $expected = '&$foo';
 
@@ -24,7 +24,7 @@ class ParameterGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testTypeHints()
+    public function testTypeHints(): void
     {
         $generator = new ModelGenerator($this->getConfig());
 
@@ -62,7 +62,7 @@ class ParameterGeneratorTest extends GeneratorTestCase
         $this->assertEquals('$foo', $generator->generate($param));
     }
 
-    public function testValues()
+    public function testValues(): void
     {
         $generator = new ModelGenerator($this->getConfig());
 
@@ -91,7 +91,7 @@ class ParameterGeneratorTest extends GeneratorTestCase
         $this->assertEquals('$foo = [\'bar\' => \'baz\']', $generator->generate($prop));
     }
 
-    public function testWrongClassThrowsException()
+    public function testWrongClassThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 

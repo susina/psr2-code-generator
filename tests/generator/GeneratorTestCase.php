@@ -7,12 +7,12 @@ use PHPUnit\Framework\TestCase;
 
 class GeneratorTestCase extends TestCase
 {
-    public function getConfig()
+    public function getConfig(): GeneratorConfig
     {
         return $this->getMockBuilder(GeneratorConfig::class)->getMock();
     }
 
-    protected function getGeneratedContent(string $file)
+    protected function getGeneratedContent(string $file): string
     {
         return file_get_contents(__DIR__.'/../generator/generated/'.$file);
     }

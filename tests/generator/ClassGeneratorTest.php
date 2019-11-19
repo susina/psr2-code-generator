@@ -17,7 +17,7 @@ use cristianoc72\codegen\model\PhpTrait;
  */
 class ClassGeneratorTest extends GeneratorTestCase
 {
-    public function testSignature()
+    public function testSignature(): void
     {
         $expected = "class MyClass\n{\n}\n";
 
@@ -28,7 +28,7 @@ class ClassGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testAbstract()
+    public function testAbstract(): void
     {
         $expected = "abstract class MyClass\n{\n}\n";
 
@@ -39,7 +39,7 @@ class ClassGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testFinal()
+    public function testFinal(): void
     {
         $expected = "final class MyClass\n{\n}\n";
 
@@ -50,7 +50,7 @@ class ClassGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testInterfaces()
+    public function testInterfaces(): void
     {
         $generator = new ModelGenerator($this->getConfig());
 
@@ -63,7 +63,7 @@ class ClassGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $generator->generate($class));
     }
 
-    public function testParent()
+    public function testParent(): void
     {
         $expected = "class MyClass extends MyParent\n{\n}\n";
 
@@ -74,7 +74,7 @@ class ClassGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testUseStatements()
+    public function testUseStatements(): void
     {
         $class = new PhpClass('Foo\\FooBar');
         $class->addUseStatement('Bam\\Baz');
@@ -102,7 +102,7 @@ class ClassGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testABClass()
+    public function testABClass(): void
     {
         $class = PhpClass::create()
             ->setName('ABClass')
@@ -130,8 +130,8 @@ class ClassGeneratorTest extends GeneratorTestCase
         $code = $generator->generate($class);
         $this->assertEquals($modelCode, $code);
     }
-
-    public function testRequireTraitsClass()
+    
+    public function testRequireTraitsClass(): void
     {
         $class = PhpClass::create('RequireTraitsClass')
             ->addRequiredFile('FooBar.php')
@@ -143,7 +143,7 @@ class ClassGeneratorTest extends GeneratorTestCase
         $this->assertEquals($this->getGeneratedContent('RequireTraitsClass.php'), $code);
     }
 
-    public function testWrongClassThrowsException()
+    public function testWrongClassThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 

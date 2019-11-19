@@ -43,10 +43,12 @@ class GeneratorConfig
             'methodSorting'         => CodeGenerator::SORT_METHODS_DEFAULT,
             'headerComment'         => null,
             'headerDocblock'        => null,
+            'php74Properties'       => false
         ]);
 
         $resolver->setAllowedTypes('generateEmptyDocblock', 'bool');
         $resolver->setAllowedTypes('enableSorting', 'bool');
+        $resolver->setAllowedTypes('php74Properties', 'bool');
         $resolver->setAllowedTypes('useStatementSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
         $resolver->setAllowedTypes('constantSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
         $resolver->setAllowedTypes('propertySorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
@@ -96,6 +98,16 @@ class GeneratorConfig
         return $this->options['enableSorting'];
     }
 
+    /**
+     * Whether to use the Php 7.4 typed properties declaration.
+     *
+     * @return bool
+     */
+    public function isPhp74Properties(): bool
+    {
+        return $this->options['php74Properties'];
+    }
+    
     /**
      * Returns the use statement sorting.
      *

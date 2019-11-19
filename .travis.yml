@@ -7,7 +7,7 @@ env:
 php:
   - 7.2
   - 7.3
-  - nightly
+  - 7.4
 
 install:
   - composer install
@@ -22,10 +22,6 @@ script:
 
 after_script:
   - ./cc-test-reporter after-build --coverage-input-type clover --exit-code $TRAVIS_TEST_RESULT
-
-matrix:
-  allow_failures:
-    - php: nightly
 
 fast_finish: true
 

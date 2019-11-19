@@ -6,32 +6,32 @@ use cristianoc72\codegen\model\ValueInterface;
 
 trait ValueTests
 {
-    protected function isValueString(ValueInterface $obj)
+    protected function isValueString(ValueInterface $obj): void
     {
         $this->assertTrue(is_string($obj->getValue()));
     }
 
-    protected function isValueInteger(ValueInterface $obj)
+    protected function isValueInteger(ValueInterface $obj): void
     {
         $this->assertTrue(is_int($obj->getValue()));
     }
-
-    protected function isValueFloat(ValueInterface $obj)
+    
+    protected function isValueFloat(ValueInterface $obj): void
     {
         $this->assertTrue(is_float($obj->getValue()));
     }
-
-    protected function isValueNumber(ValueInterface $obj)
+    
+    protected function isValueNumber(ValueInterface $obj): void
     {
         $this->assertTrue(is_numeric($obj->getValue()));
     }
-
-    protected function isValueBool(ValueInterface $obj)
+    
+    protected function isValueBool(ValueInterface $obj): void
     {
         $this->assertTrue(is_bool($obj->getValue()));
     }
-
-    protected function isValueNull(ValueInterface $obj)
+    
+    protected function isValueNull(ValueInterface $obj): void
     {
         $this->assertNull($obj->getValue());
     }

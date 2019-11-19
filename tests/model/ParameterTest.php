@@ -14,7 +14,7 @@ class ParameterTest extends TestCase
 {
     use ValueTests;
 
-    public function testByReference()
+    public function testByReference(): void
     {
         $param = new PhpParameter();
         $this->assertFalse($param->isPassedByReference());
@@ -24,7 +24,7 @@ class ParameterTest extends TestCase
         $this->assertFalse($param->isPassedByReference());
     }
 
-    public function testType()
+    public function testType(): void
     {
         $param = new PhpParameter();
 
@@ -35,7 +35,7 @@ class ParameterTest extends TestCase
         $this->assertEquals('boo!', $param->getTypeDescription());
     }
 
-    public function testSimpleParameter()
+    public function testSimpleParameter(): void
     {
         $function = new PhpFunction();
         $function->addSimpleParameter('param1', 'string');
@@ -54,7 +54,7 @@ class ParameterTest extends TestCase
         $this->assertNull($param2->getValue());
     }
 
-    public function testSimpleDescParameter()
+    public function testSimpleDescParameter(): void
     {
         $function = new PhpFunction();
         $function->addSimpleDescParameter('param1', 'string');
@@ -79,7 +79,7 @@ class ParameterTest extends TestCase
         $this->assertNull($param3->getValue());
     }
 
-    public function testValues()
+    public function testValues(): void
     {
         $this->isValueString(PhpParameter::create()->setValue('hello'));
         $this->isValueInteger(PhpParameter::create()->setValue(2));

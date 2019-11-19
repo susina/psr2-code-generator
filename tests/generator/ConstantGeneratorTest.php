@@ -12,7 +12,7 @@ use cristianoc72\codegen\model\PhpMethod;
  */
 class ConstantGeneratorTest extends GeneratorTestCase
 {
-    public function testValues()
+    public function testValues(): void
     {
         $generator = new ModelGenerator($this->getConfig());
 
@@ -41,7 +41,7 @@ class ConstantGeneratorTest extends GeneratorTestCase
         $this->assertEquals('const FOO = [\'bar\' => \'baz\'];'."\n", $generator->generate($prop));
     }
 
-    public function testWrongClassThrowsException()
+    public function testWrongClassThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 

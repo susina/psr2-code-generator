@@ -12,7 +12,7 @@ use cristianoc72\codegen\model\PhpMethod;
  */
 class InterfaceGeneratorTest extends GeneratorTestCase
 {
-    public function testSignature()
+    public function testSignature(): void
     {
         $expected = "interface MyInterface\n{\n}\n";
 
@@ -23,7 +23,7 @@ class InterfaceGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testExtends()
+    public function testExtends(): void
     {
         $generator = new ModelGenerator($this->getConfig());
 
@@ -36,7 +36,7 @@ class InterfaceGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $generator->generate($interface));
     }
 
-    public function testWrongClassThrowsException()
+    public function testWrongClassThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 

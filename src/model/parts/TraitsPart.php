@@ -117,7 +117,7 @@ trait TraitsPart
             return $element->getQualifiedName() === $query;
         });
 
-        return $this->removeTrait($toRemove);
+        return $toRemove !== null ? $this->removeTrait($toRemove) : $this;
     }
 
     /**

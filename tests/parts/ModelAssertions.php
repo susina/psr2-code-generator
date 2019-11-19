@@ -6,7 +6,7 @@ use cristianoc72\codegen\model\PhpClass;
 
 trait ModelAssertions
 {
-    private function assertClassWithValues(PhpClass $class)
+    private function assertClassWithValues(PhpClass $class): void
     {
         $bar = $class->getProperty('bar');
         $this->assertFalse($bar->getValue());
@@ -26,7 +26,7 @@ trait ModelAssertions
         $this->assertEquals("['papagei' => ['name' => 'Mr. Cottons Papagei']]", $arr->getExpression());
     }
 
-    private function assertClassWithComments(PhpClass $class)
+    private function assertClassWithComments(PhpClass $class): void
     {
         $docblock = $class->getDocblock();
 

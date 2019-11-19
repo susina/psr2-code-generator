@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 class CodeGeneratorTest extends TestCase
 {
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $generator = new CodeGenerator(null);
         $this->assertTrue($generator->getConfig() instanceof GeneratorConfig);
@@ -21,7 +21,7 @@ class CodeGeneratorTest extends TestCase
         $this->assertSame($config, $generator->getConfig());
     }
 
-    public function testPassWrongConfigThrowsException()
+    public function testPassWrongConfigThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 

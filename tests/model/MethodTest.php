@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 class MethodTest extends TestCase
 {
-    public function testParameters()
+    public function testParameters(): void
     {
         $method = new PhpMethod('needsName');
 
@@ -49,7 +49,7 @@ class MethodTest extends TestCase
         $this->assertEquals([], $method->getParameters());
     }
 
-    public function testGetNonExistentParameterByName()
+    public function testGetNonExistentParameterByName(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -57,7 +57,7 @@ class MethodTest extends TestCase
         $method->getParameterByName('x');
     }
 
-    public function testGetNonExistentParameterByIndex()
+    public function testGetNonExistentParameterByIndex(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -65,7 +65,7 @@ class MethodTest extends TestCase
         $method->getParameterByPosition(5);
     }
 
-    public function testReplaceNonExistentParameterByIndex()
+    public function testReplaceNonExistentParameterByIndex(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -73,7 +73,7 @@ class MethodTest extends TestCase
         $method->replaceParameter(5, new PhpParameter());
     }
 
-    public function testRemoveNonExistentParameterByIndex()
+    public function testRemoveNonExistentParameterByIndex(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -81,7 +81,7 @@ class MethodTest extends TestCase
         $method->removeParameterByPosition(5);
     }
 
-    public function testBody()
+    public function testBody(): void
     {
         $method = new PhpMethod('needsName');
 
@@ -92,7 +92,7 @@ class MethodTest extends TestCase
         $this->assertEquals('foo appended bar', $method->getBody());
     }
 
-    public function testReferenceReturned()
+    public function testReferenceReturned(): void
     {
         $method = new PhpMethod('needsName');
 

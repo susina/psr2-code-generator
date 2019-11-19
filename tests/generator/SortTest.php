@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
  */
 class SortTest extends TestCase
 {
-    public function testDefaultUseStatementComparator()
+    public function testDefaultUseStatementComparator(): void
     {
         $list = new ArrayList();
 
@@ -47,7 +47,7 @@ class SortTest extends TestCase
         ], $list->toArray());
     }
 
-    public function testDefaultConstantComparator()
+    public function testDefaultConstantComparator(): void
     {
         $list = new ArrayList();
 
@@ -71,7 +71,7 @@ class SortTest extends TestCase
         ], $ordered);
     }
 
-    public function testDefaultMethodComparator()
+    public function testDefaultMethodComparator(): void
     {
         $list = new ArrayList();
 
@@ -91,7 +91,7 @@ class SortTest extends TestCase
         ], $ordered);
     }
 
-    public function testDefaultPropertyComparator()
+    public function testDefaultPropertyComparator(): void
     {
         $list = new ArrayList();
 

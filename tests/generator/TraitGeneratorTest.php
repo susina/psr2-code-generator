@@ -12,7 +12,7 @@ use cristianoc72\codegen\model\PhpTrait;
  */
 class TraitGeneratorTest extends GeneratorTestCase
 {
-    public function testSignature()
+    public function testSignature(): void
     {
         $expected = "trait MyTrait\n{\n}\n";
 
@@ -23,7 +23,7 @@ class TraitGeneratorTest extends GeneratorTestCase
         $this->assertEquals($expected, $code);
     }
 
-    public function testInvalidModelThrowsException()
+    public function testInvalidModelThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 

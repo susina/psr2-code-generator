@@ -17,7 +17,7 @@ use gossi\docblock\Docblock;
  */
 class CodeFileGeneratorTest extends GeneratorTestCase
 {
-    public function testStrictTypesDeclaration()
+    public function testStrictTypesDeclaration(): void
     {
         $expected = '<?php declare(strict_types=1);
 
@@ -36,7 +36,7 @@ function fn($a)
         $this->assertEquals($expected, $code);
     }
 
-    public function testExpression()
+    public function testExpression(): void
     {
         $class = new PhpClass('ClassWithExpression');
         $class
@@ -58,7 +58,7 @@ function fn($a)
         $this->assertEquals($this->getGeneratedContent('ClassWithExpression.php'), $code);
     }
 
-    public function testDocblocks()
+    public function testDocblocks(): void
     {
         $generator = new CodeFileGenerator([
             'headerComment'         => 'hui buuh',
@@ -72,7 +72,7 @@ function fn($a)
         $this->assertEquals($this->getGeneratedContent('Dummy.php'), $code);
     }
 
-    public function testEntity()
+    public function testEntity(): void
     {
         $class = $this->createEntity();
 
@@ -82,7 +82,7 @@ function fn($a)
         $this->assertEquals($this->getGeneratedContent('Entity.php'), $code);
     }
 
-    public function testConfig()
+    public function testConfig(): void
     {
         $generator = new CodeFileGenerator(null);
         $this->assertTrue($generator->getConfig() instanceof GeneratorConfig);
@@ -92,7 +92,7 @@ function fn($a)
         $this->assertSame($config, $generator->getConfig());
     }
 
-    protected function createEntity()
+    protected function createEntity(): PhpClass
     {
         $classDoc = new Docblock('/**
  * Doc Comment.
