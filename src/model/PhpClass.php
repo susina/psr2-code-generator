@@ -56,7 +56,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
     /**
      * Sets the parent class name.
      *
-     * @param string|null $name the new parent
+     * @param null|string $name the new parent
      *
      * @return $this
      */

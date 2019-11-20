@@ -7,6 +7,9 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group model
+ *
+ * @internal
+ * @coversNothing
  */
 class AbstractPhpMemberTest extends TestCase
 {

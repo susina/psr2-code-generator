@@ -9,6 +9,9 @@ use cristianoc72\codegen\model\PhpMethod;
 
 /**
  * @group generator
+ *
+ * @internal
+ * @coversNothing
  */
 class ConstantGeneratorTest extends GeneratorTestCase
 {

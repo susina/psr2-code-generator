@@ -5,6 +5,10 @@ namespace cristianoc72\codegen\tests\generator;
 use cristianoc72\codegen\config\GeneratorConfig;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class GeneratorTestCase extends TestCase
 {
     public function getConfig(): GeneratorConfig

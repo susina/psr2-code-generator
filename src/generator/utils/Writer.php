@@ -39,7 +39,7 @@ class Writer
 
     public function indent(): self
     {
-        $this->indentationLevel += 1;
+        $this->indentationLevel++;
 
         return $this;
     }

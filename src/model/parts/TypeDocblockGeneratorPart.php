@@ -46,7 +46,6 @@ trait TypeDocblockGeneratorPart
         $type = $this->getType();
 
         if (!empty($type)) {
-
             // try to find tag at first and update
             $tags = $docblock->getTags($tag->getTagName());
             if ($tags->size() > 0) {
@@ -59,8 +58,8 @@ trait TypeDocblockGeneratorPart
             else {
                 $docblock->appendTag(
                     $tag
-                    ->setType($this->getType())
-                    ->setDescription($this->getTypeDescription())
+                        ->setType($this->getType())
+                        ->setDescription($this->getTypeDescription())
                 );
             }
         }

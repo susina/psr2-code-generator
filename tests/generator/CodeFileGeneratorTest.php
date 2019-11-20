@@ -14,6 +14,9 @@ use gossi\docblock\Docblock;
 
 /**
  * @group generator
+ *
+ * @internal
+ * @coversNothing
  */
 class CodeFileGeneratorTest extends GeneratorTestCase
 {
@@ -46,11 +49,12 @@ function fn($a)
                     ->setExpression("['ebbelwoi' => 'is eh besser', 'als wie' => 'bier']")
             )
             ->setMethod(PhpMethod::create('getValue')
-                ->addParameter(
-                    PhpParameter::create('arr')
-                        ->setExpression('[self::FOO => \'baz\']')
-                        ->setType('array')
-                ));
+            ->addParameter(
+                PhpParameter::create('arr')
+                    ->setExpression('[self::FOO => \'baz\']')
+                    ->setType('array')
+            ))
+        ;
 
         $codegen = new CodeFileGenerator();
         $code = $codegen->generate($class);
@@ -61,8 +65,8 @@ function fn($a)
     public function testDocblocks(): void
     {
         $generator = new CodeFileGenerator([
-            'headerComment'         => 'hui buuh',
-            'headerDocblock'        => 'woop',
+            'headerComment' => 'hui buuh',
+            'headerDocblock' => 'woop',
             'generateEmptyDocblock' => true,
         ]);
 
@@ -110,13 +114,14 @@ function fn($a)
             ->setDescription($classDoc->getShortDescription())
             ->setLongDescription($classDoc->getLongDescription())
             ->setProperty(PhpProperty::create('id')
-                ->setVisibility('private')
-                ->setDocblock($propDoc)
-                ->setType('integer')
-                ->setDescription($propDoc->getShortDescription()))
+            ->setVisibility('private')
+            ->setDocblock($propDoc)
+            ->setType('integer')
+            ->setDescription($propDoc->getShortDescription()))
             ->setProperty(PhpProperty::create('enabled')
-                ->setVisibility('private')
-                ->setValue(false));
+            ->setVisibility('private')
+            ->setValue(false))
+        ;
 
         $methodDoc = new Docblock('/**
  * Another doc comment.
@@ -131,22 +136,23 @@ function fn($a)
             ->setFinal(true)
             ->addParameter(PhpParameter::create('a'))
             ->addParameter(PhpParameter::create()
-                ->setName('b')
-                ->setType('array')
-                ->setPassedByReference(true))
+            ->setName('b')
+            ->setType('array')
+            ->setPassedByReference(true))
             ->addParameter(PhpParameter::create()
-                ->setName('c')
-                ->setType('\\stdClass'))
+            ->setName('c')
+            ->setType('\\stdClass'))
             ->addParameter(PhpParameter::create()
-                ->setName('d')
-                ->setType('string')
-                ->setValue('foo'))
+            ->setName('d')
+            ->setType('string')
+            ->setValue('foo'))
             ->addParameter(PhpParameter::create()
-                ->setName('e')
-                ->setType('callable'))
+            ->setName('e')
+            ->setType('callable'))
             ->setDocblock($methodDoc)
             ->setDescription($methodDoc->getShortDescription())
-            ->setLongDescription($methodDoc->getLongDescription());
+            ->setLongDescription($methodDoc->getLongDescription())
+        ;
 
         $class->setMethod($method);
         $class->setMethod(PhpMethod::create('foo')->setAbstract(true)->setVisibility('protected'));

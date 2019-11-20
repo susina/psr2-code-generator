@@ -18,6 +18,9 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group model
+ *
+ * @internal
+ * @coversNothing
  */
 class DocblockTest extends TestCase
 {
@@ -26,40 +29,6 @@ class DocblockTest extends TestCase
     const PROP = 'myProperty';
 
     const CONSTANT = 'MY_CONSTANT';
-
-    /**
-     * @return PhpMethod
-     */
-    private function getMethod(): PhpMethod
-    {
-        return PhpMethod::create(self::METHOD)
-            ->setDescription('my method')
-            ->setLongDescription('my very long method')
-            ->setType('string', 'this method returns a string')
-            ->addParameter(PhpParameter::create('a')->setDescription('method-param'));
-    }
-
-    /**
-     * @return PhpProperty
-     */
-    private function getProperty(): PhpProperty
-    {
-        return PhpProperty::create(self::PROP)
-            ->setDescription('my prop')
-            ->setLongDescription('my very long prop')
-            ->setType('int', 'this prop is an integer');
-    }
-
-    /**
-     * @return PhpConstant
-     */
-    private function getConstant(): PhpConstant
-    {
-        return PhpConstant::create(self::CONSTANT)
-            ->setDescription('my constant')
-            ->setLongDescription('my very long contstant')
-            ->setType('boolean', 'this constant is a boolean');
-    }
 
     public function testClass(): void
     {
@@ -70,7 +39,8 @@ class DocblockTest extends TestCase
             ->setProperty($this->getProperty())
             ->setMethod($this->getMethod())
             ->setConstant($this->getConstant())
-            ->generateDocblock();
+            ->generateDocblock()
+        ;
 
         $this->assertFalse($class->getDocblock()->isEmpty());
         $this->assertNotNull($class->getProperty(self::PROP)->getDocblock());
@@ -245,5 +215,42 @@ class DocblockTest extends TestCase
         $function = PhpFunction::create(self::METHOD)->setType('Response', 'this method returns a response object')->addParameter(PhpParameter::create('r')->setType('Request'))->addParameter(PhpParameter::create('a')->setType('mixed'));
         $function->generateDocblock();
         $this->assertSame($expected, $function->getDocblock()->toString());
+    }
+
+    /**
+     * @return PhpMethod
+     */
+    private function getMethod(): PhpMethod
+    {
+        return PhpMethod::create(self::METHOD)
+            ->setDescription('my method')
+            ->setLongDescription('my very long method')
+            ->setType('string', 'this method returns a string')
+            ->addParameter(PhpParameter::create('a')->setDescription('method-param'))
+        ;
+    }
+
+    /**
+     * @return PhpProperty
+     */
+    private function getProperty(): PhpProperty
+    {
+        return PhpProperty::create(self::PROP)
+            ->setDescription('my prop')
+            ->setLongDescription('my very long prop')
+            ->setType('int', 'this prop is an integer')
+        ;
+    }
+
+    /**
+     * @return PhpConstant
+     */
+    private function getConstant(): PhpConstant
+    {
+        return PhpConstant::create(self::CONSTANT)
+            ->setDescription('my constant')
+            ->setLongDescription('my very long contstant')
+            ->setType('boolean', 'this constant is a boolean')
+        ;
     }
 }

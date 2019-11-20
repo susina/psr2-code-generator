@@ -10,6 +10,9 @@ use cristianoc72\codegen\model\PhpParameter;
 
 /**
  * @group generator
+ *
+ * @internal
+ * @coversNothing
  */
 class FunctionGeneratorTest extends GeneratorTestCase
 {
@@ -33,7 +36,8 @@ class FunctionGeneratorTest extends GeneratorTestCase
 
         $method = PhpFunction::create('foo')
             ->addParameter(PhpParameter::create('bar'))
-            ->addParameter(PhpParameter::create('baz'));
+            ->addParameter(PhpParameter::create('baz'))
+        ;
         $this->assertEquals(
             "/**\n * @param \$bar\n * @param \$baz\n */\nfunction foo(\$bar, \$baz)\n{\n}\n",
             $generator->generate($method)

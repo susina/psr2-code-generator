@@ -17,11 +17,6 @@ trait TraitsPart
     /** @var Set */
     private $traits;
 
-    private function initTraits(): void
-    {
-        $this->traits = new Set();
-    }
-
     /**
      * Adds a trait.
      *
@@ -117,7 +112,7 @@ trait TraitsPart
             return $element->getQualifiedName() === $query;
         });
 
-        return $toRemove !== null ? $this->removeTrait($toRemove) : $this;
+        return null !== $toRemove ? $this->removeTrait($toRemove) : $this;
     }
 
     /**
@@ -138,6 +133,7 @@ trait TraitsPart
 
             if ($trait instanceof PhpTrait) {
                 $this->traits->add($trait);
+
                 continue;
             }
 
@@ -146,5 +142,10 @@ trait TraitsPart
         }
 
         return $this;
+    }
+
+    private function initTraits(): void
+    {
+        $this->traits = new Set();
     }
 }

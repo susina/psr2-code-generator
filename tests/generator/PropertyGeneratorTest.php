@@ -10,6 +10,9 @@ use cristianoc72\codegen\model\PhpProperty;
 
 /**
  * @group generator
+ *
+ * @internal
+ * @coversNothing
  */
 class PropertyGeneratorTest extends GeneratorTestCase
 {

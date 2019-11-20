@@ -15,22 +15,22 @@ trait ValueTests
     {
         $this->assertTrue(is_int($obj->getValue()));
     }
-    
+
     protected function isValueFloat(ValueInterface $obj): void
     {
         $this->assertTrue(is_float($obj->getValue()));
     }
-    
+
     protected function isValueNumber(ValueInterface $obj): void
     {
         $this->assertTrue(is_numeric($obj->getValue()));
     }
-    
+
     protected function isValueBool(ValueInterface $obj): void
     {
         $this->assertTrue(is_bool($obj->getValue()));
     }
-    
+
     protected function isValueNull(ValueInterface $obj): void
     {
         $this->assertNull($obj->getValue());

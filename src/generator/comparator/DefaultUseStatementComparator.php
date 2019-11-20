@@ -21,11 +21,12 @@ class DefaultUseStatementComparator implements Comparator
             if ($a[$i] != $b[$i]) {
                 $cmp1 = $a[$i];
                 $cmp2 = $b[$i];
+
                 break;
             }
         }
 
-        if ($cmp1 === null && $cmp2 === null) {
+        if (null === $cmp1 && null === $cmp2) {
             return 0;
         }
 

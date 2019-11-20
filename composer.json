@@ -34,5 +34,25 @@
     },
     "require-dev" : {
         "phpunit/phpunit": "^8.3"
+    },
+    "scripts": {
+        "analytics": "tools/psalm",
+        "check": [
+            "@test",
+            "@analytics",
+            "@cs-fix"
+        ],
+        "coverage": "@test --coverage-html coverage/",
+        "cs": "tools/php-cs-fixer fix -v --diff --dry-run",
+        "cs-fix": "tools/php-cs-fixer fix -v --diff",
+        "test": "vendor/bin/phpunit"
+    },
+    "scripts-descriptions": {
+        "analytics": "Run static analysis tool",
+        "check": "Perform all tests and analysis, required before submitting a pull request",
+        "coverage": "Create a code coverage report in html format, into the `coverage/` directory",
+        "cs": "Run code style analysis, without fixing errors",
+        "cs-fix": "Run code style analysis and fix errors",
+        "test": "Run all tests"
     }
 }

@@ -31,20 +31,6 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
      * @param string $name
      * @param mixed  $value
      * @param bool   $isExpression
-     *
-     * @return static
-     */
-    public static function create(string $name = '', $value = null, bool $isExpression = false)
-    {
-        return new static($name, $value, $isExpression);
-    }
-
-    /**
-     * Creates a new PHP constant.
-     *
-     * @param string $name
-     * @param mixed  $value
-     * @param bool   $isExpression
      */
     public function __construct(string $name = '', $value = null, bool $isExpression = false)
     {
@@ -56,6 +42,20 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
             $this->setValue($value);
         }
         $this->docblock = new Docblock();
+    }
+
+    /**
+     * Creates a new PHP constant.
+     *
+     * @param string $name
+     * @param mixed  $value
+     * @param bool   $isExpression
+     *
+     * @return static
+     */
+    public static function create(string $name = '', $value = null, bool $isExpression = false)
+    {
+        return new static($name, $value, $isExpression);
     }
 
     /**

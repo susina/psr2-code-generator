@@ -25,13 +25,13 @@ class CodeFileGenerator extends CodeGenerator
 
         /** @var ?Docblock $comment */
         $comment = $this->getConfig()->getHeaderComment();
-        if ($comment !== null && !$comment->isEmpty()) {
+        if (null !== $comment && !$comment->isEmpty()) {
             $content .= str_replace('/**', '/*', $comment->toString())."\n";
         }
 
         /** @var ?Docblock $docblock */
         $docblock = $this->getConfig()->getHeaderDocblock();
-        if ($docblock !== null && !$docblock->isEmpty()) {
+        if (null !== $docblock && !$docblock->isEmpty()) {
             $content .= $docblock->toString()."\n";
         }
 

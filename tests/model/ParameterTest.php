@@ -9,6 +9,9 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group model
+ *
+ * @internal
+ * @coversNothing
  */
 class ParameterTest extends TestCase
 {

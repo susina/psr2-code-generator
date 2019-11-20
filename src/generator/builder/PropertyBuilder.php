@@ -12,12 +12,12 @@ class PropertyBuilder extends AbstractBuilder
 
     public function build(AbstractModel $model): void
     {
-        if (! $model instanceof PhpProperty) {
+        if (!$model instanceof PhpProperty) {
             throw new \InvalidArgumentException('The property builder can build property classes only.');
         }
 
         $this->buildDocblock($model);
-        
+
         $this->getWriter()->write("{$model->getVisibility()} ");
         $this->getWriter()->write($model->isStatic() ? 'static ' : '');
 
@@ -25,8 +25,8 @@ class PropertyBuilder extends AbstractBuilder
             $this->getWriter()->write("{$model->getType()} ");
         }
 
-        $this->getWriter()->write('$' . $model->getName());
-        
+        $this->getWriter()->write('$'.$model->getName());
+
         if ($model->hasValue()) {
             $this->getWriter()->write(' = ');
             $this->writeValue($model);

@@ -42,6 +42,11 @@ class PhpMethod extends AbstractPhpMember implements RoutineInterface
     use ReferenceReturnPart;
     use TypeDocblockGeneratorPart;
 
+    public function __construct(string $name)
+    {
+        parent::__construct($name);
+    }
+
     /**
      * Creates a new PHP method.
      *
@@ -52,11 +57,6 @@ class PhpMethod extends AbstractPhpMember implements RoutineInterface
     public static function create(string $name)
     {
         return new static($name);
-    }
-
-    public function __construct(string $name)
-    {
-        parent::__construct($name);
     }
 
     /**

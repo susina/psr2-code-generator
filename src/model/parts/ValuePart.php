@@ -26,23 +26,6 @@ trait ValuePart
     private $hasExpression = false;
 
     /**
-     * Returns whether the given value is a primitive.
-     *
-     * @param mixed $value
-     *
-     * @return bool
-     */
-    private function isPrimitive($value): bool
-    {
-        return is_string($value)
-            || is_int($value)
-            || is_float($value)
-            || is_bool($value)
-            || is_null($value)
-            || ($value instanceof PhpConstant);
-    }
-
-    /**
      * Sets the value.
      *
      * @param mixed $value
@@ -78,7 +61,7 @@ trait ValuePart
     /**
      * Returns the value.
      *
-     * @return string|int|float|bool|null|PhpConstant
+     * @return null|bool|float|int|PhpConstant|string
      */
     public function getValue()
     {
@@ -141,5 +124,22 @@ trait ValuePart
         $this->hasExpression = false;
 
         return $this;
+    }
+
+    /**
+     * Returns whether the given value is a primitive.
+     *
+     * @param mixed $value
+     *
+     * @return bool
+     */
+    private function isPrimitive($value): bool
+    {
+        return is_string($value)
+            || is_int($value)
+            || is_float($value)
+            || is_bool($value)
+            || is_null($value)
+            || ($value instanceof PhpConstant);
     }
 }

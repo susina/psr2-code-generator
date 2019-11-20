@@ -28,10 +28,8 @@ abstract class AbstractBuilder
 
     /**
      * @param AbstractModel $model
-     *
-     * @return void
      */
-    abstract public function build(AbstractModel $model);
+    abstract public function build(AbstractModel $model): void;
 
     /**
      * @return GeneratorConfig
@@ -48,8 +46,6 @@ abstract class AbstractBuilder
 
     /**
      * @param AbstractModel $model
-     *
-     * @return void
      */
     protected function generate(AbstractModel $model): void
     {
@@ -57,9 +53,6 @@ abstract class AbstractBuilder
         $builder->build($model);
     }
 
-    /**
-     * @return void
-     */
     protected function ensureBlankLine(): void
     {
         if (!$this->writer->endsWith("\n\n") && (strlen($this->writer->rtrim()->getContent()) > 0) &&
@@ -70,8 +63,6 @@ abstract class AbstractBuilder
 
     /**
      * @param DocblockInterface $model
-     *
-     * @return void
      */
     protected function buildDocblock(DocblockInterface $model): void
     {

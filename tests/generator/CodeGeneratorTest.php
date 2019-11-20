@@ -8,6 +8,9 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator
+ *
+ * @internal
+ * @coversNothing
  */
 class CodeGeneratorTest extends TestCase
 {

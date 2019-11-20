@@ -41,22 +41,22 @@ class PhpParameter extends AbstractModel implements ValueInterface
      * Creates a new PHP parameter.
      *
      * @param string $name the parameter name
-     *
-     * @return static
      */
-    public static function create(string $name = null)
+    public function __construct(string $name = null)
     {
-        return new static($name);
+        $this->setName($name ?? '');
     }
 
     /**
      * Creates a new PHP parameter.
      *
      * @param string $name the parameter name
+     *
+     * @return static
      */
-    public function __construct(string $name = null)
+    public static function create(string $name = null)
     {
-        $this->setName($name ?? '');
+        return new static($name);
     }
 
     /**
@@ -93,7 +93,8 @@ class PhpParameter extends AbstractModel implements ValueInterface
         return ParamTag::create()
             ->setType($this->getType())
             ->setVariable($this->getName())
-            ->setDescription($this->getTypeDescription());
+            ->setDescription($this->getTypeDescription())
+        ;
     }
 
     /**

@@ -10,6 +10,9 @@ use cristianoc72\codegen\model\PhpParameter;
 
 /**
  * @group generator
+ *
+ * @internal
+ * @coversNothing
  */
 class ParameterGeneratorTest extends GeneratorTestCase
 {

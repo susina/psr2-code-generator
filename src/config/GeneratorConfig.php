@@ -32,38 +32,6 @@ class GeneratorConfig
         $this->options = $resolver->resolve($options);
     }
 
-    protected function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'generateEmptyDocblock' => false,
-            'enableSorting'         => true,
-            'useStatementSorting'   => CodeGenerator::SORT_USESTATEMENTS_DEFAULT,
-            'constantSorting'       => CodeGenerator::SORT_CONSTANTS_DEFAULT,
-            'propertySorting'       => CodeGenerator::SORT_PROPERTIES_DEFAULT,
-            'methodSorting'         => CodeGenerator::SORT_METHODS_DEFAULT,
-            'headerComment'         => null,
-            'headerDocblock'        => null,
-            'php74Properties'       => false
-        ]);
-
-        $resolver->setAllowedTypes('generateEmptyDocblock', 'bool');
-        $resolver->setAllowedTypes('enableSorting', 'bool');
-        $resolver->setAllowedTypes('php74Properties', 'bool');
-        $resolver->setAllowedTypes('useStatementSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
-        $resolver->setAllowedTypes('constantSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
-        $resolver->setAllowedTypes('propertySorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
-        $resolver->setAllowedTypes('methodSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
-        $resolver->setAllowedTypes('headerComment', ['null', 'string', 'gossi\\docblock\\Docblock']);
-        $resolver->setAllowedTypes('headerDocblock', ['null', 'string', 'gossi\\docblock\\Docblock']);
-
-        $resolver->setNormalizer('headerComment', function (Options $options, ?string $value): ?Docblock {
-            return $this->toDocblock($value);
-        });
-        $resolver->setNormalizer('headerDocblock', function (Options $options, ?string $value): ?Docblock {
-            return $this->toDocblock($value);
-        });
-    }
-
     /**
      * Returns whether empty docblocks are generated.
      *
@@ -107,11 +75,11 @@ class GeneratorConfig
     {
         return $this->options['php74Properties'];
     }
-    
+
     /**
      * Returns the use statement sorting.
      *
-     * @return string|bool|Comparator|\Closure
+     * @return bool|\Closure|Comparator|string
      */
     public function getUseStatementSorting()
     {
@@ -121,7 +89,7 @@ class GeneratorConfig
     /**
      * Returns the constant sorting.
      *
-     * @return string|bool|Comparator|\Closure
+     * @return bool|\Closure|Comparator|string
      */
     public function getConstantSorting()
     {
@@ -131,7 +99,7 @@ class GeneratorConfig
     /**
      * Returns the property sorting.
      *
-     * @return string|bool|Comparator|\Closure
+     * @return bool|\Closure|Comparator|string
      */
     public function getPropertySorting()
     {
@@ -141,7 +109,7 @@ class GeneratorConfig
     /**
      * Returns the method sorting.
      *
-     * @return string|bool|Comparator|\Closure
+     * @return bool|\Closure|Comparator|string
      */
     public function getMethodSorting()
     {
@@ -165,7 +133,7 @@ class GeneratorConfig
     /**
      * Returns the use statement sorting.
      *
-     * @param string|bool|Comparator|\Closure $sorting
+     * @param bool|\Closure|Comparator|string $sorting
      *
      * @return $this
      */
@@ -179,7 +147,7 @@ class GeneratorConfig
     /**
      * Returns the constant sorting.
      *
-     * @param string|bool|Comparator|\Closure $sorting
+     * @param bool|\Closure|Comparator|string $sorting
      *
      * @return $this
      */
@@ -193,7 +161,7 @@ class GeneratorConfig
     /**
      * Returns the property sorting.
      *
-     * @param string|bool|Comparator|\Closure $sorting
+     * @param bool|\Closure|Comparator|string $sorting
      *
      * @return $this
      */
@@ -207,7 +175,7 @@ class GeneratorConfig
     /**
      * Returns the method sorting.
      *
-     * @param string|bool|Comparator|\Closure $sorting
+     * @param bool|\Closure|Comparator|string $sorting
      *
      * @return $this
      */
@@ -216,20 +184,6 @@ class GeneratorConfig
         $this->options['methodSorting'] = $sorting;
 
         return $this;
-    }
-
-    /**
-     * @param mixed $value
-     *
-     * @return Docblock|null
-     */
-    private function toDocblock($value): ?Docblock
-    {
-        if (is_string($value)) {
-            $value = Docblock::create()->setLongDescription($value);
-        }
-
-        return $value;
     }
 
     /**
@@ -278,5 +232,51 @@ class GeneratorConfig
         $this->options['headerDocblock'] = $docblock;
 
         return $this;
+    }
+
+    protected function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'generateEmptyDocblock' => false,
+            'enableSorting' => true,
+            'useStatementSorting' => CodeGenerator::SORT_USESTATEMENTS_DEFAULT,
+            'constantSorting' => CodeGenerator::SORT_CONSTANTS_DEFAULT,
+            'propertySorting' => CodeGenerator::SORT_PROPERTIES_DEFAULT,
+            'methodSorting' => CodeGenerator::SORT_METHODS_DEFAULT,
+            'headerComment' => null,
+            'headerDocblock' => null,
+            'php74Properties' => false,
+        ]);
+
+        $resolver->setAllowedTypes('generateEmptyDocblock', 'bool');
+        $resolver->setAllowedTypes('enableSorting', 'bool');
+        $resolver->setAllowedTypes('php74Properties', 'bool');
+        $resolver->setAllowedTypes('useStatementSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
+        $resolver->setAllowedTypes('constantSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
+        $resolver->setAllowedTypes('propertySorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
+        $resolver->setAllowedTypes('methodSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
+        $resolver->setAllowedTypes('headerComment', ['null', 'string', 'gossi\\docblock\\Docblock']);
+        $resolver->setAllowedTypes('headerDocblock', ['null', 'string', 'gossi\\docblock\\Docblock']);
+
+        $resolver->setNormalizer('headerComment', function (Options $options, ?string $value): ?Docblock {
+            return $this->toDocblock($value);
+        });
+        $resolver->setNormalizer('headerDocblock', function (Options $options, ?string $value): ?Docblock {
+            return $this->toDocblock($value);
+        });
+    }
+
+    /**
+     * @param mixed $value
+     *
+     * @return null|Docblock
+     */
+    private function toDocblock($value): ?Docblock
+    {
+        if (is_string($value)) {
+            $value = Docblock::create()->setLongDescription($value);
+        }
+
+        return $value;
     }
 }

@@ -14,6 +14,9 @@ use cristianoc72\codegen\model\PhpTrait;
 
 /**
  * @group generator
+ *
+ * @internal
+ * @coversNothing
  */
 class ClassGeneratorTest extends GeneratorTestCase
 {
@@ -54,11 +57,11 @@ class ClassGeneratorTest extends GeneratorTestCase
     {
         $generator = new ModelGenerator($this->getConfig());
 
-        $expected = "class MyClass implements \Iterator\n{\n}\n";
+        $expected = "class MyClass implements \\Iterator\n{\n}\n";
         $class = PhpClass::create('MyClass')->addInterface('\Iterator');
         $this->assertEquals($expected, $generator->generate($class));
 
-        $expected = "class MyClass implements \Iterator, \ArrayAccess\n{\n}\n";
+        $expected = "class MyClass implements \\Iterator, \\ArrayAccess\n{\n}\n";
         $class = PhpClass::create('MyClass')->addInterface('\Iterator')->addInterface('\ArrayAccess');
         $this->assertEquals($expected, $generator->generate($class));
     }
@@ -111,7 +114,8 @@ class ClassGeneratorTest extends GeneratorTestCase
             ->setProperty(PhpProperty::create('a'))
             ->setProperty(PhpProperty::create('b'))
             ->setConstantByName('a', 'foo')
-            ->setConstantByName('b', 'bar');
+            ->setConstantByName('b', 'bar')
+        ;
 
         $modelGenerator = new ModelGenerator($this->getConfig());
         $modelCode = $modelGenerator->generate($class);
@@ -130,13 +134,14 @@ class ClassGeneratorTest extends GeneratorTestCase
         $code = $generator->generate($class);
         $this->assertEquals($modelCode, $code);
     }
-    
+
     public function testRequireTraitsClass(): void
     {
         $class = PhpClass::create('RequireTraitsClass')
             ->addRequiredFile('FooBar.php')
             ->addRequiredFile('ABClass.php')
-            ->addTrait(new PhpTrait('Iterator'));
+            ->addTrait(new PhpTrait('Iterator'))
+        ;
 
         $generator = new ModelGenerator($this->getConfig());
         $code = $generator->generate($class);

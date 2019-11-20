@@ -9,6 +9,9 @@ use cristianoc72\codegen\model\PhpTrait;
 
 /**
  * @group generator
+ *
+ * @internal
+ * @coversNothing
  */
 class TraitGeneratorTest extends GeneratorTestCase
 {

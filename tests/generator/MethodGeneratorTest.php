@@ -10,6 +10,9 @@ use cristianoc72\codegen\model\PhpProperty;
 
 /**
  * @group generator
+ *
+ * @internal
+ * @coversNothing
  */
 class MethodGeneratorTest extends GeneratorTestCase
 {
@@ -88,7 +91,8 @@ class MethodGeneratorTest extends GeneratorTestCase
 
         $method = PhpMethod::create('foo')
             ->addParameter(PhpParameter::create('bar'))
-            ->addParameter(PhpParameter::create('baz'));
+            ->addParameter(PhpParameter::create('baz'))
+        ;
         $this->assertEquals(
             "/**\n * @param \$bar\n * @param \$baz\n */\npublic function foo(\$bar, \$baz)\n{\n}\n",
             $generator->generate($method)

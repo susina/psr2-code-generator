@@ -17,11 +17,6 @@ trait InterfacesPart
     /** @var Set */
     private $interfaces;
 
-    private function initInterfaces(): void
-    {
-        $this->interfaces = new Set();
-    }
-
     /**
      * Adds an interface.
      *
@@ -145,5 +140,10 @@ trait InterfacesPart
         }
 
         return $this;
+    }
+
+    private function initInterfaces(): void
+    {
+        $this->interfaces = new Set();
     }
 }

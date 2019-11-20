@@ -19,7 +19,7 @@ class ParameterBuilder extends AbstractBuilder
         }
 
         $type = $this->getType($model);
-        if ($type !== null) {
+        if (null !== $type) {
             $this->getWriter()->write($type.' ');
         }
 

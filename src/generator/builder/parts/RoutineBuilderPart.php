@@ -12,8 +12,6 @@ trait RoutineBuilderPart
 
     /**
      * @param AbstractModel $model
-     *
-     * @return void
      */
     abstract protected function generate(AbstractModel $model);
 
@@ -58,7 +56,7 @@ trait RoutineBuilderPart
     protected function writeFunctionReturnType(RoutineInterface $model): void
     {
         $type = $this->getType($model);
-        if ($type !== null) {
+        if (null !== $type) {
             $this->getWriter()->write(': ')->write($type);
         }
     }

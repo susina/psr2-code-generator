@@ -90,9 +90,9 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
      */
     public function setVisibility(string $visibility): self
     {
-        if ($visibility !== self::VISIBILITY_PRIVATE
-                && $visibility !== self::VISIBILITY_PROTECTED
-                && $visibility !== self::VISIBILITY_PUBLIC) {
+        if (self::VISIBILITY_PRIVATE !== $visibility
+                && self::VISIBILITY_PROTECTED !== $visibility
+                && self::VISIBILITY_PUBLIC !== $visibility) {
             throw new \InvalidArgumentException(sprintf('The visibility "%s" does not exist.', $visibility));
         }
 
@@ -140,7 +140,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
      *
      * @internal
      *
-     * @param AbstractPhpStruct|null $parent
+     * @param null|AbstractPhpStruct $parent
      *
      * @return $this
      */

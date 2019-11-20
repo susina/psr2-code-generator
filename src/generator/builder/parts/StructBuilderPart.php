@@ -23,22 +23,15 @@ use phootwork\lang\Text;
 
 trait StructBuilderPart
 {
-    /**
-     * @return void
-     */
     abstract protected function ensureBlankLine();
 
     /**
      * @param AbstractModel $model
-     *
-     * @return void
      */
     abstract protected function generate(AbstractModel $model);
 
     /**
      * @param DocblockInterface $model
-     *
-     * @return void
      */
     abstract protected function buildDocblock(DocblockInterface $model);
 
@@ -86,10 +79,10 @@ trait StructBuilderPart
             }
 
             $commonName = $namespace->substring((int) $namespace->lastIndexOf('\\'))->trimStart('\\');
-            $this->getWriter()->write("use $namespace");
+            $this->getWriter()->write("use {$namespace}");
 
             if ($commonName->toString() !== $alias) {
-                $this->getWriter()->write(" as $alias");
+                $this->getWriter()->write(" as {$alias}");
             }
 
             $this->getWriter()->writeln(';');
@@ -130,7 +123,7 @@ trait StructBuilderPart
     private function sortUseStatements(AbstractPhpStruct $model): void
     {
         if ($this->getConfig()->isSortingEnabled()
-                && ($useStatementSorting = $this->getConfig()->getUseStatementSorting()) !== false) {
+                && false !== ($useStatementSorting = $this->getConfig()->getUseStatementSorting())) {
             if (is_string($useStatementSorting) || true === $useStatementSorting) {
                 $useStatementSorting = new DefaultUseStatementComparator();
             }
@@ -141,7 +134,7 @@ trait StructBuilderPart
     private function sortConstants(ConstantsInterface $model): void
     {
         if ($this->getConfig()->isSortingEnabled()
-                && ($constantSorting = $this->getConfig()->getConstantSorting()) !== false) {
+                && false !== ($constantSorting = $this->getConfig()->getConstantSorting())) {
             if (is_string($constantSorting) || true === $constantSorting) {
                 $constantSorting = new DefaultConstantComparator();
             }
@@ -152,7 +145,7 @@ trait StructBuilderPart
     private function sortProperties(PropertiesInterface $model): void
     {
         if ($this->getConfig()->isSortingEnabled()
-                && ($propertySorting = $this->getConfig()->getPropertySorting()) !== false) {
+                && false !== ($propertySorting = $this->getConfig()->getPropertySorting())) {
             if (is_string($propertySorting) || true === $propertySorting) {
                 $propertySorting = new DefaultPropertyComparator();
             }
@@ -163,7 +156,7 @@ trait StructBuilderPart
     private function sortMethods(AbstractPhpStruct $model): void
     {
         if ($this->getConfig()->isSortingEnabled()
-                && ($methodSorting = $this->getConfig()->getMethodSorting()) !== false) {
+                && false !== ($methodSorting = $this->getConfig()->getMethodSorting())) {
             if (is_string($methodSorting) || true === $methodSorting) {
                 $methodSorting = new DefaultMethodComparator();
             }

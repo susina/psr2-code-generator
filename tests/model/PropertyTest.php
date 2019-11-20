@@ -10,6 +10,9 @@ use stdClass;
 
 /**
  * @group model
+ *
+ * @internal
+ * @coversNothing
  */
 class PropertyTest extends TestCase
 {
@@ -54,7 +57,6 @@ class PropertyTest extends TestCase
         $this->assertTrue($prop->isExpression());
     }
 
-    
     public function testValues(): void
     {
         $this->isValueString(PhpProperty::create('x')->setValue('hello'));

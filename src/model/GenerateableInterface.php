@@ -10,7 +10,7 @@ namespace cristianoc72\codegen\model;
 interface GenerateableInterface
 {
     /**
-     * Generates docblock based on provided information
+     * Generates docblock based on provided information.
      *
      * @psalm-suppress MissingReturnType
      */

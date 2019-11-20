@@ -49,18 +49,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * Creates a new struct.
      *
      * @param string $name the fqcn
-     *
-     * @return static
-     */
-    public static function create(string $name = null)
-    {
-        return new static($name);
-    }
-
-    /**
-     * Creates a new struct.
-     *
-     * @param string $name the fqcn
      */
     public function __construct(?string $name = null)
     {
@@ -69,6 +57,18 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
         $this->useStatements = new Map();
         $this->requiredFiles = new Set();
         $this->methods = new Map();
+    }
+
+    /**
+     * Creates a new struct.
+     *
+     * @param string $name the fqcn
+     *
+     * @return static
+     */
+    public static function create(string $name = null)
+    {
+        return new static($name);
     }
 
     /**

@@ -14,6 +14,9 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator
+ *
+ * @internal
+ * @coversNothing
  */
 class SortTest extends TestCase
 {

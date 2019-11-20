@@ -12,6 +12,9 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group model
+ *
+ * @internal
+ * @coversNothing
  */
 class ClassTest extends TestCase
 {

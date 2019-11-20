@@ -36,14 +36,14 @@ class BuilderFactory
         $this->generator = $generator;
         $this->builders = new Map();
         $this->builders->setAll([
-            PhpClass::class     => new ClassBuilder($generator),
-            PhpConstant::class  => new ConstantBuilder($generator),
-            PhpFunction::class  => new FunctionBuilder($generator),
+            PhpClass::class => new ClassBuilder($generator),
+            PhpConstant::class => new ConstantBuilder($generator),
+            PhpFunction::class => new FunctionBuilder($generator),
             PhpInterface::class => new InterfaceBuilder($generator),
-            PhpMethod::class    => new MethodBuilder($generator),
+            PhpMethod::class => new MethodBuilder($generator),
             PhpParameter::class => new ParameterBuilder($generator),
-            PhpProperty::class  => new PropertyBuilder($generator),
-            PhpTrait::class     => new TraitBuilder($generator),
+            PhpProperty::class => new PropertyBuilder($generator),
+            PhpTrait::class => new TraitBuilder($generator),
         ]);
     }
 

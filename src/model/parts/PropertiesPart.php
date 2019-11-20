@@ -18,11 +18,6 @@ trait PropertiesPart
     /** @var Map */
     private $properties;
 
-    private function initProperties(): void
-    {
-        $this->properties = new Map();
-    }
-
     /**
      * Sets a collection of properties.
      *
@@ -165,5 +160,10 @@ trait PropertiesPart
         $this->properties->clear();
 
         return $this;
+    }
+
+    private function initProperties(): void
+    {
+        $this->properties = new Map();
     }
 }

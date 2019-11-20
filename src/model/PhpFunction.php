@@ -50,23 +50,23 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
      * Creates a new PHP function.
      *
      * @param string $name qualified name
-     *
-     * @return static
      */
-    public static function create(string $name = null)
+    public function __construct(string $name = null)
     {
-        return new static($name);
+        $this->setQualifiedName($name ?? '');
+        $this->docblock = new Docblock();
     }
 
     /**
      * Creates a new PHP function.
      *
      * @param string $name qualified name
+     *
+     * @return static
      */
-    public function __construct(string $name = null)
+    public static function create(string $name = null)
     {
-        $this->setQualifiedName($name ?? '');
-        $this->docblock = new Docblock();
+        return new static($name);
     }
 
     /**

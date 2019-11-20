@@ -19,11 +19,6 @@ trait ConstantsPart
     /** @var Map */
     private $constants;
 
-    private function initConstants(): void
-    {
-        $this->constants = new Map();
-    }
-
     /**
      * Sets a collection of constants.
      *
@@ -186,5 +181,10 @@ trait ConstantsPart
         $this->constants->clear();
 
         return $this;
+    }
+
+    private function initConstants(): void
+    {
+        $this->constants = new Map();
     }
 }

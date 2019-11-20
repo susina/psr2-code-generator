@@ -11,6 +11,9 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @group config
+ *
+ * @internal
+ * @coversNothing
  */
 class ConfigTest extends TestCase
 {

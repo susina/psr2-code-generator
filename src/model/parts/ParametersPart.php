@@ -110,7 +110,7 @@ trait ParametersPart
         $parameter->setType($type ?? '');
         $parameter->setTypeDescription($typeDescription ?? '');
 
-        if (3 < func_num_args() == 3) {
+        if (3 == 3 < func_num_args()) {
             $parameter->setValue($defaultValue);
         }
 
@@ -223,23 +223,11 @@ trait ParametersPart
             }
         }
 
-        if ($position !== null) {
+        if (null !== $position) {
             $this->removeParameterByPosition($position);
         }
 
         return $this;
-    }
-
-    /**
-     * @param int $position
-     *
-     * @throws \InvalidArgumentException if the position is not correct
-     */
-    private function checkPosition(int $position): void
-    {
-        if ($position < 0 || $position > count($this->parameters)) {
-            throw new \InvalidArgumentException(sprintf('The position must be in the range [0, %d].', count($this->parameters)));
-        }
     }
 
     /**
@@ -276,7 +264,7 @@ trait ParametersPart
             });
 
             // try to update existing docblock first
-            if ($tag !== null) {
+            if (null !== $tag) {
                 $tag->setDescription($ptag->getDescription());
                 $tag->setType($ptag->getType());
             }
@@ -285,6 +273,18 @@ trait ParametersPart
             else {
                 $docblock->appendTag($ptag);
             }
+        }
+    }
+
+    /**
+     * @param int $position
+     *
+     * @throws \InvalidArgumentException if the position is not correct
+     */
+    private function checkPosition(int $position): void
+    {
+        if ($position < 0 || $position > count($this->parameters)) {
+            throw new \InvalidArgumentException(sprintf('The position must be in the range [0, %d].', count($this->parameters)));
         }
     }
 }

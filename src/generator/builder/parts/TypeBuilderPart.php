@@ -18,19 +18,19 @@ trait TypeBuilderPart
 
     /** @var array */
     protected static $typeHintMap = [
-        'string'  => 'string',
-        'int'     => 'int',
+        'string' => 'string',
+        'int' => 'int',
         'integer' => 'int',
-        'bool'    => 'bool',
+        'bool' => 'bool',
         'boolean' => 'bool',
-        'float'   => 'float',
-        'double'  => 'float',
+        'float' => 'float',
+        'double' => 'float',
     ];
 
     /**
      * @param AbstractModel $model
      *
-     * @return string|null
+     * @return null|string
      *
      * @psalm-suppress UndefinedMethod
      * Concrete model classes using this trait always have `getType()` method.
@@ -38,7 +38,7 @@ trait TypeBuilderPart
     private function getType(AbstractModel $model): ?string
     {
         $type = $model->getType();
-        if (!empty($type) && strpos($type, '|') === false
+        if (!empty($type) && false === strpos($type, '|')
                 && (!in_array($type, self::$noTypeHints)
                     || (in_array($type, self::$php7typeHints)))
                 ) {
