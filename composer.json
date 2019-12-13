@@ -45,7 +45,7 @@
         "coverage": "@test --coverage-html coverage/",
         "cs": "tools/php-cs-fixer fix -v --diff --dry-run",
         "cs-fix": "tools/php-cs-fixer fix -v --diff",
-        "test": "vendor/bin/phpunit"
+        "test": "phpunit"
     },
     "scripts-descriptions": {
         "analytics": "Run static analysis tool",
