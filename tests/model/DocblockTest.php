@@ -10,6 +10,7 @@ use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
 use cristianoc72\codegen\model\PhpProperty;
 use cristianoc72\codegen\model\PhpTrait;
+use cristianoc72\codegen\tests\generator\GeneratorTestCase;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\AuthorTag;
 use gossi\docblock\tags\SeeTag;
@@ -22,7 +23,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  * @coversNothing
  */
-class DocblockTest extends TestCase
+class DocblockTest extends GeneratorTestCase
 {
     const METHOD = 'myMethod';
 
@@ -60,7 +61,7 @@ class DocblockTest extends TestCase
  *
  * @author gossi <iiih@mail.me>
  */';
-        $this->assertEquals($expected, $docblock->toString());
+        $this->assertEquals($this->purgeLineFeed($expected), $docblock->toString());
     }
 
     public function testEmptyClass(): void
@@ -132,7 +133,7 @@ class DocblockTest extends TestCase
         $constant = $this->getConstant();
         $constant->generateDocblock();
 
-        $this->assertEquals($expected, ''.$constant->getDocblock()->toString());
+        $this->assertEquals($this->purgeLineFeed($expected), ''.$constant->getDocblock()->toString());
     }
 
     public function testEmptyConstant(): void
@@ -154,7 +155,7 @@ class DocblockTest extends TestCase
         $property = $this->getProperty();
         $property->generateDocblock();
 
-        $this->assertEquals($expected, $property->getDocblock()->toString());
+        $this->assertEquals($this->purgeLineFeed($expected), $property->getDocblock()->toString());
     }
 
     public function testEmptyProperty(): void
@@ -189,7 +190,7 @@ class DocblockTest extends TestCase
         $docblock->appendTag($see);
 
         $this->assertSame($docblock, $doc);
-        $this->assertEquals($expected, $docblock->toString());
+        $this->assertEquals($this->purgeLineFeed($expected), $docblock->toString());
     }
 
     public function testEmptyMethod(): void
@@ -214,7 +215,7 @@ class DocblockTest extends TestCase
  */';
         $function = PhpFunction::create(self::METHOD)->setType('Response', 'this method returns a response object')->addParameter(PhpParameter::create('r')->setType('Request'))->addParameter(PhpParameter::create('a')->setType('mixed'));
         $function->generateDocblock();
-        $this->assertSame($expected, $function->getDocblock()->toString());
+        $this->assertSame($this->purgeLineFeed($expected), $function->getDocblock()->toString());
     }
 
     /**

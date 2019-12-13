@@ -36,7 +36,7 @@ function fn($a)
         $codegen = new CodeFileGenerator(['generateEmptyDocblock' => false]);
         $code = $codegen->generate($fn);
 
-        $this->assertEquals($expected, $code);
+        $this->assertEquals($this->purgeLineFeed($expected), $code);
     }
 
     public function testExpression(): void
