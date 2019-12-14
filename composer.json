@@ -42,7 +42,8 @@
             "@analytics",
             "@cs-fix"
         ],
-        "coverage": "@test --coverage-html coverage/",
+        "coverage:html": "@test --coverage-html coverage/",
+        "coverage:clover": "@test --coverage-clover clover.xml",
         "cs": "tools/php-cs-fixer fix -v --diff --dry-run",
         "cs-fix": "tools/php-cs-fixer fix -v --diff",
         "test": "phpunit"
@@ -50,7 +51,8 @@
     "scripts-descriptions": {
         "analytics": "Run static analysis tool",
         "check": "Perform all tests and analysis, required before submitting a pull request",
-        "coverage": "Create a code coverage report in html format, into the `coverage/` directory",
+        "coverage:html": "Create a code coverage report in html format, into the `coverage/` directory",
+        "coverage:clover": "Create a code coverage report in xml format, into the `clover.xml` file",
         "cs": "Run code style analysis, without fixing errors",
         "cs-fix": "Run code style analysis and fix errors",
         "test": "Run all tests"

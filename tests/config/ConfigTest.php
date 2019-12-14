@@ -9,12 +9,6 @@ use phootwork\lang\ComparableComparator;
 use phootwork\lang\Comparator;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @group config
- *
- * @internal
- * @coversNothing
- */
 class ConfigTest extends TestCase
 {
     public function testGeneratorConfigDefaults(): void

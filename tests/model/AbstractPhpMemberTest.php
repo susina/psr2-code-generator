@@ -5,12 +5,6 @@ namespace cristianoc72\codegen\tests\model;
 use cristianoc72\codegen\model\AbstractPhpMember;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @group model
- *
- * @internal
- * @coversNothing
- */
 class AbstractPhpMemberTest extends TestCase
 {
     public function testSetGetStatic(): void

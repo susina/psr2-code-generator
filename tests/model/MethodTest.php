@@ -6,12 +6,6 @@ use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @group model
- *
- * @internal
- * @coversNothing
- */
 class MethodTest extends TestCase
 {
     public function testParameters(): void

@@ -8,12 +8,6 @@ use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
 use cristianoc72\codegen\model\PhpProperty;
 
-/**
- * @group generator
- *
- * @internal
- * @coversNothing
- */
 class MethodGeneratorTest extends GeneratorTestCase
 {
     public function testPublic(): void

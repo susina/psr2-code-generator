@@ -8,12 +8,6 @@ use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpTrait;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @group model
- *
- * @internal
- * @coversNothing
- */
 class AbstractPhpStructTest extends TestCase
 {
     public function testCreate(): void

@@ -12,12 +12,6 @@ use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpProperty;
 use cristianoc72\codegen\model\PhpTrait;
 
-/**
- * @group generator
- *
- * @internal
- * @coversNothing
- */
 class ClassGeneratorTest extends GeneratorTestCase
 {
     public function testSignature(): void

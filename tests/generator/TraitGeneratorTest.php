@@ -7,12 +7,6 @@ use cristianoc72\codegen\generator\ModelGenerator;
 use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpTrait;
 
-/**
- * @group generator
- *
- * @internal
- * @coversNothing
- */
 class TraitGeneratorTest extends GeneratorTestCase
 {
     public function testSignature(): void

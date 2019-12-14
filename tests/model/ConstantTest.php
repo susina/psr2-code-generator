@@ -5,10 +5,6 @@ namespace cristianoc72\codegen\tests\model;
 use cristianoc72\codegen\model\PhpConstant;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
 class ConstantTest extends TestCase
 {
     public function testConstantExpression(): void

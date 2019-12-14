@@ -6,10 +6,6 @@ use cristianoc72\codegen\config\GeneratorConfig;
 use phootwork\lang\Text;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
 class GeneratorTestCase extends TestCase
 {
     public function getConfig(): GeneratorConfig

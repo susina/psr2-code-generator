@@ -7,12 +7,6 @@ use cristianoc72\codegen\model\PhpParameter;
 use cristianoc72\codegen\tests\parts\ValueTests;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @group model
- *
- * @internal
- * @coversNothing
- */
 class ParameterTest extends TestCase
 {
     use ValueTests;

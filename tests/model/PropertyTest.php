@@ -8,12 +8,6 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
-/**
- * @group model
- *
- * @internal
- * @coversNothing
- */
 class PropertyTest extends TestCase
 {
     use ValueTests;

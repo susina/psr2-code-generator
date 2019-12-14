@@ -12,12 +12,6 @@ use cristianoc72\codegen\model\PhpProperty;
 use phootwork\collection\ArrayList;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @group generator
- *
- * @internal
- * @coversNothing
- */
 class SortTest extends TestCase
 {
     public function testDefaultUseStatementComparator(): void

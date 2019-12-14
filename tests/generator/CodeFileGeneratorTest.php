@@ -12,12 +12,6 @@ use cristianoc72\codegen\model\PhpParameter;
 use cristianoc72\codegen\model\PhpProperty;
 use gossi\docblock\Docblock;
 
-/**
- * @group generator
- *
- * @internal
- * @coversNothing
- */
 class CodeFileGeneratorTest extends GeneratorTestCase
 {
     public function testStrictTypesDeclaration(): void

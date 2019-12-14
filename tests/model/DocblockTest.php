@@ -16,12 +16,6 @@ use gossi\docblock\tags\AuthorTag;
 use gossi\docblock\tags\SeeTag;
 use gossi\docblock\tags\ThrowsTag;
 
-/**
- * @group model
- *
- * @internal
- * @coversNothing
- */
 class DocblockTest extends GeneratorTestCase
 {
     const METHOD = 'myMethod';

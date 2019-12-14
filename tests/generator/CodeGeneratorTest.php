@@ -6,12 +6,6 @@ use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\generator\CodeGenerator;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @group generator
- *
- * @internal
- * @coversNothing
- */
 class CodeGeneratorTest extends TestCase
 {
     public function testConstructor(): void

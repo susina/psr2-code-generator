@@ -7,12 +7,6 @@ use cristianoc72\codegen\generator\ModelGenerator;
 use cristianoc72\codegen\model\PhpInterface;
 use cristianoc72\codegen\model\PhpMethod;
 
-/**
- * @group generator
- *
- * @internal
- * @coversNothing
- */
 class InterfaceGeneratorTest extends GeneratorTestCase
 {
     public function testSignature(): void

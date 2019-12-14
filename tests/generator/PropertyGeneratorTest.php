@@ -8,12 +8,6 @@ use cristianoc72\codegen\model\PhpConstant;
 use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpProperty;
 
-/**
- * @group generator
- *
- * @internal
- * @coversNothing
- */
 class PropertyGeneratorTest extends GeneratorTestCase
 {
     public function testPublic(): void

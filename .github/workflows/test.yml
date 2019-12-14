@@ -1,8 +1,9 @@
-# GitHub Action for psr2-code-generator
+# Run test suite
 name: Tests
 on: [push, pull_request]
 jobs:
-  build:
+  test:
+    name: test
     strategy:
       fail-fast: false
       matrix:
@@ -17,7 +18,6 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, dom, json, libxml, xml, xmlwriter
-          coverage: xdebug
       - name: Get composer cache directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"

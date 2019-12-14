@@ -7,12 +7,6 @@ use cristianoc72\codegen\generator\ModelGenerator;
 use cristianoc72\codegen\model\PhpConstant;
 use cristianoc72\codegen\model\PhpMethod;
 
-/**
- * @group generator
- *
- * @internal
- * @coversNothing
- */
 class ConstantGeneratorTest extends GeneratorTestCase
 {
     public function testValues(): void

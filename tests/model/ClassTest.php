@@ -10,12 +10,6 @@ use cristianoc72\codegen\model\PhpTrait;
 use cristianoc72\codegen\tests\parts\ModelAssertions;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @group model
- *
- * @internal
- * @coversNothing
- */
 class ClassTest extends TestCase
 {
     use ModelAssertions;

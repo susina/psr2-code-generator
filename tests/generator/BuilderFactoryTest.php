@@ -7,10 +7,6 @@ use cristianoc72\codegen\generator\ModelGenerator;
 use cristianoc72\codegen\model\AbstractModel;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- * @coversNothing
- */
 class BuilderFactoryTest extends TestCase
 {
     public function testWrongModelClassThrowsException(): void
