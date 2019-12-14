@@ -15,7 +15,6 @@ use gossi\docblock\Docblock;
 use gossi\docblock\tags\AuthorTag;
 use gossi\docblock\tags\SeeTag;
 use gossi\docblock\tags\ThrowsTag;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @group model
