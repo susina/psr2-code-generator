@@ -1,6 +1,8 @@
 # Run coverage report and upload it to CodeClimate
 name: Coverage
-on: push
+on: 
+  push:
+    branches: [master]
 jobs:
   coverage:
     name: coverage
