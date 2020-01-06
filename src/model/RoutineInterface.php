@@ -18,8 +18,6 @@ interface RoutineInterface
     /**
      * Adds a parameter.
      *
-     * @param PhpParameter $parameter
-     *
      * @return $this
      */
     public function addParameter(PhpParameter $parameter);
@@ -36,9 +34,7 @@ interface RoutineInterface
     /**
      * A quick way to add a parameter which is created from the given parameters.
      *
-     * @param string      $name
-     * @param null|string $type
-     * @param mixed       $defaultValue omit the argument to define no default value
+     * @param mixed $defaultValue omit the argument to define no default value
      *
      * @return $this
      */
@@ -47,10 +43,7 @@ interface RoutineInterface
     /**
      * A quick way to add a parameter with description which is created from the given parameters.
      *
-     * @param string      $name
-     * @param null|string $type
-     * @param null|string $typeDescription
-     * @param mixed       $defaultValue    omit the argument to define no default value
+     * @param mixed $defaultValue omit the argument to define no default value
      *
      * @return $this
      */
@@ -59,30 +52,19 @@ interface RoutineInterface
     /**
      * Returns a parameter by name.
      *
-     * @param string $name
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return PhpParameter
      */
     public function getParameterByName(string $name): PhpParameter;
 
     /**
      * Returns a parameter from a given position.
      *
-     * @param int $position
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return PhpParameter
      */
     public function getParameterByPosition(int $position): PhpParameter;
 
     /**
      * Replaces a parameter at a given position.
-     *
-     * @param int          $position
-     * @param PhpParameter $parameter
      *
      * @throws \InvalidArgumentException
      *
@@ -92,8 +74,6 @@ interface RoutineInterface
 
     /**
      * Remove a parameter.
-     *
-     * @param PhpParameter $param
      *
      * @return $this
      */
@@ -109,23 +89,17 @@ interface RoutineInterface
     /**
      * Set true if a reference is returned of false if not.
      *
-     * @param bool $bool
-     *
      * @return $this
      */
     public function setReferenceReturned(bool $bool);
 
     /**
      * Returns whether a reference is returned.
-     *
-     * @return bool
      */
     public function isReferenceReturned(): bool;
 
     /**
      * Sets the body for this.
-     *
-     * @param string $body
      *
      * @return $this
      */
@@ -133,15 +107,11 @@ interface RoutineInterface
 
     /**
      * Returns the body.
-     *
-     * @return string
      */
     public function getBody(): string;
 
     /**
      * Returns the name of the routine.
-     *
-     * @return string
      */
     public function getName(): string;
 }

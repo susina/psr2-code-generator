@@ -211,9 +211,6 @@ class DocblockTest extends GeneratorTestCase
         $this->assertSame($this->purgeLineFeed($expected), $function->getDocblock()->toString());
     }
 
-    /**
-     * @return PhpMethod
-     */
     private function getMethod(): PhpMethod
     {
         return PhpMethod::create(self::METHOD)
@@ -224,9 +221,6 @@ class DocblockTest extends GeneratorTestCase
         ;
     }
 
-    /**
-     * @return PhpProperty
-     */
     private function getProperty(): PhpProperty
     {
         return PhpProperty::create(self::PROP)
@@ -236,9 +230,6 @@ class DocblockTest extends GeneratorTestCase
         ;
     }
 
-    /**
-     * @return PhpConstant
-     */
     private function getConstant(): PhpConstant
     {
         return PhpConstant::create(self::CONSTANT)

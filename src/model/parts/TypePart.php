@@ -20,9 +20,6 @@ trait TypePart
     /**
      * Sets the type.
      *
-     * @param string $type
-     * @param string $description
-     *
      * @return $this
      */
     public function setType(string $type, string $description = '')
@@ -38,8 +35,6 @@ trait TypePart
     /**
      * Sets the description for the type.
      *
-     * @param string $description
-     *
      * @return $this
      */
     public function setTypeDescription(string $description)
@@ -51,8 +46,6 @@ trait TypePart
 
     /**
      * Returns the type.
-     *
-     * @return string
      */
     public function getType(): string
     {
@@ -61,8 +54,6 @@ trait TypePart
 
     /**
      * Returns the type description.
-     *
-     * @return string
      */
     public function getTypeDescription(): string
     {

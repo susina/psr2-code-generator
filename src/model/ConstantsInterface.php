@@ -26,8 +26,6 @@ interface ConstantsInterface
     /**
      * Adds a constant.
      *
-     * @param PhpConstant $constant
-     *
      * @return $this
      */
     public function setConstant(PhpConstant $constant);
@@ -44,8 +42,6 @@ interface ConstantsInterface
 
     /**
      * Removes a constant.
-     *
-     * @param PhpConstant $constant
      *
      * @throws \InvalidArgumentException If the constant cannot be found
      *
@@ -66,44 +62,28 @@ interface ConstantsInterface
 
     /**
      * Checks whether a constant exists.
-     *
-     * @param PhpConstant $constant
-     *
-     * @return bool
      */
     public function hasConstant(PhpConstant $constant): bool;
 
     /**
      * Checks whether a constant exists.
-     *
-     * @param string $name
-     *
-     * @return bool
      */
     public function hasConstantByName(string $name): bool;
 
     /**
      * Returns a constant.
      *
-     * @param string $name
-     *
      * @throws \InvalidArgumentException If the constant cannot be found
-     *
-     * @return PhpConstant
      */
     public function getConstant(string $name): PhpConstant;
 
     /**
      * Returns constants.
-     *
-     * @return Map
      */
     public function getConstants(): Map;
 
     /**
      * Returns all constant names.
-     *
-     * @return Set
      */
     public function getConstantNames(): Set;
 

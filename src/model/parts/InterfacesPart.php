@@ -48,8 +48,6 @@ trait InterfacesPart
 
     /**
      * Returns the interfaces.
-     *
-     * @return Set
      */
     public function getInterfaces(): Set
     {
@@ -68,10 +66,6 @@ trait InterfacesPart
 
     /**
      * Checks whether an interface exists.
-     *
-     * @param PhpInterface $interface
-     *
-     * @return bool
      */
     public function hasInterface(PhpInterface $interface): bool
     {
@@ -83,8 +77,6 @@ trait InterfacesPart
      * Checks whether an interface exists.
      *
      * @param string $name interface name
-     *
-     * @return bool
      */
     public function hasInterfaceByName(string $name): bool
     {

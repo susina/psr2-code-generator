@@ -70,8 +70,6 @@ trait ValuePart
 
     /**
      * Checks whether a value or expression is set.
-     *
-     * @return bool
      */
     public function hasValue(): bool
     {
@@ -80,8 +78,6 @@ trait ValuePart
 
     /**
      * Returns whether an expression is set.
-     *
-     * @return bool
      */
     public function isExpression(): bool
     {
@@ -90,8 +86,6 @@ trait ValuePart
 
     /**
      * Sets an expression.
-     *
-     * @param string $expr
      *
      * @return $this
      */
@@ -105,8 +99,6 @@ trait ValuePart
 
     /**
      * Returns the expression.
-     *
-     * @return string
      */
     public function getExpression(): string
     {
@@ -130,8 +122,6 @@ trait ValuePart
      * Returns whether the given value is a primitive.
      *
      * @param mixed $value
-     *
-     * @return bool
      */
     private function isPrimitive($value): bool
     {

@@ -29,22 +29,16 @@ interface ValueInterface
 
     /**
      * Checks whether a value or expression is set.
-     *
-     * @return bool
      */
     public function hasValue(): bool;
 
     /**
      * Returns whether an expression is set.
-     *
-     * @return bool
      */
     public function isExpression(): bool;
 
     /**
      * Sets an expression.
-     *
-     * @param string $expr
      *
      * @return $this
      */
@@ -52,8 +46,6 @@ interface ValueInterface
 
     /**
      * Returns the expression.
-     *
-     * @return string
      */
     public function getExpression(): string;
 

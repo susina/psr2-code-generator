@@ -11,6 +11,9 @@ jobs:
         php-versions: ['7.2', '7.3', '7.4']
     runs-on: ${{ matrix.operating-system }}
     steps:
+      - name: Set autocrlf on windows
+        if: matrix.operating-system == 'windows-latest'
+        run: git config --global core.autocrlf false
       - name: Checkout
         uses: actions/checkout@v1
       - name: Setup PHP, with composer and extensions
@@ -29,5 +32,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install dependencies
         run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+      - name: Check coding standanrd
+        run: composer cs
       - name: Test with phpunit
         run: composer test

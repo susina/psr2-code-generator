@@ -39,7 +39,7 @@ class Writer
 
     public function indent(): self
     {
-        $this->indentationLevel++;
+        ++$this->indentationLevel;
 
         return $this;
     }
@@ -52,8 +52,6 @@ class Writer
     }
 
     /**
-     * @param string $content
-     *
      * @return Writer
      */
     public function writeln(string $content = ''): self
@@ -64,14 +62,12 @@ class Writer
     }
 
     /**
-     * @param string $content
-     *
      * @return Writer
      */
     public function write(string $content): self
     {
         $lines = explode("\n", $content);
-        for ($i = 0, $c = count($lines); $i < $c; $i++) {
+        for ($i = 0, $c = count($lines); $i < $c; ++$i) {
             if ($this->indentationLevel > 0
                     && !empty($lines[$i])
                     && (empty($this->content) || "\n" === substr($this->content, -1))) {
@@ -100,11 +96,6 @@ class Writer
         return $this;
     }
 
-    /**
-     * @param string $search
-     *
-     * @return bool
-     */
     public function endsWith(string $search): bool
     {
         return substr($this->content, -strlen($search)) === $search;
@@ -118,9 +109,6 @@ class Writer
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getContent(): string
     {
         return $this->content;

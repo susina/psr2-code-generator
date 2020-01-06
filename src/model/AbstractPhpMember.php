@@ -114,8 +114,6 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
     /**
      * Sets whether or not this member is static.
      *
-     * @param bool $bool
-     *
      * @return $this
      */
     public function setStatic(bool $bool): self
@@ -139,8 +137,6 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
      * Sets the parent structure to which this member belongs.
      *
      * @internal
-     *
-     * @param null|AbstractPhpStruct $parent
      *
      * @return $this
      */

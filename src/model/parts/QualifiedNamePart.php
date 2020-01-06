@@ -19,8 +19,6 @@ trait QualifiedNamePart
     /**
      * Sets the namespace.
      *
-     * @param string $namespace
-     *
      * @return $this
      */
     public function setNamespace(string $namespace): self
@@ -33,8 +31,6 @@ trait QualifiedNamePart
     /**
      * In contrast to setName(), this method accepts the fully qualified name
      * including the namespace.
-     *
-     * @param string $name
      *
      * @return $this
      */
@@ -55,8 +51,6 @@ trait QualifiedNamePart
 
     /**
      * Returns the namespace.
-     *
-     * @return string
      */
     public function getNamespace(): string
     {
@@ -65,8 +59,6 @@ trait QualifiedNamePart
 
     /**
      * Returns the qualified name.
-     *
-     * @return string
      */
     public function getQualifiedName(): string
     {

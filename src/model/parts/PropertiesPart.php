@@ -38,8 +38,6 @@ trait PropertiesPart
     /**
      * Adds a property.
      *
-     * @param PhpProperty $property
-     *
      * @return $this
      */
     public function setProperty(PhpProperty $property): self
@@ -52,8 +50,6 @@ trait PropertiesPart
 
     /**
      * Removes a property.
-     *
-     * @param PhpProperty $property
      *
      * @throws \InvalidArgumentException If the property cannot be found
      *
@@ -88,8 +84,6 @@ trait PropertiesPart
     /**
      * Checks whether a property exists.
      *
-     * @param PhpProperty $property
-     *
      * @return bool `true` if a property exists and `false` if not
      */
     public function hasProperty(PhpProperty $property): bool
@@ -115,8 +109,6 @@ trait PropertiesPart
      * @param string $name property name
      *
      * @throws \InvalidArgumentException If the property cannot be found
-     *
-     * @return PhpProperty
      */
     public function getProperty(string $name): PhpProperty
     {
@@ -129,8 +121,6 @@ trait PropertiesPart
 
     /**
      * Returns a collection of properties.
-     *
-     * @return Map
      */
     public function getProperties(): Map
     {
@@ -139,8 +129,6 @@ trait PropertiesPart
 
     /**
      * Returns all property names.
-     *
-     * @return Set
      */
     public function getPropertyNames(): Set
     {

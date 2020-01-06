@@ -24,8 +24,6 @@ interface DocblockInterface
 
     /**
      * Returns a docblock.
-     *
-     * @return Docblock
      */
     public function getDocblock(): Docblock;
 

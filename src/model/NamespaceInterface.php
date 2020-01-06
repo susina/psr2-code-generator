@@ -12,16 +12,12 @@ interface NamespaceInterface
     /**
      * Sets the namespace.
      *
-     * @param string $namespace
-     *
      * @return $this
      */
     public function setNamespace(string $namespace);
 
     /**
      * Returns the namespace.
-     *
-     * @return string
      */
     public function getNamespace(): string;
 }

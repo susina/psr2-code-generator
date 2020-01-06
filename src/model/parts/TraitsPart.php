@@ -39,8 +39,6 @@ trait TraitsPart
 
     /**
      * Returns a collection of traits.
-     *
-     * @return Set
      */
     public function getTraits(): Set
     {
@@ -49,8 +47,6 @@ trait TraitsPart
 
     /**
      * Checks whether a trait exists.
-     *
-     * @param PhpTrait $trait
      *
      * @return bool `true` if it exists and `false` if not
      */
@@ -61,8 +57,6 @@ trait TraitsPart
 
     /**
      * Checks whether a trait exists.
-     *
-     * @param string $name
      *
      * @return bool `true` if it exists and `false` if not
      *
@@ -117,8 +111,6 @@ trait TraitsPart
 
     /**
      * Sets a collection of traits.
-     *
-     * @param array $traits
      *
      * @return $this
      * @throw \InvalidArgumentException if wrong type given

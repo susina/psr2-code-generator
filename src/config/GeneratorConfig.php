@@ -68,8 +68,6 @@ class GeneratorConfig
 
     /**
      * Whether to use the Php 7.4 typed properties declaration.
-     *
-     * @return bool
      */
     public function isPhp74Properties(): bool
     {
@@ -268,8 +266,6 @@ class GeneratorConfig
 
     /**
      * @param mixed $value
-     *
-     * @return null|Docblock
      */
     private function toDocblock($value): ?Docblock
     {

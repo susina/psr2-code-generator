@@ -25,14 +25,8 @@ trait StructBuilderPart
 {
     abstract protected function ensureBlankLine();
 
-    /**
-     * @param AbstractModel $model
-     */
     abstract protected function generate(AbstractModel $model);
 
-    /**
-     * @param DocblockInterface $model
-     */
     abstract protected function buildDocblock(DocblockInterface $model);
 
     abstract protected function getConfig(): GeneratorConfig;

@@ -16,29 +16,21 @@ trait TypeDocblockGeneratorPart
 {
     /**
      * Returns the docblock.
-     *
-     * @return Docblock
      */
     abstract public function getDocblock(): Docblock;
 
     /**
      * Returns the type.
-     *
-     * @return string
      */
     abstract public function getType(): string;
 
     /**
      * Returns the type description.
-     *
-     * @return string
      */
     abstract public function getTypeDescription(): string;
 
     /**
      * Generates a type tag (return or var) but checks if one exists and updates this one.
-     *
-     * @param AbstractTypeTag $tag
      */
     protected function generateTypeTag(AbstractTypeTag $tag): void
     {

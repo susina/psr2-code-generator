@@ -49,10 +49,6 @@ class BuilderFactory
 
     /**
      * Returns the related builder for the given model.
-     *
-     * @param AbstractModel $model
-     *
-     * @return AbstractBuilder
      */
     public function getBuilder(AbstractModel $model): AbstractBuilder
     {

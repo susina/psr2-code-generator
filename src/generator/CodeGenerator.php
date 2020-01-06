@@ -48,8 +48,6 @@ class CodeGenerator
 
     /**
      * Returns the used configuration.
-     *
-     * @return GeneratorConfig
      */
     public function getConfig(): GeneratorConfig
     {
@@ -58,8 +56,6 @@ class CodeGenerator
 
     /**
      * Generates code from a given model.
-     *
-     * @param AbstractModel $model
      *
      * @return string the generated code
      */

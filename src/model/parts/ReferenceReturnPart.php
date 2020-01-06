@@ -17,8 +17,6 @@ trait ReferenceReturnPart
     /**
      * Set true if a reference is returned of false if not.
      *
-     * @param bool $bool
-     *
      * @return $this
      */
     public function setReferenceReturned(bool $bool): self
@@ -30,8 +28,6 @@ trait ReferenceReturnPart
 
     /**
      * Returns whether a reference is returned.
-     *
-     * @return bool
      */
     public function isReferenceReturned(): bool
     {

@@ -26,14 +26,8 @@ abstract class AbstractBuilder
         $this->config = $generator->getConfig();
     }
 
-    /**
-     * @param AbstractModel $model
-     */
     abstract public function build(AbstractModel $model): void;
 
-    /**
-     * @return GeneratorConfig
-     */
     protected function getConfig(): GeneratorConfig
     {
         return $this->config;
@@ -44,9 +38,6 @@ abstract class AbstractBuilder
         return $this->writer;
     }
 
-    /**
-     * @param AbstractModel $model
-     */
     protected function generate(AbstractModel $model): void
     {
         $builder = $this->generator->getFactory()->getBuilder($model);
@@ -61,9 +52,6 @@ abstract class AbstractBuilder
         }
     }
 
-    /**
-     * @param DocblockInterface $model
-     */
     protected function buildDocblock(DocblockInterface $model): void
     {
         $this->ensureBlankLine();

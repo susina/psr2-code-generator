@@ -14,8 +14,6 @@ abstract class AbstractModel
 
     /**
      * Returns this description.
-     *
-     * @return string
      */
     public function getDescription(): string
     {
@@ -24,8 +22,6 @@ abstract class AbstractModel
 
     /**
      * Sets the description, which will also be used when generating a docblock.
-     *
-     * @param string $description
      *
      * @return $this
      */
@@ -39,8 +35,6 @@ abstract class AbstractModel
     /**
      * Sets a multi-line description, which will also be used when generating a docblock.
      * Each line is a value of the `$description` array.
-     *
-     * @param array $description
      *
      * @return $this
      */

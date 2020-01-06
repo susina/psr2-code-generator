@@ -102,8 +102,6 @@ class PhpParameter extends AbstractModel implements ValueInterface
      *
      * @see #setDescription
      *
-     * @param string $description
-     *
      * @return $this
      */
     public function setTypeDescription(string $description): self
@@ -115,8 +113,6 @@ class PhpParameter extends AbstractModel implements ValueInterface
      * Alias for getDescription().
      *
      * @see #getDescription
-     *
-     * @return string
      */
     public function getTypeDescription(): string
     {

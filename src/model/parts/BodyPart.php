@@ -17,8 +17,6 @@ trait BodyPart
     /**
      * Sets the body for this.
      *
-     * @param string $body
-     *
      * @return $this
      */
     public function setBody(string $body): self
@@ -30,8 +28,6 @@ trait BodyPart
 
     /**
      * Returns the body.
-     *
-     * @return string
      */
     public function getBody(): string
     {
@@ -40,8 +36,6 @@ trait BodyPart
 
     /**
      * Append a string to the body of this.
-     *
-     * @param string $toAppend
      *
      * @return $this
      */

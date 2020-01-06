@@ -28,10 +28,6 @@ trait TypeBuilderPart
     ];
 
     /**
-     * @param AbstractModel $model
-     *
-     * @return null|string
-     *
      * @psalm-suppress UndefinedMethod
      * Concrete model classes using this trait always have `getType()` method.
      */

@@ -16,8 +16,6 @@ class DefaultMethodComparator extends AbstractMemberComparator
      * @param PhpMethod $a
      * @param PhpMethod $b
      *
-     * @return int
-     *
      * @psalm-suppress MoreSpecificImplementedParamType
      */
     public function compare($a, $b): int

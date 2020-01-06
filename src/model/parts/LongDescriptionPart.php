@@ -16,8 +16,6 @@ trait LongDescriptionPart
 
     /**
      * Returns the long description.
-     *
-     * @return string
      */
     public function getLongDescription(): string
     {
@@ -26,8 +24,6 @@ trait LongDescriptionPart
 
     /**
      * Sets the long description.
-     *
-     * @param string $longDescription
      *
      * @return $this
      */

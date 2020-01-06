@@ -24,8 +24,6 @@ class DefaultConstantComparator implements Comparator
      * @param PhpConstant $a
      * @param PhpConstant $b
      *
-     * @return int
-     *
      * @psalm-suppress MoreSpecificImplementedParamType
      */
     public function compare($a, $b): int

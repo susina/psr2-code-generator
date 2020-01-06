@@ -16,8 +16,6 @@ class DefaultPropertyComparator extends AbstractMemberComparator
      * @param PhpProperty $a
      * @param PhpProperty $b
      *
-     * @return int
-     *
      * @psalm-suppress MoreSpecificImplementedParamType
      */
     public function compare($a, $b): int

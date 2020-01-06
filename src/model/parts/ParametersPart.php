@@ -40,8 +40,6 @@ trait ParametersPart
     /**
      * Adds a parameter.
      *
-     * @param PhpParameter $parameter
-     *
      * @return $this
      */
     public function addParameter(PhpParameter $parameter): self
@@ -72,9 +70,7 @@ trait ParametersPart
     /**
      * A quick way to add a parameter which is created from the given parameters.
      *
-     * @param string      $name
-     * @param null|string $type
-     * @param mixed       $defaultValue omit the argument to define no default value
+     * @param mixed $defaultValue omit the argument to define no default value
      *
      * @return $this
      */
@@ -97,10 +93,7 @@ trait ParametersPart
     /**
      * A quick way to add a parameter with description which is created from the given parameters.
      *
-     * @param string      $name
-     * @param null|string $type
-     * @param null|string $typeDescription
-     * @param mixed       $defaultValue    omit the argument to define no default value
+     * @param mixed $defaultValue omit the argument to define no default value
      *
      * @return $this
      */
@@ -122,11 +115,7 @@ trait ParametersPart
     /**
      * Returns a parameter by index or name.
      *
-     * @param string $name
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return PhpParameter
      */
     public function getParameterByName(string $name): PhpParameter
     {
@@ -142,11 +131,7 @@ trait ParametersPart
     /**
      * Returns a parameter by index or name.
      *
-     * @param int $position
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return PhpParameter
      */
     public function getParameterByPosition(int $position): PhpParameter
     {
@@ -157,9 +142,6 @@ trait ParametersPart
 
     /**
      * Replaces a parameter at a given position.
-     *
-     * @param int          $position
-     * @param PhpParameter $parameter
      *
      * @throws \InvalidArgumentException
      *
@@ -176,8 +158,6 @@ trait ParametersPart
     /**
      * Remove the given parameter.
      *
-     * @param PhpParameter $param
-     *
      * @throws \InvalidArgumentException If the parameter doesn't exist
      *
      * @return $this
@@ -189,8 +169,6 @@ trait ParametersPart
 
     /**
      * Remove the parameter at the given position.
-     *
-     * @param int $position
      *
      * @throws \InvalidArgumentException If the parameter doesn't exist
      *
@@ -207,8 +185,6 @@ trait ParametersPart
 
     /**
      * Remove a parameter having the given name.
-     *
-     * @param string $name
      *
      * @throws \InvalidArgumentException If the parameter doesn't exist
      *
@@ -242,8 +218,6 @@ trait ParametersPart
 
     /**
      * Returns the docblock.
-     *
-     * @return Docblock
      */
     abstract protected function getDocblock(): Docblock;
 
@@ -277,8 +251,6 @@ trait ParametersPart
     }
 
     /**
-     * @param int $position
-     *
      * @throws \InvalidArgumentException if the position is not correct
      */
     private function checkPosition(int $position): void

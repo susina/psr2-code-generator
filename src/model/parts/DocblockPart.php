@@ -36,8 +36,6 @@ trait DocblockPart
 
     /**
      * Returns the docblock.
-     *
-     * @return Docblock
      */
     public function getDocblock(): Docblock
     {

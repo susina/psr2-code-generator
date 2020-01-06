@@ -10,16 +10,10 @@ trait RoutineBuilderPart
 {
     use TypeBuilderPart;
 
-    /**
-     * @param AbstractModel $model
-     */
     abstract protected function generate(AbstractModel $model);
 
     abstract protected function getWriter(): Writer;
 
-    /**
-     * @param RoutineInterface $model
-     */
     protected function writeFunctionStatement(RoutineInterface $model): void
     {
         $this->getWriter()->write('function ');
@@ -48,8 +42,6 @@ trait RoutineBuilderPart
     }
 
     /**
-     * @param RoutineInterface $model
-     *
      * @psalm-suppress InvalidArgument
      * $model is always and AbstractModel subclass
      */

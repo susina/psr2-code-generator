@@ -49,9 +49,8 @@ trait ConstantsPart
     /**
      * Create a PhpConstant instance and adds it to the constants Map.
      *
-     * @param string $name         constant name
+     * @param string $name  constant name
      * @param mixed  $value
-     * @param bool   $isExpression
      *
      * @return $this
      */
@@ -65,8 +64,6 @@ trait ConstantsPart
     /**
      * Add a PhpConstant object.
      *
-     * @param PhpConstant $constant
-     *
      * @return $this
      */
     public function setConstant(PhpConstant $constant): self
@@ -78,8 +75,6 @@ trait ConstantsPart
 
     /**
      * Removes a constant.
-     *
-     * @param PhpConstant $constant
      *
      * @throws \InvalidArgumentException If the constant cannot be found
      *
@@ -111,10 +106,6 @@ trait ConstantsPart
 
     /**
      * Checks whether a constant exists.
-     *
-     * @param PhpConstant $constant
-     *
-     * @return bool
      */
     public function hasConstant(PhpConstant $constant): bool
     {
@@ -125,8 +116,6 @@ trait ConstantsPart
      * Checks whether a constant exists.
      *
      * @param string $name constant name
-     *
-     * @return bool
      */
     public function hasConstantByName(string $name): bool
     {
@@ -139,8 +128,6 @@ trait ConstantsPart
      * @param string $name constant name
      *
      * @throws \InvalidArgumentException If the constant cannot be found
-     *
-     * @return PhpConstant
      */
     public function getConstant(string $name): PhpConstant
     {
@@ -153,8 +140,6 @@ trait ConstantsPart
 
     /**
      * Returns all constants.
-     *
-     * @return Map
      */
     public function getConstants(): Map
     {
@@ -163,8 +148,6 @@ trait ConstantsPart
 
     /**
      * Returns all constant names.
-     *
-     * @return Set
      */
     public function getConstantNames(): Set
     {

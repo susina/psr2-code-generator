@@ -28,9 +28,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
     /**
      * Creates a new PHP constant.
      *
-     * @param string $name
-     * @param mixed  $value
-     * @param bool   $isExpression
+     * @param mixed $value
      */
     public function __construct(string $name = '', $value = null, bool $isExpression = false)
     {
@@ -47,9 +45,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
     /**
      * Creates a new PHP constant.
      *
-     * @param string $name
-     * @param mixed  $value
-     * @param bool   $isExpression
+     * @param mixed $value
      *
      * @return static
      */

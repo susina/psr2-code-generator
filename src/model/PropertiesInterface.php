@@ -19,8 +19,6 @@ interface PropertiesInterface
     /**
      * Adds a property.
      *
-     * @param PhpProperty $property
-     *
      * @return $this
      */
     public function setProperty(PhpProperty $property);
@@ -50,8 +48,6 @@ interface PropertiesInterface
     /**
      * Checks whether a property exists.
      *
-     * @param PhpProperty $property
-     *
      * @return bool `true` if a property exists and `false` if not
      */
     public function hasProperty(PhpProperty $property): bool;
@@ -71,22 +67,16 @@ interface PropertiesInterface
      * @param string $name property name
      *
      * @throws \InvalidArgumentException If the property cannot be found
-     *
-     * @return PhpProperty
      */
     public function getProperty(string $name): PhpProperty;
 
     /**
      * Returns a collection of properties.
-     *
-     * @return Map
      */
     public function getProperties(): Map;
 
     /**
      * Returns all property names.
-     *
-     * @return Set
      */
     public function getPropertyNames(): Set;
 

@@ -17,23 +17,17 @@ interface TraitsInterface
      * If the trait is passed as PhpTrait object,
      * the trait is also added as use statement.
      *
-     * @param PhpTrait $trait
-     *
      * @return $this
      */
     public function addTrait(PhpTrait $trait);
 
     /**
      * Returns a collection of traits.
-     *
-     * @return Set
      */
     public function getTraits(): Set;
 
     /**
      * Checks whether a trait exists.
-     *
-     * @param PhpTrait $trait
      *
      * @return bool `true` if it exists and `false` if not
      */
@@ -53,8 +47,6 @@ interface TraitsInterface
      *
      * If the trait is passed as PhpTrait object,
      * the trait is also removed from use statements.
-     *
-     * @param PhpTrait $trait
      *
      * @return $this
      */

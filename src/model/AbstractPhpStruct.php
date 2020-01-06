@@ -74,8 +74,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
     /**
      * Sets requried files.
      *
-     * @param array $files
-     *
      * @return $this
      */
     public function setRequiredFiles(array $files): self
@@ -87,8 +85,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
     /**
      * Adds a new required file.
-     *
-     * @param string $file
      *
      * @return $this
      */
@@ -115,8 +111,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      * @see #addUseStatement
      * @see #declareUses()
      *
-     * @param array $useStatements
-     *
      * @return $this
      */
     public function setUseStatements(array $useStatements): self
@@ -131,9 +125,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
     /**
      * Adds a use statement with an optional alias.
-     *
-     * @param string      $qualifiedName
-     * @param null|string $alias
      *
      * @return $this
      */
@@ -187,9 +178,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      *
      * If the class has already been declared you get only the set alias.
      *
-     * @param string      $qualifiedName
-     * @param null|string $alias
-     *
      * @return string the used alias
      */
     public function declareUse(string $qualifiedName, ?string $alias = null)
@@ -204,10 +192,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
     /**
      * Returns whether the given use statement is present.
-     *
-     * @param string $qualifiedName
-     *
-     * @return bool
      */
     public function hasUseStatement(string $qualifiedName): bool
     {
@@ -216,8 +200,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
     /**
      * Returns the usable alias for a qualified name.
-     *
-     * @param string $qualifiedName
      *
      * @return string the alias
      */
@@ -228,8 +210,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
     /**
      * Removes a use statement.
-     *
-     * @param string $qualifiedName
      *
      * @return $this
      */
@@ -273,8 +253,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
     /**
      * Adds a method.
-     *
-     * @param PhpMethod $method
      *
      * @return $this
      */
@@ -324,8 +302,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
     /**
      * Checks whether a method exists or not.
      *
-     * @param PhpMethod $method
-     *
      * @return bool `true` if it exists and `false` if not
      */
     public function hasMethod(PhpMethod $method): bool
@@ -335,10 +311,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
     /**
      * Checks whether a method exists or not.
-     *
-     * @param string $name
-     *
-     * @return bool
      */
     public function hasMethodByName(string $name): bool
     {
@@ -347,8 +319,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
     /**
      * Returns a method.
-     *
-     * @param PhpMethod $method
      *
      * @throws \InvalidArgumentException if the method cannot be found
      *
@@ -362,11 +332,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
     /**
      * Returns amethod.
      *
-     * @param string $name
-     *
      * @throws \InvalidArgumentException If the method does not exists
-     *
-     * @return PhpMethod
      */
     public function getMethodByName(string $name): PhpMethod
     {
@@ -389,8 +355,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
     /**
      * Returns all method names.
-     *
-     * @return Set
      */
     public function getMethodNames(): Set
     {

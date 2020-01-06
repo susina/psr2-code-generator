@@ -17,7 +17,7 @@ class DefaultUseStatementComparator implements Comparator
         $cmp1 = null;
         $cmp2 = null;
         $min = min(strlen($a), strlen($b));
-        for ($i = 0; $i < $min; $i++) {
+        for ($i = 0; $i < $min; ++$i) {
             if ($a[$i] != $b[$i]) {
                 $cmp1 = $a[$i];
                 $cmp2 = $b[$i];
