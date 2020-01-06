@@ -2,7 +2,6 @@
 
 ![](https://github.com/cristianoc72/psr2-code-generator/workflows/Tests/badge.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Build Status](https://travis-ci.org/cristianoc72/psr2-code-generator.svg?branch=master)](https://travis-ci.org/cristianoc72/psr2-code-generator)
 [![Maintainability](https://api.codeclimate.com/v1/badges/aa8d57cef69166ace691/maintainability)](https://codeclimate.com/github/cristianoc72/psr2-code-generator/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/aa8d57cef69166ace691/test_coverage)](https://codeclimate.com/github/cristianoc72/psr2-code-generator/test_coverage)
 
