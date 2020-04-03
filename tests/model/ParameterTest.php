@@ -2,7 +2,7 @@
 
 namespace cristianoc72\codegen\tests\model;
 
-use cristianoc72\codegen\model\PhpFunction;
+use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
 use cristianoc72\codegen\tests\parts\ValueTests;
 use PHPUnit\Framework\TestCase;
@@ -34,7 +34,7 @@ class ParameterTest extends TestCase
 
     public function testSimpleParameter(): void
     {
-        $function = new PhpFunction();
+        $function = new PhpMethod('myMethod');
         $function->addSimpleParameter('param1', 'string');
 
         $this->assertTrue($function->hasParameter('param1'));
@@ -53,7 +53,7 @@ class ParameterTest extends TestCase
 
     public function testSimpleDescParameter(): void
     {
-        $function = new PhpFunction();
+        $function = new PhpMethod('myMethod');
         $function->addSimpleDescParameter('param1', 'string');
 
         $this->assertFalse($function->hasParameter('param2'));

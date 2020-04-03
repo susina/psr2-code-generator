@@ -4,7 +4,6 @@ namespace cristianoc72\codegen\tests\model;
 
 use cristianoc72\codegen\model\PhpClass;
 use cristianoc72\codegen\model\PhpConstant;
-use cristianoc72\codegen\model\PhpFunction;
 use cristianoc72\codegen\model\PhpInterface;
 use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
@@ -100,20 +99,6 @@ class DocblockTest extends GeneratorTestCase
         $this->assertTrue($trait->getDocblock()->isEmpty());
     }
 
-    public function testFunction(): void
-    {
-        $function = PhpFunction::create(self::METHOD)->setType('string', 'this method returns a string')->addParameter(new PhpParameter('a'));
-        $function->generateDocblock();
-        $this->assertFalse($function->getDocblock()->isEmpty());
-    }
-
-    public function testEmptyFunction(): void
-    {
-        $function = new PhpFunction();
-        $function->generateDocblock();
-        $this->assertTrue($function->getDocblock()->isEmpty());
-    }
-
     public function testConstant(): void
     {
         $expected = '/**
@@ -206,7 +191,7 @@ class DocblockTest extends GeneratorTestCase
  * @param mixed $a
  * @return Response this method returns a response object
  */';
-        $function = PhpFunction::create(self::METHOD)->setType('Response', 'this method returns a response object')->addParameter(PhpParameter::create('r')->setType('Request'))->addParameter(PhpParameter::create('a')->setType('mixed'));
+        $function = PhpMethod::create(self::METHOD)->setType('Response', 'this method returns a response object')->addParameter(PhpParameter::create('r')->setType('Request'))->addParameter(PhpParameter::create('a')->setType('mixed'));
         $function->generateDocblock();
         $this->assertSame($this->purgeLineFeed($expected), $function->getDocblock()->toString());
     }

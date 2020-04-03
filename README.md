@@ -12,7 +12,9 @@ Differences and restrictions from the original library:
 - php 7.2+ strictly typed
 - generate PSR-2 code **ONLY**
 - generate only php 7.1+ code (strict types)
+- possibility to generate typed class properties (php 7.4)
 - no reflection nor reverse engeneering
+- generate only classes (no standalone functions)
 
 ## Installation
 

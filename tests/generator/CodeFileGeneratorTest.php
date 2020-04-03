@@ -6,7 +6,6 @@ use cristianoc72\codegen\config\GeneratorConfig;
 use cristianoc72\codegen\generator\CodeFileGenerator;
 use cristianoc72\codegen\model\PhpClass;
 use cristianoc72\codegen\model\PhpConstant;
-use cristianoc72\codegen\model\PhpFunction;
 use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
 use cristianoc72\codegen\model\PhpProperty;
@@ -18,14 +17,11 @@ class CodeFileGeneratorTest extends GeneratorTestCase
     {
         $expected = '<?php declare(strict_types=1);
 
-/**
- * @param $a
- */
-function fn($a)
+class myClass
 {
 }
 ';
-        $fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a'));
+        $fn = PhpClass::create('myClass');
 
         $codegen = new CodeFileGenerator(['generateEmptyDocblock' => false]);
         $code = $codegen->generate($fn);

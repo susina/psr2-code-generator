@@ -5,7 +5,6 @@ namespace cristianoc72\codegen\generator;
 use cristianoc72\codegen\generator\builder\AbstractBuilder;
 use cristianoc72\codegen\generator\builder\ClassBuilder;
 use cristianoc72\codegen\generator\builder\ConstantBuilder;
-use cristianoc72\codegen\generator\builder\FunctionBuilder;
 use cristianoc72\codegen\generator\builder\InterfaceBuilder;
 use cristianoc72\codegen\generator\builder\MethodBuilder;
 use cristianoc72\codegen\generator\builder\ParameterBuilder;
@@ -14,7 +13,6 @@ use cristianoc72\codegen\generator\builder\TraitBuilder;
 use cristianoc72\codegen\model\AbstractModel;
 use cristianoc72\codegen\model\PhpClass;
 use cristianoc72\codegen\model\PhpConstant;
-use cristianoc72\codegen\model\PhpFunction;
 use cristianoc72\codegen\model\PhpInterface;
 use cristianoc72\codegen\model\PhpMethod;
 use cristianoc72\codegen\model\PhpParameter;
@@ -38,7 +36,6 @@ class BuilderFactory
         $this->builders->setAll([
             PhpClass::class => new ClassBuilder($generator),
             PhpConstant::class => new ConstantBuilder($generator),
-            PhpFunction::class => new FunctionBuilder($generator),
             PhpInterface::class => new InterfaceBuilder($generator),
             PhpMethod::class => new MethodBuilder($generator),
             PhpParameter::class => new ParameterBuilder($generator),
