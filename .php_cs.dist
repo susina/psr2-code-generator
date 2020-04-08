@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-$config = new CodingStandard\Config();
+$config = new Susina\CodingStandard\Config();
 $config->getFinder()
-    ->in(__DIR__ . '/tests')->exclude('generator/generated')
+    ->in(__DIR__ . '/tests')->exclude('Generator/Generated')
     ->in(__DIR__ . '/src')
 ;
 

@@ -4,7 +4,7 @@ Now that your model is on the road, it's time to generate the code. To do this, 
 
 ```php
 <?php
-use cristianoc72\codegen\generator\CodeGenerator;
+use Susina\Codegen\Generator\CodeGenerator;
 
 $class = ..........; // code to create your model
 
@@ -33,7 +33,7 @@ additional needed tags and the file level comment.
 
 ```php
 <?php
-use cristianoc72\codegen\generator\CodeFileGenerator;
+use Susina\Codegen\Generator\CodeFileGenerator;
 
 $class = ..........; // code to create your model
 
@@ -71,7 +71,7 @@ class and pass an instance of it instead of the configuration array.
 
 ```php
 <?php
-use cristianoc72\codegen\generator\CodeGenerator;
+use Susina\Codegen\Generator\CodeGenerator;
 
 // a) new code generator with options passed as array
 $generator = new CodeGenerator([
@@ -88,7 +88,7 @@ $generator = new CodeGenerator(new MyGenerationConfig());
 Generates code for a given model. It will also generate docblocks for all contained classes, methods, interfaces, etc.
 you have prior to generating the code.
 
--   Class: `cristianoc72\codegen\generator\CodeGenerator`
+-   Class: `Susina\Codegen\Generator\CodeGenerator`
 -   Options:
 
     Key | Type | Default Value | Description
@@ -112,7 +112,7 @@ Example:
 
 ```php
 <?php
-use cristianoc72\codegen\generator\CodeGenerator;
+use Susina\Codegen\Generator\CodeGenerator;
 
 // will set every option to true, because of the defaults
 $generator = new CodeGenerator([
@@ -127,7 +127,7 @@ $code = $generator->generate($myClass);
 Generates a complete php file with the given model inside. Especially useful when creating PSR-4 compliant code,
 which you are about to dump into a file. It extends the `CodeGenerator` and as such inherits all its benefits.
 
--   Class: `cristianoc72\codegen\generator\CodeFileGenerator`
+-   Class: `Susina\Codegen\Generator\CodeFileGenerator`
 -   Options: Same options as `CodeGenerator` plus:
 
     Key | Type | Default Value | Description
@@ -139,7 +139,7 @@ which you are about to dump into a file. It extends the `CodeGenerator` and as s
 
 ```php
 <?php
-use cristianoc72\codegen\generator\CodeFileGenerator;
+use Susina\Codegen\Generator\CodeFileGenerator;
 
 $generator = new CodeGenerator([
   'headerComment' => 'This will be placed at the top, woo',

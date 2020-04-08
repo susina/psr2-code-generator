@@ -40,7 +40,7 @@ Let's start with a simple example:
 
 ```php
 <?php
-use cristianoc72\codegen\model\PhpClass;
+use Susina\Codegen\Model\PhpClass;
 
 $class = new PhpClass();
 $class->setQualifiedName('my\\cool\\Tool');
@@ -63,9 +63,9 @@ It's better to have a constructor, so we add one:
 
 ```php
 <?php
-use cristianoc72\codegen\model\PhpClass;
-use cristianoc72\codegen\model\PhpMethod;
-use cristianoc72\codegen\model\PhpParameter;
+use Susina\Codegen\Model\PhpClass;
+use Susina\Codegen\Model\PhpMethod;
+use Susina\Codegen\Model\PhpParameter;
 
 // You can pass the name or the qualified name when you instantiate your model
 $class = new PhpClass('my\\cool\\Tool');
@@ -104,11 +104,11 @@ of course methods. Let's do so:
 
 ```php
 <?php
-use cristianoc72\codegen\model\PhpClass;
-use cristianoc72\codegen\model\PhpMethod;
-use cristianoc72\codegen\model\PhpParameter;
-use cristianoc72\codegen\model\PhpProperty;
-use cristianoc72\codegen\model\PhpConstant;
+use Susina\Codegen\Model\PhpClass;
+use Susina\Codegen\Model\PhpMethod;
+use Susina\Codegen\Model\PhpParameter;
+use Susina\Codegen\Model\PhpProperty;
+use Susina\Codegen\Model\PhpConstant;
 
 $class = PhpClass::create('my\\cool\\Tool')
     ->setMethod(PhpMethod::create('setDriver')
@@ -160,11 +160,11 @@ Let's add some docblock comments, too:
 
 ```php
 <?php
-use cristianoc72\codegen\model\PhpClass;
-use cristianoc72\codegen\model\PhpMethod;
-use cristianoc72\codegen\model\PhpParameter;
-use cristianoc72\codegen\model\PhpProperty;
-use cristianoc72\codegen\model\PhpConstant;
+use Susina\Codegen\Model\PhpClass;
+use Susina\Codegen\Model\PhpMethod;
+use Susina\Codegen\Model\PhpParameter;
+use Susina\Codegen\Model\PhpProperty;
+use Susina\Codegen\Model\PhpConstant;
 
 $class = PhpClass::create('my\\cool\\Tool')
     ->setMultilineDescription(["The fantastic Tool class.", "", "@author John Smith"])
@@ -236,8 +236,8 @@ name into a use statement. So here is how you do it:
 
 ```php
 <?php
-use cristianoc72\codegen\model\PhpClass;
-use cristianoc72\codegen\model\PhpMethod;
+use Susina\Codegen\Model\PhpClass;
+use Susina\Codegen\Model\PhpMethod;
 
 $class = new PhpClass();
 $class

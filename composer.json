@@ -1,5 +1,5 @@
 {
-    "name": "cristianoc72/psr2-code-generator",
+    "name": "susina/psr2-code-generator",
     "description" : "Toolset for generating PHP code following PSR-2 standard",
     "type": "library",
     "license": "Apache-2.0",
@@ -17,12 +17,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "cristianoc72\\codegen\\": "src/"
+            "Susina\\Codegen\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "cristianoc72\\codegen\\tests\\": "tests/"
+            "Susina\\Codegen\\Tests\\": "tests/"
         }
     },
     "require": {
