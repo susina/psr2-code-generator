@@ -1,7 +1,7 @@
 # PSR-2 Code Generator
 
-![](https://github.com/cristianoc72/psr2-code-generator/workflows/Tests/badge.svg)
-![](https://github.com/cristianoc72/psr2-code-generator/workflows/Build%20and%20deploy%20documentation/badge.svg)
+![](https://github.com/susina/psr2-code-generator/workflows/Tests/badge.svg)
+![](https://github.com/susina/psr2-code-generator/workflows/Build%20and%20deploy%20documentation/badge.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Maintainability](https://api.codeclimate.com/v1/badges/aa8d57cef69166ace691/maintainability)](https://codeclimate.com/github/cristianoc72/psr2-code-generator/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/aa8d57cef69166ace691/test_coverage)](https://codeclimate.com/github/cristianoc72/psr2-code-generator/test_coverage)
@@ -22,13 +22,14 @@ Differences and restrictions from the original library:
 Install via Composer:
 
 ```
-composer require cristianoc72/psr2-code-generator
+composer require susina/psr2-code-generator
 ```
 
 ## Documentation
 
-Documentation is available at https://cristianoc72.github.io/psr2-code-generator
+Documentation is available at https://susina.github.io/psr2-code-generator
 
 ## Contributing
 
 Feel free to fork and submit a pull request. Don't forget the tests and PSR-2 standard, of course.
+See the [documentation guide](https://susina.github.io/psr2-code-generator/contributing/) for further information.
