@@ -1,0 +1,23 @@
+site_name: Psr2 Code Generator
+theme:
+  name: material
+  highlightjs: true
+  palette:
+    primary: 'green'
+    accent: 'green'
+copyright: "psr2-code-generator is licensed under <a href='https://github.com/cristianoc72/psr2-code-generator/blob/master/LICENSE'>Apache2 license</a>"
+repo_name: 'cristianoc72/psr2-code-generator'
+repo_url: 'https://github.com/cristianoc72/psr2-code-generator'
+markdown_extensions:
+  - admonition
+  - codehilite
+nav:
+  - Home: index.md
+  - Documentation:
+    - User Guide: user_guide.md
+    - Model: model.md
+    - Generator: generator.md
+  - Api: api/index.html
+  - About:
+    - Contributing: contributing.md
+    - License: license.md

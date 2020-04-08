@@ -1,0 +1,40 @@
+name: Build and deploy documentation
+on:
+  push:
+    branches: [master]
+jobs:
+  build-documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: 7.2
+          extensions: mbstring, dom, json, libxml, xml, xmlwriter
+          coverage: none
+      - name: Download phpDocumentor
+        run: wget http://phpdoc.org/phpDocumentor.phar
+      - name: Build api documentation
+        run: php phpDocumentor.phar
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install mkdocs
+          python3 -m pip install mkdocs-material
+      - name: Build documentation site
+        run: mkdocs build
+      - name: Create .nojekyll file
+        run: touch ./site/.nojekyll
+      - name: Deploy documentation site
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          PUBLISH_DIR: ./site
+          PUBLISH_BRANCH: gh-pages

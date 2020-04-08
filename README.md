@@ -1,6 +1,7 @@
 # PSR-2 Code Generator
 
 ![](https://github.com/cristianoc72/psr2-code-generator/workflows/Tests/badge.svg)
+![](https://github.com/cristianoc72/psr2-code-generator/workflows/Build%20and%20deploy%20documentation/badge.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Maintainability](https://api.codeclimate.com/v1/badges/aa8d57cef69166ace691/maintainability)](https://codeclimate.com/github/cristianoc72/psr2-code-generator/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/aa8d57cef69166ace691/test_coverage)](https://codeclimate.com/github/cristianoc72/psr2-code-generator/test_coverage)

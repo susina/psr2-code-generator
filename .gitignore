@@ -1,4 +1,7 @@
-composer.lock
-.phpunit.result.cache
+*.lock
+*.phar
+*.cache
+build/
+coverage/
+docs/api/
 vendor/
-tools/
