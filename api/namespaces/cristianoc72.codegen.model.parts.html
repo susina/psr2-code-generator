@@ -3,459 +3,293 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <meta charset="utf-8"/>
-    <title>Psr2 Code Generator</title>
+    <title>     &raquo; \cristianoc72\codegen\model\parts
+</title>
     <meta name="author" content=""/>
     <meta name="description" content=""/>
 
-    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/prism.css" rel="stylesheet" media="all"/>
-    <link href="../css/template.css" rel="stylesheet" media="all"/>
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
     
-    <!--[if lt IE 9]>
-    <script src="../js/html5.js"></script>
-    <![endif]-->
-    <script src="../js/jquery-1.11.0.min.js"></script>
-    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.smooth-scroll.js"></script>
-    <script src="../js/prism.min.js"></script>
-    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+            <!--[if lt IE 9]>
+        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
     
-    <link rel="shortcut icon" href="../images/favicon.ico"/>
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
-    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
-</head>
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
 <body>
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <i class="icon-ellipsis-vertical"></i>
-            </a>
-            <a class="brand" href="../index.html">Psr2 Code Generator</a>
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">Psr2 Code Generator</a>
 
-            <div class="nav-collapse">
-                <ul class="nav pull-right">
-                                        <li class="dropdown">
-                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
-                            API Documentation <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                                                        <li><a href="../namespaces/cristianoc72.html">\cristianoc72</a></li>
-                                                    </ul>
-                    </li>
-                                        <li class="dropdown" id="charts-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Charts <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="../graphs/class.html">
-                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" id="reports-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Reports <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">271</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../reports/deprecated.html">
-                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/cristianoc72.html">cristianoc72</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            
+    <div class="row">
+
+        <div class="span4">
+            <div class="btn-group view pull-right" data-toggle="buttons-radio">
+                <button class="btn details" title="Show descriptions and method names">
+                    <i class="icon-list"></i></button><button class="btn simple" title="Show only method names">
+                    <i class="icon-align-justify"></i>
+                </button>
+            </div>
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">
+                    <i class="icon-map-marker"></i> Namespaces
+                </li>
+                <a href="../namespaces/cristianoc72.codegen.model.parts.html" title="parts">
+                    <i class="icon-th"></i> parts
+                </a>
+                <ul class="nav nav-list nav-namespaces">
+                        
+    
                 </ul>
-            </div>
+            </ul>
         </div>
-    </div>
-    <!--<div class="go_to_top">-->
-    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
-    <!--</div>-->
-</div>
 
-<div id="___" class="container-fluid">
-        <section class="row-fluid">
-        <div class="span2 sidebar">
-                                <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-891976079"></a>
-                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
-            </div>
-            <div id="namespace-891976079" class="accordion-body collapse in">
-                <div class="accordion-inner">
+        <div class="span8 namespace-contents">
+                
+    
+        <ul class="breadcrumb">
+            <li><a href="../index.html"><i class="icon-th"></i></a></li>
+                
+                
+                
+                
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/cristianoc72.html">cristianoc72</a>
+    </li>
 
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2042351348"></a>
-                                <a href="../namespaces/cristianoc72.html" style="margin-left: 30px; padding-left: 0">cristianoc72</a>
-            </div>
-            <div id="namespace-2042351348" class="accordion-body collapse ">
-                <div class="accordion-inner">
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/cristianoc72.codegen.html">codegen</a>
+    </li>
 
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-207320313"></a>
-                                <a href="../namespaces/cristianoc72.codegen.html" style="margin-left: 30px; padding-left: 0">codegen</a>
-            </div>
-            <div id="namespace-207320313" class="accordion-body collapse ">
-                <div class="accordion-inner">
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/cristianoc72.codegen.model.html">model</a>
+    </li>
 
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1289131316"></a>
-                                <a href="../namespaces/cristianoc72.codegen.generator.html" style="margin-left: 30px; padding-left: 0">generator</a>
-            </div>
-            <div id="namespace-1289131316" class="accordion-body collapse ">
-                <div class="accordion-inner">
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/cristianoc72.codegen.model.parts.html">parts</a>
+    </li>
 
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1933411855"></a>
-                                <a href="../namespaces/cristianoc72.codegen.generator.builder.html" style="margin-left: 30px; padding-left: 0">builder</a>
-            </div>
-            <div id="namespace-1933411855" class="accordion-body collapse ">
-                <div class="accordion-inner">
+        </ul>
 
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1107167755"></a>
-                                <a href="../namespaces/cristianoc72.codegen.generator.builder.parts.html" style="margin-left: 30px; padding-left: 0">parts</a>
-            </div>
-            <div id="namespace-1107167755" class="accordion-body collapse ">
-                <div class="accordion-inner">
+        
+        
+                    <div class="namespace-indent">
+                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
+                                        <div id="trait_AbstractPart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_AbstractPart .collapse">
+        <h1>AbstractPart<a href="../classes/cristianoc72.codegen.model.parts.AbstractPart.html">¶</a></h1>
+        <p class="short_description">Abstract Part.</p>
+        <div class="details collapse">
+                            <p>Keeps track if the model has an abstract modifier or not</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.AbstractPart.html" class="more">« More »</a>    </div>
 
-                    
-                    <ul>
-                                                                            <li class="trait"><a href="../classes/cristianoc72.codegen.generator.builder.parts.RoutineBuilderPart.html">RoutineBuilderPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.generator.builder.parts.StructBuilderPart.html">StructBuilderPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.generator.builder.parts.ValueBuilderPart.html">ValueBuilderPart</a></li>
-                                                                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div id="trait_BodyPart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_BodyPart .collapse">
+        <h1>BodyPart<a href="../classes/cristianoc72.codegen.model.parts.BodyPart.html">¶</a></h1>
+        <p class="short_description">Body Part.</p>
+        <div class="details collapse">
+                            <p>For all models that do have a code body</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.BodyPart.html" class="more">« More »</a>    </div>
 
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.AbstractBuilder.html">AbstractBuilder</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.ClassBuilder.html">ClassBuilder</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.ConstantBuilder.html">ConstantBuilder</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.InterfaceBuilder.html">InterfaceBuilder</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.MethodBuilder.html">MethodBuilder</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.ParameterBuilder.html">ParameterBuilder</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.PropertyBuilder.html">PropertyBuilder</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.builder.TraitBuilder.html">TraitBuilder</a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div id="trait_ConstantsPart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_ConstantsPart .collapse">
+        <h1>ConstantsPart<a href="../classes/cristianoc72.codegen.model.parts.ConstantsPart.html">¶</a></h1>
+        <p class="short_description">Constants part.</p>
+        <div class="details collapse">
+                            <p>For all models that can contain constants</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.ConstantsPart.html" class="more">« More »</a>    </div>
 
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-567968565"></a>
-                                <a href="../namespaces/cristianoc72.codegen.generator.comparator.html" style="margin-left: 30px; padding-left: 0">comparator</a>
-            </div>
-            <div id="namespace-567968565" class="accordion-body collapse ">
-                <div class="accordion-inner">
+                                        <div id="trait_DocblockPart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_DocblockPart .collapse">
+        <h1>DocblockPart<a href="../classes/cristianoc72.codegen.model.parts.DocblockPart.html">¶</a></h1>
+        <p class="short_description">Docblock Part.</p>
+        <div class="details collapse">
+                            <p>Setting and getting a docblock on a model</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.DocblockPart.html" class="more">« More »</a>    </div>
 
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.AbstractMemberComparator.html">AbstractMemberComparator</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.DefaultConstantComparator.html">DefaultConstantComparator</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.DefaultMethodComparator.html">DefaultMethodComparator</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.comparator.DefaultPropertyComparator.html">DefaultPropertyComparator</a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div id="trait_FinalPart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_FinalPart .collapse">
+        <h1>FinalPart<a href="../classes/cristianoc72.codegen.model.parts.FinalPart.html">¶</a></h1>
+        <p class="short_description">Abstract Part.</p>
+        <div class="details collapse">
+                            <p>Keeps track if the model has a final modifier or not</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.FinalPart.html" class="more">« More »</a>    </div>
 
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1269561421"></a>
-                                <a href="../namespaces/cristianoc72.codegen.generator.utils.html" style="margin-left: 30px; padding-left: 0">utils</a>
-            </div>
-            <div id="namespace-1269561421" class="accordion-body collapse ">
-                <div class="accordion-inner">
+                                        <div id="trait_InterfacesPart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_InterfacesPart .collapse">
+        <h1>InterfacesPart<a href="../classes/cristianoc72.codegen.model.parts.InterfacesPart.html">¶</a></h1>
+        <p class="short_description">Interfaces part.</p>
+        <div class="details collapse">
+                            <p>For all models that can contain interfaces</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.InterfacesPart.html" class="more">« More »</a>    </div>
 
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.utils.Writer.html">Writer</a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div id="trait_LongDescriptionPart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_LongDescriptionPart .collapse">
+        <h1>LongDescriptionPart<a href="../classes/cristianoc72.codegen.model.parts.LongDescriptionPart.html">¶</a></h1>
+        <p class="short_description">Long description part.</p>
+        <div class="details collapse">
+                            <p>For all models that can have an additional long description</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.LongDescriptionPart.html" class="more">« More »</a>    </div>
 
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.BuilderFactory.html">BuilderFactory</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.CodeFileGenerator.html">CodeFileGenerator</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.CodeGenerator.html">CodeGenerator</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.generator.ModelGenerator.html">ModelGenerator</a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div id="trait_NamePart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_NamePart .collapse">
+        <h1>NamePart<a href="../classes/cristianoc72.codegen.model.parts.NamePart.html">¶</a></h1>
+        <p class="short_description">Name part.</p>
+        <div class="details collapse">
+                            <p>For all models that do have a name</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.NamePart.html" class="more">« More »</a>    </div>
 
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-630257994"></a>
-                                <a href="../namespaces/cristianoc72.codegen.model.html" style="margin-left: 30px; padding-left: 0">model</a>
-            </div>
-            <div id="namespace-630257994" class="accordion-body collapse ">
-                <div class="accordion-inner">
+                                        <div id="trait_PropertiesPart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_PropertiesPart .collapse">
+        <h1>PropertiesPart<a href="../classes/cristianoc72.codegen.model.parts.PropertiesPart.html">¶</a></h1>
+        <p class="short_description">Properties part.</p>
+        <div class="details collapse">
+                            <p>For all models that can have properties</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.PropertiesPart.html" class="more">« More »</a>    </div>
 
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-126084035"></a>
-                                <a href="../namespaces/cristianoc72.codegen.model.parts.html" style="margin-left: 30px; padding-left: 0">parts</a>
-            </div>
-            <div id="namespace-126084035" class="accordion-body collapse ">
-                <div class="accordion-inner">
+                                        <div id="trait_QualifiedNamePart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_QualifiedNamePart .collapse">
+        <h1>QualifiedNamePart<a href="../classes/cristianoc72.codegen.model.parts.QualifiedNamePart.html">¶</a></h1>
+        <p class="short_description">Qualified name part.</p>
+        <div class="details collapse">
+                            <p>For all models that have a name and namespace</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.QualifiedNamePart.html" class="more">« More »</a>    </div>
 
-                    
-                    <ul>
-                                                                            <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.AbstractPart.html">AbstractPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.BodyPart.html">BodyPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.ConstantsPart.html">ConstantsPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.DocblockPart.html">DocblockPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.FinalPart.html">FinalPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.InterfacesPart.html">InterfacesPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.LongDescriptionPart.html">LongDescriptionPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.NamePart.html">NamePart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.PropertiesPart.html">PropertiesPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.QualifiedNamePart.html">QualifiedNamePart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.ReferenceReturnPart.html">ReferenceReturnPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.TraitsPart.html">TraitsPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.TypeDocblockGeneratorPart.html">TypeDocblockGeneratorPart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.TypePart.html">TypePart</a></li>
-                                                    <li class="trait"><a href="../classes/cristianoc72.codegen.model.parts.ValuePart.html">ValuePart</a></li>
-                                                                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div id="trait_ReferenceReturnPart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_ReferenceReturnPart .collapse">
+        <h1>ReferenceReturnPart<a href="../classes/cristianoc72.codegen.model.parts.ReferenceReturnPart.html">¶</a></h1>
+        <p class="short_description">Reference return part.</p>
+        <div class="details collapse">
+                            <p>Keeps track whether the return value is a reference or not</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.ReferenceReturnPart.html" class="more">« More »</a>    </div>
 
-                    
-                    <ul>
-                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.DocblockInterface.html">DocblockInterface</a></li>
-                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.GenerateableInterface.html">GenerateableInterface</a></li>
-                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.NamespaceInterface.html">NamespaceInterface</a></li>
-                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.PropertiesInterface.html">PropertiesInterface</a></li>
-                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.TraitsInterface.html">TraitsInterface</a></li>
-                                                    <li class="interface"><a href="../classes/cristianoc72.codegen.model.ValueInterface.html">ValueInterface</a></li>
-                                                                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.AbstractModel.html">AbstractModel</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpConstant.html">PhpConstant</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpInterface.html">PhpInterface</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpMethod.html">PhpMethod</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpParameter.html">PhpParameter</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpProperty.html">PhpProperty</a></li>
-                                                    <li class="class"><a href="../classes/cristianoc72.codegen.model.PhpTrait.html">PhpTrait</a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div id="trait_TraitsPart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_TraitsPart .collapse">
+        <h1>TraitsPart<a href="../classes/cristianoc72.codegen.model.parts.TraitsPart.html">¶</a></h1>
+        <p class="short_description">Traits part.</p>
+        <div class="details collapse">
+                            <p>For all models that can have traits</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.TraitsPart.html" class="more">« More »</a>    </div>
 
-                    
-                    <ul>
-                                                                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div id="trait_TypeDocblockGeneratorPart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_TypeDocblockGeneratorPart .collapse">
+        <h1>TypeDocblockGeneratorPart<a href="../classes/cristianoc72.codegen.model.parts.TypeDocblockGeneratorPart.html">¶</a></h1>
+        <p class="short_description">Type docblock generator part.</p>
+        <div class="details collapse">
+                            <p>For all models that have a type and need docblock tag generated from it</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.TypeDocblockGeneratorPart.html" class="more">« More »</a>    </div>
 
-                    
-                    <ul>
-                                                                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div id="trait_TypePart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_TypePart .collapse">
+        <h1>TypePart<a href="../classes/cristianoc72.codegen.model.parts.TypePart.html">¶</a></h1>
+        <p class="short_description">Type part.</p>
+        <div class="details collapse">
+                            <p>For all models that have a type</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.TypePart.html" class="more">« More »</a>    </div>
 
-                    
-                    <ul>
-                                                                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                                        <div id="trait_ValuePart" class="element ajax clickable trait" data-toggle="collapse" data-target="#trait_ValuePart .collapse">
+        <h1>ValuePart<a href="../classes/cristianoc72.codegen.model.parts.ValuePart.html">¶</a></h1>
+        <p class="short_description">Value part.</p>
+        <div class="details collapse">
+                            <p>For all models that have a value (or expression)</p>
+                    </div>
+        <a href="../classes/cristianoc72.codegen.model.parts.ValuePart.html" class="more">« More »</a>    </div>
 
-        </div>
-    </section>
-    <section class="row-fluid">
-        <div class="span10 offset2">
-            <div class="row-fluid">
-                <div class="span8 content namespace">
-                    <nav>
-                                                <a href="../namespaces/cristianoc72.codegen.model.html">\cristianoc72\codegen\model</a>
-                                            </nav>
-                    <h1><small>\cristianoc72\codegen\model</small>parts</h1>
-
-                    
-                                        <h2>Traits</h2>
-                    <table class="table table-hover">
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.AbstractPart.html">AbstractPart</a></td>
-                                <td><em>Abstract Part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.BodyPart.html">BodyPart</a></td>
-                                <td><em>Body Part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.ConstantsPart.html">ConstantsPart</a></td>
-                                <td><em>Constants part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.DocblockPart.html">DocblockPart</a></td>
-                                <td><em>Docblock Part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.FinalPart.html">FinalPart</a></td>
-                                <td><em>Abstract Part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.InterfacesPart.html">InterfacesPart</a></td>
-                                <td><em>Interfaces part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.LongDescriptionPart.html">LongDescriptionPart</a></td>
-                                <td><em>Long description part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.NamePart.html">NamePart</a></td>
-                                <td><em>Name part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.PropertiesPart.html">PropertiesPart</a></td>
-                                <td><em>Properties part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.QualifiedNamePart.html">QualifiedNamePart</a></td>
-                                <td><em>Qualified name part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.ReferenceReturnPart.html">ReferenceReturnPart</a></td>
-                                <td><em>Reference return part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.TraitsPart.html">TraitsPart</a></td>
-                                <td><em>Traits part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.TypeDocblockGeneratorPart.html">TypeDocblockGeneratorPart</a></td>
-                                <td><em>Type docblock generator part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.TypePart.html">TypePart</a></td>
-                                <td><em>Type part.</em></td>
-                            </tr>
-                                                    <tr>
-                                <td><a href="../classes/cristianoc72.codegen.model.parts.ValuePart.html">ValuePart</a></td>
-                                <td><em>Value part.</em></td>
-                            </tr>
-                                            </table>
-                    
-                    
-                                    </div>
-
-                <aside class="span4 detailsbar">
-                    <dl>
-                        <dt>Namespace hierarchy</dt>
-                        <dd class="hierarchy">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-                                    <div class="namespace-wrapper"><a href="../namespaces/default.html">\</a></div>
-                                                            
-                                    <div class="namespace-wrapper"><a href="../namespaces/cristianoc72.html">\cristianoc72</a></div>
-                                                            
-                                    <div class="namespace-wrapper"><a href="../namespaces/cristianoc72.codegen.html">\cristianoc72\codegen</a></div>
-                                                            
-                                    <div class="namespace-wrapper"><a href="../namespaces/cristianoc72.codegen.model.html">\cristianoc72\codegen\model</a></div>
-                                                                                        <div class="namespace-wrapper">\cristianoc72\codegen\model\parts</div>
-                        </dd>
-                    </dl>
-                </aside>
-            </div>
-
+                
+                
+                            </div>
             
-            
+    
         </div>
-    </section>
+    </div>
+    </div>
 
-    <footer class="row-fluid">
-        <section class="span10 offset2">
-            <section class="row-fluid">
-                <section class="span10 offset1">
-                    <section class="row-fluid footer-sections">
-                        <section class="span4">
-                                                        <h1><i class="icon-code"></i></h1>
-                            <div>
-                                <ul>
-                                                                            <li><a href="../namespaces/cristianoc72.html">\cristianoc72</a></li>
-                                                                    </ul>
-                            </div>
-                        </section>
-                        <section class="span4">
-                                                        <h1><i class="icon-bar-chart"></i></h1>
-                            <div>
-                                <ul>
-                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
-                                </ul>
-                            </div>
-                        </section>
-                        <section class="span4">
-                                                        <h1><i class="icon-pushpin"></i></h1>
-                            <div>
-                                <ul>
-                                    <li><a href="../reports/errors.html">Errors</a></li>
-                                    <li><a href="../reports/markers.html">Markers</a></li>
-                                </ul>
-                            </div>
-                        </section>
-                    </section>
-                </section>
-            </section>
-            <section class="row-fluid">
-                <section class="span10 offset1">
-                    <hr />
-                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on April 8th, 2020 at 10:44.
-                </section>
-            </section>
-        </section>
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Wed, 08 Apr 2020 10:53:22 +0000.<br/>
     </footer>
-</div>
-
-</body>
+    </body>
 </html>
