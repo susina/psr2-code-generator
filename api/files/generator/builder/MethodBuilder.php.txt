@@ -13,34 +13,34 @@ class MethodBuilder extends AbstractBuilder
 
     public function build(AbstractModel $model): void
     {
-        if (! $model instanceof PhpMethod) {
+        if (!$model instanceof PhpMethod) {
             throw new \InvalidArgumentException('Method builder can build method classes only.');
         }
 
         $this->buildDocblock($model);
-        
+
         if ($model->isFinal()) {
             $this->getWriter()->write('final ');
         }
-        
+
         if ($model->isAbstract()) {
             $this->getWriter()->write('abstract ');
         }
-        
-        $this->getWriter()->write($model->getVisibility() . ' ');
-        
+
+        $this->getWriter()->write($model->getVisibility().' ');
+
         if ($model->isStatic()) {
             $this->getWriter()->write('static ');
         }
-        
+
         $this->writeFunctionStatement($model);
-        
+
         if ($model->isAbstract() || $model->getParent() instanceof PhpInterface) {
             $this->getWriter()->writeln(';');
-        
+
             return;
         }
-        
+
         $this->writeBody($model);
     }
 }

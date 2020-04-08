@@ -5,7 +5,7 @@ namespace cristianoc72\codegen\model\parts;
 use gossi\docblock\Docblock;
 
 /**
- * Docblock Part
+ * Docblock Part.
  *
  * Setting and getting a docblock on a model
  *
@@ -13,14 +13,14 @@ use gossi\docblock\Docblock;
  */
 trait DocblockPart
 {
-
     /** @var Docblock */
     private $docblock;
 
     /**
-     * Sets the docblock
+     * Sets the docblock.
      *
      * @param Docblock|string $doc
+     *
      * @return $this
      */
     public function setDocblock($doc): self
@@ -35,9 +35,7 @@ trait DocblockPart
     }
 
     /**
-     * Returns the docblock
-     *
-     * @return Docblock
+     * Returns the docblock.
      */
     public function getDocblock(): Docblock
     {

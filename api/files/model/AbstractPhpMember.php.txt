@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 namespace cristianoc72\codegen\model;
 
 use cristianoc72\codegen\model\parts\DocblockPart;
@@ -36,21 +37,21 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
     use TypePart;
 
     /**
-     * Private visibility
+     * Private visibility.
      *
      * @var string
      */
     const VISIBILITY_PRIVATE = 'private';
 
     /**
-     * Protected visibility
+     * Protected visibility.
      *
      * @var string
      */
     const VISIBILITY_PROTECTED = 'protected';
 
     /**
-     * Public visibility
+     * Public visibility.
      *
      * @var string
      */
@@ -66,7 +67,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
     private $parent;
 
     /**
-     * Creates a new member
+     * Creates a new member.
      *
      * @param string $name the name of the member
      */
@@ -77,19 +78,21 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
     }
 
     /**
-     * Sets the members visibility
+     * Sets the members visibility.
      *
      * @see self::VISIBILITY_PUBLIC
      * @see self::VISIBILITY_PROTECTED
      * @see self::VISIBILITY_PRIVATE
+     *
      * @param string $visibility the new visibility
+     *
      * @return $this
      */
     public function setVisibility(string $visibility): self
     {
-        if ($visibility !== self::VISIBILITY_PRIVATE
-                && $visibility !== self::VISIBILITY_PROTECTED
-                && $visibility !== self::VISIBILITY_PUBLIC) {
+        if (self::VISIBILITY_PRIVATE !== $visibility
+                && self::VISIBILITY_PROTECTED !== $visibility
+                && self::VISIBILITY_PUBLIC !== $visibility) {
             throw new \InvalidArgumentException(sprintf('The visibility "%s" does not exist.', $visibility));
         }
 
@@ -99,7 +102,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
     }
 
     /**
-     * Returns the visibility state of this member
+     * Returns the visibility state of this member.
      *
      * @return string the visibility
      */
@@ -109,20 +112,19 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
     }
 
     /**
-     * Sets whether or not this member is static
+     * Sets whether or not this member is static.
      *
-     * @param bool $bool
      * @return $this
      */
     public function setStatic(bool $bool): self
     {
-        $this->static = (boolean) $bool;
+        $this->static = (bool) $bool;
 
         return $this;
     }
 
     /**
-     * Returns whether this member is static
+     * Returns whether this member is static.
      *
      * @return bool `true` if static and `false` if not
      */
@@ -132,22 +134,24 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
     }
 
     /**
-     * Sets the parent structure to which this member belongs
+     * Sets the parent structure to which this member belongs.
      *
      * @internal
-     * @param AbstractPhpStruct|null $parent
+     *
      * @return $this
      */
     public function setParent(?AbstractPhpStruct $parent): self
     {
         $this->parent = $parent;
+
         return $this;
     }
 
     /**
-     * Returns the parent structure to which this member belongs
+     * Returns the parent structure to which this member belongs.
      *
      * @internal
+     *
      * @return AbstractPhpStruct
      */
     public function getParent(): ?AbstractPhpStruct

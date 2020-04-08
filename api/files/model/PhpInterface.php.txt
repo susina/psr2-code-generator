@@ -18,7 +18,7 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
     use InterfacesPart;
 
     /**
-     * Create a new PHP interface
+     * Create a new PHP interface.
      *
      * @param string $name qualified name
      */
@@ -30,7 +30,7 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function generateDocblock(): self
     {

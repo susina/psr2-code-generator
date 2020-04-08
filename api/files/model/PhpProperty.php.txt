@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 namespace cristianoc72\codegen\model;
 
 use cristianoc72\codegen\model\parts\TypeDocblockGeneratorPart;
@@ -34,9 +35,10 @@ class PhpProperty extends AbstractPhpMember implements ValueInterface
     use ValuePart;
 
     /**
-     * Creates a new PHP property
+     * Creates a new PHP property.
      *
      * @param string $name the properties name
+     *
      * @return static
      */
     public static function create(string $name)
@@ -45,7 +47,7 @@ class PhpProperty extends AbstractPhpMember implements ValueInterface
     }
 
     /**
-     * Generates docblock based on provided information
+     * Generates docblock based on provided information.
      */
     public function generateDocblock(): self
     {

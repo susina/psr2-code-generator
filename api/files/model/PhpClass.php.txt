@@ -30,7 +30,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
     private $parentClassName = '';
 
     /**
-     * Creates a new PHP class
+     * Creates a new PHP class.
      *
      * @param string $name the qualified name
      */
@@ -44,7 +44,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
     }
 
     /**
-     * Returns the parent class name
+     * Returns the parent class name.
      *
      * @return string
      */
@@ -54,9 +54,10 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
     }
 
     /**
-     * Sets the parent class name
+     * Sets the parent class name.
      *
-     * @param string|null $name the new parent
+     * @param null|string $name the new parent
+     *
      * @return $this
      */
     public function setParentClassName(?string $name): self
