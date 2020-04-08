@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>    Psr2 Code Generator &raquo; \Susina\Codegen\Model\PhpTrait
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+            <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+            <!--[if lt IE 9]>
+        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/template.js" type="text/javascript"></script>
+        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+    
+            <link rel="shortcut icon" href="../img/favicon.ico"/>
+        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    </head>
+<body>
+
+        <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> </a>
+                <a class="brand" href="../index.html">Psr2 Code Generator</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                                                    <li><a>Namespaces</a></li>
+                                                                        <li><a href="../namespaces/Susina.html">Susina</a></li>
+                                                                                                                                </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../graph_class.html">
+                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="../errors.html">
+                                        <i class="icon-list-alt"></i>&#160;Errors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../markers.html">
+                                        <i class="icon-list-alt"></i>&#160;Markers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../deprecated.html">
+                                        <i class="icon-list-alt"></i>&#160;Deprecated
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_top">
+            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+        </div>
+    </div>
+    
+    <div id="___" class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                Javascript is disabled; several features are only available if Javascript is enabled.
+            </div>
+        </noscript>
+
+        
+            <style>
+        .deprecated h2 {
+            text-decoration: line-through;
+        }
+    </style>
+    <div class="row">
+        <div class="span4">
+                    <div class="btn-group view pull-right" data-toggle="buttons-radio">
+        <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button>
+        <button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+    </div>
+    <div class="btn-group visibility" data-toggle="buttons-checkbox">
+        <button class="btn public active" title="Show public elements">Public</button>
+        <button class="btn protected" title="Show protected elements">Protected</button>
+        <button class="btn private" title="Show private elements">Private</button>
+        <button class="btn inherited active" title="Show inherited elements">Inherited</button>
+    </div>
+
+        <ul class="side-nav nav nav-list">
+        <li class="nav-header">
+            <i class="icon-custom icon-method"></i> Methods
+            <ul>
+                                                                                                    <li class="method public">
+        <a href="#method___construct" title="__construct :: Creates a new PHP trait.">
+            <span class="description">Creates a new PHP trait.</span><pre>__construct</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_addTrait" title="addTrait :: Adds a trait.">
+            <span class="description">Adds a trait.</span><pre>addTrait</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_clearProperties" title="clearProperties :: Clears all properties.">
+            <span class="description">Clears all properties.</span><pre>clearProperties</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public">
+        <a href="#method_generateDocblock" title="generateDocblock :: Generates docblock based on provided information.">
+            <span class="description">Generates docblock based on provided information.</span><pre>generateDocblock</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getProperties" title="getProperties :: Returns a collection of properties.">
+            <span class="description">Returns a collection of properties.</span><pre>getProperties</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getProperty" title="getProperty :: Returns a property.">
+            <span class="description">Returns a property.</span><pre>getProperty</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getPropertyNames" title="getPropertyNames :: Returns all property names.">
+            <span class="description">Returns all property names.</span><pre>getPropertyNames</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getTraits" title="getTraits :: Returns a collection of traits.">
+            <span class="description">Returns a collection of traits.</span><pre>getTraits</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_hasProperty" title="hasProperty :: Checks whether a property exists.">
+            <span class="description">Checks whether a property exists.</span><pre>hasProperty</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_hasPropertyByName" title="hasPropertyByName :: Checks whether a property exists.">
+            <span class="description">Checks whether a property exists.</span><pre>hasPropertyByName</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_hasTrait" title="hasTrait :: Checks whether a trait exists.">
+            <span class="description">Checks whether a trait exists.</span><pre>hasTrait</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_hasTraitByName" title="hasTraitByName :: Checks whether a trait exists.">
+            <span class="description">Checks whether a trait exists.</span><pre>hasTraitByName</pre>
+        </a>
+    </li>
+
+                                                                                                                                                                                                                        <li class="method public inherited">
+        <a href="#method_removeProperty" title="removeProperty :: Removes a property.">
+            <span class="description">Removes a property.</span><pre>removeProperty</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_removePropertyByName" title="removePropertyByName :: Removes a property.">
+            <span class="description">Removes a property.</span><pre>removePropertyByName</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_removeTrait" title="removeTrait :: Removes a trait.">
+            <span class="description">Removes a trait.</span><pre>removeTrait</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_removeTraitByName" title="removeTraitByName :: Removes a trait.">
+            <span class="description">Removes a trait.</span><pre>removeTraitByName</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setProperties" title="setProperties :: Sets a collection of properties.">
+            <span class="description">Sets a collection of properties.</span><pre>setProperties</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setProperty" title="setProperty :: Adds a property.">
+            <span class="description">Adds a property.</span><pre>setProperty</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_setTraits" title="setTraits :: Sets a collection of traits.">
+            <span class="description">Sets a collection of traits.</span><pre>setTraits</pre>
+        </a>
+    </li>
+
+                                                </ul>
+        </li>
+        <li class="nav-header protected">» Protected
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </ul>
+        </li>
+        <li class="nav-header private">» Private
+            <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li class="method private inherited">
+                            <a href="#method_initProperties" title="initProperties :: ">
+                                <span class="description"></span><pre>initProperties</pre>
+                            </a>
+                        </li>
+                                                                                <li class="method private inherited">
+                            <a href="#method_initTraits" title="initTraits :: ">
+                                <span class="description"></span><pre>initTraits</pre>
+                            </a>
+                        </li>
+                                                                                                                                                                                                                                                                                                            </ul>
+        </li>
+        <li class="nav-header">
+            <i class="icon-custom icon-constant"></i> Constants
+            <ul>
+                            </ul>
+        </li>
+    </ul>
+
+
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>PhpTrait</h1>
+                <small style="display: block; text-align: right">
+                                            Extends \Susina\Codegen\Model\AbstractPhpStruct
+                                                                Implements <a href="../classes/Susina.Codegen.Model.GenerateableInterface.html">\Susina\Codegen\Model\GenerateableInterface</a>, <a href="../classes/Susina.Codegen.Model.TraitsInterface.html">\Susina\Codegen\Model\TraitsInterface</a>, <a href="../classes/Susina.Codegen.Model.PropertiesInterface.html">\Susina\Codegen\Model\PropertiesInterface</a>
+                                    </small>
+                <p class="short_description">Represents a PHP trait.</p>
+                <div class="details">
+                    <div class="long_description">
+                        
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        author
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>Thomas Gossmann</p>
+                                    </td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        psalm-suppress
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>PropertyNotSetInConstructor</p>
+                                    </td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        package
+                                                                            </th>
+                                    <td>
+                                                                                    
+                                                                                <p>Default</p>
+                                    </td>
+                                </tr>
+                                                                                                                                                                                </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                                                <a id="method___construct"></a>
+                        <div class="element clickable method public  method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+                            <h2>Creates a new PHP trait.</h2>
+                            <pre>__construct(string $name = null) </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    psalm-suppress
+                                                </th>
+                                                <td>
+                                                                                                                                                                        
+                                                                                                                                                                        <p>PropertyNotSetInConstructor</p>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code>string</code><p><p>qualified name</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_addTrait"></a>
+                        <div class="element clickable method public  method_addTrait inherited" data-toggle="collapse" data-target=".method_addTrait .collapse">
+                            <h2>Adds a trait.</h2>
+                            <pre>addTrait(\Susina\Codegen\Model\PhpTrait $trait) : $this</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>If the trait is passed as PhpTrait object,
+the trait is also added as use statement.</p></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$trait</h4>
+                                                <code><a href="../classes/Susina.Codegen.Model.PhpTrait.html">\Susina\Codegen\Model\PhpTrait</a></code><p><p>trait or qualified name</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_clearProperties"></a>
+                        <div class="element clickable method public  method_clearProperties inherited" data-toggle="collapse" data-target=".method_clearProperties .collapse">
+                            <h2>Clears all properties.</h2>
+                            <pre>clearProperties() : $this</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_generateDocblock"></a>
+                        <div class="element clickable method public  method_generateDocblock" data-toggle="collapse" data-target=".method_generateDocblock .collapse">
+                            <h2>Generates docblock based on provided information.</h2>
+                            <pre>generateDocblock() </pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getProperties"></a>
+                        <div class="element clickable method public  method_getProperties inherited" data-toggle="collapse" data-target=".method_getProperties .collapse">
+                            <h2>Returns a collection of properties.</h2>
+                            <pre>getProperties() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getProperty"></a>
+                        <div class="element clickable method public  method_getProperty inherited" data-toggle="collapse" data-target=".method_getProperty .collapse">
+                            <h2>Returns a property.</h2>
+                            <pre>getProperty(string $name) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                            <tr>
+                                                <th>Throws</th>
+                                                <td>
+                                                    <dl>
+                                                                                                            <dt>\InvalidArgumentException</dt>
+                                                        <dd><p>If the property cannot be found</p></dd>
+                                                                                                                                                            </dl>
+                                                </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code>string</code><p><p>property name</p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getPropertyNames"></a>
+                        <div class="element clickable method public  method_getPropertyNames inherited" data-toggle="collapse" data-target=".method_getPropertyNames .collapse">
+                            <h2>Returns all property names.</h2>
+                            <pre>getPropertyNames() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getTraits"></a>
+                        <div class="element clickable method public  method_getTraits inherited" data-toggle="collapse" data-target=".method_getTraits .collapse">
+                            <h2>Returns a collection of traits.</h2>
+                            <pre>getTraits() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_hasProperty"></a>
+                        <div class="element clickable method public  method_hasProperty inherited" data-toggle="collapse" data-target=".method_hasProperty .collapse">
+                            <h2>Checks whether a property exists.</h2>
+                            <pre>hasProperty(\Susina\Codegen\Model\PhpProperty $property) : boolean</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$property</h4>
+                                                <code><a href="../classes/Susina.Codegen.Model.PhpProperty.html">\Susina\Codegen\Model\PhpProperty</a></code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p><p><code>true</code> if a property exists and <code>false</code> if not</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_hasPropertyByName"></a>
+                        <div class="element clickable method public  method_hasPropertyByName inherited" data-toggle="collapse" data-target=".method_hasPropertyByName .collapse">
+                            <h2>Checks whether a property exists.</h2>
+                            <pre>hasPropertyByName(string $name) : boolean</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code>string</code><p><p>property name</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p><p><code>true</code> if a property exists and <code>false</code> if not</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_hasTrait"></a>
+                        <div class="element clickable method public  method_hasTrait inherited" data-toggle="collapse" data-target=".method_hasTrait .collapse">
+                            <h2>Checks whether a trait exists.</h2>
+                            <pre>hasTrait(\Susina\Codegen\Model\PhpTrait $trait) : boolean</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$trait</h4>
+                                                <code><a href="../classes/Susina.Codegen.Model.PhpTrait.html">\Susina\Codegen\Model\PhpTrait</a></code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p><p><code>true</code> if it exists and <code>false</code> if not</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_hasTraitByName"></a>
+                        <div class="element clickable method public  method_hasTraitByName inherited" data-toggle="collapse" data-target=".method_hasTraitByName .collapse">
+                            <h2>Checks whether a trait exists.</h2>
+                            <pre>hasTraitByName(\Susina\Codegen\Model\Parts\string $name) : boolean</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    psalm-suppress
+                                                </th>
+                                                <td>
+                                                                                                                                                                        
+                                                                                                                                                                        <p>TooManyArguments</p>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code>\Susina\Codegen\Model\Parts\string</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>boolean</code><p><p><code>true</code> if it exists and <code>false</code> if not</p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_initProperties"></a>
+                        <div class="element clickable method private  method_initProperties inherited" data-toggle="collapse" data-target=".method_initProperties .collapse">
+                            <h2>initProperties</h2>
+                            <pre>initProperties() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_initTraits"></a>
+                        <div class="element clickable method private  method_initTraits inherited" data-toggle="collapse" data-target=".method_initTraits .collapse">
+                            <h2>initTraits</h2>
+                            <pre>initTraits() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                    
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_removeProperty"></a>
+                        <div class="element clickable method public  method_removeProperty inherited" data-toggle="collapse" data-target=".method_removeProperty .collapse">
+                            <h2>Removes a property.</h2>
+                            <pre>removeProperty(\Susina\Codegen\Model\PhpProperty $property) : $this</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                            <tr>
+                                                <th>Throws</th>
+                                                <td>
+                                                    <dl>
+                                                                                                            <dt>\InvalidArgumentException</dt>
+                                                        <dd><p>If the property cannot be found</p></dd>
+                                                                                                                                                            </dl>
+                                                </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$property</h4>
+                                                <code><a href="../classes/Susina.Codegen.Model.PhpProperty.html">\Susina\Codegen\Model\PhpProperty</a></code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_removePropertyByName"></a>
+                        <div class="element clickable method public  method_removePropertyByName inherited" data-toggle="collapse" data-target=".method_removePropertyByName .collapse">
+                            <h2>Removes a property.</h2>
+                            <pre>removePropertyByName(string $name) : $this</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                            <tr>
+                                                <th>Throws</th>
+                                                <td>
+                                                    <dl>
+                                                                                                            <dt>\InvalidArgumentException</dt>
+                                                        <dd><p>If the property cannot be found</p></dd>
+                                                                                                                                                            </dl>
+                                                </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code>string</code><p><p>property name</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_removeTrait"></a>
+                        <div class="element clickable method public  method_removeTrait inherited" data-toggle="collapse" data-target=".method_removeTrait .collapse">
+                            <h2>Removes a trait.</h2>
+                            <pre>removeTrait(\Susina\Codegen\Model\PhpTrait $trait) : $this</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>If the trait is passed as PhpTrait object,
+the trait is also removed from use statements.</p></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$trait</h4>
+                                                <code><a href="../classes/Susina.Codegen.Model.PhpTrait.html">\Susina\Codegen\Model\PhpTrait</a></code><p><p>trait or qualified name</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_removeTraitByName"></a>
+                        <div class="element clickable method public  method_removeTraitByName inherited" data-toggle="collapse" data-target=".method_removeTraitByName .collapse">
+                            <h2>Removes a trait.</h2>
+                            <pre>removeTraitByName(string $traitName) : $this</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>If the trait is passed as PhpTrait object,
+the trait is also removed from use statements.</p></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    psalm-suppress
+                                                </th>
+                                                <td>
+                                                                                                                                                                        
+                                                                                                                                                                        <p>TooManyArguments</p>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$traitName</h4>
+                                                <code>string</code><p><p>trait qualified name</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setProperties"></a>
+                        <div class="element clickable method public  method_setProperties inherited" data-toggle="collapse" data-target=".method_setProperties .collapse">
+                            <h2>Sets a collection of properties.</h2>
+                            <pre>setProperties(array&lt;mixed,\Susina\Codegen\Model\PhpProperty&gt; $properties) : $this</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$properties</h4>
+                                                <code>array&lt;mixed,<a href="../classes/Susina.Codegen.Model.PhpProperty.html">\Susina\Codegen\Model\PhpProperty</a>&gt;</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setProperty"></a>
+                        <div class="element clickable method public  method_setProperty inherited" data-toggle="collapse" data-target=".method_setProperty .collapse">
+                            <h2>Adds a property.</h2>
+                            <pre>setProperty(\Susina\Codegen\Model\PhpProperty $property) : $this</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$property</h4>
+                                                <code><a href="../classes/Susina.Codegen.Model.PhpProperty.html">\Susina\Codegen\Model\PhpProperty</a></code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_setTraits"></a>
+                        <div class="element clickable method public  method_setTraits inherited" data-toggle="collapse" data-target=".method_setTraits .collapse">
+                            <h2>Sets a collection of traits.</h2>
+                            <pre>setTraits(array $traits) : $this</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                            <tr>
+                                                <th>Throws</th>
+                                                <td>
+                                                    <dl>
+                                                                                                                                                                <dt>\InvalidArgumentException</dt>
+                                                        <dd><p>if wrong type given</p></dd>
+                                                                                                        </dl>
+                                                </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$traits</h4>
+                                                <code>array</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>$this</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                    
+                    
+                                                                <h3><i class="icon-custom icon-property"></i> Properties</h3>
+                                                    <a id="property_properties"> </a>
+                            <div class="element clickable property  private property_properties inherited" data-toggle="collapse" data-target=".property_properties .collapse">
+                                <h2>properties</h2>
+                                <pre>properties : \phootwork\collection\Map</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>\phootwork\collection\Map</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_traits"> </a>
+                            <div class="element clickable property  private property_traits inherited" data-toggle="collapse" data-target=".property_traits .collapse">
+                                <h2>traits</h2>
+                                <pre>traits : \phootwork\collection\Set</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>\phootwork\collection\Set</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                            </div>
+            </div>
+            <a id="\Susina\Codegen\Model\PhpTrait"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li><span class="divider">\</span><a href="../namespaces/Susina.Codegen.Model.html">Model</a></li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/Susina.Codegen.Model.PhpTrait.html">PhpTrait</a></li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+        <footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+            generated on Wed, 08 Apr 2020 13:18:29 +0000.<br/>
+    </footer>
+    </body>
+</html>

@@ -575,7 +575,7 @@ namespace + name. Here is an overview:</p>
 <h2 id="create-your-first-class">Create your first Class</h2>
 <p>Let's start with a simple example:</p>
 <div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpClass</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpClass</span><span class="p">;</span>
 
 <span class="nv">$class</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PhpClass</span><span class="p">();</span>
 <span class="nv">$class</span><span class="o">-&gt;</span><span class="na">setQualifiedName</span><span class="p">(</span><span class="s1">&#39;my\\cool\\Tool&#39;</span><span class="p">);</span>
@@ -595,9 +595,9 @@ namespace + name. Here is an overview:</p>
 <h2 id="adding-a-constructor">Adding a Constructor</h2>
 <p>It's better to have a constructor, so we add one:</p>
 <div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpClass</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpMethod</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpParameter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpClass</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpMethod</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpParameter</span><span class="p">;</span>
 
 <span class="c1">// You can pass the name or the qualified name when you instantiate your model</span>
 <span class="nv">$class</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PhpClass</span><span class="p">(</span><span class="s1">&#39;my\\cool\\Tool&#39;</span><span class="p">);</span>
@@ -633,11 +633,11 @@ namespace + name. Here is an overview:</p>
 <p>We've just learned how to pass a blank method, the constructor to the class. We can also add properties, constants and
 of course methods. Let's do so:</p>
 <div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpClass</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpMethod</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpParameter</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpProperty</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpConstant</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpClass</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpMethod</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpParameter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpProperty</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpConstant</span><span class="p">;</span>
 
 <span class="nv">$class</span> <span class="o">=</span> <span class="nx">PhpClass</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">&#39;my\\cool\\Tool&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setMethod</span><span class="p">(</span><span class="nx">PhpMethod</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">&#39;setDriver&#39;</span><span class="p">)</span>
@@ -688,11 +688,11 @@ of course methods. Let's do so:</p>
 
 <p>Let's add some docblock comments, too:</p>
 <div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpClass</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpMethod</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpParameter</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpProperty</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpConstant</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpClass</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpMethod</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpParameter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpProperty</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpConstant</span><span class="p">;</span>
 
 <span class="nv">$class</span> <span class="o">=</span> <span class="nx">PhpClass</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s1">&#39;my\\cool\\Tool&#39;</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">setMultilineDescription</span><span class="p">([</span><span class="s2">&quot;The fantastic Tool class.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;@author John Smith&quot;</span><span class="p">])</span>
@@ -762,8 +762,8 @@ of course methods. Let's do so:</p>
 <p>When you put code inside a method there can be a reference to a class or interface, where you normally put the qualified
 name into a use statement. So here is how you do it:</p>
 <div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpClass</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\model\PhpMethod</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpClass</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Model\PhpMethod</span><span class="p">;</span>
 
 <span class="nv">$class</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PhpClass</span><span class="p">();</span>
 <span class="nv">$class</span>

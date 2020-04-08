@@ -485,7 +485,7 @@
                 <h2 id="generator">Generator</h2>
 <p>Now that your model is on the road, it's time to generate the code. To do this, a generator object is needed.</p>
 <div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\generator\CodeGenerator</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Generator\CodeGenerator</span><span class="p">;</span>
 
 <span class="nv">$class</span> <span class="o">=</span> <span class="o">..........</span><span class="p">;</span> <span class="c1">// code to create your model</span>
 
@@ -513,7 +513,7 @@
 <p>If you plan to save your generated code into a file, you can use <code>CodeFileGenerator</code> class instead, which adds the
 additional needed tags and the file level comment.</p>
 <div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\generator\CodeFileGenerator</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Generator\CodeFileGenerator</span><span class="p">;</span>
 
 <span class="nv">$class</span> <span class="o">=</span> <span class="o">..........</span><span class="p">;</span> <span class="c1">// code to create your model</span>
 
@@ -549,7 +549,7 @@ additional needed tags and the file level comment.</p>
 Alternatively if you have a project that uses the same configuration over and over again, extend the <code>GeneratorConfig</code>
 class and pass an instance of it instead of the configuration array.</p>
 <div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\generator\CodeGenerator</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Generator\CodeGenerator</span><span class="p">;</span>
 
 <span class="c1">// a) new code generator with options passed as array</span>
 <span class="nv">$generator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CodeGenerator</span><span class="p">([</span>
@@ -566,7 +566,7 @@ class and pass an instance of it instead of the configuration array.</p>
 <p>Generates code for a given model. It will also generate docblocks for all contained classes, methods, interfaces, etc.
 you have prior to generating the code.</p>
 <ul>
-<li>Class: <code>cristianoc72\codegen\generator\CodeGenerator</code></li>
+<li>Class: <code>Susina\Codegen\Generator\CodeGenerator</code></li>
 <li>
 <p>Options:</p>
 <table>
@@ -636,7 +636,7 @@ you have prior to generating the code.</p>
 </ul>
 <p>Example:</p>
 <div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\generator\CodeGenerator</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Generator\CodeGenerator</span><span class="p">;</span>
 
 <span class="c1">// will set every option to true, because of the defaults</span>
 <span class="nv">$generator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CodeGenerator</span><span class="p">([</span>
@@ -651,7 +651,7 @@ you have prior to generating the code.</p>
 <p>Generates a complete php file with the given model inside. Especially useful when creating PSR-4 compliant code,
 which you are about to dump into a file. It extends the <code>CodeGenerator</code> and as such inherits all its benefits.</p>
 <ul>
-<li>Class: <code>cristianoc72\codegen\generator\CodeFileGenerator</code></li>
+<li>Class: <code>Susina\Codegen\Generator\CodeFileGenerator</code></li>
 <li>
 <p>Options: Same options as <code>CodeGenerator</code> plus:</p>
 <table>
@@ -684,7 +684,7 @@ which you are about to dump into a file. It extends the <code>CodeGenerator</cod
 </li>
 </ul>
 <div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">use</span> <span class="nx">cristianoc72\codegen\generator\CodeFileGenerator</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Susina\Codegen\Generator\CodeFileGenerator</span><span class="p">;</span>
 
 <span class="nv">$generator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CodeGenerator</span><span class="p">([</span>
   <span class="s1">&#39;headerComment&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;This will be placed at the top, woo&#39;</span><span class="p">,</span>
