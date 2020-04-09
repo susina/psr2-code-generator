@@ -3,13 +3,14 @@
     "description" : "Toolset for generating PHP code following PSR-2 standard",
     "type": "library",
     "license": "Apache-2.0",
-    "authors": [{
-        "name": "Thomas Gossmann",
-        "homepage": "http://gos.si"
-        },
+    "authors": [
         {
             "name": "Cristiano Cinotti",
             "email": "cristianocinotti@gmail.com"
+        },
+        {
+        "name": "Thomas Gossmann",
+        "homepage": "http://gos.si"
         }
     ],
     "keywords": [
@@ -27,7 +28,7 @@
     },
     "require": {
         "php" : ">=7.2",
-        "gossi/docblock" : "dev-master",
+        "gossi/docblock" : "^2.0",
         "symfony/options-resolver" : "^4|^5",
         "phootwork/lang": "^2.0",
         "phootwork/collection": "^2.0"

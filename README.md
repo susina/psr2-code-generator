@@ -32,4 +32,4 @@ Documentation is available at https://susina.github.io/psr2-code-generator
 ## Contributing
 
 Feel free to fork and submit a pull request. Don't forget the tests and PSR-2 standard, of course.
-See the [documentation guide](https://susina.github.io/psr2-code-generator/contributing/) for further information.
+See the [contributing guide](https://susina.github.io/psr2-code-generator/contributing/) for further information.
