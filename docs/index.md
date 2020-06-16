@@ -25,7 +25,7 @@ The generated code adheres to the following rules:
 The library uses [Composer](https://getcomposer.org) as dependency manager. To install it run the following:
 
 ```bash
-composer require cristianoc72/psr2-code-generator
+composer require susina/psr2-code-generator
 ```
 
 ## Next Step
