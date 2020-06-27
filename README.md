@@ -3,8 +3,8 @@
 ![](https://github.com/susina/psr2-code-generator/workflows/Tests/badge.svg)
 ![](https://github.com/susina/psr2-code-generator/workflows/Build%20and%20deploy%20documentation/badge.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Maintainability](https://api.codeclimate.com/v1/badges/aa8d57cef69166ace691/maintainability)](https://codeclimate.com/github/cristianoc72/psr2-code-generator/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/aa8d57cef69166ace691/test_coverage)](https://codeclimate.com/github/cristianoc72/psr2-code-generator/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3a40d28f62e1cedee0be/maintainability)](https://codeclimate.com/github/susina/psr2-code-generator/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3a40d28f62e1cedee0be/test_coverage)](https://codeclimate.com/github/susina/psr2-code-generator/test_coverage)
 
 Psr2-code-generator is a library to generate PHP code programmatically, via a nice fluent api.
 This library is a light version of the awesome https://github.com/gossi/php-code-generator, refactored to generate PSR-2 code.
