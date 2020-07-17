@@ -5,9 +5,9 @@ theme:
   palette:
     primary: 'green'
     accent: 'green'
-copyright: "psr2-code-generator is licensed under <a href='https://github.com/cristianoc72/psr2-code-generator/blob/master/LICENSE'>Apache2 license</a>"
-repo_name: 'cristianoc72/psr2-code-generator'
-repo_url: 'https://github.com/cristianoc72/psr2-code-generator'
+copyright: "psr2-code-generator is licensed under <a href='https://github.com/susina/psr2-code-generator/blob/master/LICENSE'>Apache2 license</a>"
+repo_name: 'susina/psr2-code-generator'
+repo_url: 'https://github.com/susina/psr2-code-generator'
 markdown_extensions:
   - admonition
   - codehilite
