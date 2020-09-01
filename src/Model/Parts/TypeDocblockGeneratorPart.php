@@ -4,6 +4,7 @@ namespace Susina\Codegen\Model\Parts;
 
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\AbstractTypeTag;
+use phootwork\lang\Text;
 
 /**
  * Type docblock generator part.
@@ -42,7 +43,7 @@ trait TypeDocblockGeneratorPart
             $tags = $docblock->getTags($tag->getTagName());
             if ($tags->size() > 0) {
                 $ttag = $tags->get(0);
-                $ttag->setType($this->getType());
+                $ttag->setType($this->transformNullable($this->getType()));
                 $ttag->setDescription($this->getTypeDescription());
             }
 
@@ -50,10 +51,24 @@ trait TypeDocblockGeneratorPart
             else {
                 $docblock->appendTag(
                     $tag
-                        ->setType($this->getType())
+                        ->setType($this->transformNullable($this->getType()))
                         ->setDescription($this->getTypeDescription())
                 );
             }
         }
+    }
+
+    /**
+     * Transform a `?type` PHP notation in `type|null` docblock notation.
+     */
+    private function transformNullable(string $type): string
+    {
+        $text = Text::create($type);
+
+        if ($text->startsWith('?')) {
+            $text = $text->trimStart('?')->append('|null');
+        }
+
+        return $text->toString();
     }
 }

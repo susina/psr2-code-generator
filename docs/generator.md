@@ -43,7 +43,7 @@ $code = $generator->generate($class);
 Now, our `$code` variable contains:
 
 ```php
-<?php declare(strict(types=1);
+<?php declare(strict_types=1);
 
 /**
  * File level comment (e.g. copyright information and so on)
@@ -52,7 +52,7 @@ Now, our `$code` variable contains:
 namespace \\my\\cool\\namespace;
 
 /**
- * Class level commen
+ * Class level comment
  * 
  * @author yourself
  */
@@ -146,6 +146,45 @@ $generator = new CodeGenerator([
   'headerDocblock' => 'Full documentation mode confirmed!',
 ]);
 $code = $generator->generate($myClass);
+```
+
+## PHP 7.4+ typed class properties
+
+You can generate PHP 7.4+ classes with typed properties. Just set `php74Properties` configuration attribute to `true`,
+when you instantiate your generator:
+
+```php
+<?php
+use Susina\Codegen\Generator\CodeGenerator;
+
+$class = PhpClass::create('MyAwesomeClass')
+    ->setDescription('Class level comment')
+    ->setNamespace('\my\cool\namespace')
+    ->setProperty(PhpProperty::create('driver')
+        ->setType('string')->setDescription('The driver')
+    )
+;
+
+$generator = new CodeGenerator(['php74Properties' => true]);
+$code = $generator->generate($class);
+```
+It results in:
+
+```php
+<?php
+
+namespace \my\cool\namespace;
+
+/**
+ * Class level comment
+ */
+class MyAwesomeClass
+{
+    /**
+     * @var string The driver
+     */
+    protected string $driver;
+}
 ```
 
 ## Template system for Code Bodies

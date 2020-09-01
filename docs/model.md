@@ -147,6 +147,7 @@ class Tool {
     /**
      *
      * @param string $driver
+     * @return bool
      */
     public function setDriver(string $driver): bool
     {
@@ -318,6 +319,101 @@ if ($prop->hasValue()) {
         // do something with a value
     }
 }
+```
+
+## More about types
+
+### Returning `$this` for fluent interface
+
+When you write a class with fluent interface, you want to specify that a method returns `$this` or the class itself.
+You can pass the docblock notation to the `setType` method. I.e.
+
+```php
+<?php
+
+$method = new PhpMethod('setDriver');
+$method
+    ->setType('$this|FileManager')
+    ->setTypeDescription('For fluent interface')
+;
+```
+and it'll result:
+
+```php
+<?php
+
+............
+
+/**
+ * @return $this|FileManager For fluent interface
+ */
+public function setDriver(): FileManager
+{}
+```
+
+If your method is part of a class, the type of `$this` is auto-discovered:
+
+```php
+<?php
+
+$class = new PhpClass('FileManager');
+$method = PhpMethod::create('setDriver')
+    ->setType('$this')
+    ->setTypeDescription('For fluent interface')
+;
+
+$class->setMethod($method);
+```
+
+It'll result:
+
+```php
+<?php
+
+...............
+
+class FileManager
+{
+    /**
+     * @return $this|FileManager For fluent interface
+     */
+    public function setDriver(): FileManager
+    {}
+}
+```
+
+### Nullable types
+
+When you want to define a nullable type, you can use both docblock notation (i.e. `int|null`) and Php one (i.e. `?int`):
+
+```php
+<?php
+
+// Docblock notation
+$method = PhpMethod::create('fileSize')->setType('int|null');
+
+// or PHP notation
+$method1 = PhpMethod::create('fileDescription')->setType('?string');
+```
+
+The result is:
+
+```php
+<?php
+
+...................
+
+/**
+ * @return int|null
+ */
+public function fileSize(): ?int
+{}
+
+/**
+ * @return string|null
+ */
+public function fileDescription(): ?string
+{}
 ```
 
 ## Much, much more
