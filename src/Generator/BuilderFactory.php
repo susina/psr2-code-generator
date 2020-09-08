@@ -49,12 +49,14 @@ class BuilderFactory
      */
     public function getBuilder(AbstractModel $model): AbstractBuilder
     {
-        $modelClass = get_class($model);
+        $key = $this->builders->keys()->find($model, function (string $element, AbstractModel $model): bool {
+            return $model instanceof $element;
+        });
 
-        if (!$this->builders->has($modelClass)) {
+        if (null === $key) {
             throw new InvalidArgumentException(sprintf("No builder for '%s' objects.", get_class($model)));
         }
 
-        return $this->builders->get($modelClass);
+        return $this->builders->get($key);
     }
 }
