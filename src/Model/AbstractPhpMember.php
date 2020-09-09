@@ -71,7 +71,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
      *
      * @param string $name the name of the member
      */
-    public function __construct(string $name)
+    public function __construct(string $name = '')
     {
         $this->setName($name);
         $this->docblock = new Docblock();

@@ -29,6 +29,8 @@ use Susina\Codegen\Model\Parts\QualifiedNamePart;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
+ *
+ * @psalm-consistent-constructor
  */
 abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInterface, DocblockInterface
 {
@@ -50,9 +52,9 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      *
      * @param string $name the fqcn
      */
-    public function __construct(?string $name = null)
+    public function __construct(string $name = '')
     {
-        $this->setQualifiedName($name ?? '');
+        $this->setQualifiedName($name);
         $this->docblock = new Docblock();
         $this->useStatements = new Map();
         $this->requiredFiles = new Set();
@@ -66,7 +68,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
      *
      * @return static
      */
-    public static function create(string $name = null)
+    public static function create(string $name = '')
     {
         return new static($name);
     }

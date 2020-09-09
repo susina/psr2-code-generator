@@ -35,13 +35,24 @@ class PhpProperty extends AbstractPhpMember implements ValueInterface
     use ValuePart;
 
     /**
+     * PhpProperty constructor.
+     * This final method is needed to put in safe the function `create`.
+     *
+     * @see https://psalm.dev/docs/running_psalm/issues/UnsafeInstantiation/
+     */
+    final public function __construct(string $name = '')
+    {
+        return parent::__construct($name);
+    }
+
+    /**
      * Creates a new PHP property.
      *
      * @param string $name the properties name
      *
      * @return static
      */
-    public static function create(string $name)
+    public static function create(string $name = '')
     {
         return new static($name);
     }
@@ -49,7 +60,7 @@ class PhpProperty extends AbstractPhpMember implements ValueInterface
     /**
      * Generates docblock based on provided information.
      */
-    public function generateDocblock(): self
+    public function generateDocblock()
     {
         $docblock = $this->getDocblock();
         $docblock->setShortDescription($this->getDescription());

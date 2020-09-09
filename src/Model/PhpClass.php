@@ -34,7 +34,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
      *
      * @param string $name the qualified name
      */
-    public function __construct(?string $name = null)
+    final public function __construct(string $name = '')
     {
         parent::__construct($name);
         $this->initProperties();
@@ -56,18 +56,18 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
     /**
      * Sets the parent class name.
      *
-     * @param null|string $name the new parent
+     * @param string $name the new parent
      *
      * @return $this
      */
-    public function setParentClassName(?string $name): self
+    public function setParentClassName(string $name = ''): self
     {
-        $this->parentClassName = $name ?? '';
+        $this->parentClassName = $name;
 
         return $this;
     }
 
-    public function generateDocblock(): self
+    public function generateDocblock()
     {
         parent::generateDocblock();
 

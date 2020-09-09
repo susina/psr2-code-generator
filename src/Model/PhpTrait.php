@@ -24,7 +24,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
      *
      * @psalm-suppress PropertyNotSetInConstructor
      */
-    public function __construct(string $name = null)
+    final public function __construct(string $name = '')
     {
         parent::__construct($name);
         $this->initProperties();
@@ -34,7 +34,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
     /**
      * {@inheritdoc}
      */
-    public function generateDocblock(): self
+    public function generateDocblock()
     {
         parent::generateDocblock();
 

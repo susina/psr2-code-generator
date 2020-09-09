@@ -101,7 +101,7 @@ class ClassTest extends TestCase
         $this->assertEquals('', $class->getParentClassName());
         $this->assertSame($class, $class->setParentClassName('stdClass'));
         $this->assertEquals('stdClass', $class->getParentClassName());
-        $this->assertSame($class, $class->setParentClassName(null));
+        $this->assertSame($class, $class->setParentClassName());
         $this->assertEquals('', $class->getParentClassName());
     }
 

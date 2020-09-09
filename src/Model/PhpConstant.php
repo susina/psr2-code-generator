@@ -30,7 +30,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
      *
      * @param mixed $value
      */
-    public function __construct(string $name = '', $value = null, bool $isExpression = false)
+    final public function __construct(string $name = '', $value = null, bool $isExpression = false)
     {
         $this->setName($name);
 
@@ -57,7 +57,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
     /**
      * {@inheritdoc}
      */
-    public function generateDocblock(): self
+    public function generateDocblock()
     {
         $docblock = $this->getDocblock();
         $docblock->setShortDescription($this->getDescription());

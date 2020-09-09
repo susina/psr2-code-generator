@@ -42,7 +42,7 @@ class PhpMethod extends AbstractPhpMember implements RoutineInterface
     use ReferenceReturnPart;
     use TypeDocblockGeneratorPart;
 
-    public function __construct(string $name)
+    final public function __construct(string $name = '')
     {
         parent::__construct($name);
     }
@@ -54,7 +54,7 @@ class PhpMethod extends AbstractPhpMember implements RoutineInterface
      *
      * @return static
      */
-    public static function create(string $name)
+    public static function create(string $name = '')
     {
         return new static($name);
     }
@@ -62,7 +62,7 @@ class PhpMethod extends AbstractPhpMember implements RoutineInterface
     /**
      * Generates docblock based on provided information.
      */
-    public function generateDocblock(): self
+    public function generateDocblock()
     {
         $docblock = $this->getDocblock();
         $docblock->setShortDescription($this->getDescription());

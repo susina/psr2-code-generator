@@ -42,9 +42,9 @@ class PhpParameter extends AbstractModel implements ValueInterface
      *
      * @param string $name the parameter name
      */
-    public function __construct(string $name = null)
+    final public function __construct(string $name = '')
     {
-        $this->setName($name ?? '');
+        $this->setName($name);
     }
 
     /**
@@ -54,7 +54,7 @@ class PhpParameter extends AbstractModel implements ValueInterface
      *
      * @return static
      */
-    public static function create(string $name = null)
+    public static function create(string $name = '')
     {
         return new static($name);
     }

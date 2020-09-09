@@ -12,7 +12,7 @@ namespace Susina\Codegen\Model\Parts;
 trait NamePart
 {
     /** @var string */
-    private $name;
+    private $name = '';
 
     /**
      * Sets the name.
