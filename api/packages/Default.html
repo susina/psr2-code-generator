@@ -1,494 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <meta charset="utf-8"/>
-    <title>     &raquo; \Default
-</title>
-    <meta name="author" content=""/>
-    <meta name="description" content=""/>
-
-            <link href="../css/template.css" rel="stylesheet" media="all"/>
-    
-            <!--[if lt IE 9]>
-        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-        <![endif]-->
-        <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
-        <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
-        <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
-        <script src="../js/bootstrap.js" type="text/javascript"></script>
-        <script src="../js/template.js" type="text/javascript"></script>
-        <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
-    
-            <link rel="shortcut icon" href="../img/favicon.ico"/>
-        <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
-        <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
-        <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+    <meta charset="utf-8">
+    <title>Psr2 Code Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <link rel="icon" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/template.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+                <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js" integrity="sha256-0vuk8LXoyrmCjp1f0O300qo1M75ZQyhH9X3J6d+scmk=" crossorigin="anonymous"></script>
+        <script src="js/search.js"></script>
+        <script defer src="js/searchIndex.js"></script>
     </head>
-<body>
+<body id="top">
+    <header class="phpdocumentor-header phpdocumentor-section">
+    <h1 class="phpdocumentor-title"><a href="" class="phpdocumentor-title__link">Psr2 Code Generator</a></h1>
+    <input class="phpdocumentor-header__menu-button" type="checkbox" id="menu-button" name="menu-button" />
+    <label class="phpdocumentor-header__menu-icon" for="menu-button">
+        <i class="fas fa-bars"></i>
+    </label>
+    <section data-search-form class="phpdocumentor-search">
+    <label>
+        <span class="visually-hidden">Search for</span>
+        <svg class="phpdocumentor-search__icon" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+            <line x1="12.4892" y1="12.2727" x2="19.1559" y2="18.9393" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
+    </label>
+</section>
 
-        <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span> <span class="icon-bar"></span>
-                    <span class="icon-bar"></span> </a>
-                <a class="brand" href="../index.html">Psr2 Code Generator</a>
+    <nav class="phpdocumentor-topnav">
+    <ul class="phpdocumentor-topnav__menu">
+        </ul>
+</nav>
+</header>
 
-                <div class="nav-collapse">
-                    <ul class="nav">
-                        <li class="dropdown">
-                            <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
-                                API Documentation <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                                                    <li><a>Namespaces</a></li>
-                                                                        <li><a href="../namespaces/Susina.html">Susina</a></li>
-                                                                                                                                </ul>
-                        </li>
-                        <li class="dropdown" id="charts-menu">
-                            <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
-                                Charts <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="../graph_class.html">
-                                        <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown" id="reports-menu">
-                            <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
-                                Reports <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="../errors.html">
-                                        <i class="icon-list-alt"></i>&#160;Errors
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="../markers.html">
-                                        <i class="icon-list-alt"></i>&#160;Markers
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="../deprecated.html">
-                                        <i class="icon-list-alt"></i>&#160;Deprecated
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="go_to_top">
-            <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
-        </div>
-    </div>
+    <main class="phpdocumentor">
+        <div class="phpdocumentor-section">
+            <input class="phpdocumentor-sidebar__menu-button" type="checkbox" id="sidebar-button" name="sidebar-button" />
+<label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
+    Menu
+</label>
+<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
     
-    <div id="___" class="container">
-        <noscript>
-            <div class="alert alert-warning">
-                Javascript is disabled; several features are only available if Javascript is enabled.
-            </div>
-        </noscript>
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
+                                                <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/susina.html"><abbr title="\Susina">Susina</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/susina-codegen.html"><abbr title="\Susina\Codegen">Codegen</abbr></a></li>
+                                    </ul>
+                        </section>
 
-        
-            
-    <div class="row">
-
-        <div class="span4">
-            <div class="btn-group view pull-right" data-toggle="buttons-radio">
-                <button class="btn details" title="Show descriptions and method names">
-                    <i class="icon-list"></i></button><button class="btn simple" title="Show only method names">
-                    <i class="icon-align-justify"></i>
-                </button>
-            </div>
-            <ul class="side-nav nav nav-list">
-                <li class="nav-header">
-                    <i class="icon-map-marker"></i> Packages
-                </li>
-                <a href="../packages/Default.html" title="Default">
-                    <i class="icon-th"></i> Default
-                </a>
-                <ul class="nav nav-list nav-packages">
-                        
     
-                </ul>
-            </ul>
-        </div>
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
+                <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
+    </section>
 
-        <div class="span8 package-contents">
-                
-    <ul class="breadcrumb">
-        <li><a href="../index.html"><i class="icon-th"></i></a></li>
-            
-    
-    <li>
-        <span class="divider">\</span><a href="../packages/Default.html">Default</a>
-    </li>
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
+    </section>
+</aside>
 
+            <div class="phpdocumentor-column -eight phpdocumentor-content">
+                    <ul class="phpdocumentor-breadcrumbs">
     </ul>
 
-    
+    <article class="phpdocumentor-element -package">
+        <h2 class="phpdocumentor-content__title">Default</h2>
+
         
-        
-                    <div class="package-indent">
-                <h3><i class="icon-custom icon-class"></i> Classes, interfaces and traits</h3>
-                                        <div id="AbstractPart" class="element ajax clickable trait">
-        <h1>AbstractPart<a href="../classes/Susina.Codegen.Model.Parts.AbstractPart.html">¶</a></h1>
-        <p class="short_description">Abstract Part.</p>
-        <div class="details collapse">Keeps track if the model has an abstract modifier or not</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.AbstractPart.html" class="more">« More »</a>
-    </div>
 
-                                        <div id="BodyPart" class="element ajax clickable trait">
-        <h1>BodyPart<a href="../classes/Susina.Codegen.Model.Parts.BodyPart.html">¶</a></h1>
-        <p class="short_description">Body Part.</p>
-        <div class="details collapse">For all models that do have a code body</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.BodyPart.html" class="more">« More »</a>
-    </div>
+<h3 id="interfaces_class_traits">
+    Interfaces, Classes and Traits
+    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
 
-                                        <div id="ConstantsPart" class="element ajax clickable trait">
-        <h1>ConstantsPart<a href="../classes/Susina.Codegen.Model.Parts.ConstantsPart.html">¶</a></h1>
-        <p class="short_description">Constants part.</p>
-        <div class="details collapse">For all models that can contain constants</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.ConstantsPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DocblockPart" class="element ajax clickable trait">
-        <h1>DocblockPart<a href="../classes/Susina.Codegen.Model.Parts.DocblockPart.html">¶</a></h1>
-        <p class="short_description">Docblock Part.</p>
-        <div class="details collapse">Setting and getting a docblock on a model</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.DocblockPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="FinalPart" class="element ajax clickable trait">
-        <h1>FinalPart<a href="../classes/Susina.Codegen.Model.Parts.FinalPart.html">¶</a></h1>
-        <p class="short_description">Abstract Part.</p>
-        <div class="details collapse">Keeps track if the model has a final modifier or not</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.FinalPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="InterfacesPart" class="element ajax clickable trait">
-        <h1>InterfacesPart<a href="../classes/Susina.Codegen.Model.Parts.InterfacesPart.html">¶</a></h1>
-        <p class="short_description">Interfaces part.</p>
-        <div class="details collapse">For all models that can contain interfaces</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.InterfacesPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="LongDescriptionPart" class="element ajax clickable trait">
-        <h1>LongDescriptionPart<a href="../classes/Susina.Codegen.Model.Parts.LongDescriptionPart.html">¶</a></h1>
-        <p class="short_description">Long description part.</p>
-        <div class="details collapse">For all models that can have an additional long description</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.LongDescriptionPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="NamePart" class="element ajax clickable trait">
-        <h1>NamePart<a href="../classes/Susina.Codegen.Model.Parts.NamePart.html">¶</a></h1>
-        <p class="short_description">Name part.</p>
-        <div class="details collapse">For all models that do have a name</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.NamePart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PropertiesPart" class="element ajax clickable trait">
-        <h1>PropertiesPart<a href="../classes/Susina.Codegen.Model.Parts.PropertiesPart.html">¶</a></h1>
-        <p class="short_description">Properties part.</p>
-        <div class="details collapse">For all models that can have properties</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.PropertiesPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="QualifiedNamePart" class="element ajax clickable trait">
-        <h1>QualifiedNamePart<a href="../classes/Susina.Codegen.Model.Parts.QualifiedNamePart.html">¶</a></h1>
-        <p class="short_description">Qualified name part.</p>
-        <div class="details collapse">For all models that have a name and namespace</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.QualifiedNamePart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="ReferenceReturnPart" class="element ajax clickable trait">
-        <h1>ReferenceReturnPart<a href="../classes/Susina.Codegen.Model.Parts.ReferenceReturnPart.html">¶</a></h1>
-        <p class="short_description">Reference return part.</p>
-        <div class="details collapse">Keeps track whether the return value is a reference or not</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.ReferenceReturnPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="RoutineBuilderPart" class="element ajax clickable trait">
-        <h1>RoutineBuilderPart<a href="../classes/Susina.Codegen.Generator.Builder.Parts.RoutineBuilderPart.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Builder.Parts.RoutineBuilderPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="StructBuilderPart" class="element ajax clickable trait">
-        <h1>StructBuilderPart<a href="../classes/Susina.Codegen.Generator.Builder.Parts.StructBuilderPart.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Builder.Parts.StructBuilderPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="TraitsPart" class="element ajax clickable trait">
-        <h1>TraitsPart<a href="../classes/Susina.Codegen.Model.Parts.TraitsPart.html">¶</a></h1>
-        <p class="short_description">Traits part.</p>
-        <div class="details collapse">For all models that can have traits</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.TraitsPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="TypeDocblockGeneratorPart" class="element ajax clickable trait">
-        <h1>TypeDocblockGeneratorPart<a href="../classes/Susina.Codegen.Model.Parts.TypeDocblockGeneratorPart.html">¶</a></h1>
-        <p class="short_description">Type docblock generator part.</p>
-        <div class="details collapse">For all models that have a type and need docblock tag generated from it</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.TypeDocblockGeneratorPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="TypePart" class="element ajax clickable trait">
-        <h1>TypePart<a href="../classes/Susina.Codegen.Model.Parts.TypePart.html">¶</a></h1>
-        <p class="short_description">Type part.</p>
-        <div class="details collapse">For all models that have a type</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.TypePart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="ValueBuilderPart" class="element ajax clickable trait">
-        <h1>ValueBuilderPart<a href="../classes/Susina.Codegen.Generator.Builder.Parts.ValueBuilderPart.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Builder.Parts.ValueBuilderPart.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="ValuePart" class="element ajax clickable trait">
-        <h1>ValuePart<a href="../classes/Susina.Codegen.Model.Parts.ValuePart.html">¶</a></h1>
-        <p class="short_description">Value part.</p>
-        <div class="details collapse">For all models that have a value (or expression)</div>
-        <a href="../classes/Susina.Codegen.Model.Parts.ValuePart.html" class="more">« More »</a>
-    </div>
-
-                
-                                        <div id="DocblockInterface" class="element ajax clickable interface">
-        <h1>DocblockInterface<a href="../classes/Susina.Codegen.Model.DocblockInterface.html">¶</a></h1>
-        <p class="short_description">Docblock interface to represent models that have a docblock.</p>
-        <div class="details collapse">Implementation is realized in the `DocblockPart`</div>
-        <a href="../classes/Susina.Codegen.Model.DocblockInterface.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="GenerateableInterface" class="element ajax clickable interface">
-        <h1>GenerateableInterface<a href="../classes/Susina.Codegen.Model.GenerateableInterface.html">¶</a></h1>
-        <p class="short_description">Represents all models that can be generated with a code generator.</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.GenerateableInterface.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="NamespaceInterface" class="element ajax clickable interface">
-        <h1>NamespaceInterface<a href="../classes/Susina.Codegen.Model.NamespaceInterface.html">¶</a></h1>
-        <p class="short_description">Represents models that have a namespace.</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.NamespaceInterface.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PropertiesInterface" class="element ajax clickable interface">
-        <h1>PropertiesInterface<a href="../classes/Susina.Codegen.Model.PropertiesInterface.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.PropertiesInterface.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="TraitsInterface" class="element ajax clickable interface">
-        <h1>TraitsInterface<a href="../classes/Susina.Codegen.Model.TraitsInterface.html">¶</a></h1>
-        <p class="short_description">Represents models that can have traits.</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.TraitsInterface.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="ValueInterface" class="element ajax clickable interface">
-        <h1>ValueInterface<a href="../classes/Susina.Codegen.Model.ValueInterface.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.ValueInterface.html" class="more">« More »</a>
-    </div>
-
-                
-                                        <div id="AbstractBuilder" class="element ajax clickable class">
-        <h1>AbstractBuilder<a href="../classes/Susina.Codegen.Generator.Builder.AbstractBuilder.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Builder.AbstractBuilder.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="AbstractMemberComparator" class="element ajax clickable class">
-        <h1>AbstractMemberComparator<a href="../classes/Susina.Codegen.Generator.Comparator.AbstractMemberComparator.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Comparator.AbstractMemberComparator.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="AbstractModel" class="element ajax clickable class">
-        <h1>AbstractModel<a href="../classes/Susina.Codegen.Model.AbstractModel.html">¶</a></h1>
-        <p class="short_description">Parent of all models.</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.AbstractModel.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="BuilderFactory" class="element ajax clickable class">
-        <h1>BuilderFactory<a href="../classes/Susina.Codegen.Generator.BuilderFactory.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.BuilderFactory.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="ClassBuilder" class="element ajax clickable class">
-        <h1>ClassBuilder<a href="../classes/Susina.Codegen.Generator.Builder.ClassBuilder.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Builder.ClassBuilder.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="CodeFileGenerator" class="element ajax clickable class">
-        <h1>CodeFileGenerator<a href="../classes/Susina.Codegen.Generator.CodeFileGenerator.html">¶</a></h1>
-        <p class="short_description">Code file generator.</p>
-        <div class="details collapse">Generates code for a model and puts it into a file with `&lt;?php` statements. Can also
-generate header comments.</div>
-        <a href="../classes/Susina.Codegen.Generator.CodeFileGenerator.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="CodeGenerator" class="element ajax clickable class">
-        <h1>CodeGenerator<a href="../classes/Susina.Codegen.Generator.CodeGenerator.html">¶</a></h1>
-        <p class="short_description">Code generator.</p>
-        <div class="details collapse">Generates code for any generateable model</div>
-        <a href="../classes/Susina.Codegen.Generator.CodeGenerator.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="ConstantBuilder" class="element ajax clickable class">
-        <h1>ConstantBuilder<a href="../classes/Susina.Codegen.Generator.Builder.ConstantBuilder.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Builder.ConstantBuilder.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DefaultConstantComparator" class="element ajax clickable class">
-        <h1>DefaultConstantComparator<a href="../classes/Susina.Codegen.Generator.Comparator.DefaultConstantComparator.html">¶</a></h1>
-        <p class="short_description">Default property comparator.</p>
-        <div class="details collapse">Orders them by lower cased first, then upper cased</div>
-        <a href="../classes/Susina.Codegen.Generator.Comparator.DefaultConstantComparator.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DefaultMethodComparator" class="element ajax clickable class">
-        <h1>DefaultMethodComparator<a href="../classes/Susina.Codegen.Generator.Comparator.DefaultMethodComparator.html">¶</a></h1>
-        <p class="short_description">Default property comparator.</p>
-        <div class="details collapse">Orders them by static first, then visibility and last by property name</div>
-        <a href="../classes/Susina.Codegen.Generator.Comparator.DefaultMethodComparator.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="DefaultPropertyComparator" class="element ajax clickable class">
-        <h1>DefaultPropertyComparator<a href="../classes/Susina.Codegen.Generator.Comparator.DefaultPropertyComparator.html">¶</a></h1>
-        <p class="short_description">Default property comparator.</p>
-        <div class="details collapse">Orders them by visibility first then by method name</div>
-        <a href="../classes/Susina.Codegen.Generator.Comparator.DefaultPropertyComparator.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="InterfaceBuilder" class="element ajax clickable class">
-        <h1>InterfaceBuilder<a href="../classes/Susina.Codegen.Generator.Builder.InterfaceBuilder.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Builder.InterfaceBuilder.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="MethodBuilder" class="element ajax clickable class">
-        <h1>MethodBuilder<a href="../classes/Susina.Codegen.Generator.Builder.MethodBuilder.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Builder.MethodBuilder.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="ModelGenerator" class="element ajax clickable class">
-        <h1>ModelGenerator<a href="../classes/Susina.Codegen.Generator.ModelGenerator.html">¶</a></h1>
-        <p class="short_description">Model Generator.</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.ModelGenerator.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="ParameterBuilder" class="element ajax clickable class">
-        <h1>ParameterBuilder<a href="../classes/Susina.Codegen.Generator.Builder.ParameterBuilder.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Builder.ParameterBuilder.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PhpConstant" class="element ajax clickable class">
-        <h1>PhpConstant<a href="../classes/Susina.Codegen.Model.PhpConstant.html">¶</a></h1>
-        <p class="short_description">Represents a PHP constant.</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.PhpConstant.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PhpInterface" class="element ajax clickable class">
-        <h1>PhpInterface<a href="../classes/Susina.Codegen.Model.PhpInterface.html">¶</a></h1>
-        <p class="short_description">Represents a PHP interface.</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.PhpInterface.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PhpMethod" class="element ajax clickable class">
-        <h1>PhpMethod<a href="../classes/Susina.Codegen.Model.PhpMethod.html">¶</a></h1>
-        <p class="short_description">Represents a PHP method.</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.PhpMethod.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PhpParameter" class="element ajax clickable class">
-        <h1>PhpParameter<a href="../classes/Susina.Codegen.Model.PhpParameter.html">¶</a></h1>
-        <p class="short_description">Represents a PHP parameter.</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.PhpParameter.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PhpProperty" class="element ajax clickable class">
-        <h1>PhpProperty<a href="../classes/Susina.Codegen.Model.PhpProperty.html">¶</a></h1>
-        <p class="short_description">Represents a PHP property.</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.PhpProperty.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PhpTrait" class="element ajax clickable class">
-        <h1>PhpTrait<a href="../classes/Susina.Codegen.Model.PhpTrait.html">¶</a></h1>
-        <p class="short_description">Represents a PHP trait.</p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Model.PhpTrait.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="PropertyBuilder" class="element ajax clickable class">
-        <h1>PropertyBuilder<a href="../classes/Susina.Codegen.Generator.Builder.PropertyBuilder.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Builder.PropertyBuilder.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="TraitBuilder" class="element ajax clickable class">
-        <h1>TraitBuilder<a href="../classes/Susina.Codegen.Generator.Builder.TraitBuilder.html">¶</a></h1>
-        <p class="short_description"></p>
-        <div class="details collapse"></div>
-        <a href="../classes/Susina.Codegen.Generator.Builder.TraitBuilder.html" class="more">« More »</a>
-    </div>
-
-                                        <div id="Writer" class="element ajax clickable class">
-        <h1>Writer<a href="../classes/Susina.Codegen.Generator.Utils.Writer.html">¶</a></h1>
-        <p class="short_description">A writer implementation.</p>
-        <div class="details collapse">This may be used to simplify writing well-formatted code.</div>
-        <a href="../classes/Susina.Codegen.Generator.Utils.Writer.html" class="more">« More »</a>
-    </div>
-
-                            </div>
-            
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Susina-Codegen-Model-ConstantsInterface.html"><abbr title="\Susina\Codegen\Model\ConstantsInterface">ConstantsInterface</abbr></a></dt>
+        <dd>Interface to all php structs that can have constants.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Susina-Codegen-Model-DocblockInterface.html"><abbr title="\Susina\Codegen\Model\DocblockInterface">DocblockInterface</abbr></a></dt>
+        <dd>Docblock interface to represent models that have a docblock.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Susina-Codegen-Model-GenerateableInterface.html"><abbr title="\Susina\Codegen\Model\GenerateableInterface">GenerateableInterface</abbr></a></dt>
+        <dd>Represents all models that can be generated with a code generator.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Susina-Codegen-Model-NamespaceInterface.html"><abbr title="\Susina\Codegen\Model\NamespaceInterface">NamespaceInterface</abbr></a></dt>
+        <dd>Represents models that have a namespace.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Susina-Codegen-Model-PropertiesInterface.html"><abbr title="\Susina\Codegen\Model\PropertiesInterface">PropertiesInterface</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Susina-Codegen-Model-RoutineInterface.html"><abbr title="\Susina\Codegen\Model\RoutineInterface">RoutineInterface</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Susina-Codegen-Model-TraitsInterface.html"><abbr title="\Susina\Codegen\Model\TraitsInterface">TraitsInterface</abbr></a></dt>
+        <dd>Represents models that can have traits.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Susina-Codegen-Model-ValueInterface.html"><abbr title="\Susina\Codegen\Model\ValueInterface">ValueInterface</abbr></a></dt>
+        <dd></dd>
     
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Config-GeneratorConfig.html"><abbr title="\Susina\Codegen\Config\GeneratorConfig">GeneratorConfig</abbr></a></dt>
+        <dd>Configuration for code generation.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Builder-AbstractBuilder.html"><abbr title="\Susina\Codegen\Generator\Builder\AbstractBuilder">AbstractBuilder</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Builder-ClassBuilder.html"><abbr title="\Susina\Codegen\Generator\Builder\ClassBuilder">ClassBuilder</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Builder-ConstantBuilder.html"><abbr title="\Susina\Codegen\Generator\Builder\ConstantBuilder">ConstantBuilder</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Builder-InterfaceBuilder.html"><abbr title="\Susina\Codegen\Generator\Builder\InterfaceBuilder">InterfaceBuilder</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Builder-MethodBuilder.html"><abbr title="\Susina\Codegen\Generator\Builder\MethodBuilder">MethodBuilder</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Builder-ParameterBuilder.html"><abbr title="\Susina\Codegen\Generator\Builder\ParameterBuilder">ParameterBuilder</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Builder-PropertyBuilder.html"><abbr title="\Susina\Codegen\Generator\Builder\PropertyBuilder">PropertyBuilder</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Builder-TraitBuilder.html"><abbr title="\Susina\Codegen\Generator\Builder\TraitBuilder">TraitBuilder</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-BuilderFactory.html"><abbr title="\Susina\Codegen\Generator\BuilderFactory">BuilderFactory</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-CodeFileGenerator.html"><abbr title="\Susina\Codegen\Generator\CodeFileGenerator">CodeFileGenerator</abbr></a></dt>
+        <dd>Code file generator.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-CodeGenerator.html"><abbr title="\Susina\Codegen\Generator\CodeGenerator">CodeGenerator</abbr></a></dt>
+        <dd>Code generator.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Comparator-AbstractMemberComparator.html"><abbr title="\Susina\Codegen\Generator\Comparator\AbstractMemberComparator">AbstractMemberComparator</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Comparator-DefaultConstantComparator.html"><abbr title="\Susina\Codegen\Generator\Comparator\DefaultConstantComparator">DefaultConstantComparator</abbr></a></dt>
+        <dd>Default property comparator.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Comparator-DefaultMethodComparator.html"><abbr title="\Susina\Codegen\Generator\Comparator\DefaultMethodComparator">DefaultMethodComparator</abbr></a></dt>
+        <dd>Default property comparator.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Comparator-DefaultPropertyComparator.html"><abbr title="\Susina\Codegen\Generator\Comparator\DefaultPropertyComparator">DefaultPropertyComparator</abbr></a></dt>
+        <dd>Default property comparator.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Comparator-DefaultUseStatementComparator.html"><abbr title="\Susina\Codegen\Generator\Comparator\DefaultUseStatementComparator">DefaultUseStatementComparator</abbr></a></dt>
+        <dd>Default use statement comparator.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-ModelGenerator.html"><abbr title="\Susina\Codegen\Generator\ModelGenerator">ModelGenerator</abbr></a></dt>
+        <dd>Model Generator.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Generator-Utils-Writer.html"><abbr title="\Susina\Codegen\Generator\Utils\Writer">Writer</abbr></a></dt>
+        <dd>A writer implementation.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Model-AbstractModel.html"><abbr title="\Susina\Codegen\Model\AbstractModel">AbstractModel</abbr></a></dt>
+        <dd>Parent of all models.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Model-AbstractPhpMember.html"><abbr title="\Susina\Codegen\Model\AbstractPhpMember">AbstractPhpMember</abbr></a></dt>
+        <dd>Abstract PHP member class.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Model-AbstractPhpStruct.html"><abbr title="\Susina\Codegen\Model\AbstractPhpStruct">AbstractPhpStruct</abbr></a></dt>
+        <dd>Represents an abstract php structure (class, trait or interface).</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Model-PhpClass.html"><abbr title="\Susina\Codegen\Model\PhpClass">PhpClass</abbr></a></dt>
+        <dd>Represents a PHP class.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Model-PhpConstant.html"><abbr title="\Susina\Codegen\Model\PhpConstant">PhpConstant</abbr></a></dt>
+        <dd>Represents a PHP constant.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Model-PhpInterface.html"><abbr title="\Susina\Codegen\Model\PhpInterface">PhpInterface</abbr></a></dt>
+        <dd>Represents a PHP interface.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Model-PhpMethod.html"><abbr title="\Susina\Codegen\Model\PhpMethod">PhpMethod</abbr></a></dt>
+        <dd>Represents a PHP method.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Model-PhpParameter.html"><abbr title="\Susina\Codegen\Model\PhpParameter">PhpParameter</abbr></a></dt>
+        <dd>Represents a PHP parameter.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Model-PhpProperty.html"><abbr title="\Susina\Codegen\Model\PhpProperty">PhpProperty</abbr></a></dt>
+        <dd>Represents a PHP property.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Susina-Codegen-Model-PhpTrait.html"><abbr title="\Susina\Codegen\Model\PhpTrait">PhpTrait</abbr></a></dt>
+        <dd>Represents a PHP trait.</dd>
+    
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Generator-Builder-Parts-RoutineBuilderPart.html"><abbr title="\Susina\Codegen\Generator\Builder\Parts\RoutineBuilderPart">RoutineBuilderPart</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Generator-Builder-Parts-StructBuilderPart.html"><abbr title="\Susina\Codegen\Generator\Builder\Parts\StructBuilderPart">StructBuilderPart</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Generator-Builder-Parts-TypeBuilderPart.html"><abbr title="\Susina\Codegen\Generator\Builder\Parts\TypeBuilderPart">TypeBuilderPart</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Generator-Builder-Parts-ValueBuilderPart.html"><abbr title="\Susina\Codegen\Generator\Builder\Parts\ValueBuilderPart">ValueBuilderPart</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-AbstractPart.html"><abbr title="\Susina\Codegen\Model\Parts\AbstractPart">AbstractPart</abbr></a></dt>
+        <dd>Abstract Part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-BodyPart.html"><abbr title="\Susina\Codegen\Model\Parts\BodyPart">BodyPart</abbr></a></dt>
+        <dd>Body Part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-ConstantsPart.html"><abbr title="\Susina\Codegen\Model\Parts\ConstantsPart">ConstantsPart</abbr></a></dt>
+        <dd>Constants part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-DocblockPart.html"><abbr title="\Susina\Codegen\Model\Parts\DocblockPart">DocblockPart</abbr></a></dt>
+        <dd>Docblock Part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-FinalPart.html"><abbr title="\Susina\Codegen\Model\Parts\FinalPart">FinalPart</abbr></a></dt>
+        <dd>Abstract Part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-InterfacesPart.html"><abbr title="\Susina\Codegen\Model\Parts\InterfacesPart">InterfacesPart</abbr></a></dt>
+        <dd>Interfaces part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-LongDescriptionPart.html"><abbr title="\Susina\Codegen\Model\Parts\LongDescriptionPart">LongDescriptionPart</abbr></a></dt>
+        <dd>Long description part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-NamePart.html"><abbr title="\Susina\Codegen\Model\Parts\NamePart">NamePart</abbr></a></dt>
+        <dd>Name part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-ParametersPart.html"><abbr title="\Susina\Codegen\Model\Parts\ParametersPart">ParametersPart</abbr></a></dt>
+        <dd>Parameters Part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-PropertiesPart.html"><abbr title="\Susina\Codegen\Model\Parts\PropertiesPart">PropertiesPart</abbr></a></dt>
+        <dd>Properties part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-QualifiedNamePart.html"><abbr title="\Susina\Codegen\Model\Parts\QualifiedNamePart">QualifiedNamePart</abbr></a></dt>
+        <dd>Qualified name part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-ReferenceReturnPart.html"><abbr title="\Susina\Codegen\Model\Parts\ReferenceReturnPart">ReferenceReturnPart</abbr></a></dt>
+        <dd>Reference return part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-TraitsPart.html"><abbr title="\Susina\Codegen\Model\Parts\TraitsPart">TraitsPart</abbr></a></dt>
+        <dd>Traits part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-TypeDocblockGeneratorPart.html"><abbr title="\Susina\Codegen\Model\Parts\TypeDocblockGeneratorPart">TypeDocblockGeneratorPart</abbr></a></dt>
+        <dd>Type docblock generator part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-TypePart.html"><abbr title="\Susina\Codegen\Model\Parts\TypePart">TypePart</abbr></a></dt>
+        <dd>Type part.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Susina-Codegen-Model-Parts-ValuePart.html"><abbr title="\Susina\Codegen\Model\Parts\ValuePart">ValuePart</abbr></a></dt>
+        <dd>Value part.</dd>
+    </dl>
+
+
+
+        
+
+        
+    </article>
+                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+    <section class="phpdocumentor-search-results__dialog">
+        <header class="phpdocumentor-search-results__header">
+            <h2 class="phpdocumentor-search-results__title">Search results</h2>
+            <button class="phpdocumentor-search-results__close"><i class="fas fa-times"></i></button>
+        </header>
+        <section class="phpdocumentor-search-results__body">
+            <ul class="phpdocumentor-search-results__entries"></ul>
+        </section>
+    </section>
+</section>
+            </div>
         </div>
-    </div>
-    </div>
+        <a href="packages/Default.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
-        <footer class="span12">
-            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
-            <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Wed, 09 Sep 2020 17:27:46 +0000.<br/>
-    </footer>
-    </body>
+    </main>
+
+    <script>
+        cssVars({});
+    </script>
+</body>
 </html>
