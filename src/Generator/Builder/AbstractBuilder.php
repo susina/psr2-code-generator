@@ -46,8 +46,8 @@ abstract class AbstractBuilder
 
     protected function ensureBlankLine(): void
     {
-        if (!$this->writer->endsWith("\n\n") && (strlen($this->writer->rtrim()->getContent()) > 0) &&
-            !$this->writer->endsWith("{\n")) {
+        if (!$this->writer->endsWith("\n\n") && (strlen($this->writer->rtrim()->getContent()) > 0)
+            && !$this->writer->endsWith("{\n")) {
             $this->writer->writeln();
         }
     }

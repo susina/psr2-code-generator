@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Setup PHP, with composer and extensions
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.2
+          php-version: 7.4
           extensions: mbstring, dom, json, libxml, xml, xmlwriter
           coverage: xdebug
       - name: Install dependencies
@@ -24,4 +24,3 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: "composer coverage:clover"
-

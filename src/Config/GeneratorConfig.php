@@ -21,8 +21,6 @@ class GeneratorConfig
 
     /**
      * Creates a new configuration for code generator.
-     *
-     * @param array $options
      */
     public function __construct(?array $options = null)
     {
